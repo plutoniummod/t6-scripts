@@ -1,0 +1,17 @@
+// T6 GSC SOURCE
+// Decompiled by https://github.com/xensik/gsc-tool
+#include character\clientscripts\c_zom_buried_sloth;
+
+main()
+{
+    character\clientscripts\c_zom_buried_sloth::main();
+    self._aitype = "zm_buried_sloth";
+}
+
+precache( ai_index )
+{
+    character\clientscripts\c_zom_buried_sloth::precache();
+    usefootsteptable( ai_index, "fly_step_sloth" );
+    precacheanimstatedef( ai_index, -1, "zm_buried_sloth" );
+    setdemolockonvalues( ai_index, 100, 70, -15, 60, 8, 0, 60 );
+}

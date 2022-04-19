@@ -1,0 +1,17 @@
+// T6 GSC SOURCE
+// Decompiled by https://github.com/xensik/gsc-tool
+#include character\clientscripts\c_zom_ally_cdc;
+
+main()
+{
+    character\clientscripts\c_zom_ally_cdc::main();
+    self._aitype = "zm_ally_cdc";
+}
+
+precache( ai_index )
+{
+    character\clientscripts\c_zom_ally_cdc::precache();
+    usefootsteptable( ai_index, "default_ai" );
+    precacheanimstatedef( ai_index, -1, "zm_ally_basic" );
+    setdemolockonvalues( ai_index, 100, 60, -15, 60, 30, -5, 60 );
+}
