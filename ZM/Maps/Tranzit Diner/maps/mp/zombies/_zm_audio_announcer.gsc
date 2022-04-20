@@ -20,7 +20,7 @@ init()
     createvox( "zombie_blood", "powerup_zombie_blood" );
     createvox( "boxmove", "event_magicbox" );
     createvox( "dogstart", "event_dogstart" );
-    thread init_gamemodespecificvox( getdvar( "ui_gametype" ), getdvar( _hash_C955B4CD ) );
+    thread init_gamemodespecificvox( getdvar( "ui_gametype" ), getdvar( "ui_zm_mapstartlocation" ) );
     level.allowzmbannouncer = 1;
 }
 
@@ -236,7 +236,7 @@ announcematchwinner( winner, delay )
 
 announcegamemoderules()
 {
-    if ( getdvar( _hash_C955B4CD ) == "town" )
+    if ( getdvar( "ui_zm_mapstartlocation" ) == "town" )
         leaderdialog( "rules", undefined, undefined, undefined, 20 );
 }
 

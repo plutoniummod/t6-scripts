@@ -516,7 +516,7 @@ set_stored_weapondata( weapondata, map )
 
 add_client_stat( stat_name, stat_value, include_gametype )
 {
-    if ( getdvar( _hash_C955B4CD ) == "" || is_true( level.zm_disable_recording_stats ) )
+    if ( getdvar( "ui_zm_mapstartlocation" ) == "" || is_true( level.zm_disable_recording_stats ) )
         return;
 
     if ( !isdefined( include_gametype ) )
@@ -528,7 +528,7 @@ add_client_stat( stat_name, stat_value, include_gametype )
 
 increment_player_stat( stat_name )
 {
-    if ( getdvar( _hash_C955B4CD ) == "" || is_true( level.zm_disable_recording_stats ) )
+    if ( getdvar( "ui_zm_mapstartlocation" ) == "" || is_true( level.zm_disable_recording_stats ) )
         return;
 
     self incrementplayerstat( stat_name, 1 );

@@ -71,8 +71,8 @@ init()
     level.zmb_laugh_alias = "zmb_laugh_richtofen";
     level.sndannouncerisrich = 1;
     level.scr_zm_ui_gametype = getdvar( "ui_gametype" );
-    level.scr_zm_ui_gametype_group = getdvar( _hash_6B64B9B4 );
-    level.scr_zm_map_start_location = getdvar( _hash_C955B4CD );
+    level.scr_zm_ui_gametype_group = getdvar( "ui_zm_gamemodegroup" );
+    level.scr_zm_map_start_location = getdvar( "ui_zm_mapstartlocation" );
     level.curr_gametype_affects_rank = 0;
     gametype = tolower( getdvar( "g_gametype" ) );
 

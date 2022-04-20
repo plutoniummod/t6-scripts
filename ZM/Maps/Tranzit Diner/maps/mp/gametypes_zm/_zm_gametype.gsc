@@ -81,7 +81,7 @@ main()
 
     set_gamemode_var_once( "mode", mode );
     set_game_var_once( "side_selection", 1 );
-    location = getdvar( _hash_C955B4CD );
+    location = getdvar( "ui_zm_mapstartlocation" );
 
     if ( location == "" && isdefined( level.default_start_location ) )
         location = level.default_start_location;
@@ -408,7 +408,7 @@ rungametypeprecache( gamemode )
     {
         if ( isdefined( level.gamemode_map_location_precache[gamemode] ) )
         {
-            loc = getdvar( _hash_C955B4CD );
+            loc = getdvar( "ui_zm_mapstartlocation" );
 
             if ( loc == "" && isdefined( level.default_start_location ) )
                 loc = level.default_start_location;
@@ -439,7 +439,7 @@ rungametypemain( gamemode, mode_main_func, use_round_logic )
     {
         if ( isdefined( level.gamemode_map_location_main[gamemode] ) )
         {
-            loc = getdvar( _hash_C955B4CD );
+            loc = getdvar( "ui_zm_mapstartlocation" );
 
             if ( loc == "" && isdefined( level.default_start_location ) )
                 loc = level.default_start_location;

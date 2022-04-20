@@ -1557,7 +1557,7 @@ transit_zone_init()
     add_adjacent_zone( "zone_pri2", "zone_station_ext", "OnPriDoorYar", 1 );
     add_adjacent_zone( "zone_pri2", "zone_pri", "OnPriDoorYar3", 1 );
 
-    if ( getdvar( _hash_C955B4CD ) == "transit" )
+    if ( getdvar( "ui_zm_mapstartlocation" ) == "transit" )
     {
         level thread disconnect_door_zones( "zone_pri2", "zone_station_ext", "OnPriDoorYar" );
         level thread disconnect_door_zones( "zone_pri2", "zone_pri", "OnPriDoorYar3" );

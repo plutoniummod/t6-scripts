@@ -22,7 +22,7 @@ init_utility()
 
 is_classic()
 {
-    var = getdvar( _hash_6B64B9B4 );
+    var = getdvar( "ui_zm_gamemodegroup" );
 
     if ( var == "zclassic" )
         return true;
@@ -380,7 +380,7 @@ no_valid_repairable_boards( barrier, barrier_chunks )
 
 is_survival()
 {
-    var = getdvar( _hash_6B64B9B4 );
+    var = getdvar( "ui_zm_gamemodegroup" );
 
     if ( var == "zsurvival" )
         return true;
@@ -393,7 +393,7 @@ is_encounter()
     if ( isdefined( level._is_encounter ) && level._is_encounter )
         return true;
 
-    var = getdvar( _hash_6B64B9B4 );
+    var = getdvar( "ui_zm_gamemodegroup" );
 
     if ( var == "zencounter" )
     {
