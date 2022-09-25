@@ -17,17 +17,14 @@ initanimtree( animscript )
 {
     if ( animscript != "pain" && animscript != "death" )
         self.a.special = "none";
-/#
+
     assert( isdefined( animscript ), "Animscript not specified in initAnimTree" );
-#/
     self.a.script = animscript;
 }
 
 updateanimpose()
 {
-/#
     assert( self.a.movement == "stop" || self.a.movement == "walk" || self.a.movement == "run", "UpdateAnimPose " + self.a.pose + " " + self.a.movement );
-#/
     self.desired_anim_pose = undefined;
 }
 
@@ -166,9 +163,7 @@ getyaw2d( org )
 
 absyawtoenemy()
 {
-/#
     assert( isvalidenemy( self.enemy ) );
-#/
     yaw = self.angles[1] - getyaw( self.enemy.origin );
     yaw = angleclamp180( yaw );
 
@@ -180,9 +175,7 @@ absyawtoenemy()
 
 absyawtoenemy2d()
 {
-/#
     assert( isvalidenemy( self.enemy ) );
-#/
     yaw = self.angles[1] - getyaw2d( self.enemy.origin );
     yaw = angleclamp180( yaw );
 
@@ -331,9 +324,7 @@ quadrantanimweights( yaw )
 
     if ( isdefined( self.alwaysrunforward ) )
     {
-/#
         assert( self.alwaysrunforward );
-#/
         result["front"] = 1;
         return result;
     }
@@ -594,12 +585,9 @@ anim_array( animarray, animweights )
 {
     total_anims = animarray.size;
     idleanim = randomint( total_anims );
-/#
     assert( total_anims );
-#/
-/#
     assert( animarray.size == animweights.size );
-#/
+
     if ( total_anims == 1 )
         return animarray[0];
 
@@ -737,12 +725,9 @@ random_weight( array )
 
 setfootstepeffect( name, fx )
 {
-/#
     assert( isdefined( name ), "Need to define the footstep surface type." );
-#/
-/#
     assert( isdefined( fx ), "Need to define the mud footstep effect." );
-#/
+
     if ( !isdefined( anim.optionalstepeffects ) )
         anim.optionalstepeffects = [];
 
@@ -782,25 +767,19 @@ doesnodeallowstance( stance )
         return !self isnodedontstand();
     else
     {
-/#
         assert( stance == "crouch" );
-#/
         return !self isnodedontcrouch();
     }
 }
 
 animarray( animname )
 {
-/#
     assert( isdefined( self.a.array ) );
-#/
 /#
     if ( !isdefined( self.a.array[animname] ) )
     {
         dumpanimarray();
-/#
         assert( isdefined( self.a.array[animname] ), "self.a.array[ \"" + animname + "\" ] is undefined" );
-#/
     }
 #/
     return self.a.array[animname];
@@ -808,16 +787,12 @@ animarray( animname )
 
 animarrayanyexist( animname )
 {
-/#
     assert( isdefined( self.a.array ) );
-#/
 /#
     if ( !isdefined( self.a.array[animname] ) )
     {
         dumpanimarray();
-/#
         assert( isdefined( self.a.array[animname] ), "self.a.array[ \"" + animname + "\" ] is undefined" );
-#/
     }
 #/
     return self.a.array[animname].size > 0;
@@ -825,21 +800,16 @@ animarrayanyexist( animname )
 
 animarraypickrandom( animname )
 {
-/#
     assert( isdefined( self.a.array ) );
-#/
 /#
     if ( !isdefined( self.a.array[animname] ) )
     {
         dumpanimarray();
-/#
         assert( isdefined( self.a.array[animname] ), "self.a.array[ \"" + animname + "\" ] is undefined" );
-#/
     }
 #/
-/#
     assert( self.a.array[animname].size > 0 );
-#/
+
     if ( self.a.array[animname].size > 1 )
         index = randomint( self.a.array[animname].size );
     else
@@ -948,9 +918,8 @@ damagelocationisany( a, b, c, d, e, f, g, h, i, j, k, ovr )
 
     if ( self.damagelocation == k )
         return true;
-/#
+
     assert( !isdefined( ovr ) );
-#/
     return false;
 }
 
@@ -995,9 +964,7 @@ randomizeidleset()
 
 getrandomintfromseed( intseed, intmax )
 {
-/#
     assert( intmax > 0 );
-#/
     index = intseed % anim.randominttablesize;
     return anim.randominttable[index] % intmax;
 }

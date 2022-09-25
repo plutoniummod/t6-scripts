@@ -22,18 +22,11 @@
 
 register_time_bomb_enemy( str_type, func_conditions_for_round, func_save_enemy_data, func_respawn_enemies )
 {
-/#
     assert( isdefined( str_type ), "str_type is a required parameter for register_time_bomb_enemy! This identifies the round type" );
-#/
-/#
     assert( isdefined( func_conditions_for_round ), "func_conditions_for_round is a required parameter for register_time_bomb_enemy! This returns a bool that tells the script what type of round it is." );
-#/
-/#
     assert( isdefined( func_save_enemy_data ), "func_save_enemy_data is a required parameter for register_time_bomb_enemy! This should store all relevant data about an individual enemy, and requires one input argument." );
-#/
-/#
     assert( isdefined( func_respawn_enemies ), "func_respawn is a required parameter for register_time_bomb_enemy! This will run a function to respawn the new creature type." );
-#/
+
     if ( !isdefined( level._time_bomb.enemy_type[str_type] ) )
         level._time_bomb.enemy_type[str_type] = spawnstruct();
 
@@ -44,20 +37,14 @@ register_time_bomb_enemy( str_type, func_conditions_for_round, func_save_enemy_d
 
 register_time_bomb_enemy_save_filter( str_type, func_filter_save )
 {
-/#
     assert( isdefined( str_type ), "str_type is a required parameter for register_time_bomb_enemy_save_filter! This identifies the round type where the filter function should run." );
-#/
-/#
     assert( isdefined( level._time_bomb.enemy_type ), str_type + " enemy type is not yet registered with the time bomb system scripts. Register that type before calling register_time_bomb_enemy_save_filter()" );
-#/
     level._time_bomb.enemy_type[str_type].enemy_data_save_filter_func = func_filter_save;
 }
 
 register_time_bomb_enemy_default( str_type )
 {
-/#
     assert( isdefined( level._time_bomb.enemy_type[str_type] ), str_type + " enemy type is not set up in time bomb enemy array! Initialize this enemy before trying to make it the default." );
-#/
     level._time_bomb.enemy_type_default = str_type;
 }
 
@@ -154,9 +141,7 @@ add_time_bomb_to_mystery_box()
 
 player_give_time_bomb()
 {
-/#
     assert( isplayer( self ), "player_give_time_bomb can only be used on players!" );
-#/
     self giveweapon( "time_bomb_zm" );
     self swap_weapon_to_time_bomb();
     self thread show_time_bomb_hints();
@@ -478,9 +463,8 @@ _time_bomb_saves_enemy_info( s_temp )
     s_temp.enemies = [];
     s_temp.zombie_total = level.zombie_total;
     a_enemies = time_bomb_get_enemy_array();
-/#
     assert( isdefined( level._time_bomb.enemy_type[s_temp.round_type].enemy_data_save_func ), "enemy save data func is missing for AI type " + s_temp.round_type );
-#/
+
     for ( i = 0; i < a_enemies.size; i++ )
     {
         s_data = spawnstruct();
@@ -865,9 +849,7 @@ _time_bomb_restores_enemies( save_struct, n_time_start )
 {
     _time_bomb_resets_all_barrier_attack_spots_taken();
     str_type = save_struct.round_type;
-/#
     assert( isdefined( level._time_bomb.enemy_type[str_type] ), str_type + " respawn type isn't set up for time bomb!" );
-#/
     _get_wait_time( n_time_start );
     timebomb_wait_for_hostmigration();
     [[ level._time_bomb.enemy_type[str_type].respawn_func ]]( save_struct );
@@ -895,9 +877,8 @@ _get_time_bomb_zombie_spawn_location()
         if ( b_is_standard_spawn )
             a_valid_spawners[a_valid_spawners.size] = a_spawn_locations[i];
     }
-/#
+
     assert( a_valid_spawners.size > 0, "_get_time_bomb_zombie_spawn_location found no valid spawn locations!" );
-#/
     s_spawn_point = random( a_valid_spawners );
     return s_spawn_point;
 }
@@ -1008,9 +989,7 @@ _restore_player_perks_and_weapons( s_temp )
     else if ( isdefined( s_temp.is_last_stand ) && s_temp.is_last_stand )
     {
         self.stored_weapon_info = s_temp.stored_weapon_info;
-/#
         assert( isdefined( level.zombie_last_stand_ammo_return ), "time bomb attempting to give player back weapons taken by last stand, but level.zombie_last_stand_ammo_return is undefined!" );
-#/
         self [[ level.zombie_last_stand_ammo_return ]]();
     }
     else
@@ -1145,19 +1124,13 @@ get_player_perk_list()
 restore_player_to_initial_loadout( s_temp )
 {
     self takeallweapons();
-/#
     assert( isdefined( level.start_weapon ), "time bomb attempting to restore a spectator, but level.start_weapon isn't defined!" );
-#/
     self maps\mp\zombies\_zm_weapons::weapon_give( level.start_weapon );
-/#
     assert( isdefined( level.zombie_lethal_grenade_player_init ), "time bomb attempting to restore a spectator, but level.zombie_lethal_grenade_player_init isn't defined!" );
-#/
     self set_player_lethal_grenade( level.zombie_lethal_grenade_player_init );
     self giveweapon( level.zombie_lethal_grenade_player_init );
     self setweaponammoclip( level.zombie_lethal_grenade_player_init, 2 );
-/#
     assert( isdefined( level.zombie_melee_weapon_player_init ), "time bomb attempting to restore a spectator, but level.zombie_melee_weapon_player_init isn't defined!" );
-#/
     self giveweapon( level.zombie_melee_weapon_player_init );
     a_current_perks = self get_player_perk_list();
 

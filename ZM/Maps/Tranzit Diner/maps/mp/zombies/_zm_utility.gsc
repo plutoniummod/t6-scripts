@@ -415,9 +415,8 @@ all_chunks_destroyed( barrier, barrier_chunks )
     }
     else if ( isdefined( barrier_chunks ) )
     {
-/#
         assert( isdefined( barrier_chunks ), "_zm_utility::all_chunks_destroyed - Barrier chunks undefined" );
-#/
+
         for ( i = 0; i < barrier_chunks.size; i++ )
         {
             if ( barrier_chunks[i] get_chunk_state() != "destroyed" )
@@ -2169,9 +2168,7 @@ show_grate_repair()
 
 get_chunk_state()
 {
-/#
     assert( isdefined( self.state ) );
-#/
     return self.state;
 }
 
@@ -2537,7 +2534,7 @@ print_run_speed( speed )
 draw_line_ent_to_ent( ent1, ent2 )
 {
 /#
-    if ( getdvarint( _hash_FA91EA91 ) != 1 )
+    if ( getdvarint( "zombie_debug" ) != 1 )
         return;
 
     ent1 endon( "death" );
@@ -2554,7 +2551,7 @@ draw_line_ent_to_ent( ent1, ent2 )
 draw_line_ent_to_pos( ent, pos, end_on )
 {
 /#
-    if ( getdvarint( _hash_FA91EA91 ) != 1 )
+    if ( getdvarint( "zombie_debug" ) != 1 )
         return;
 
     ent endon( "death" );
@@ -2575,7 +2572,7 @@ draw_line_ent_to_pos( ent, pos, end_on )
 debug_print( msg )
 {
 /#
-    if ( getdvarint( _hash_FA91EA91 ) > 0 )
+    if ( getdvarint( "zombie_debug" ) > 0 )
         println( "######### ZOMBIE: " + msg );
 #/
 }
@@ -2588,7 +2585,7 @@ debug_blocker( pos, rad, height )
 
     for (;;)
     {
-        if ( getdvarint( _hash_FA91EA91 ) != 1 )
+        if ( getdvarint( "zombie_debug" ) != 1 )
             return;
 
         wait 0.05;
@@ -2645,7 +2642,7 @@ debug_breadcrumbs()
 
     while ( true )
     {
-        if ( getdvarint( _hash_FA91EA91 ) != 1 )
+        if ( getdvarint( "zombie_debug" ) != 1 )
         {
             wait 1;
             continue;
@@ -2667,7 +2664,7 @@ debug_attack_spots_taken()
 
     while ( true )
     {
-        if ( getdvarint( _hash_FA91EA91 ) != 2 )
+        if ( getdvarint( "zombie_debug" ) != 2 )
         {
             wait 1;
             continue;
@@ -2756,9 +2753,7 @@ magic_bullet_shield()
 
             if ( isai( self ) )
             {
-/#
                 assert( isalive( self ), "Tried to do magic_bullet_shield on a dead or undefined guy." );
-#/
                 self._mbs.last_pain_time = 0;
                 self._mbs.ignore_time = 2;
                 self._mbs.turret_ignore_time = 5;
@@ -2785,9 +2780,8 @@ debug_magic_bullet_shield_death( guy )
     guy endon( "stop_magic_bullet_shield" );
 
     guy waittill( "death" );
-/#
+
     assert( !isdefined( guy ), "Guy died with magic bullet shield on with targetname: " + targetname );
-#/
 }
 
 is_magic_bullet_shield_enabled( ent )
@@ -3054,7 +3048,7 @@ shock_onpain()
     self notify( "stop_shock_onpain" );
     self endon( "stop_shock_onpain" );
 
-    if ( getdvar( _hash_7FB1F9A2 ) == "" )
+    if ( getdvar( "blurpain" ) == "" )
         setdvar( "blurpain", "on" );
 
     while ( true )
@@ -3087,7 +3081,7 @@ shock_onpain()
 
             self shock_onexplosion( damage, shocktype, shocklight );
         }
-        else if ( getdvar( _hash_7FB1F9A2 ) == "on" )
+        else if ( getdvar( "blurpain" ) == "on" )
             self shellshock( "pain", 0.5 );
     }
 }
@@ -3170,9 +3164,8 @@ clear_is_drinking()
 
 getweaponclasszm( weapon )
 {
-/#
     assert( isdefined( weapon ) );
-#/
+
     if ( !isdefined( weapon ) )
         return undefined;
 
@@ -3851,9 +3844,7 @@ getyawtospot( spot )
 
 add_spawn_function( function, param1, param2, param3, param4 )
 {
-/#
     assert( !isdefined( level._loadstarted ) || !isalive( self ), "Tried to add_spawn_function to a living guy." );
-#/
     func = [];
     func["function"] = function;
     func["param1"] = param1;
@@ -3869,18 +3860,14 @@ add_spawn_function( function, param1, param2, param3, param4 )
 
 disable_react()
 {
-/#
     assert( isalive( self ), "Tried to disable react on a non ai" );
-#/
     self.a.disablereact = 1;
     self.allowreact = 0;
 }
 
 enable_react()
 {
-/#
     assert( isalive( self ), "Tried to enable react on a non ai" );
-#/
     self.a.disablereact = 0;
     self.allowreact = 1;
 }
@@ -4030,11 +4017,7 @@ ent_flag_init( message, val )
     }
 
     if ( !isdefined( level.first_frame ) )
-    {
-/#
         assert( !isdefined( self.ent_flag[message] ), "Attempt to reinitialize existing flag '" + message + "' on entity." );
-#/
-    }
 
     if ( isdefined( val ) && val )
     {
@@ -4109,12 +4092,9 @@ ent_flag_clear_delayed( message, delay )
 
 ent_flag( message )
 {
-/#
     assert( isdefined( message ), "Tried to check flag but the flag was not defined." );
-#/
-/#
     assert( isdefined( self.ent_flag[message] ), "Tried to check entity flag '" + message + "', but the flag was not initialized." );
-#/
+
     if ( !self.ent_flag[message] )
         return false;
 
@@ -4151,9 +4131,7 @@ flat_angle( angle )
 
 waittill_any_or_timeout( timer, string1, string2, string3, string4, string5 )
 {
-/#
     assert( isdefined( string1 ) );
-#/
     self endon( string1 );
 
     if ( isdefined( string2 ) )
@@ -4263,9 +4241,8 @@ get_eye()
 
 is_player_looking_at( origin, dot, do_trace, ignore_ent )
 {
-/#
     assert( isplayer( self ), "player_looking_at must be called on a player." );
-#/
+
     if ( !isdefined( dot ) )
         dot = 0.7;
 

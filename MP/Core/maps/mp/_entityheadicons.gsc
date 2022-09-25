@@ -11,12 +11,8 @@ init()
         return;
 
     level.initedentityheadicons = 1;
-/#
     assert( isdefined( game["entity_headicon_allies"] ), "Allied head icons are not defined.  Check the team set for the level." );
-#/
-/#
     assert( isdefined( game["entity_headicon_axis"] ), "Axis head icons are not defined.  Check the team set for the level." );
-#/
     precacheshader( game["entity_headicon_allies"] );
     precacheshader( game["entity_headicon_axis"] );
 
@@ -72,9 +68,7 @@ setentityheadicon( team, owner, offset, icon, constant_size )
     {
         if ( !isplayer( owner ) )
         {
-/#
             assert( isdefined( owner.owner ), "entity has to have an owner if it's not a player" );
-#/
             owner = owner.owner;
         }
 

@@ -147,15 +147,9 @@ door_classify( parent_trig )
         switch ( self.script_string )
         {
             case "anim":
-/#
                 assert( isdefined( self.script_animname ), "Blocker_init: You must specify a script_animname for " + self.targetname );
-#/
-/#
                 assert( isdefined( level.scr_anim[self.script_animname] ), "Blocker_init: You must define a level.scr_anim for script_anim -> " + self.script_animname );
-#/
-/#
                 assert( isdefined( level.blocker_anim_func ), "Blocker_init: You must define a level.blocker_anim_func" );
-#/
                 break;
             case "counter_1s":
                 parent_trig.counter_1s = self;
@@ -1449,7 +1443,7 @@ blocker_trigger_think()
     self thread trigger_delete_on_repair();
     thread maps\mp\zombies\_zm_unitrigger::register_static_unitrigger( self.unitrigger_stub, ::blocker_unitrigger_think );
 /#
-    if ( getdvarint( _hash_FA91EA91 ) > 0 )
+    if ( getdvarint( "zombie_debug" ) > 0 )
         thread debug_blocker( trigger_pos, radius, height );
 #/
     while ( true )
@@ -1881,12 +1875,8 @@ replace_chunk( barrier, chunk, perk, upgrade, via_powerup )
     if ( !isdefined( barrier.zbarrier ) )
     {
         chunk update_states( "mid_repair" );
-/#
         assert( isdefined( chunk.og_origin ) );
-#/
-/#
         assert( isdefined( chunk.og_angles ) );
-#/
         sound = "rebuild_barrier_hover";
 
         if ( isdefined( chunk.script_presound ) )
@@ -2010,41 +2000,41 @@ zombie_gratetear_audio_plus_fx_offset_repair_horizontal( chunk )
 
     switch ( randomint( 9 ) )
     {
-        case "0":
+        case 0:
             playfx( level._effect["fx_zombie_bar_break"], chunk.origin + vectorscale( ( -1, 0, 0 ), 30.0 ) );
             wait( randomfloatrange( 0.0, 0.3 ) );
             playfx( level._effect["fx_zombie_bar_break_lite"], chunk.origin + vectorscale( ( -1, 0, 0 ), 30.0 ) );
             break;
-        case "1":
+        case 1:
             playfx( level._effect["fx_zombie_bar_break"], chunk.origin + vectorscale( ( -1, 0, 0 ), 30.0 ) );
             wait( randomfloatrange( 0.0, 0.3 ) );
             playfx( level._effect["fx_zombie_bar_break"], chunk.origin + vectorscale( ( -1, 0, 0 ), 30.0 ) );
             break;
-        case "2":
+        case 2:
             playfx( level._effect["fx_zombie_bar_break_lite"], chunk.origin + vectorscale( ( -1, 0, 0 ), 30.0 ) );
             wait( randomfloatrange( 0.0, 0.3 ) );
             playfx( level._effect["fx_zombie_bar_break"], chunk.origin + vectorscale( ( -1, 0, 0 ), 30.0 ) );
             break;
-        case "3":
+        case 3:
             playfx( level._effect["fx_zombie_bar_break"], chunk.origin + vectorscale( ( -1, 0, 0 ), 30.0 ) );
             wait( randomfloatrange( 0.0, 0.3 ) );
             playfx( level._effect["fx_zombie_bar_break_lite"], chunk.origin + vectorscale( ( -1, 0, 0 ), 30.0 ) );
             break;
-        case "4":
+        case 4:
             playfx( level._effect["fx_zombie_bar_break_lite"], chunk.origin + vectorscale( ( -1, 0, 0 ), 30.0 ) );
             wait( randomfloatrange( 0.0, 0.3 ) );
             playfx( level._effect["fx_zombie_bar_break_lite"], chunk.origin + vectorscale( ( -1, 0, 0 ), 30.0 ) );
             break;
-        case "5":
+        case 5:
             playfx( level._effect["fx_zombie_bar_break_lite"], chunk.origin + vectorscale( ( -1, 0, 0 ), 30.0 ) );
             break;
-        case "6":
+        case 6:
             playfx( level._effect["fx_zombie_bar_break_lite"], chunk.origin + vectorscale( ( -1, 0, 0 ), 30.0 ) );
             break;
-        case "7":
+        case 7:
             playfx( level._effect["fx_zombie_bar_break"], chunk.origin + vectorscale( ( -1, 0, 0 ), 30.0 ) );
             break;
-        case "8":
+        case 8:
             playfx( level._effect["fx_zombie_bar_break"], chunk.origin + vectorscale( ( -1, 0, 0 ), 30.0 ) );
             break;
     }
@@ -2057,41 +2047,41 @@ zombie_bartear_audio_plus_fx_offset_repair_horizontal( chunk )
 
     switch ( randomint( 9 ) )
     {
-        case "0":
+        case 0:
             playfxontag( level._effect["fx_zombie_bar_break_lite"], chunk, "Tag_fx_left" );
             wait( randomfloatrange( 0.0, 0.3 ) );
             playfxontag( level._effect["fx_zombie_bar_break_lite"], chunk, "Tag_fx_right" );
             break;
-        case "1":
+        case 1:
             playfxontag( level._effect["fx_zombie_bar_break"], chunk, "Tag_fx_left" );
             wait( randomfloatrange( 0.0, 0.3 ) );
             playfxontag( level._effect["fx_zombie_bar_break"], chunk, "Tag_fx_right" );
             break;
-        case "2":
+        case 2:
             playfxontag( level._effect["fx_zombie_bar_break_lite"], chunk, "Tag_fx_left" );
             wait( randomfloatrange( 0.0, 0.3 ) );
             playfxontag( level._effect["fx_zombie_bar_break"], chunk, "Tag_fx_right" );
             break;
-        case "3":
+        case 3:
             playfxontag( level._effect["fx_zombie_bar_break"], chunk, "Tag_fx_left" );
             wait( randomfloatrange( 0.0, 0.3 ) );
             playfxontag( level._effect["fx_zombie_bar_break_lite"], chunk, "Tag_fx_right" );
             break;
-        case "4":
+        case 4:
             playfxontag( level._effect["fx_zombie_bar_break_lite"], chunk, "Tag_fx_left" );
             wait( randomfloatrange( 0.0, 0.3 ) );
             playfxontag( level._effect["fx_zombie_bar_break_lite"], chunk, "Tag_fx_right" );
             break;
-        case "5":
+        case 5:
             playfxontag( level._effect["fx_zombie_bar_break_lite"], chunk, "Tag_fx_left" );
             break;
-        case "6":
+        case 6:
             playfxontag( level._effect["fx_zombie_bar_break_lite"], chunk, "Tag_fx_right" );
             break;
-        case "7":
+        case 7:
             playfxontag( level._effect["fx_zombie_bar_break"], chunk, "Tag_fx_left" );
             break;
-        case "8":
+        case 8:
             playfxontag( level._effect["fx_zombie_bar_break"], chunk, "Tag_fx_right" );
             break;
     }
@@ -2104,41 +2094,41 @@ zombie_bartear_audio_plus_fx_offset_repair_verticle( chunk )
 
     switch ( randomint( 9 ) )
     {
-        case "0":
+        case 0:
             playfxontag( level._effect["fx_zombie_bar_break_lite"], chunk, "Tag_fx_top" );
             wait( randomfloatrange( 0.0, 0.3 ) );
             playfxontag( level._effect["fx_zombie_bar_break_lite"], chunk, "Tag_fx_bottom" );
             break;
-        case "1":
+        case 1:
             playfxontag( level._effect["fx_zombie_bar_break"], chunk, "Tag_fx_top" );
             wait( randomfloatrange( 0.0, 0.3 ) );
             playfxontag( level._effect["fx_zombie_bar_break"], chunk, "Tag_fx_bottom" );
             break;
-        case "2":
+        case 2:
             playfxontag( level._effect["fx_zombie_bar_break_lite"], chunk, "Tag_fx_top" );
             wait( randomfloatrange( 0.0, 0.3 ) );
             playfxontag( level._effect["fx_zombie_bar_break"], chunk, "Tag_fx_bottom" );
             break;
-        case "3":
+        case 3:
             playfxontag( level._effect["fx_zombie_bar_break"], chunk, "Tag_fx_top" );
             wait( randomfloatrange( 0.0, 0.3 ) );
             playfxontag( level._effect["fx_zombie_bar_break_lite"], chunk, "Tag_fx_bottom" );
             break;
-        case "4":
+        case 4:
             playfxontag( level._effect["fx_zombie_bar_break_lite"], chunk, "Tag_fx_top" );
             wait( randomfloatrange( 0.0, 0.3 ) );
             playfxontag( level._effect["fx_zombie_bar_break_lite"], chunk, "Tag_fx_bottom" );
             break;
-        case "5":
+        case 5:
             playfxontag( level._effect["fx_zombie_bar_break_lite"], chunk, "Tag_fx_top" );
             break;
-        case "6":
+        case 6:
             playfxontag( level._effect["fx_zombie_bar_break_lite"], chunk, "Tag_fx_bottom" );
             break;
-        case "7":
+        case 7:
             playfxontag( level._effect["fx_zombie_bar_break"], chunk, "Tag_fx_top" );
             break;
-        case "8":
+        case 8:
             playfxontag( level._effect["fx_zombie_bar_break"], chunk, "Tag_fx_bottom" );
             break;
     }
@@ -2208,9 +2198,7 @@ flag_blocker()
 
 update_states( states )
 {
-/#
     assert( isdefined( states ) );
-#/
     self.state = states;
 }
 

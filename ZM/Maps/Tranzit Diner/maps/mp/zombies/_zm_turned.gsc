@@ -255,12 +255,8 @@ deletezombiesinradius( origin )
 
 turned_give_melee_weapon()
 {
-/#
     assert( isdefined( self.turnedmeleeweapon ) );
-#/
-/#
     assert( self.turnedmeleeweapon != "none" );
-#/
     self.turned_had_knife = self hasweapon( "knife_zm" );
 
     if ( isdefined( self.turned_had_knife ) && self.turned_had_knife )

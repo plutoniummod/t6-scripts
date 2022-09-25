@@ -1107,12 +1107,8 @@ init_elevator_shaft_zones()
 
 enable_zone_on_flag( str_zone_name, str_flag_name )
 {
-/#
     assert( flag_exists( str_flag_name ), "Tried to enable zone on flag, but flag " + str_flag_name + " hasn't been initialized" );
-#/
-/#
     assert( isdefined( level.zones[str_zone_name] ), "There is no zone with name '" + str_zone_name + " in the map!" );
-#/
     flag_wait( str_flag_name );
     enable_zone( str_zone_name );
 }
@@ -1186,7 +1182,7 @@ give_personality_characters()
 #/
     switch ( self.characterindex )
     {
-        case "2":
+        case 2:
             self character\c_highrise_player_farmgirl::main();
             self setviewmodel( "c_zom_farmgirl_viewhands" );
             level.vox maps\mp\zombies\_zm_audio::zmbvoxinitspeaker( "player", "vox_plr_", self );
@@ -1195,7 +1191,7 @@ give_personality_characters()
             self set_player_is_female( 1 );
             self.whos_who_shader = "c_zom_player_farmgirl_dlc1_fb";
             break;
-        case "0":
+        case 0:
             self character\c_highrise_player_oldman::main();
             self setviewmodel( "c_zom_oldman_viewhands" );
             level.vox maps\mp\zombies\_zm_audio::zmbvoxinitspeaker( "player", "vox_plr_", self );
@@ -1204,7 +1200,7 @@ give_personality_characters()
             self set_player_is_female( 0 );
             self.whos_who_shader = "c_zom_player_oldman_dlc1_fb";
             break;
-        case "3":
+        case 3:
             self character\c_highrise_player_engineer::main();
             self setviewmodel( "c_zom_engineer_viewhands" );
             level.vox maps\mp\zombies\_zm_audio::zmbvoxinitspeaker( "player", "vox_plr_", self );
@@ -1213,7 +1209,7 @@ give_personality_characters()
             self set_player_is_female( 0 );
             self.whos_who_shader = "c_zom_player_engineer_dlc1_fb";
             break;
-        case "1":
+        case 1:
             self character\c_highrise_player_reporter::main();
             self setviewmodel( "c_zom_reporter_viewhands" );
             level.vox maps\mp\zombies\_zm_audio::zmbvoxinitspeaker( "player", "vox_plr_", self );
@@ -1604,9 +1600,8 @@ is_magic_box_in_inverted_building()
     b_is_in_inverted_building = 0;
     a_boxes_in_inverted_building = array( "start_chest" );
     str_location = level.chests[level.chest_index].script_noteworthy;
-/#
     assert( isdefined( str_location ), "is_magic_box_in_inverted_building() can't find magic box location" );
-#/
+
     for ( i = 0; i < a_boxes_in_inverted_building.size; i++ )
     {
         if ( a_boxes_in_inverted_building[i] == str_location )
@@ -1703,16 +1698,16 @@ highrise_audio_custom_response_line( player, index, category, type )
 
     switch ( player.characterindex )
     {
-        case "0":
+        case 0:
             level maps\mp\zombies\_zm_audio::setup_hero_rival( player, samuel, marlton, category, type );
             break;
-        case "1":
+        case 1:
             level maps\mp\zombies\_zm_audio::setup_hero_rival( player, russman, misty, category, type );
             break;
-        case "2":
+        case 2:
             level maps\mp\zombies\_zm_audio::setup_hero_rival( player, marlton, samuel, category, type );
             break;
-        case "3":
+        case 3:
             level maps\mp\zombies\_zm_audio::setup_hero_rival( player, misty, russman, category, type );
             break;
     }

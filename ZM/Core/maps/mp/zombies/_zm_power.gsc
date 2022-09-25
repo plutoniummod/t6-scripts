@@ -225,9 +225,8 @@ revert_power( delta, origin, radius, powered_list )
     if ( delta > 0 )
     {
         self.depowered_count--;
-/#
         assert( self.depowered_count >= 0, "Depower underflow in power system" );
-#/
+
         if ( self.depowered_count == 0 && self.powered_count > 0 && !self.power )
         {
             self.power = 1;
@@ -237,9 +236,8 @@ revert_power( delta, origin, radius, powered_list )
     else if ( delta < 0 )
     {
         self.powered_count--;
-/#
         assert( self.powered_count >= 0, "Repower underflow in power system" );
-#/
+
         if ( self.powered_count == 0 && self.power )
         {
             self.power = 0;
@@ -402,9 +400,8 @@ global_power( on_off )
         println( "ZM POWER: global power off\\n" );
 #/
         self.powered_count--;
-/#
         assert( self.powered_count >= 0, "Repower underflow in power system" );
-#/
+
         if ( self.powered_count == 0 && self.power )
         {
             self.power = 0;

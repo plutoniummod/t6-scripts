@@ -87,15 +87,9 @@ init()
 
 registerkillstreak( killstreaktype, killstreakweapon, killstreakmenuname, killstreakusagekey, killstreakusefunction, killstreakdelaystreak, weaponholdallowed, killstreakstatsname )
 {
-/#
     assert( isdefined( killstreaktype ), "Can not register a killstreak without a valid type name." );
-#/
-/#
     assert( !isdefined( level.killstreaks[killstreaktype] ), "Killstreak " + killstreaktype + " already registered" );
-#/
-/#
     assert( isdefined( killstreakusefunction ), "No use function defined for killstreak " + killstreaktype );
-#/
     level.killstreaks[killstreaktype] = spawnstruct();
     level.killstreaks[killstreaktype].killstreaklevel = int( tablelookup( "mp/statstable.csv", 4, killstreakmenuname, 5 ) );
     level.killstreaks[killstreaktype].momentumcost = int( tablelookup( "mp/statstable.csv", 4, killstreakmenuname, 16 ) );
@@ -111,9 +105,7 @@ registerkillstreak( killstreaktype, killstreakweapon, killstreakmenuname, killst
 
     if ( isdefined( killstreakweapon ) )
     {
-/#
         assert( !isdefined( level.killstreakweapons[killstreakweapon] ), "Can not have a weapon associated with multiple killstreaks." );
-#/
         precacheitem( killstreakweapon );
         level.killstreaks[killstreaktype].weapon = killstreakweapon;
         level.killstreakweapons[killstreakweapon] = killstreaktype;
@@ -131,12 +123,8 @@ registerkillstreak( killstreaktype, killstreakweapon, killstreakmenuname, killst
 
 registerkillstreakstrings( killstreaktype, receivedtext, notusabletext, inboundtext, inboundnearplayertext )
 {
-/#
     assert( isdefined( killstreaktype ), "Can not register a killstreak without a valid type name." );
-#/
-/#
     assert( isdefined( level.killstreaks[killstreaktype] ), "Killstreak needs to be registered before calling registerKillstreakStrings." );
-#/
     level.killstreaks[killstreaktype].receivedtext = receivedtext;
     level.killstreaks[killstreaktype].notavailabletext = notusabletext;
     level.killstreaks[killstreaktype].inboundtext = inboundtext;
@@ -157,12 +145,8 @@ registerkillstreakstrings( killstreaktype, receivedtext, notusabletext, inboundt
 
 registerkillstreakdialog( killstreaktype, receiveddialog, friendlystartdialog, friendlyenddialog, enemystartdialog, enemyenddialog, dialog )
 {
-/#
     assert( isdefined( killstreaktype ), "Can not register a killstreak without a valid type name." );
-#/
-/#
     assert( isdefined( level.killstreaks[killstreaktype] ), "Killstreak needs to be registered before calling registerKillstreakDialog." );
-#/
     precachestring( istring( receiveddialog ) );
     level.killstreaks[killstreaktype].informdialog = receiveddialog;
     game["dialog"][killstreaktype + "_start"] = friendlystartdialog;
@@ -174,12 +158,9 @@ registerkillstreakdialog( killstreaktype, receiveddialog, friendlystartdialog, f
 
 registerkillstreakaltweapon( killstreaktype, weapon )
 {
-/#
     assert( isdefined( killstreaktype ), "Can not register a killstreak without a valid type name." );
-#/
-/#
     assert( isdefined( level.killstreaks[killstreaktype] ), "Killstreak needs to be registered before calling registerKillstreakAltWeapon." );
-#/
+
     if ( level.killstreaks[killstreaktype].weapon == weapon )
         return;
 
@@ -194,12 +175,9 @@ registerkillstreakaltweapon( killstreaktype, weapon )
 
 registerkillstreakremoteoverrideweapon( killstreaktype, weapon )
 {
-/#
     assert( isdefined( killstreaktype ), "Can not register a killstreak without a valid type name." );
-#/
-/#
     assert( isdefined( level.killstreaks[killstreaktype] ), "Killstreak needs to be registered before calling registerKillstreakAltWeapon." );
-#/
+
     if ( level.killstreaks[killstreaktype].weapon == weapon )
         return;
 
@@ -228,12 +206,8 @@ iskillstreakremoteoverrideweapon( killstreaktype, weapon )
 
 registerkillstreakdevdvar( killstreaktype, dvar )
 {
-/#
     assert( isdefined( killstreaktype ), "Can not register a killstreak without a valid type name." );
-#/
-/#
     assert( isdefined( level.killstreaks[killstreaktype] ), "Killstreak needs to be registered before calling registerKillstreakDevDvar." );
-#/
     level.killstreaks[killstreaktype].devdvar = dvar;
 }
 
@@ -267,9 +241,7 @@ getkillstreakbymenuname( killstreak )
 
 getkillstreakmenuname( killstreaktype )
 {
-/#
     assert( isdefined( level.killstreaks[killstreaktype] ) );
-#/
     return level.killstreaks[killstreaktype].menuname;
 }
 
@@ -731,11 +703,7 @@ changekillstreakquantity( killstreakweapon, delta )
     previousquantity = quantity;
 
     if ( delta < 0 )
-    {
-/#
         assert( quantity > 0 );
-#/
-    }
 
     quantity += delta;
 
@@ -951,9 +919,8 @@ getkillstreakweapon( killstreak )
 {
     if ( !isdefined( killstreak ) )
         return "none";
-/#
+
     assert( isdefined( level.killstreaks[killstreak] ) );
-#/
     return level.killstreaks[killstreak].weapon;
 }
 
@@ -964,9 +931,8 @@ getkillstreakmomentumcost( killstreak )
 
     if ( !isdefined( killstreak ) )
         return 0;
-/#
+
     assert( isdefined( level.killstreaks[killstreak] ) );
-#/
     return level.killstreaks[killstreak].momentumcost;
 }
 
@@ -1051,9 +1017,9 @@ trackweaponusage()
         else
             self.lastnonkillstreakweapon = "knife_mp";
     }
-/#
+
     assert( self.lastnonkillstreakweapon != "none" );
-#/
+
     for (;;)
     {
         currentweapon = self getcurrentweapon();
@@ -1206,33 +1172,33 @@ getxpamountforkillstreak( killstreaktype )
 
     switch ( level.killstreaks[killstreaktype].killstreaklevel )
     {
-        case "4":
-        case "3":
-        case "2":
-        case "1":
+        case 4:
+        case 3:
+        case 2:
+        case 1:
             xpamount = 100;
             break;
-        case "5":
+        case 5:
             xpamount = 150;
             break;
-        case "7":
-        case "6":
+        case 7:
+        case 6:
             xpamount = 200;
             break;
-        case "8":
+        case 8:
             xpamount = 250;
             break;
-        case "9":
+        case 9:
             xpamount = 300;
             break;
-        case "11":
-        case "10":
+        case 11:
+        case 10:
             xpamount = 350;
             break;
-        case "15":
-        case "14":
-        case "13":
-        case "12":
+        case 15:
+        case 14:
+        case 13:
+        case 12:
             xpamount = 500;
             break;
     }
@@ -1242,9 +1208,7 @@ getxpamountforkillstreak( killstreaktype )
 
 triggerkillstreak( killstreaktype, isfrominventory )
 {
-/#
     assert( isdefined( level.killstreaks[killstreaktype].usefunction ), "No use function defined for killstreak " + killstreaktype );
-#/
     self.usingkillstreakfrominventory = isfrominventory;
 
     if ( level.infinalkillcam )
@@ -1298,9 +1262,8 @@ isweaponassociatedwithkillstreak( weapon )
 
 getfirstvalidkillstreakaltweapon( killstreaktype )
 {
-/#
     assert( isdefined( level.killstreaks[killstreaktype] ), "Killstreak not registered." );
-#/
+
     if ( isdefined( level.killstreaks[killstreaktype].altweapons ) )
     {
         for ( i = 0; i < level.killstreaks[killstreaktype].altweapons.size; i++ )
@@ -1415,9 +1378,8 @@ playkillstreakreadydialog( killstreaktype )
 
 getkillstreakinformdialog( killstreaktype )
 {
-/#
     assert( isdefined( level.killstreaks[killstreaktype].informdialog ) );
-#/
+
     if ( isdefined( level.killstreaks[killstreaktype].informdialog ) )
         return level.killstreaks[killstreaktype].informdialog;
 
@@ -1440,9 +1402,7 @@ playkillstreakenddialog( killstreaktype, team )
 
 getkillstreakusagebykillstreak( killstreaktype )
 {
-/#
     assert( isdefined( level.killstreaks[killstreaktype] ), "Killstreak needs to be registered before calling getKillstreakUsage." );
-#/
     return getkillstreakusage( level.killstreaks[killstreaktype].usagekey );
 }
 
@@ -1526,9 +1486,7 @@ onjoinedteam()
 
 createkillstreaktimerforteam( killstreaktype, xposition, team )
 {
-/#
     assert( isdefined( level.killstreak_timers[team] ) );
-#/
     killstreaktimer = spawnstruct();
     killstreaktimer.team = team;
     killstreaktimer.icon = createservericon( level.killstreaks[killstreaktype].iconmaterial, 36, 36, team );
@@ -1793,9 +1751,8 @@ killstreak_data_dump()
 
         if ( isdefined( data.altweapons ) )
         {
-/#
             assert( data.altweapons.size <= 4 );
-#/
+
             for ( alt = 0; alt < data.altweapons.size; alt++ )
                 print( data.altweapons[alt] + "," );
         }
@@ -1810,9 +1767,7 @@ killstreak_data_dump()
 
         if ( isdefined( type_data ) )
         {
-/#
             assert( type_data.size < 4 );
-#/
             type_keys = getarraykeys( type_data );
 
             while ( type < type_keys.size )

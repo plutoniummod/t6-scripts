@@ -178,9 +178,8 @@ script_gen_dump()
     assert( csvfilesaved == 1, "csv not saved( see above message? ): " + csvfilename );
     assert( saved == 1, "map not saved( see above message? ): " + filename );
 #/
-/#
     assert( !level.bscriptgened, "SCRIPTGEN generated: follow instructions listed above this error in the console" );
-#/
+
     if ( level.bscriptgened )
     {
 /#

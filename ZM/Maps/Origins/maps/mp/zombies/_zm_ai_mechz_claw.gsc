@@ -405,9 +405,7 @@ mechz_zombie_flamethrower_gib( mechz )
 
 should_do_claw_attack()
 {
-/#
     assert( isdefined( self.favoriteenemy ) );
-#/
 /#
     if ( getdvarint( _hash_E7121222 ) > 1 )
         println( "\\n\\tMZ: Checking should claw\\n" );
@@ -513,9 +511,7 @@ mechz_do_claw_grab()
     if ( getdvarint( _hash_E7121222 ) > 0 )
         println( "\\n\\tMZ: Doing Claw Attack\\n" );
 #/
-/#
     assert( isdefined( self.favoriteenemy ) );
-#/
     self thread mechz_kill_claw_watcher();
     self.last_claw_time = gettime();
     target_pos = self.favoriteenemy.origin + vectorscale( ( 0, 0, 1 ), 30.0 );

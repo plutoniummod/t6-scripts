@@ -64,9 +64,7 @@ lava_damage_think()
     if ( isdefined( self.target ) )
     {
         self.volume = getent( self.target, "targetname" );
-/#
         assert( isdefined( self.volume ), "No volume found for lava target " + self.target );
-#/
     }
 
     while ( true )

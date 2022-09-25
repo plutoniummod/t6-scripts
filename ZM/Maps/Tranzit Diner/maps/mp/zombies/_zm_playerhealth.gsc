@@ -28,16 +28,16 @@ init()
 
     switch ( level.gameskill )
     {
-        case "0":
+        case 0:
             setdvar( "currentDifficulty", "easy" );
             break;
-        case "1":
+        case 1:
             setdvar( "currentDifficulty", "normal" );
             break;
-        case "2":
+        case 2:
             setdvar( "currentDifficulty", "hardened" );
             break;
-        case "3":
+        case 3:
             setdvar( "currentDifficulty", "veteran" );
             break;
     }
@@ -329,9 +329,8 @@ fadefunc( overlay, severity, mult, hud_scaleonly )
     fadeouthalftime = pulsetime * ( 0.1 + severity * 0.1 );
     fadeoutfulltime = pulsetime * 0.3;
     remainingtime = pulsetime - fadeintime - stayfulltime - fadeouthalftime - fadeoutfulltime;
-/#
     assert( remainingtime >= -0.001 );
-#/
+
     if ( remainingtime < 0 )
         remainingtime = 0;
 

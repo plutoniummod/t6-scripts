@@ -46,7 +46,7 @@ main()
 
     switch ( gunlist )
     {
-        case "0":
+        case 0:
             addguntoprogression( "beretta93r_mp+tacknife" );
             addguntoprogression( "kard_dw_mp" );
             addguntoprogression( "judge_mp+steadyaim" );
@@ -68,7 +68,7 @@ main()
             addguntoprogression( "crossbow_mp" );
             addguntoprogression( "knife_ballistic_mp" );
             break;
-        case "1":
+        case 1:
             addguntoprogression( "fiveseven_mp" );
             addguntoprogression( "fnp45_mp" );
             addguntoprogression( "kard_mp" );
@@ -90,7 +90,7 @@ main()
             addguntoprogression( "crossbow_mp" );
             addguntoprogression( "knife_ballistic_mp" );
             break;
-        case "2":
+        case 2:
             addguntoprogression( "hk416_mp" );
             addguntoprogression( "scar_mp" );
             addguntoprogression( "tar21_mp" );

@@ -324,9 +324,7 @@ init_elevator( elevatorname, force_starting_floor, force_starting_origin )
     elevator.body = piece;
     piece.is_elevator = 1;
     elevator.body perkelevatoruseanimtree();
-/#
     assert( isdefined( piece.script_location ) );
-#/
     elevator.body.current_level = piece.script_location;
     elevator.body.starting_floor = piece.script_location;
     elevator.roof_paths = elevator_path_nodes( "bldg" + elevatorname, "moving" );

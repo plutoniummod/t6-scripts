@@ -86,9 +86,8 @@ leaper_spawner_init()
         level.leaper_spawners[i].is_enabled = 1;
         level.leaper_spawners[i].script_forcespawn = 1;
     }
-/#
+
     assert( level.leaper_spawners.size > 0 );
-#/
     level.leaper_health = 100;
     array_thread( level.leaper_spawners, ::add_spawn_function, ::leaper_init );
 /#
@@ -115,9 +114,8 @@ leaper_spawner_zone_check()
 
         str_spawn_count_list = str_spawn_count_list + a_zones[i] + ": " + level.zones[a_zones[i]].leaper_locations.size + "\\n";
     }
-/#
+
     assert( n_zones_missing_spawners == 0, "All zones require at least one leaper spawn point." + n_zones_missing_spawners + " zones are missing leaper spawners. They are: " + str_zone_list );
-#/
 /#
     println( "========== LEAPER SPAWN COUNT PER ZONE ===========" );
     println( str_spawn_count_list );

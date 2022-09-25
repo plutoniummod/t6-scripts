@@ -48,9 +48,8 @@ init()
 
     rankid = 0;
     rankname = tablelookup( "mp/ranktable.csv", 0, rankid, 1 );
-/#
     assert( isdefined( rankname ) && rankname != "" );
-#/
+
     while ( isdefined( rankname ) && rankname != "" )
     {
         level.ranktable[rankid][1] = tablelookup( "mp/ranktable.csv", 0, rankid, 1 );
@@ -69,22 +68,20 @@ init()
 initscoreinfo()
 {
     scoreinfotableid = getscoreeventtableid();
-/#
     assert( isdefined( scoreinfotableid ) );
-#/
+
     if ( !isdefined( scoreinfotableid ) )
         return;
 
     scorecolumn = getscoreeventcolumn( level.gametype );
     xpcolumn = getxpeventcolumn( level.gametype );
-/#
     assert( scorecolumn >= 0 );
-#/
+
     if ( scorecolumn < 0 )
         return;
-/#
+
     assert( xpcolumn >= 0 );
-#/
+
     if ( xpcolumn < 0 )
         return;
 
@@ -299,9 +296,7 @@ onplayerconnect()
 
         player.rankupdatetotal = 0;
         player.cur_ranknum = rankid;
-/#
         assert( isdefined( player.cur_ranknum ), "rank: " + rankid + " does not have an index, check mp/ranktable.csv" );
-#/
         prestige = player getdstat( "playerstatslist", "plevel", "StatValue" );
         player setrank( rankid, prestige );
         player.pers["prestige"] = prestige;
@@ -600,9 +595,7 @@ codecallback_rankup( rank, prestige, unlocktokensadded )
 getitemindex( refstring )
 {
     itemindex = int( tablelookup( "mp/statstable.csv", 4, refstring, 0 ) );
-/#
     assert( itemindex > 0, "statsTable refstring " + refstring + " has invalid index: " + itemindex );
-#/
     return itemindex;
 }
 
@@ -745,9 +738,8 @@ getrankforxp( xpval )
 {
     rankid = 0;
     rankname = level.ranktable[rankid][1];
-/#
     assert( isdefined( rankname ) );
-#/
+
     while ( isdefined( rankname ) && rankname != "" )
     {
         if ( xpval < getrankinfominxp( rankid ) + getrankinfoxpamt( rankid ) )

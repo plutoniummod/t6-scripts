@@ -36,9 +36,7 @@ init()
 
 missile_drone_killstreak( weaponname )
 {
-/#
     assert( weaponname == "missile_drone_mp" || weaponname == "inventory_missile_drone_mp" );
-#/
     level.missile_drone_origin = level.mapcenter + ( 0, 0, level.missile_drone_flyheight );
     hardpointtype = "missile_drone_mp";
     result = usemissiledrone( hardpointtype );
@@ -61,9 +59,8 @@ usemissiledrone( hardpointtype )
 
     if ( ismissiledroneweapon( currentweapon ) )
         missileweapon = currentweapon;
-/#
+
     assert( isdefined( missileweapon ) );
-#/
     notifystring = self waittill_any_return( "weapon_change", "grenade_fire", "death" );
 
     if ( notifystring == "weapon_change" || notifystring == "death" )
@@ -547,16 +544,12 @@ get_array_sorted_dot_prod( array, mincos )
     {
         org = self.origin;
         angles = self getplayerangles();
-/#
         assert( isdefined( angles ) );
-#/
     }
     else
     {
         org = self.origin;
-/#
         assert( isdefined( self.angles ) );
-#/
         angles = self.angles;
     }
 
@@ -566,22 +559,13 @@ get_array_sorted_dot_prod( array, mincos )
 
     for ( i = 0; i < array.size; i++ )
     {
-/#
         assert( isdefined( forwardvec ) );
-#/
-/#
         assert( isdefined( array[i] ) );
-#/
-/#
         assert( isdefined( array[i].origin ) );
-#/
-/#
         assert( isdefined( org ) );
-#/
         cosa = vectordot( forwardvec, vectornormalize( array[i].origin - org ) );
-/#
         assert( isdefined( cosa ) );
-#/
+
         if ( isdefined( mincos ) && cosa < mincos )
             continue;
 

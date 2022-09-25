@@ -489,9 +489,8 @@ chugabud_get_spawnpoint()
 
         if ( !isdefined( spawnpoints ) || spawnpoints.size == 0 )
             spawnpoints = getstructarray( "initial_spawn_points", "targetname" );
-/#
+
         assert( isdefined( spawnpoints ), "Could not find initial spawn points!" );
-#/
         spawnpoint = maps\mp\zombies\_zm::getfreespawnpoint( spawnpoints, self );
     }
 

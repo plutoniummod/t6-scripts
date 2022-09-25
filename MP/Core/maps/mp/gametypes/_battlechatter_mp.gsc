@@ -13,12 +13,8 @@ init()
 
     foreach ( team in level.teams )
     {
-/#
         assert( isdefined( level.teamprefix[team] ) );
-#/
-/#
         assert( isdefined( level.teamprefix[team] ) );
-#/
         level.isteamspeaking[team] = 0;
         level.speakers[team] = [];
     }

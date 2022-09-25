@@ -646,9 +646,7 @@ get_players_touching( scr_touched_name )
 {
     n_touching_count = 0;
     e_touched = getent( scr_touched_name, "targetname" );
-/#
     assert( isdefined( e_touched ) );
-#/
     a_players = getplayers();
 
     foreach ( player in a_players )

@@ -504,9 +504,8 @@ claw_move_arms( dist, crate )
         playfxontag( level._effect["crane_spark"], crate, "tag_origin" );
         self playsound( "amb_arms_latch" );
     }
-/#
+
     assert( arms.size == 4 );
-#/
     waittill_multiple_ents( arms[0], "movedone", arms[1], "movedone", arms[2], "movedone", arms[3], "movedone" );
     self claw_link_arms( "claw_arm_y" );
 }
@@ -524,9 +523,8 @@ claw_z_arms( z )
             arm movez( z, getdvarfloat( "scr_crane_arm_z_move_time" ) );
         }
     }
-/#
+
     assert( arms.size == 4 );
-#/
     waittill_multiple_ents( arms[0], "movedone", arms[1], "movedone", arms[2], "movedone", arms[3], "movedone" );
     self claw_link_arms( "claw_arm_z" );
 }

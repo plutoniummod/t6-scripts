@@ -173,9 +173,7 @@ dog_set_model()
 
 init_dog()
 {
-/#
     assert( isai( self ) );
-#/
     self.targetname = "attack_dog";
     self.animtree = "dog.atr";
     self.type = "dog";
@@ -199,9 +197,7 @@ init_dog()
 
 get_spawn_node( owner, team )
 {
-/#
     assert( level.dog_spawns.size > 0 );
-#/
     return random( level.dog_spawns );
 }
 

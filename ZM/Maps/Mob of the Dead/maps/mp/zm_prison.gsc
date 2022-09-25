@@ -494,7 +494,7 @@ give_personality_characters()
 #/
     switch ( self.characterindex )
     {
-        case "0":
+        case 0:
             self character\c_zom_oleary::main();
             self setviewmodel( "c_zom_oleary_shortsleeve_viewhands" );
             level.vox maps\mp\zombies\_zm_audio::zmbvoxinitspeaker( "player", "vox_plr_", self );
@@ -502,7 +502,7 @@ give_personality_characters()
             self set_player_is_female( 0 );
             self.character_name = "Finn";
             break;
-        case "1":
+        case 1:
             self character\c_zom_deluca::main();
             self setviewmodel( "c_zom_deluca_longsleeve_viewhands" );
             level.vox maps\mp\zombies\_zm_audio::zmbvoxinitspeaker( "player", "vox_plr_", self );
@@ -510,7 +510,7 @@ give_personality_characters()
             self set_player_is_female( 0 );
             self.character_name = "Sal";
             break;
-        case "2":
+        case 2:
             self character\c_zom_handsome::main();
             self setviewmodel( "c_zom_handsome_sleeveless_viewhands" );
             level.vox maps\mp\zombies\_zm_audio::zmbvoxinitspeaker( "player", "vox_plr_", self );
@@ -518,7 +518,7 @@ give_personality_characters()
             self set_player_is_female( 0 );
             self.character_name = "Billy";
             break;
-        case "3":
+        case 3:
             self character\c_zom_arlington::main();
             self setviewmodel( "c_zom_arlington_coat_viewhands" );
             level.vox maps\mp\zombies\_zm_audio::zmbvoxinitspeaker( "player", "vox_plr_", self );

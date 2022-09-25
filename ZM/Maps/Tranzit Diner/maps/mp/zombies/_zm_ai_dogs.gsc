@@ -76,9 +76,8 @@ dog_spawner_init()
         level.dog_spawners[i].is_enabled = 1;
         level.dog_spawners[i].script_forcespawn = 1;
     }
-/#
+
     assert( level.dog_spawners.size > 0 );
-#/
     level.dog_health = 100;
     array_thread( level.dog_spawners, ::add_spawn_function, ::dog_init );
     level.enemy_dog_spawns = getentarray( "zombie_spawner_dog_init", "targetname" );
@@ -207,18 +206,10 @@ dog_spawn_fx( ai, ent )
     angle = vectortoangles( ai.favoriteenemy.origin - ent.origin );
     angles = ( ai.angles[0], angle[1], ai.angles[2] );
     ai forceteleport( ent.origin, angles );
-/#
     assert( isdefined( ai ), "Ent isn't defined." );
-#/
-/#
     assert( isalive( ai ), "Ent is dead." );
-#/
-/#
     assert( ai.isdog, "Ent isn't a dog;" );
-#/
-/#
     assert( is_magic_bullet_shield_enabled( ai ), "Ent doesn't have a magic bullet shield." );
-#/
     ai zombie_setup_attack_properties_dog();
     ai stop_magic_bullet_shield();
     wait 0.1;
@@ -230,9 +221,7 @@ dog_spawn_fx( ai, ent )
 
 dog_spawn_sumpf_logic( dog_array, favorite_enemy )
 {
-/#
     assert( dog_array.size > 0, "Dog Spawner array is empty." );
-#/
     dog_array = array_randomize( dog_array );
 
     for ( i = 0; i < dog_array.size; i++ )
@@ -460,9 +449,7 @@ dog_init()
 dog_fx_eye_glow()
 {
     self.fx_dog_eye = spawn( "script_model", self gettagorigin( "J_EyeBall_LE" ) );
-/#
     assert( isdefined( self.fx_dog_eye ) );
-#/
     self.fx_dog_eye.angles = self gettagangles( "J_EyeBall_LE" );
     self.fx_dog_eye setmodel( "tag_origin" );
     self.fx_dog_eye linkto( self, "J_EyeBall_LE" );
@@ -483,9 +470,7 @@ dog_fx_trail()
     }
 
     self.fx_dog_trail = spawn( "script_model", self gettagorigin( "tag_origin" ) );
-/#
     assert( isdefined( self.fx_dog_trail ) );
-#/
     self.fx_dog_trail.angles = self gettagangles( "tag_origin" );
     self.fx_dog_trail setmodel( "tag_origin" );
     self.fx_dog_trail linkto( self, "tag_origin" );
@@ -521,13 +506,9 @@ dog_death()
         self.attacker notify( "killed", self );
 
     self stoploopsound();
-/#
     assert( isdefined( self.fx_dog_eye ) );
-#/
     self.fx_dog_eye delete();
-/#
     assert( isdefined( self.fx_dog_trail ) );
-#/
     self.fx_dog_trail delete();
 
     if ( isdefined( self.a.nodeath ) )
@@ -714,13 +695,10 @@ dog_run_think()
         self.maxhealth = level.dog_health;
         self.health = level.dog_health;
     }
-/#
+
     assert( isdefined( self.fx_dog_eye ) );
-#/
     maps\mp\zombies\_zm_net::network_safe_play_fx_on_tag( "dog_fx", 2, level._effect["dog_eye_glow"], self.fx_dog_eye, "tag_origin" );
-/#
     assert( isdefined( self.fx_dog_trail ) );
-#/
     maps\mp\zombies\_zm_net::network_safe_play_fx_on_tag( "dog_fx", 2, self.fx_dog_trail_type, self.fx_dog_trail, "tag_origin" );
     self playloopsound( self.fx_dog_trail_sound );
 

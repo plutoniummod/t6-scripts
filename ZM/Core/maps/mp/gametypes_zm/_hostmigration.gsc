@@ -353,9 +353,8 @@ waitlongdurationwithhostmigrationpause( duration )
 {
     if ( duration == 0 )
         return;
-/#
+
     assert( duration > 0 );
-#/
     starttime = gettime();
     endtime = gettime() + duration * 1000;
 
@@ -385,9 +384,8 @@ waitlongdurationwithgameendtimeupdate( duration )
 {
     if ( duration == 0 )
         return;
-/#
+
     assert( duration > 0 );
-#/
     starttime = gettime();
     endtime = gettime() + duration * 1000;
 
@@ -510,9 +508,8 @@ hostmigration_put_player_in_better_place()
 
         if ( !isdefined( spawnpoints ) || spawnpoints.size == 0 )
             spawnpoints = getstructarray( "initial_spawn_points", "targetname" );
-/#
+
         assert( isdefined( spawnpoints ), "Could not find initial spawn points!" );
-#/
         spawnpoint = maps\mp\zombies\_zm::getfreespawnpoint( spawnpoints, self );
     }
 

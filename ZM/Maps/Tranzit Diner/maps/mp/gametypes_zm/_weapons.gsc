@@ -497,9 +497,7 @@ deletepickupafterawhile()
 getitemweaponname()
 {
     classname = self.classname;
-/#
     assert( getsubstr( classname, 0, 7 ) == "weapon_" );
-#/
     weapname = getsubstr( classname, 7 );
     return weapname;
 }
@@ -520,12 +518,8 @@ watchpickup()
     if ( getdvar( _hash_8F7FC88 ) == "1" )
         println( "picked up weapon: " + weapname + ", " + isdefined( self.ownersattacker ) );
 #/
-/#
     assert( isdefined( player.tookweaponfrom ) );
-#/
-/#
     assert( isdefined( player.pickedupweaponkills ) );
-#/
     droppedweaponname = droppeditem getitemweaponname();
 
     if ( isdefined( player.tookweaponfrom[droppedweaponname] ) )
@@ -770,9 +764,7 @@ watchmissileusage()
         self waittill( "missile_fire", missile, weapon_name );
 
         self.hasdonecombat = 1;
-/#
         assert( isdefined( missile ) );
-#/
         level.missileentities[level.missileentities.size] = missile;
         missile thread watchmissiledeath();
     }
@@ -830,9 +822,8 @@ begingrenadetracking()
     self thread watchgrenadecancel();
 
     self waittill( "grenade_fire", grenade, weaponname );
-/#
+
     assert( isdefined( grenade ) );
-#/
     level.missileentities[level.missileentities.size] = grenade;
     grenade thread watchmissiledeath();
 
@@ -1487,9 +1478,8 @@ stow_on_back( current )
         for ( idx = 0; idx < self.weapon_array_primary.size; idx++ )
         {
             temp_index_weapon = self.weapon_array_primary[idx];
-/#
             assert( isdefined( temp_index_weapon ), "Primary weapon list corrupted." );
-#/
+
             if ( temp_index_weapon == current )
                 continue;
 
@@ -1515,9 +1505,8 @@ stow_on_back( current )
             }
 
             index_weapon = temp_index_weapon;
-/#
             assert( isdefined( self.curclass ), "Player missing current class" );
-#/
+
             if ( issubstr( index_weapon, self.pers["primaryWeapon"] ) && issubstr( self.curclass, "CUSTOM" ) )
                 self.tag_stowed_back = getweaponmodel( index_weapon, self getloadoutitem( self.class_num, "primarycamo" ) );
             else
@@ -1625,12 +1614,9 @@ player_is_driver()
 
 loadout_get_class_num()
 {
-/#
     assert( isplayer( self ) );
-#/
-/#
     assert( isdefined( self.class ) );
-#/
+
     if ( isdefined( level.classtoclassnum[self.class] ) )
         return level.classtoclassnum[self.class];
 

@@ -301,11 +301,7 @@ add_buildable_piece( piece, part_name, can_reuse )
     if ( !isdefined( self.buildable_slot ) )
         self.buildable_slot = piece.buildable_slot;
     else
-    {
-/#
         assert( self.buildable_slot == piece.buildable_slot );
-#/
-    }
 }
 
 create_zombie_buildable_piece( modelname, radius, height, hud_icon )
@@ -581,11 +577,7 @@ player_set_buildable_piece( piece, slot )
         slot = 0;
 /#
     if ( isdefined( slot ) && isdefined( piece ) && isdefined( piece.buildable_slot ) )
-    {
-/#
         assert( slot == piece.buildable_slot );
-#/
-    }
 #/
     if ( !isdefined( self.current_buildable_pieces ) )
         self.current_buildable_pieces = [];
@@ -617,9 +609,8 @@ dbline( from, to )
 
 player_throw_piece( piece, origin, dir, return_to_spawn, return_time, endangles )
 {
-/#
     assert( isdefined( piece ) );
-#/
+
     if ( isdefined( piece ) )
     {
 /#
@@ -924,16 +915,16 @@ piece_allocate_spawn( piecespawn )
             {
                 switch ( self.spawns[i].script_forcespawn )
                 {
-                    case "4":
+                    case 4:
                         spawnweights[i] = 0.0;
                         break;
-                    case "1":
+                    case 1:
                         self.spawns[i].script_forcespawn = 0;
-                    case "2":
+                    case 2:
                         self.current_spawn = i;
                         piecespawn.piece_allocated[self.current_spawn] = 1;
                         return;
-                    case "3":
+                    case 3:
                         self.spawns[i].script_forcespawn = 4;
                         self.current_spawn = i;
                         piecespawn.piece_allocated[self.current_spawn] = 1;
@@ -957,9 +948,9 @@ piece_allocate_spawn( piecespawn )
 
             totalweight += spawnweights[i];
         }
-/#
+
         assert( any_good || any_okay, "There is nowhere to spawn this piece" );
-#/
+
         if ( any_good )
             totalweight = float( int( totalweight ) );
 
@@ -1248,12 +1239,8 @@ generate_piece( buildable_piece_spawns )
 
 buildable_piece_unitriggers( buildable_name, origin )
 {
-/#
     assert( isdefined( buildable_name ) );
-#/
-/#
     assert( isdefined( level.zombie_buildables[buildable_name] ), "Called buildable_think() without including the buildable - " + buildable_name );
-#/
     buildable = level.zombie_buildables[buildable_name];
 
     if ( !isdefined( buildable.buildablepieces ) )
@@ -1591,9 +1578,8 @@ player_build( buildable, pieces )
     else
     {
         self playsound( "zmb_buildable_piece_add" );
-/#
         assert( isdefined( level.zombie_buildables[buildable.buildable_name].building ), "Missing builing hint" );
-#/
+
         if ( isdefined( level.zombie_buildables[buildable.buildable_name].building ) )
             return level.zombie_buildables[buildable.buildable_name].building;
     }
@@ -1698,9 +1684,8 @@ buildablestub_update_prompt( player )
         }
         else
         {
-/#
             assert( isdefined( level.zombie_buildables[self.equipname].hint ), "Missing buildable hint" );
-#/
+
             if ( isdefined( level.zombie_buildables[self.equipname].hint ) )
                 self.hint_string = level.zombie_buildables[self.equipname].hint;
             else
@@ -2007,19 +1992,19 @@ buildable_place_think()
 
     switch ( self.stub.persistent )
     {
-        case "1":
+        case 1:
             self bptrigger_think_persistent( player_built );
             break;
-        case "0":
+        case 0:
             self bptrigger_think_one_time( player_built );
             break;
-        case "3":
+        case 3:
             self bptrigger_think_unbuild( player_built );
             break;
-        case "2":
+        case 2:
             self bptrigger_think_one_use_and_fly( player_built );
             break;
-        case "4":
+        case 4:
             self [[ self.stub.custom_completion_callback ]]( player_built );
             break;
     }
@@ -2615,9 +2600,7 @@ buildable_complete()
 
 get_buildable_hint( buildable_name )
 {
-/#
     assert( isdefined( level.zombie_buildables[buildable_name] ), buildable_name + " was not included or is not part of the zombie weapon list." );
-#/
     return level.zombie_buildables[buildable_name].hint;
 }
 

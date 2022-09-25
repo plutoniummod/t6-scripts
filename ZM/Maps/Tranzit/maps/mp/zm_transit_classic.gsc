@@ -476,7 +476,7 @@ transit_custom_deny_vox( door_buy )
 {
     switch ( self.characterindex )
     {
-        case "0":
+        case 0:
             alias = randomintrange( 2, 5 );
 
             if ( isdefined( door_buy ) && door_buy )
@@ -484,13 +484,13 @@ transit_custom_deny_vox( door_buy )
 
             self maps\mp\zombies\_zm_audio::create_and_play_dialog( "general", "door_deny", undefined, alias );
             break;
-        case "1":
+        case 1:
             self maps\mp\zombies\_zm_audio::create_and_play_dialog( "general", "perk_deny", undefined, 0 );
             break;
-        case "2":
+        case 2:
             self maps\mp\zombies\_zm_audio::create_and_play_dialog( "general", "perk_deny", undefined, 0 );
             break;
-        case "3":
+        case 3:
             x = randomint( 100 );
 
             if ( x > 66 )

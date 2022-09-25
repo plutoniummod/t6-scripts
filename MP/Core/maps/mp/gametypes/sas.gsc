@@ -37,22 +37,20 @@ main()
 
     switch ( getgametypesetting( "gunSelection" ) )
     {
-        case "0":
+        case 0:
             level.setbackweapon = undefined;
             break;
-        case "1":
+        case 1:
             level.setbackweapon = getreffromitemindex( getbaseweaponitemindex( "hatchet_mp" ) ) + "_mp";
             break;
-        case "2":
+        case 2:
             level.setbackweapon = getreffromitemindex( getbaseweaponitemindex( "crossbow_mp" ) ) + "_mp";
             break;
-        case "3":
+        case 3:
             level.setbackweapon = getreffromitemindex( getbaseweaponitemindex( "knife_ballistic_mp" ) ) + "_mp";
             break;
         default:
-/#
             assert( 1, "Invalid setting for gunSelection" );
-#/
             break;
     }
 

@@ -40,9 +40,8 @@ adddeathicon( entity, dyingplayer, team, timeout )
     dyingplayer endon( "disconnect" );
     wait 0.05;
     maps\mp\gametypes\_globallogic_utils::waittillslowprocessallowed();
-/#
     assert( isdefined( level.teams[team] ) );
-#/
+
     if ( getdvar( _hash_F83E8105 ) == "0" )
         return;
 

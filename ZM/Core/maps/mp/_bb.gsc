@@ -61,9 +61,8 @@ onplayerdeath()
 
 commitspawndata()
 {
-/#
     assert( isdefined( self._bbdata ) );
-#/
+
     if ( !isdefined( self._bbdata ) )
         return;
 
@@ -72,9 +71,8 @@ commitspawndata()
 
 commitweapondata( spawnid, currentweapon, time0 )
 {
-/#
     assert( isdefined( self._bbdata ) );
-#/
+
     if ( !isdefined( self._bbdata ) )
         return;
 

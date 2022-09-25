@@ -45,12 +45,8 @@ default_onforfeit( team )
     }
     else
     {
-/#
         assert( isdefined( team ), "Forfeited team is not defined" );
-#/
-/#
         assert( 0, "Forfeited team " + team + " is not allies or axis" );
-#/
         winner = "tie";
     }
 
@@ -191,9 +187,7 @@ default_onspawnspectator( origin, angles )
 
     spawnpointname = "mp_global_intermission";
     spawnpoints = getentarray( spawnpointname, "classname" );
-/#
     assert( spawnpoints.size, "There are no mp_global_intermission spawn points in the map.  There must be at least one." );
-#/
     spawnpoint = maps\mp\gametypes_zm\_spawnlogic::getspawnpoint_random( spawnpoints );
     self spawn( spawnpoint.origin, spawnpoint.angles );
 }

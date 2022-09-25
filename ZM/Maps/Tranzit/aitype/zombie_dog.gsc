@@ -74,10 +74,10 @@ main()
 
     switch ( randchar )
     {
-        case "0":
+        case 0:
             character\character_sp_zombie_dog::main();
             break;
-        case "1":
+        case 1:
             character\character_sp_zombie_dog::main();
             break;
     }

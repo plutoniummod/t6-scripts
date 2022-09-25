@@ -837,9 +837,7 @@ targeting_hud_think( rocket )
                     if ( isalive( target ) )
                     {
                         index = target.clientid;
-/#
                         assert( isdefined( index ) );
-#/
                         self.missile_target_icons[index].x = target.origin[0];
                         self.missile_target_icons[index].y = target.origin[1];
                         self.missile_target_icons[index].z = target.origin[2] + 47;

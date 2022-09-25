@@ -766,9 +766,7 @@ snd_fuel()
 follow_path( n_path_start )
 {
     self endon( "death" );
-/#
     assert( isdefined( n_path_start ), "vehicle_path() called without a path" );
-#/
     self notify( "newpath" );
     self endon( "newpath" );
     n_next_point = n_path_start;
@@ -1024,9 +1022,7 @@ choose_tag_and_jump_down()
         self.tank_tag = getstruct( s_tag.str_tag + "_down_start", "targetname" );
         self.tank_state = "exit_tank";
         self set_zombie_run_cycle( "walk" );
-/#
         assert( isdefined( self.tank_tag ) );
-#/
     }
     else
         wait 1.0;

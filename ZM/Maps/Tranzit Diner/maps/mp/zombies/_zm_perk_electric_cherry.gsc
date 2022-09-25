@@ -249,17 +249,17 @@ electric_cherry_reload_attack()
         {
             switch ( self.consecutive_electric_cherry_attacks )
             {
-                case "1":
-                case "0":
+                case 1:
+                case 0:
                     n_zombie_limit = undefined;
                     break;
-                case "2":
+                case 2:
                     n_zombie_limit = 8;
                     break;
-                case "3":
+                case 3:
                     n_zombie_limit = 4;
                     break;
-                case "4":
+                case 4:
                     n_zombie_limit = 2;
                     break;
                 default:

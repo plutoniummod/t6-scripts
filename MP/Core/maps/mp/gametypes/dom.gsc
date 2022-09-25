@@ -194,9 +194,9 @@ onspawnplayer( predictedspawn )
 
     if ( !isdefined( spawnpoint ) )
         spawnpoint = maps\mp\gametypes\_spawnlogic::getspawnpoint_random( level.spawn_start[spawnteam] );
-/#
+
     assert( isdefined( spawnpoint ) );
-#/
+
     if ( predictedspawn )
         self predictspawnpoint( spawnpoint.origin, spawnpoint.angles );
     else
@@ -494,9 +494,7 @@ onuse( player )
     setdvar( "scr_obj" + self maps\mp\gametypes\_gameobjects::getlabel(), team );
     self resetflagbaseeffect();
     level.usestartspawns = 0;
-/#
     assert( team != "neutral" );
-#/
     isbflag = 0;
     string = &"";
 
@@ -521,9 +519,8 @@ onuse( player )
         default:
             break;
     }
-/#
+
     assert( string != &"" );
-#/
     touchlist = [];
     touchkeys = getarraykeys( self.touchlist[team] );
 
@@ -1230,15 +1227,10 @@ createflagspawninfluencers()
 
 update_spawn_influencers( team )
 {
-/#
     assert( isdefined( self.neutral_flag_influencer ) );
-#/
-/#
     assert( isdefined( self.owned_flag_influencer ) );
-#/
-/#
     assert( isdefined( self.enemy_flag_influencer ) );
-#/
+
     if ( team == "neutral" )
     {
         enableinfluencer( self.neutral_flag_influencer, 1 );

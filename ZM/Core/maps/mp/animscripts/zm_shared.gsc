@@ -17,15 +17,10 @@ lookatentity( looktargetentity, lookduration, lookspeed, eyesonly, interruptothe
 
 lookatposition( looktargetpos, lookduration, lookspeed, eyesonly, interruptothers )
 {
-/#
     assert( isai( self ), "Can only call this function on an AI character" );
-#/
-/#
     assert( self.a.targetlookinitilized == 1, "LookAtPosition called on AI that lookThread was not called on" );
-#/
-/#
     assert( lookspeed == "casual" || lookspeed == "alert", "lookSpeed must be casual or alert" );
-#/
+
     if ( !isdefined( interruptothers ) || interruptothers == "interrupt others" || gettime() > self.a.lookendtime )
     {
         self.a.looktargetpos = looktargetpos;

@@ -487,7 +487,7 @@ sndspeakinganimaudio( num )
 {
     switch ( num )
     {
-        case "0":
+        case 0:
             wait 0.4;
             self playsound( "evt_zmb_robot_jerk" );
             wait 2.4;
@@ -497,19 +497,19 @@ sndspeakinganimaudio( num )
             wait 1.1;
             self playsound( "evt_zmb_robot_jerk" );
             break;
-        case "1":
+        case 1:
             wait 0.31;
             self playsound( "evt_zmb_robot_jerk" );
             wait 3.55;
             self playsound( "evt_zmb_robot_jerk" );
             break;
-        case "2":
+        case 2:
             wait 0.18;
             self playsound( "evt_zmb_robot_jerk" );
             wait 4.83;
             self playsound( "evt_zmb_robot_jerk" );
             break;
-        case "3":
+        case 3:
             wait 0.23;
             self playsound( "evt_zmb_robot_jerk" );
             wait 0.77;
@@ -521,23 +521,23 @@ sndspeakinganimaudio( num )
             wait 0.53;
             self playsound( "evt_zmb_robot_hat" );
             break;
-        case "4":
+        case 4:
             wait 0.3;
             self playsound( "evt_zmb_robot_jerk" );
             wait 3.64;
             self playsound( "evt_zmb_robot_jerk" );
             break;
-        case "5":
+        case 5:
             wait 0.38;
             self playsound( "evt_zmb_robot_jerk" );
             wait 3.4;
             self playsound( "evt_zmb_robot_jerk" );
             break;
-        case "6":
+        case 6:
             wait 0.3;
             self playsound( "evt_zmb_robot_jerk" );
             break;
-        case "7":
+        case 7:
             break;
     }
 }

@@ -1536,9 +1536,8 @@ generate_fx_log( type, autosave )
         for ( i = 0; i < level.createfxent.size; i++ )
         {
             e = level.createfxent[i];
-/#
             assert( isdefined( e.v["type"] ), "effect at origin " + e.v["origin"] + " has no type" );
-#/
+
             if ( isdefined( e.model ) )
                 continue;
 
@@ -1582,9 +1581,7 @@ generate_fx_log( type, autosave )
 
         cfxprintln( file, "}" );
         saved = closefile( file );
-/#
         assert( saved == 1, "File not saved (see above message?): " + filename );
-#/
         println( "CreateFX entities placed: " + level.createfxent.size - level.non_fx_ents );
         return 0;
     }
@@ -2630,10 +2627,10 @@ print_ambient_fx_inventory()
     {
         switch ( fx_list_count[i] )
         {
-            case "0":
+            case 0:
                 print( "^1" );
                 break;
-            case "1":
+            case 1:
                 print( "^3" );
                 break;
             default:
@@ -2884,9 +2881,8 @@ callback_playerconnect()
 
         if ( !spawnpoints.size )
             spawnpoints = getentarray( "info_player_start", "classname" );
-/#
+
         assert( spawnpoints.size );
-#/
         spawnpoint = spawnpoints[0];
         self.sessionteam = "none";
         self.sessionstate = "playing";

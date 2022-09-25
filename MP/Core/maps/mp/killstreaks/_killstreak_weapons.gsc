@@ -194,9 +194,8 @@ usecarriedkillstreakweapon( hardpointtype )
     }
     else
         killstreak_id = self.m32id;
-/#
+
     assert( killstreak_id != -1 );
-#/
     self.firedkillstreakweapon = 0;
     self setblockweaponpickup( hardpointtype, 1 );
 
@@ -231,9 +230,8 @@ usekillstreakweaponfromcrate( hardpointtype )
     self.firedkillstreakweapon = 0;
     self setblockweaponpickup( hardpointtype, 1 );
     killstreak_id = self maps\mp\killstreaks\_killstreakrules::killstreakstart( hardpointtype, self.team, 0, 0 );
-/#
     assert( killstreak_id != -1 );
-#/
+
     if ( issubstr( hardpointtype, "inventory" ) )
         isfrominventory = 1;
     else

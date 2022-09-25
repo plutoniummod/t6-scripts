@@ -340,33 +340,21 @@ set_player_model( team, weapon )
 
 getteamflagmodel( teamref )
 {
-/#
     assert( isdefined( game["flagmodels"] ) );
-#/
-/#
     assert( isdefined( game["flagmodels"][teamref] ) );
-#/
     return game["flagmodels"][teamref];
 }
 
 getteamflagcarrymodel( teamref )
 {
-/#
     assert( isdefined( game["carry_flagmodels"] ) );
-#/
-/#
     assert( isdefined( game["carry_flagmodels"][teamref] ) );
-#/
     return game["carry_flagmodels"][teamref];
 }
 
 getteamflagicon( teamref )
 {
-/#
     assert( isdefined( game["carry_icon"] ) );
-#/
-/#
     assert( isdefined( game["carry_icon"][teamref] ) );
-#/
     return game["carry_icon"][teamref];
 }

@@ -34,9 +34,8 @@ gettweakabledvarvalue( category, name )
             dvar = undefined;
             break;
     }
-/#
+
     assert( isdefined( dvar ) );
-#/
     value = getdvarint( dvar );
     return value;
 }
@@ -73,9 +72,8 @@ gettweakabledvar( category, name )
             value = undefined;
             break;
     }
-/#
+
     assert( isdefined( value ) );
-#/
     return value;
 }
 
@@ -116,9 +114,8 @@ gettweakablevalue( category, name )
 
     if ( getdvar( overridedvar ) != "" )
         return getdvarint( overridedvar );
-/#
+
     assert( isdefined( value ) );
-#/
     return value;
 }
 
@@ -154,9 +151,8 @@ gettweakablelastvalue( category, name )
             value = undefined;
             break;
     }
-/#
+
     assert( isdefined( value ) );
-#/
     return value;
 }
 

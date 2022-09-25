@@ -339,9 +339,7 @@ should_skip_teardown( find_flesh_struct_string )
 zombie_think()
 {
     self endon( "death" );
-/#
     assert( !self.isdog );
-#/
     self.ai_state = "zombie_think";
     find_flesh_struct_string = undefined;
 
@@ -376,9 +374,7 @@ zombie_think()
     if ( !isdefined( find_flesh_struct_string ) && isdefined( self.target ) && self.target != "" )
     {
         desired_origin = get_desired_origin();
-/#
         assert( isdefined( desired_origin ), "Spawner @ " + self.origin + " has a .target but did not find a target" );
-#/
         origin = desired_origin;
         node = getclosest( origin, level.exterior_goals );
         self.entrance_nodes[self.entrance_nodes.size] = node;
@@ -415,9 +411,8 @@ zombie_think()
     }
     else if ( isdefined( find_flesh_struct_string ) )
     {
-/#
         assert( isdefined( find_flesh_struct_string ) );
-#/
+
         for ( i = 0; i < level.exterior_goals.size; i++ )
         {
             if ( isdefined( level.exterior_goals[i].script_string ) && level.exterior_goals[i].script_string == find_flesh_struct_string )
@@ -463,9 +458,8 @@ zombie_think()
         self zombie_history( "zombie_think -> #1 entrance origin = " + node.origin );
         self thread zombie_assure_node();
     }
-/#
+
     assert( isdefined( node ), "Did not find a node!!! [Should not see this!]" );
-#/
     level thread draw_line_ent_to_pos( self, node.origin, "goal" );
     self.first_node = node;
     self thread zombie_goto_entrance( node );
@@ -504,9 +498,8 @@ get_desired_origin()
 
         if ( !isdefined( ent ) )
             ent = getnode( self.target, "targetname" );
-/#
+
         assert( isdefined( ent ), "Cannot find the targeted ent/node/struct, \"" + self.target + "\" at " + self.origin );
-#/
         return ent.origin;
     }
 
@@ -515,9 +508,7 @@ get_desired_origin()
 
 zombie_goto_entrance( node, endon_bad_path )
 {
-/#
     assert( !self.isdog );
-#/
     self endon( "death" );
     self endon( "stop_zombie_goto_entrance" );
     level endon( "intermission" );
@@ -1105,41 +1096,41 @@ zombie_bartear_offset_fx_verticle( chunk )
 
         switch ( randomint( 9 ) )
         {
-            case "0":
+            case 0:
                 playfxontag( level._effect["fx_zombie_bar_break_lite"], chunk, "Tag_fx_top" );
                 wait( randomfloatrange( 0.0, 0.3 ) );
                 playfxontag( level._effect["fx_zombie_bar_break_lite"], chunk, "Tag_fx_bottom" );
                 break;
-            case "1":
+            case 1:
                 playfxontag( level._effect["fx_zombie_bar_break"], chunk, "Tag_fx_top" );
                 wait( randomfloatrange( 0.0, 0.3 ) );
                 playfxontag( level._effect["fx_zombie_bar_break"], chunk, "Tag_fx_bottom" );
                 break;
-            case "2":
+            case 2:
                 playfxontag( level._effect["fx_zombie_bar_break_lite"], chunk, "Tag_fx_top" );
                 wait( randomfloatrange( 0.0, 0.3 ) );
                 playfxontag( level._effect["fx_zombie_bar_break"], chunk, "Tag_fx_bottom" );
                 break;
-            case "3":
+            case 3:
                 playfxontag( level._effect["fx_zombie_bar_break"], chunk, "Tag_fx_top" );
                 wait( randomfloatrange( 0.0, 0.3 ) );
                 playfxontag( level._effect["fx_zombie_bar_break_lite"], chunk, "Tag_fx_bottom" );
                 break;
-            case "4":
+            case 4:
                 playfxontag( level._effect["fx_zombie_bar_break_lite"], chunk, "Tag_fx_top" );
                 wait( randomfloatrange( 0.0, 0.3 ) );
                 playfxontag( level._effect["fx_zombie_bar_break_lite"], chunk, "Tag_fx_bottom" );
                 break;
-            case "5":
+            case 5:
                 playfxontag( level._effect["fx_zombie_bar_break_lite"], chunk, "Tag_fx_top" );
                 break;
-            case "6":
+            case 6:
                 playfxontag( level._effect["fx_zombie_bar_break_lite"], chunk, "Tag_fx_bottom" );
                 break;
-            case "7":
+            case 7:
                 playfxontag( level._effect["fx_zombie_bar_break"], chunk, "Tag_fx_top" );
                 break;
-            case "8":
+            case 8:
                 playfxontag( level._effect["fx_zombie_bar_break"], chunk, "Tag_fx_bottom" );
                 break;
         }
@@ -1152,41 +1143,41 @@ zombie_bartear_offset_fx_horizontle( chunk )
     {
         switch ( randomint( 10 ) )
         {
-            case "0":
+            case 0:
                 playfxontag( level._effect["fx_zombie_bar_break_lite"], chunk, "Tag_fx_left" );
                 wait( randomfloatrange( 0.0, 0.3 ) );
                 playfxontag( level._effect["fx_zombie_bar_break_lite"], chunk, "Tag_fx_right" );
                 break;
-            case "1":
+            case 1:
                 playfxontag( level._effect["fx_zombie_bar_break"], chunk, "Tag_fx_left" );
                 wait( randomfloatrange( 0.0, 0.3 ) );
                 playfxontag( level._effect["fx_zombie_bar_break"], chunk, "Tag_fx_right" );
                 break;
-            case "2":
+            case 2:
                 playfxontag( level._effect["fx_zombie_bar_break_lite"], chunk, "Tag_fx_left" );
                 wait( randomfloatrange( 0.0, 0.3 ) );
                 playfxontag( level._effect["fx_zombie_bar_break"], chunk, "Tag_fx_right" );
                 break;
-            case "3":
+            case 3:
                 playfxontag( level._effect["fx_zombie_bar_break"], chunk, "Tag_fx_left" );
                 wait( randomfloatrange( 0.0, 0.3 ) );
                 playfxontag( level._effect["fx_zombie_bar_break_lite"], chunk, "Tag_fx_right" );
                 break;
-            case "4":
+            case 4:
                 playfxontag( level._effect["fx_zombie_bar_break_lite"], chunk, "Tag_fx_left" );
                 wait( randomfloatrange( 0.0, 0.3 ) );
                 playfxontag( level._effect["fx_zombie_bar_break_lite"], chunk, "Tag_fx_right" );
                 break;
-            case "5":
+            case 5:
                 playfxontag( level._effect["fx_zombie_bar_break_lite"], chunk, "Tag_fx_left" );
                 break;
-            case "6":
+            case 6:
                 playfxontag( level._effect["fx_zombie_bar_break_lite"], chunk, "Tag_fx_right" );
                 break;
-            case "7":
+            case 7:
                 playfxontag( level._effect["fx_zombie_bar_break"], chunk, "Tag_fx_right" );
                 break;
-            case "8":
+            case 8:
                 playfxontag( level._effect["fx_zombie_bar_break"], chunk, "Tag_fx_right" );
                 break;
         }
@@ -1620,9 +1611,8 @@ derive_damage_refs( point )
         refs[refs.size] = "right_leg";
         refs[refs.size] = "no_legs";
     }
-/#
+
     assert( array_validate( refs ), "get_closest_damage_refs(): couldn't derive refs from closestTag " + closesttag );
-#/
     return refs;
 }
 
@@ -2350,9 +2340,7 @@ zombie_pathing()
     self endon( "death" );
     self endon( "zombie_acquire_enemy" );
     level endon( "intermission" );
-/#
     assert( isdefined( self.favoriteenemy ) || isdefined( self.enemyoverride ) );
-#/
     self._skip_pathing_first_delay = 1;
     self thread zombie_follow_enemy();
 
@@ -2452,15 +2440,9 @@ zombie_pathing()
 
 zombie_pathing_get_breadcrumb( origin, breadcrumbs, bad_crumbs, pick_random )
 {
-/#
     assert( isdefined( origin ) );
-#/
-/#
     assert( isdefined( breadcrumbs ) );
-#/
-/#
     assert( isarray( breadcrumbs ) );
-#/
 /#
     if ( pick_random )
         debug_print( "Finding random breadcrumb" );
@@ -2699,9 +2681,7 @@ do_zombie_spawn()
         }
     }
 #/
-/#
     assert( spots.size > 0, "No spawn locations found" );
-#/
     spot = random( spots );
     self.spawn_point = spot;
 /#

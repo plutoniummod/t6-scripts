@@ -45,9 +45,7 @@ main()
     level thread dog_jump_think();
     level.disableoutrovisionset = 1;
     level.mptakeoffrocket = getent( "takeoff_rocket", "targetname" );
-/#
     assert( isdefined( level.mptakeoffrocket ), "Unable to find entity with targetname: 'takeoff_rocket'" );
-#/
     level.endgamefunction = ::takeoff_end_game;
     level.preendgamefunction = ::takeoff_pre_end_game;
     level thread setuprocketcamera();
@@ -86,9 +84,8 @@ setuprocketcamera()
 getrocketcamera()
 {
     camerastruct = getstruct( "endgame_first_camera", "targetname" );
-/#
     assert( isdefined( camerastruct ), "Unable to find entity with targetname: 'endgame_first_camera'" );
-#/
+
     if ( !isdefined( level.rocketcamera ) )
     {
         level.rocketcamera = spawn( "script_model", camerastruct.origin );
@@ -261,9 +258,7 @@ takeoff_pre_end_game( timetillendgame, debug )
     }
 
     rocket = level.mptakeoffrocket;
-/#
     assert( isdefined( rocket ), "Unable to find entity with targetname: 'takeoff_rocket'" );
-#/
     rocket rocket_thrusters_initialize();
 }
 
@@ -275,9 +270,7 @@ takeoff_end_game()
     level.rocket_camera = 0;
     rocket = level.mptakeoffrocket;
     rocket playsound( "evt_shuttle_launch" );
-/#
     assert( isdefined( rocket ), "Unable to find entity with targetname: 'takeoff_rocket'" );
-#/
     rocket rocket_thrusters_initialize();
     cameraone = getrocketcamera();
     cameraone thread vibrateaftertime( getdvarfloatdefault( "mp_takeoff_shakewait", 0.5 ) );

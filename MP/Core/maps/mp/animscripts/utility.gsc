@@ -124,12 +124,9 @@ getanimdirection( damageyaw )
 
 setfootstepeffect( name, fx )
 {
-/#
     assert( isdefined( name ), "Need to define the footstep surface type." );
-#/
-/#
     assert( isdefined( fx ), "Need to define the mud footstep effect." );
-#/
+
     if ( !isdefined( anim.optionalstepeffects ) )
         anim.optionalstepeffects = [];
 

@@ -255,9 +255,8 @@ waitlongdurationwithhostmigrationpause( duration )
 {
     if ( duration == 0 )
         return;
-/#
+
     assert( duration > 0 );
-#/
     starttime = gettime();
     endtime = gettime() + duration * 1000;
 
@@ -283,9 +282,8 @@ waitlongdurationwithhostmigrationpauseemp( duration )
 {
     if ( duration == 0 )
         return;
-/#
+
     assert( duration > 0 );
-#/
     starttime = gettime();
     empendtime = gettime() + duration * 1000;
     level.empendtime = empendtime;
@@ -315,9 +313,8 @@ waitlongdurationwithgameendtimeupdate( duration )
 {
     if ( duration == 0 )
         return;
-/#
+
     assert( duration > 0 );
-#/
     starttime = gettime();
     endtime = gettime() + duration * 1000;
 

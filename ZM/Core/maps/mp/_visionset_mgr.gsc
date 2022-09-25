@@ -22,9 +22,8 @@ vsmgr_register_info( type, name, version, priority, lerp_step_count, activate_pe
 {
     if ( level.createfx_enabled )
         return;
-/#
+
     assert( level.vsmgr_initializing, "All info registration in the visionset_mgr system must occur during the first frame while the system is initializing" );
-#/
     lower_name = tolower( name );
     validate_info( type, lower_name, priority );
     add_sorted_name_key( type, lower_name );
@@ -234,19 +233,14 @@ validate_info( type, name, priority )
         if ( type == keys[i] )
             break;
     }
-/#
+
     assert( i < keys.size, "In visionset_mgr, type '" + type + "'is unknown" );
-#/
     keys = getarraykeys( level.vsmgr[type].info );
 
     for ( i = 0; i < keys.size; i++ )
     {
-/#
         assert( level.vsmgr[type].info[keys[i]].name != name, "In visionset_mgr of type '" + type + "': name '" + name + "' has previously been registered" );
-#/
-/#
         assert( level.vsmgr[type].info[keys[i]].priority != priority, "In visionset_mgr of type '" + type + "': priority '" + priority + "' requested for name '" + name + "' has previously been registered under name '" + level.vsmgr[type].info[keys[i]].name + "'" );
-#/
     }
 }
 

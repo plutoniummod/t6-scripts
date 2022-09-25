@@ -690,28 +690,28 @@ give_personality_characters()
 #/
     switch ( self.characterindex )
     {
-        case "0":
+        case 0:
             self character\c_usa_dempsey_dlc4::main();
             self setviewmodel( "c_zom_dempsey_viewhands" );
             level.vox maps\mp\zombies\_zm_audio::zmbvoxinitspeaker( "player", "vox_plr_", self );
             self set_player_is_female( 0 );
             self.character_name = "Dempsey";
             break;
-        case "1":
+        case 1:
             self character\c_rus_nikolai_dlc4::main();
             self setviewmodel( "c_zom_nikolai_viewhands" );
             level.vox maps\mp\zombies\_zm_audio::zmbvoxinitspeaker( "player", "vox_plr_", self );
             self set_player_is_female( 0 );
             self.character_name = "Nikolai";
             break;
-        case "2":
+        case 2:
             self character\c_ger_richtofen_dlc4::main();
             self setviewmodel( "c_zom_richtofen_viewhands" );
             level.vox maps\mp\zombies\_zm_audio::zmbvoxinitspeaker( "player", "vox_plr_", self );
             self set_player_is_female( 0 );
             self.character_name = "Richtofen";
             break;
-        case "3":
+        case 3:
             self character\c_jap_takeo_dlc4::main();
             self setviewmodel( "c_zom_takeo_viewhands" );
             level.vox maps\mp\zombies\_zm_audio::zmbvoxinitspeaker( "player", "vox_plr_", self );
@@ -803,16 +803,16 @@ give_team_characters()
 
     switch ( self.characterindex )
     {
-        case "2":
-        case "0":
+        case 2:
+        case 0:
             self setmodel( "c_zom_player_cia_fb" );
             self.voice = "american";
             self.skeleton = "base";
             self setviewmodel( "c_zom_suit_viewhands" );
             self.characterindex = 0;
             break;
-        case "3":
-        case "1":
+        case 3:
+        case 1:
             self setmodel( "c_zom_player_cdc_fb" );
             self.voice = "american";
             self.skeleton = "base";
@@ -2038,17 +2038,17 @@ tomb_custom_electric_cherry_reload_attack()
         {
             switch ( self.consecutive_electric_cherry_attacks )
             {
-                case "1":
-                case "0":
+                case 1:
+                case 0:
                     n_zombie_limit = undefined;
                     break;
-                case "2":
+                case 2:
                     n_zombie_limit = 8;
                     break;
-                case "3":
+                case 3:
                     n_zombie_limit = 4;
                     break;
-                case "4":
+                case 4:
                     n_zombie_limit = 2;
                     break;
                 default:

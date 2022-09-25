@@ -122,9 +122,7 @@ moveloop()
         }
         else
         {
-/#
             assert( self.a.movement == "walk" );
-#/
             debug_anim_print( "dog_move::moveLoop() - Setting move_walk " );
             self setanimstatefromasd( "zm_move_walk" );
             maps\mp\animscripts\zm_shared::donotetracksfortime( 0.1, "move_walk" );

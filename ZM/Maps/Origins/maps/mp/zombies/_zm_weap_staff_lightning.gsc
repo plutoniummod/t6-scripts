@@ -161,7 +161,7 @@ staff_lightning_get_shot_range( n_charge )
 {
     switch ( n_charge )
     {
-        case "3":
+        case 3:
             return 1200;
         default:
             return 800;
@@ -172,13 +172,13 @@ get_lightning_blast_range( n_charge )
 {
     switch ( n_charge )
     {
-        case "1":
+        case 1:
             n_range = 200;
             break;
-        case "2":
+        case 2:
             n_range = 150;
             break;
-        case "3":
+        case 3:
         default:
             n_range = 250;
             break;
@@ -194,7 +194,7 @@ get_lightning_ball_damage_per_sec( n_charge )
 
     switch ( n_charge )
     {
-        case "3":
+        case 3:
             return 3500;
         default:
             return 2500;

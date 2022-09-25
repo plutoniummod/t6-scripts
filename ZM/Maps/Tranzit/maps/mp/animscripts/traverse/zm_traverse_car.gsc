@@ -24,9 +24,8 @@ main()
             case "sprint":
                 speed = "_sprint";
                 break;
+            default:
         }
-
-        asm_endswitch( 8 case run loc_18A case run_slide loc_18A case sprint loc_194 case sprint_slide loc_194 case super_sprint loc_194 case walk loc_180 case walk_slide loc_180 default loc_19E );
     }
 
     dosimpletraverse( "traverse_car" + speed, 1 );

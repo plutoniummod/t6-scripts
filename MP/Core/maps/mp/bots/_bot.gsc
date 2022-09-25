@@ -229,17 +229,11 @@ bot_count_enemy_bots( friend_team )
 bot_choose_comp_stomp_team()
 {
     host = gethostplayerforbots();
-/#
     assert( isdefined( host ) );
-#/
     teamkeys = getarraykeys( level.teams );
-/#
     assert( teamkeys.size == 2 );
-#/
     enemy_team = host.pers["team"];
-/#
     assert( isdefined( enemy_team ) && enemy_team != "spectator" );
-#/
     return getotherteam( enemy_team );
 }
 
@@ -438,9 +432,7 @@ bot_local_think()
 {
     wait 5;
     host = gethostplayerforbots();
-/#
     assert( isdefined( host ) );
-#/
     host_team = host.team;
 
     if ( !isdefined( host_team ) || host_team == "spectator" )
@@ -1006,9 +998,7 @@ bot_update_crouch()
     if ( dist > 0 )
     {
         dir = self getlookaheaddir();
-/#
         assert( isdefined( dir ) );
-#/
         dir = vectorscale( dir, dist );
         start = self.origin + vectorscale( ( 0, 0, 1 ), 70.0 );
         end = start + dir;

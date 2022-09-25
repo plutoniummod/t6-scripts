@@ -219,34 +219,26 @@ trackloop()
 
         if ( yawdelta > 0 )
         {
-/#
             assert( yawdelta <= self.rightaimlimit );
-#/
             weight = yawdelta / self.rightaimlimit * self.a.aimweight;
             leftright = weight;
         }
         else if ( yawdelta < 0 )
         {
-/#
             assert( yawdelta >= self.leftaimlimit );
-#/
             weight = yawdelta / self.leftaimlimit * self.a.aimweight;
             leftright = -1 * weight;
         }
 
         if ( pitchdelta > 0 )
         {
-/#
             assert( pitchdelta <= self.upaimlimit );
-#/
             weight = pitchdelta / self.upaimlimit * self.a.aimweight;
             updown = weight;
         }
         else if ( pitchdelta < 0 )
         {
-/#
             assert( pitchdelta >= self.downaimlimit );
-#/
             weight = pitchdelta / self.downaimlimit * self.a.aimweight;
             updown = -1 * weight;
         }

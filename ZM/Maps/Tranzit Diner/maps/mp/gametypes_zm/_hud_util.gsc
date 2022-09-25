@@ -283,23 +283,18 @@ updatebarscale( barfrac, rateofchange )
 
     self.bar.frac = barfrac;
     self.bar setshader( self.bar.shader, barwidth, self.height );
-/#
     assert( barwidth <= self.width, "barWidth <= self.width: " + barwidth + " <= " + self.width + " - barFrac was " + barfrac );
-#/
+
     if ( isdefined( rateofchange ) && barwidth < self.width )
     {
         if ( rateofchange > 0 )
         {
-/#
             assert( ( 1 - barfrac ) / rateofchange > 0, "barFrac: " + barfrac + "rateOfChange: " + rateofchange );
-#/
             self.bar scaleovertime( ( 1 - barfrac ) / rateofchange, self.width, self.height );
         }
         else if ( rateofchange < 0 )
         {
-/#
             assert( barfrac / -1 * rateofchange > 0, "barFrac: " + barfrac + "rateOfChange: " + rateofchange );
-#/
             self.bar scaleovertime( barfrac / -1 * rateofchange, 1, self.height );
         }
     }
@@ -920,9 +915,8 @@ showperks()
 
 showperk( index, perk, ypos )
 {
-/#
     assert( game["state"] != "postgame" );
-#/
+
     if ( !isdefined( self.perkicon ) )
     {
         self.perkicon = [];
@@ -931,9 +925,7 @@ showperk( index, perk, ypos )
 
     if ( !isdefined( self.perkicon[index] ) )
     {
-/#
         assert( !isdefined( self.perkname[index] ) );
-#/
         self.perkicon[index] = createloadouticon( index, 0, 200, ypos );
         self.perkname[index] = createloadouttext( self.perkicon[index], 160 );
     }
@@ -947,9 +939,7 @@ showperk( index, perk, ypos )
         alpha = 0;
     else
     {
-/#
         assert( isdefined( level.perknames[perk] ), perk );
-#/
         alpha = 1;
     }
 
@@ -968,15 +958,13 @@ hideperks( fadetime )
     {
         if ( game["state"] == "postgame" )
         {
-/#
             assert( !isdefined( self.perkhudelem ) );
-#/
             return;
         }
     }
-/#
+
     assert( isdefined( self.perkhudelem ) );
-#/
+
     if ( isdefined( self.perkhudelem ) )
         hideloadoutattribute( self.perkhudelem, fadetime );
 }
@@ -992,22 +980,16 @@ hideperk( index, fadetime, hidetextonly )
         {
             if ( isdefined( self.perkicon ) )
             {
-/#
                 assert( !isdefined( self.perkicon[index] ) );
-#/
-/#
                 assert( !isdefined( self.perkname[index] ) );
-#/
             }
 
             return;
         }
-/#
+
         assert( isdefined( self.perkicon[index] ) );
-#/
-/#
         assert( isdefined( self.perkname[index] ) );
-#/
+
         if ( isdefined( self.perkicon ) && isdefined( self.perkicon[index] ) && isdefined( self.perkname ) && isdefined( self.perkname[index] ) )
             hideloadoutattribute( self.perkicon[index], fadetime, self.perkname[index], hidetextonly );
     }
@@ -1021,9 +1003,8 @@ hideallperks( fadetime, hidetextonly )
 
 showkillstreak( index, killstreak, xpos, ypos )
 {
-/#
     assert( game["state"] != "postgame" );
-#/
+
     if ( !isdefined( self.killstreakicon ) )
         self.killstreakicon = [];
 
@@ -1034,9 +1015,7 @@ showkillstreak( index, killstreak, xpos, ypos )
         alpha = 0;
     else
     {
-/#
         assert( isdefined( level.killstreakicons[killstreak] ), killstreak );
-#/
         alpha = 1;
     }
 
@@ -1049,14 +1028,11 @@ hidekillstreak( index, fadetime )
     {
         if ( game["state"] == "postgame" )
         {
-/#
             assert( !isdefined( self.killstreakicon[index] ) );
-#/
             return;
         }
-/#
+
         assert( isdefined( self.killstreakicon[index] ) );
-#/
         hideloadoutattribute( self.killstreakicon[index], fadetime );
     }
 }

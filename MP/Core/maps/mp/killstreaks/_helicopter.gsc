@@ -70,9 +70,8 @@ usekillstreakhelicopter( hardpointtype )
 
     if ( hardpointtype == "helicopter_x2_mp" )
         missilesenabled = 1;
-/#
+
     assert( level.heli_paths.size > 0, "No non-primary helicopter paths found in map" );
-#/
     random_path = randomint( level.heli_paths[destination].size );
     startnode = level.heli_paths[destination][random_path];
     protectlocation = undefined;
@@ -111,9 +110,8 @@ heli_path_graph()
     gunner_loop_start = getentarray( "heli_gunner_loop_start", "targetname" );
     leave_nodes = getentarray( "heli_leave", "targetname" );
     crash_start = getentarray( "heli_crash_start", "targetname" );
-/#
     assert( isdefined( path_start ) && isdefined( path_dest ), "Missing path_start or path_dest" );
-#/
+
     for ( i = 0; i < path_dest.size; i++ )
     {
         startnode_array = [];
@@ -152,9 +150,9 @@ heli_path_graph()
                     isprimarydest = 1;
             }
         }
-/#
+
         assert( isdefined( startnode_array ) && startnode_array.size > 0, "No path(s) to destination" );
-#/
+
         if ( isprimarydest )
         {
             level.heli_primary_path = startnode_array;
@@ -169,9 +167,9 @@ heli_path_graph()
         startnode = getent( loop_start[i].target, "targetname" );
         level.heli_loop_paths[level.heli_loop_paths.size] = startnode;
     }
-/#
+
     assert( isdefined( level.heli_loop_paths[0] ), "No helicopter loop paths found in map" );
-#/
+
     for ( i = 0; i < gunner_loop_start.size; i++ )
     {
         startnode = getent( gunner_loop_start[i].target, "targetname" );
@@ -181,17 +179,16 @@ heli_path_graph()
 
     for ( i = 0; i < leave_nodes.size; i++ )
         level.heli_leavenodes[level.heli_leavenodes.size] = leave_nodes[i];
-/#
+
     assert( isdefined( level.heli_leavenodes[0] ), "No helicopter leave nodes found in map" );
-#/
+
     for ( i = 0; i < crash_start.size; i++ )
     {
         crash_start_node = getent( crash_start[i].target, "targetname" );
         level.heli_crash_paths[level.heli_crash_paths.size] = crash_start_node;
     }
-/#
+
     assert( isdefined( level.heli_crash_paths[0] ), "No helicopter crash paths found in map" );
-#/
 }
 
 #using_animtree("mp_vehicles");
@@ -847,27 +844,24 @@ assignprimarytargets( targets )
 
         update_player_threat( targets[idx] );
     }
-/#
+
     assert( targets.size >= 2, "Not enough targets to assign primary and secondary" );
-#/
     highest = 0;
     second_highest = 0;
     primarytarget = undefined;
 
     for ( idx = 0; idx < targets.size; idx++ )
     {
-/#
         assert( isdefined( targets[idx].threatlevel ), "Target player does not have threat level" );
-#/
+
         if ( targets[idx].threatlevel >= highest )
         {
             highest = targets[idx].threatlevel;
             primarytarget = targets[idx];
         }
     }
-/#
+
     assert( isdefined( primarytarget ), "Targets exist, but none was assigned as primary" );
-#/
     self.primarytarget = primarytarget;
     self notify( "primary acquired" );
 }
@@ -885,9 +879,8 @@ assignsecondarytargets( targets )
         if ( targets[idx].type == "dog" || targets[0].type == "tank_drone" )
             update_missile_dog_threat( targets[idx] );
     }
-/#
+
     assert( targets.size >= 2, "Not enough targets to assign primary and secondary" );
-#/
     highest = 0;
     second_highest = 0;
     primarytarget = undefined;
@@ -895,18 +888,16 @@ assignsecondarytargets( targets )
 
     for ( idx = 0; idx < targets.size; idx++ )
     {
-/#
         assert( isdefined( targets[idx].missilethreatlevel ), "Target player does not have threat level" );
-#/
+
         if ( targets[idx].missilethreatlevel >= highest )
         {
             highest = targets[idx].missilethreatlevel;
             secondarytarget = targets[idx];
         }
     }
-/#
+
     assert( isdefined( secondarytarget ), "1+ targets exist, but none was assigned as secondary" );
-#/
     self.secondarytarget = secondarytarget;
     self notify( "secondary acquired" );
 }
@@ -1397,9 +1388,8 @@ heli_evasive( hardpointtype )
             }
         }
     }
-/#
+
     assert( gunnerpathfound, "No chopper gunner loop paths found in map" );
-#/
     startwait = 2;
 
     if ( isdefined( self.donotstop ) && self.donotstop )
@@ -1455,18 +1445,17 @@ heli_crash( hardpointtype, player, playernotify )
     {
         switch ( level.heli_debug_crash )
         {
-            case "1":
+            case 1:
                 crashtype = "explode";
                 break;
-            case "2":
+            case 2:
                 crashtype = "crashOnPath";
                 break;
-            case "3":
+            case 3:
                 crashtype = "spinOut";
                 break;
+            default:
         }
-
-        asm_endswitch( 4 case 1 loc_5F74 case 2 loc_5F7E case 3 loc_5F88 default loc_5F92 );
     }
 #/
     switch ( crashtype )
@@ -1655,9 +1644,7 @@ heli_explode()
 
     self playsound( level.heli_sound["crash"] );
     wait 0.1;
-/#
     assert( isdefined( self.destroyfunc ) );
-#/
     self [[ self.destroyfunc ]]();
 }
 
@@ -1708,9 +1695,8 @@ heli_leave( hardpointtype )
 
     if ( target_istarget( self ) )
         target_remove( self );
-/#
+
     assert( isdefined( self.destroyfunc ) );
-#/
     self [[ self.destroyfunc ]]();
 }
 
@@ -1729,9 +1715,7 @@ heli_fly( currentnode, startwait, hardpointtype )
     while ( isdefined( currentnode.target ) )
     {
         nextnode = getent( currentnode.target, "targetname" );
-/#
         assert( isdefined( nextnode ), "Next node in path is undefined, but has targetname" );
-#/
         pos = nextnode.origin + vectorscale( ( 0, 0, 1 ), 30.0 );
 
         if ( isdefined( currentnode.script_airspeed ) && isdefined( currentnode.script_accel ) )
@@ -2021,9 +2005,8 @@ fire_missile( smissiletype, ishots, etarget )
 {
     if ( !isdefined( ishots ) )
         ishots = 1;
-/#
+
     assert( self.health > 0 );
-#/
     weaponname = undefined;
     weaponshoottime = undefined;
     tags = [];
@@ -2040,16 +2023,11 @@ fire_missile( smissiletype, ishots, etarget )
 #/
             break;
     }
-/#
+
     assert( isdefined( weaponname ) );
-#/
-/#
     assert( tags.size > 0 );
-#/
     weaponshoottime = weaponfiretime( weaponname );
-/#
     assert( isdefined( weaponshoottime ) );
-#/
     self setvehweapon( weaponname );
     nextmissiletag = -1;
 
@@ -2361,17 +2339,11 @@ turret_target_flag( turrettarget )
 
     if ( isdefined( turrettarget ) && isdefined( turrettarget.origin ) )
     {
-/#
         assert( isdefined( turrettarget.origin ), "turrettarget.origin is undefined after isdefined check" );
-#/
         self.turret_last_pos = turrettarget.origin + vectorscale( ( 0, 0, 1 ), 40.0 );
-/#
         assert( isdefined( self.turret_last_pos ), "self.turret_last_pos is undefined after setting it #1" );
-#/
         self setturrettargetvec( self.turret_last_pos );
-/#
         assert( isdefined( self.turret_last_pos ), "self.turret_last_pos is undefined after setting it #2" );
-#/
         debug_print3d_simple( "Turret target lost at: " + self.turret_last_pos, self, vectorscale( ( 0, 0, -1 ), 70.0 ), 60 );
         self.targetlost = 1;
     }

@@ -70,9 +70,7 @@ dog_wall_and_window_hop( traversename, height )
     self traversemode( "nogravity" );
     self traversemode( "noclip" );
     startnode = self getnegotiationstartnode();
-/#
     assert( isdefined( startnode ) );
-#/
     self orientmode( "face angle", startnode.angles[1] );
 
     if ( isdefined( startnode.traverse_height ) )
@@ -99,9 +97,7 @@ dog_jump_down( height, frames, time )
         time = 0.3;
 
     startnode = self getnegotiationstartnode();
-/#
     assert( isdefined( startnode ) );
-#/
     self orientmode( "face angle", startnode.angles[1] );
 
     if ( isdefined( startnode.traverse_height ) )
@@ -129,9 +125,7 @@ dog_jump_down_far( height, frames, time )
         time = 0.3;
 
     startnode = self getnegotiationstartnode();
-/#
     assert( isdefined( startnode ) );
-#/
     self orientmode( "face angle", startnode.angles[1] );
 
     if ( isdefined( startnode.traverse_height ) )
@@ -155,9 +149,7 @@ dog_jump_up( height, frames )
     self endon( "killanimscript" );
     self traversemode( "noclip" );
     startnode = self getnegotiationstartnode();
-/#
     assert( isdefined( startnode ) );
-#/
     self orientmode( "face angle", startnode.angles[1] );
 
     if ( isdefined( startnode.traverse_height ) )
@@ -178,16 +170,12 @@ dog_jump_up( height, frames )
 
 dog_jump_up_high( height, frames )
 {
-/#
     assert( self.type == "dog", "Only dogs can do this traverse currently." );
-#/
     self endon( "killanimscript" );
     self traversemode( "nogravity" );
     self traversemode( "noclip" );
     startnode = self getnegotiationstartnode();
-/#
     assert( isdefined( startnode ) );
-#/
     self orientmode( "face angle", startnode.angles[1] );
 
     if ( isdefined( startnode.traverse_height ) )

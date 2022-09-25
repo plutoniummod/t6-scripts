@@ -405,9 +405,7 @@ zombiemoveongoo_gobacktonormal()
 
     if ( !is_true( self.completed_emerging_into_playable_area ) )
     {
-/#
         assert( isdefined( self.first_node ) );
-#/
         self maps\mp\zombies\_zm_spawner::reset_attack_spot();
         self orientmode( "face default" );
         self thread maps\mp\zombies\_zm_spawner::zombie_goto_entrance( self.first_node );
@@ -555,9 +553,7 @@ add_slippery_spot( origin, duration, startpos )
                 else
                 {
                     player.slick_count--;
-/#
                     assert( player.slick_count >= 0 );
-#/
                     slicked_players[num] = undefined;
                 }
 /#
@@ -626,9 +622,7 @@ add_slippery_spot( origin, duration, startpos )
     foreach ( player in slicked_players )
     {
         player.slick_count--;
-/#
         assert( player.slick_count >= 0 );
-#/
         player forceslick( player.slick_count );
     }
 

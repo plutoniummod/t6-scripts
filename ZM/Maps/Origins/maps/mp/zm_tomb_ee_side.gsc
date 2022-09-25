@@ -502,9 +502,7 @@ bunker_volume_death_check()
 
     volume_name = "oneinchpunch_bunker_volume";
     volume = getent( volume_name, "targetname" );
-/#
     assert( isdefined( volume ), volume_name + " does not exist" );
-#/
     attacker = self.attacker;
 
     if ( isdefined( attacker ) && isplayer( attacker ) )
@@ -550,9 +548,7 @@ church_volume_death_check()
 
     volume_name = "oneinchpunch_church_volume";
     volume = getent( volume_name, "targetname" );
-/#
     assert( isdefined( volume ), volume_name + " does not exist" );
-#/
     attacker = self.attacker;
 
     if ( isdefined( attacker ) && isplayer( attacker ) )

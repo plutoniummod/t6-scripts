@@ -27,17 +27,14 @@ main()
     level.gondolaloopsounds["rollers_start"] = "veh_cable_car_move_loop";
     level.gondolaloopsounds["rollers_end"] = "";
     tracklength = createcablecarpath();
-/#
     assert( level.trackdistancestops.size == 2 );
-#/
+
     if ( level.trackdistancestops.size == 2 )
     {
         velocity = getdvarfloatdefault( "scr_cable_car_velocity", 100 );
         bottomoftracklength = level.trackdistancestops[1] - level.trackdistancestops[0];
         topoftracklength = tracklength - bottomoftracklength;
-/#
         assert( topoftracklength < bottomoftracklength );
-#/
         extratrackrequired = bottomoftracklength - topoftracklength;
         extratimerequired = extratrackrequired / velocity;
         level.cablecartrack[level.cablecartrack.size - 1].movetime = extratimerequired;
@@ -49,12 +46,8 @@ main()
 
     cablecars = getentarray( "cablecar", "targetname" );
     cablecarkilltrigger = getentarray( "cable_car_kill_trigger", "targetname" );
-/#
     assert( isdefined( cablecars ) );
-#/
-/#
     assert( isdefined( cablecarkilltrigger ) );
-#/
     level.cablecardefaultangle = cablecars[0].angles;
     distancebetweencars = tracklength / cablecars.size;
 
@@ -68,9 +61,7 @@ main()
         cablecar = cablecars[i];
         cablecar thread waitthenplayfx( 0.1, level.cablecarlightsfx, "tag_origin" );
         cablecar.killtrigger = getclosest( cablecar.origin, cablecarkilltrigger );
-/#
         assert( isdefined( cablecar.killtrigger ) );
-#/
         cablecar.killtrigger enablelinkto();
         cablecar.killtrigger linkto( cablecar );
         cablecar setpointontrack( currentdistanceforcar, tracklength );
@@ -217,9 +208,7 @@ createcablecarpath( cablecar )
         stepdistance = distance( currentnode.origin, nextnode.origin );
         cablecarnodestruct.stepdistance = stepdistance;
         movetime = stepdistance / velocity;
-/#
         assert( movetime > 0 );
-#/
         pauseratio = 1;
 
         if ( isdefined( nextnode.script_noteworthy ) && nextnode.script_noteworthy == "stop" )

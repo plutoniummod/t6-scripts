@@ -183,9 +183,7 @@ zm_mantle_over_40_move_speed_override()
 follow_path( node )
 {
     self endon( "death" );
-/#
     assert( isdefined( node ), "vehicle_path() called without a path" );
-#/
     self notify( "newpath" );
 
     if ( isdefined( node ) )
@@ -572,18 +570,10 @@ busschedulecreate()
 
 busscheduleadd( stopname, isambush, maxwaittimebeforeleaving, busspeedleaving, gasusage )
 {
-/#
     assert( isdefined( stopname ) );
-#/
-/#
     assert( isdefined( isambush ) );
-#/
-/#
     assert( isdefined( maxwaittimebeforeleaving ) );
-#/
-/#
     assert( isdefined( busspeedleaving ) );
-#/
     destinationindex = self.destinations.size;
     self.destinations[destinationindex] = spawnstruct();
     self.destinations[destinationindex].name = stopname;
@@ -2168,9 +2158,8 @@ bus_roof_watch()
 busroofjumpoffpositionssetup()
 {
     jump_positions = getentarray( "roof_jump_off_positions", "targetname" );
-/#
     assert( jump_positions.size > 0 );
-#/
+
     for ( i = 0; i < jump_positions.size; i++ )
         jump_positions[i] linkto( self, "", self worldtolocalcoords( jump_positions[i].origin ), jump_positions[i].angles + self.angles );
 }

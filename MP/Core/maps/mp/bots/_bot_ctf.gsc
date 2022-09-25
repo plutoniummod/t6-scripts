@@ -316,9 +316,8 @@ bot_patrol_flag()
         return;
 
     nodes = getvisiblenodes( nearest );
-/#
     assert( nodes.size );
-#/
+
     for ( i = randomint( nodes.size ); i < nodes.size; i++ )
     {
         if ( self maps\mp\bots\_bot::bot_friend_goal_in_radius( "ctf_flag_patrol", nodes[i].origin, 256 ) == 0 )
@@ -334,9 +333,7 @@ base_nearest_node( flag )
 {
     home = flag ctf_flag_get_home();
     nodes = getnodesinradiussorted( home, 256, 0 );
-/#
     assert( nodes.size );
-#/
     return nodes[0];
 }
 

@@ -16,11 +16,7 @@ pers_register_upgrade( name, upgrade_active_func, stat_name, stat_desired_value,
     }
 
     if ( isdefined( level.pers_upgrades[name] ) )
-    {
-/#
         assert( 0, "A persistent upgrade is already registered for name: " + name );
-#/
-    }
 
     level.pers_upgrades_keys[level.pers_upgrades_keys.size] = name;
     level.pers_upgrades[name] = spawnstruct();
@@ -38,11 +34,7 @@ pers_register_upgrade( name, upgrade_active_func, stat_name, stat_desired_value,
 add_pers_upgrade_stat( name, stat_name, stat_desired_value )
 {
     if ( !isdefined( level.pers_upgrades[name] ) )
-    {
-/#
         assert( 0, name + " - Persistent upgrade is not registered yet." );
-#/
-    }
 
     stats_size = level.pers_upgrades[name].stat_names.size;
     level.pers_upgrades[name].stat_names[stats_size] = stat_name;

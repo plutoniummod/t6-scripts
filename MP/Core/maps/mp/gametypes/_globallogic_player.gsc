@@ -1680,9 +1680,8 @@ callback_playerkilled( einflictor, attacker, idamage, smeansofdeath, sweapon, vd
     if ( isdefined( self.uselaststandparams ) )
     {
         self.uselaststandparams = undefined;
-/#
         assert( isdefined( self.laststandparams ) );
-#/
+
         if ( !level.teambased || !isdefined( attacker ) || !isplayer( attacker ) || attacker.team != self.team || attacker == self )
         {
             einflictor = self.laststandparams.einflictor;
@@ -2399,9 +2398,8 @@ delaystartragdoll( ent, shitloc, vdir, sweapon, einflictor, smeansofdeath )
 
 trackattackerdamage( eattacker, idamage, smeansofdeath, sweapon )
 {
-/#
     assert( isplayer( eattacker ) );
-#/
+
     if ( self.attackerdata.size == 0 )
         self.firsttimedamaged = gettime();
 
@@ -2444,9 +2442,8 @@ giveinflictorownerassist( eattacker, einflictor, idamage, smeansofdeath, sweapon
 
     if ( !einflictor.ownergetsassist )
         return;
-/#
+
     assert( isplayer( einflictor.owner ) );
-#/
     self trackattackerdamage( einflictor.owner, idamage, smeansofdeath, sweapon );
 }
 

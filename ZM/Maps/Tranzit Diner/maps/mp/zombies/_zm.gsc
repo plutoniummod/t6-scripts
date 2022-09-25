@@ -310,7 +310,7 @@ onallplayersready()
 /#
     println( "ZM >> We have all players - START ZOMBIE LOGIC" );
 #/
-    if ( 1 == getnumconnectedplayers() && getdvarint( _hash_B0FB65D0 ) == 1 )
+    if ( 1 == getnumconnectedplayers() && getdvarint( "scr_zm_enable_bots" ) == 1 )
     {
         level thread add_bots();
         flag_set( "initial_players_connected" );
@@ -947,10 +947,10 @@ init_player_levelvars()
 
 init_dvars()
 {
-    if ( getdvar( _hash_FA91EA91 ) == "" )
+    if ( getdvar( "zombie_debug" ) == "" )
         setdvar( "zombie_debug", "0" );
 
-    if ( getdvar( _hash_B0FB65D0 ) == "" )
+    if ( getdvar( "scr_zm_enable_bots" ) == "" )
         setdvar( "scr_zm_enable_bots", "0" );
 
     if ( getdvar( _hash_FA81816F ) == "" )
@@ -1054,9 +1054,9 @@ callback_playerdamage( einflictor, eattacker, idamage, idflags, smeansofdeath, s
         idamage = self [[ self.overrideplayerdamage ]]( einflictor, eattacker, idamage, idflags, smeansofdeath, sweapon, vpoint, vdir, shitloc, psoffsettime );
     else if ( isdefined( level.overrideplayerdamage ) )
         idamage = self [[ level.overrideplayerdamage ]]( einflictor, eattacker, idamage, idflags, smeansofdeath, sweapon, vpoint, vdir, shitloc, psoffsettime );
-/#
+
     assert( isdefined( idamage ), "You must return a value from a damage override function." );
-#/
+
     if ( isdefined( self.magic_bullet_shield ) && self.magic_bullet_shield )
     {
         maxhealth = self.maxhealth;
@@ -2558,9 +2558,7 @@ spectator_respawn()
 /#
     println( "*************************Respawn Spectator***" );
 #/
-/#
     assert( isdefined( self.spectator_respawn ) );
-#/
     origin = self.spectator_respawn.origin;
     angles = self.spectator_respawn.angles;
     self setspectatepermissions( 0 );

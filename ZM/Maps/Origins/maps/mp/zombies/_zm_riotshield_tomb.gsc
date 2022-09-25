@@ -249,9 +249,7 @@ trackriotshield()
 
         if ( self.hasriotshieldequipped )
         {
-/#
             assert( self.hasriotshield );
-#/
             self.hasriotshield = self hasweapon( level.riotshield_name );
 
             if ( isdefined( self.riotshield_hidden ) && self.riotshield_hidden )
@@ -261,11 +259,7 @@ trackriotshield()
             else if ( self.hasriotshield )
                 self.shield_placement = 2;
             else if ( isdefined( self.shield_ent ) )
-            {
-/#
                 assert( self.shield_placement == 3 );
-#/
-            }
             else
                 self.shield_placement = 0;
 
@@ -459,9 +453,7 @@ doriotshielddeploy( origin, angles )
 
 riotshielddistancetest( origin )
 {
-/#
     assert( isdefined( origin ) );
-#/
     min_dist_squared = getdvarfloat( "riotshield_deploy_limit_radius" );
     min_dist_squared *= min_dist_squared;
 
@@ -525,9 +517,9 @@ watchdeployedriotshielddamage()
 
         if ( !isdefined( attacker ) || !isplayer( attacker ) )
             continue;
-/#
+
         assert( isdefined( self.owner ) && isdefined( self.owner.team ) );
-#/
+
         if ( is_encounter() && attacker.team == self.owner.team && attacker != self.owner )
             continue;
 

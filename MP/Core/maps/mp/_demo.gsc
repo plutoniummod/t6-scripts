@@ -32,9 +32,7 @@ init()
 
 bookmark( type, time, clientent1, clientent2, eventpriority, inflictorent, overrideentitycamera, actorent )
 {
-/#
     assert( isdefined( level.bookmark[type] ), "Unable to find a bookmark type for type - " + type );
-#/
     client1 = 255;
     client2 = 255;
     inflictorentnum = -1;
@@ -72,9 +70,7 @@ bookmark( type, time, clientent1, clientent2, eventpriority, inflictorent, overr
 
 gameresultbookmark( type, winningteamindex, losingteamindex )
 {
-/#
     assert( isdefined( level.bookmark[type] ), "Unable to find a bookmark type for type - " + type );
-#/
     client1 = 255;
     client2 = 255;
     scoreeventpriority = 0;

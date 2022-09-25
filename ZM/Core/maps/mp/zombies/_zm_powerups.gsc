@@ -594,9 +594,8 @@ quantum_bomb_random_powerup_result( position )
                         skip = 1;
 
                     break;
+                default:
             }
-
-            asm_endswitch( 11 case bonfire_sale loc_45F4 case bonus_points_player loc_45D4 case bonus_points_team loc_45D4 case fire_sale loc_45DC case free_perk loc_45F4 case full_ammo loc_45DC case insta_kill loc_45DC case minigun loc_45DC case random_weapon loc_45D4 case tesla loc_45F4 default loc_460C );
 
             if ( skip )
             {
@@ -651,8 +650,8 @@ quantum_bomb_random_bonus_or_lose_points_powerup_result( position )
 
     switch ( rand )
     {
-        case "1":
-        case "0":
+        case 1:
+        case 0:
             powerup = "lose_points_team";
 
             if ( isdefined( level.zombie_include_powerups[powerup] ) )
@@ -660,9 +659,9 @@ quantum_bomb_random_bonus_or_lose_points_powerup_result( position )
                 self thread maps\mp\zombies\_zm_audio::create_and_play_dialog( "kill", "quant_bad" );
                 break;
             }
-        case "4":
-        case "3":
-        case "2":
+        case 4:
+        case 3:
+        case 2:
             powerup = "bonus_points_player";
 
             if ( isdefined( level.zombie_include_powerups[powerup] ) )

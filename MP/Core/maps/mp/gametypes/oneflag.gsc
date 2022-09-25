@@ -404,9 +404,9 @@ onspawnplayer( predictedspawn )
         spawnpoint = maps\mp\gametypes\_spawnlogic::getspawnpoint_nearteam( level.spawn_axis );
     else
         spawnpoint = maps\mp\gametypes\_spawnlogic::getspawnpoint_nearteam( level.spawn_allies );
-/#
+
     assert( isdefined( spawnpoint ) );
-#/
+
     if ( predictedspawn )
         self predictspawnpoint( spawnpoint.origin, spawnpoint.angles );
     else
@@ -1146,14 +1146,10 @@ returnflaghudelems( time )
     self endon( "picked_up" );
     level endon( "game_ended" );
     ownerteam = self maps\mp\gametypes\_gameobjects::getownerteam();
-/#
     assert( !level.returnmessageelems["axis"][ownerteam].alpha );
-#/
     level.returnmessageelems["axis"][ownerteam].alpha = 1;
     level.returnmessageelems["axis"][ownerteam] settimer( time );
-/#
     assert( !level.returnmessageelems["allies"][ownerteam].alpha );
-#/
     level.returnmessageelems["allies"][ownerteam].alpha = 1;
     level.returnmessageelems["allies"][ownerteam] settimer( time );
 

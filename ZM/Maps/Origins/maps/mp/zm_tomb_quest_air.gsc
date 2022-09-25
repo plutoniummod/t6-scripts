@@ -75,9 +75,7 @@ ceiling_ring_randomize()
     n_offset_from_final = randomintrange( 1, 4 );
     self.position = ( self.script_int + n_offset_from_final ) % 4;
     ceiling_ring_update_position();
-/#
     assert( self.position != self.script_int );
-#/
 }
 
 ceiling_ring_update_position()

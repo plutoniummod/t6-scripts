@@ -1468,13 +1468,13 @@ addenemyheli()
 
     switch ( enemyheli )
     {
-        case "1":
+        case 1:
             level.helilocation = ent.origin;
             ent thread maps\mp\killstreaks\_helicopter::usekillstreakhelicopter( "helicopter_comlink_mp" );
             wait 0.5;
             ent notify( "confirm_location", level.helilocation );
             break;
-        case "2":
+        case 2:
             ent thread maps\mp\killstreaks\_helicopter_gunner::heli_gunner_killstreak( "helicopter_player_gunner_mp" );
             break;
     }
@@ -1572,10 +1572,10 @@ addtestcarepackage()
     {
         switch ( supplydrop )
         {
-            case "2":
+            case 2:
                 team = getotherteam( player.pers["team"] );
                 break;
-            case "1":
+            case 1:
             default:
                 team = player.pers["team"];
                 break;

@@ -34,9 +34,8 @@ network_choke_safe( id )
 
 network_choke_action( id, choke_action, arg1, arg2, arg3 )
 {
-/#
     assert( isdefined( level.zombie_network_choke_ids_max[id] ), "Network Choke: " + id + " undefined" );
-#/
+
     while ( !network_choke_safe( id ) )
         wait 0.05;
 
@@ -66,9 +65,8 @@ network_safe_init( id, max )
 {
     if ( !isdefined( level.zombie_network_choke_ids_max ) || !isdefined( level.zombie_network_choke_ids_max[id] ) )
         network_choke_init( id, max );
-/#
+
     assert( max == level.zombie_network_choke_ids_max[id] );
-#/
 }
 
 _network_safe_spawn( classname, origin )

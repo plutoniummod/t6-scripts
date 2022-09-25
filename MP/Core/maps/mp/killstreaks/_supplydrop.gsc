@@ -262,15 +262,9 @@ registercratetype( category, type, name, weight, hint, hint_gambler, sharestat, 
 
 getrandomcratetype( category, gambler_crate_name )
 {
-/#
     assert( isdefined( level.cratetypes ) );
-#/
-/#
     assert( isdefined( level.cratetypes[category] ) );
-#/
-/#
     assert( isdefined( level.cratecategoryweights[category] ) );
-#/
     typekey = undefined;
     cratetypestart = 0;
     randomweightend = randomintrange( 1, level.cratecategoryweights[category] + 1 );

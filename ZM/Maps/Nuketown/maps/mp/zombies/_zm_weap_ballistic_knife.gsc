@@ -6,9 +6,6 @@
 
 init()
 {
-    if ( !isdefined( level.ballistic_knife_autorecover ) )
-        level.ballistic_knife_autorecover = 1;
-
     if ( isdefined( level._uses_retrievable_ballisitic_knives ) && level._uses_retrievable_ballisitic_knives == 1 )
     {
         precachemodel( "t5_weapon_ballistic_knife_projectile" );
@@ -106,17 +103,8 @@ on_spawn_retrieve_trigger( watcher, player )
         trigger_pos[2] = retrievable_model.origin[2] + 10 * normal[2];
     }
 
-    if ( is_true( level.ballistic_knife_autorecover ) )
-    {
-        trigger_pos[2] -= 50.0;
-        pickup_trigger = spawn( "trigger_radius", ( trigger_pos[0], trigger_pos[1], trigger_pos[2] ), 0, 50, 100 );
-    }
-    else
-    {
-        pickup_trigger = spawn( "trigger_radius_use", ( trigger_pos[0], trigger_pos[1], trigger_pos[2] ) );
-        pickup_trigger setcursorhint( "HINT_NOICON" );
-    }
-
+    pickup_trigger = spawn( "trigger_radius_use", ( trigger_pos[0], trigger_pos[1], trigger_pos[2] ) );
+    pickup_trigger setcursorhint( "HINT_NOICON" );
     pickup_trigger.owner = player;
     retrievable_model.retrievabletrigger = pickup_trigger;
     hint_string = &"WEAPON_BALLISTIC_KNIFE_PICKUP";
@@ -160,8 +148,6 @@ watch_use_trigger( trigger, model, callback, weapon, playersoundonuse, npcsoundo
     self endon( "death" );
     self endon( "delete" );
     level endon( "game_ended" );
-    max_ammo = weaponmaxammo( weapon ) + 1;
-    autorecover = is_true( level.ballistic_knife_autorecover );
 
     while ( true )
     {
@@ -170,7 +156,7 @@ watch_use_trigger( trigger, model, callback, weapon, playersoundonuse, npcsoundo
         if ( !isalive( player ) )
             continue;
 
-        if ( !player isonground() && !is_true( trigger.force_pickup ) )
+        if ( !player isonground() )
             continue;
 
         if ( isdefined( trigger.triggerteam ) && player.team != trigger.triggerteam )
@@ -179,19 +165,7 @@ watch_use_trigger( trigger, model, callback, weapon, playersoundonuse, npcsoundo
         if ( isdefined( trigger.claimedby ) && player != trigger.claimedby )
             continue;
 
-        ammo_stock = player getweaponammostock( weapon );
-        ammo_clip = player getweaponammoclip( weapon );
-        current_weapon = player getcurrentweapon();
-        total_ammo = ammo_stock + ammo_clip;
-        hasreloaded = 1;
-
-        if ( total_ammo > 0 && ammo_stock == total_ammo && current_weapon == weapon )
-            hasreloaded = 0;
-
-        if ( total_ammo >= max_ammo || !hasreloaded )
-            continue;
-
-        if ( autorecover || player usebuttonpressed() && !player.throwinggrenade && !player meleebuttonpressed() || is_true( trigger.force_pickup ) )
+        if ( player usebuttonpressed() && !player.throwinggrenade && !player meleebuttonpressed() )
         {
             if ( isdefined( playersoundonuse ) )
                 player playlocalsound( playersoundonuse );
@@ -207,27 +181,24 @@ watch_use_trigger( trigger, model, callback, weapon, playersoundonuse, npcsoundo
 
 pick_up( weapon, model, trigger )
 {
-    if ( self hasweapon( weapon ) )
+    current_weapon = self getcurrentweapon();
+
+    if ( current_weapon != weapon )
     {
-        current_weapon = self getcurrentweapon();
+        clip_ammo = self getweaponammoclip( weapon );
 
-        if ( current_weapon != weapon )
-        {
-            clip_ammo = self getweaponammoclip( weapon );
-
-            if ( !clip_ammo )
-                self setweaponammoclip( weapon, 1 );
-            else
-            {
-                new_ammo_stock = self getweaponammostock( weapon ) + 1;
-                self setweaponammostock( weapon, new_ammo_stock );
-            }
-        }
+        if ( !clip_ammo )
+            self setweaponammoclip( weapon, 1 );
         else
         {
             new_ammo_stock = self getweaponammostock( weapon ) + 1;
             self setweaponammostock( weapon, new_ammo_stock );
         }
+    }
+    else
+    {
+        new_ammo_stock = self getweaponammostock( weapon ) + 1;
+        self setweaponammostock( weapon, new_ammo_stock );
     }
 
     self maps\mp\zombies\_zm_stats::increment_client_stat( "ballistic_knives_pickedup" );
@@ -249,7 +220,7 @@ destroy_ent()
 
 watch_shutdown( trigger, model )
 {
-    self waittill_any( "death_or_disconnect", "zmb_lost_knife" );
+    self waittill_any( "death", "disconnect", "zmb_lost_knife" );
     trigger destroy_ent();
     model destroy_ent();
 }

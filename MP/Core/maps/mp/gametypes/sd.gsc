@@ -261,9 +261,7 @@ onspawnplayer( predictedspawn )
         spawnpointname = "mp_sd_spawn_defender";
 
     spawnpoints = maps\mp\gametypes\_spawnlogic::getspawnpointarray( spawnpointname );
-/#
     assert( spawnpoints.size );
-#/
     spawnpoint = maps\mp\gametypes\_spawnlogic::getspawnpoint_random( spawnpoints );
 
     if ( predictedspawn )
@@ -568,9 +566,7 @@ bombs()
 
         level.bombzones[level.bombzones.size] = bombzone;
         bombzone.bombdefusetrig = getent( visuals[0].target, "targetname" );
-/#
         assert( isdefined( bombzone.bombdefusetrig ) );
-#/
         bombzone.bombdefusetrig.origin += vectorscale( ( 0, 0, -1 ), 10000.0 );
         bombzone.bombdefusetrig.label = label;
     }

@@ -716,12 +716,8 @@ wait_for_player_to_take( player, weapon, packa_timer, upgrade_as_attachment )
 {
     current_weapon = self.current_weapon;
     upgrade_name = self.upgrade_name;
-/#
     assert( isdefined( current_weapon ), "wait_for_player_to_take: weapon does not exist" );
-#/
-/#
     assert( isdefined( upgrade_name ), "wait_for_player_to_take: upgrade_weapon does not exist" );
-#/
     upgrade_weapon = upgrade_name;
     self endon( "pap_timeout" );
     level endon( "Pack_A_Punch_off" );
@@ -894,12 +890,8 @@ upgrade_knuckle_crack_begin()
 
 upgrade_knuckle_crack_end( gun )
 {
-/#
     assert( !is_zombie_perk_bottle( gun ) );
-#/
-/#
     assert( gun != level.revive_tool );
-#/
     self enable_player_move_states();
     weapon = level.machine_assets["packapunch"].weapon;
 
@@ -2437,12 +2429,8 @@ perk_give_bottle_begin( perk )
 perk_give_bottle_end( gun, perk )
 {
     self endon( "perk_abort_drinking" );
-/#
     assert( !is_zombie_perk_bottle( gun ) );
-#/
-/#
     assert( gun != level.revive_tool );
-#/
     self enable_player_move_states();
     weapon = "";
 
@@ -3122,9 +3110,7 @@ get_perk_machine_start_state( perk )
 
     if ( perk == "specialty_quickrevive" || perk == "specialty_quickrevive_upgrade" )
     {
-/#
         assert( isdefined( level.revive_machine_is_solo ) );
-#/
         return level.revive_machine_is_solo;
     }
 
@@ -3691,21 +3677,11 @@ initialize_custom_perk_arrays()
 
 register_perk_basic_info( str_perk, str_alias, n_perk_cost, str_hint_string, str_perk_bottle_weapon )
 {
-/#
     assert( isdefined( str_perk ), "str_perk is a required argument for register_perk_basic_info!" );
-#/
-/#
     assert( isdefined( str_alias ), "str_alias is a required argument for register_perk_basic_info!" );
-#/
-/#
     assert( isdefined( n_perk_cost ), "n_perk_cost is a required argument for register_perk_basic_info!" );
-#/
-/#
     assert( isdefined( str_hint_string ), "str_hint_string is a required argument for register_perk_basic_info!" );
-#/
-/#
     assert( isdefined( str_perk_bottle_weapon ), "str_perk_bottle_weapon is a required argument for register_perk_basic_info!" );
-#/
     _register_undefined_perk( str_perk );
     level._custom_perks[str_perk].alias = str_perk;
     level._custom_perks[str_perk].cost = n_perk_cost;
@@ -3715,15 +3691,9 @@ register_perk_basic_info( str_perk, str_alias, n_perk_cost, str_hint_string, str
 
 register_perk_machine( str_perk, func_perk_machine_setup, func_perk_machine_thread )
 {
-/#
     assert( isdefined( str_perk ), "str_perk is a required argument for register_perk_machine!" );
-#/
-/#
     assert( isdefined( func_perk_machine_setup ), "func_perk_machine_setup is a required argument for register_perk_machine!" );
-#/
-/#
     assert( isdefined( func_perk_machine_thread ), "func_perk_machine_thread is a required argument for register_perk_machine!" );
-#/
     _register_undefined_perk( str_perk );
 
     if ( !isdefined( level._custom_perks[str_perk].perk_machine_set_kvps ) )
@@ -3735,12 +3705,8 @@ register_perk_machine( str_perk, func_perk_machine_setup, func_perk_machine_thre
 
 register_perk_precache_func( str_perk, func_precache )
 {
-/#
     assert( isdefined( str_perk ), "str_perk is a required argument for register_perk_precache_func!" );
-#/
-/#
     assert( isdefined( func_precache ), "func_precache is a required argument for register_perk_precache_func!" );
-#/
     _register_undefined_perk( str_perk );
 
     if ( !isdefined( level._custom_perks[str_perk].precache_func ) )
@@ -3749,12 +3715,8 @@ register_perk_precache_func( str_perk, func_precache )
 
 register_perk_threads( str_perk, func_give_player_perk, func_take_player_perk )
 {
-/#
     assert( isdefined( str_perk ), "str_perk is a required argument for register_perk_threads!" );
-#/
-/#
     assert( isdefined( func_give_player_perk ), "func_give_player_perk is a required argument for register_perk_threads!" );
-#/
     _register_undefined_perk( str_perk );
 
     if ( !isdefined( level._custom_perks[str_perk].player_thread_give ) )
@@ -3769,15 +3731,9 @@ register_perk_threads( str_perk, func_give_player_perk, func_take_player_perk )
 
 register_perk_clientfields( str_perk, func_clientfield_register, func_clientfield_set )
 {
-/#
     assert( isdefined( str_perk ), "str_perk is a required argument for register_perk_clientfields!" );
-#/
-/#
     assert( isdefined( func_clientfield_register ), "func_clientfield_register is a required argument for register_perk_clientfields!" );
-#/
-/#
     assert( isdefined( func_clientfield_set ), "func_clientfield_set is a required argument for register_perk_clientfields!" );
-#/
     _register_undefined_perk( str_perk );
 
     if ( !isdefined( level._custom_perks[str_perk].clientfield_register ) )
@@ -3789,12 +3745,8 @@ register_perk_clientfields( str_perk, func_clientfield_register, func_clientfiel
 
 register_perk_host_migration_func( str_perk, func_host_migration )
 {
-/#
     assert( isdefined( str_perk ), "str_perk is a required argument for register_perk_host_migration_func!" );
-#/
-/#
     assert( isdefined( func_host_migration ), "func_host_migration is a required argument for register_perk_host_migration_func!" );
-#/
     _register_undefined_perk( str_perk );
 
     if ( !isdefined( level._custom_perks[str_perk].host_migration_func ) )

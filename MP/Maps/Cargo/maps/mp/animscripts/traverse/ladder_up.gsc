@@ -4,7 +4,5 @@
 
 main()
 {
-/#
     assert( 0, "Not supposed to be used in MP" );
-#/
 }

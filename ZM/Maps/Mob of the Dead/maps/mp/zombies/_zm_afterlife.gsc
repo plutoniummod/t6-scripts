@@ -961,9 +961,8 @@ afterlife_revive_trigger_think()
                 continue;
 
             gun = reviver getcurrentweapon();
-/#
             assert( isdefined( gun ) );
-#/
+
             if ( gun == level.revive_tool || gun == level.afterlife_revive_tool )
                 continue;
 
@@ -1049,9 +1048,7 @@ afterlife_can_revive( revivee )
 
 afterlife_revive_do_revive( playerbeingrevived, revivergun )
 {
-/#
     assert( self is_reviving_afterlife( playerbeingrevived ) );
-#/
     revivetime = 3;
     playloop = 0;
 
@@ -1469,9 +1466,8 @@ afterlife_get_spawnpoint()
 
         if ( !isdefined( spawnpoints ) || spawnpoints.size == 0 )
             spawnpoints = getstructarray( "initial_spawn_points", "targetname" );
-/#
+
         assert( isdefined( spawnpoints ), "Could not find initial spawn points!" );
-#/
         spawnpoint = maps\mp\zombies\_zm::getfreespawnpoint( spawnpoints, self );
     }
 

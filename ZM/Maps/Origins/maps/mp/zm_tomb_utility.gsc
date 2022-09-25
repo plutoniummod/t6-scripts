@@ -165,13 +165,13 @@ get_teleport_fx_from_enum( n_enum )
 {
     switch ( n_enum )
     {
-        case "1":
+        case 1:
             return "teleport_fire";
-        case "4":
+        case 4:
             return "teleport_ice";
-        case "3":
+        case 3:
             return "teleport_elec";
-        case "2":
+        case 2:
         default:
             return "teleport_air";
     }
@@ -399,9 +399,7 @@ dug_zombie_spawn_init( animname_set )
 dug_zombie_think()
 {
     self endon( "death" );
-/#
     assert( !self.isdog );
-#/
     self.ai_state = "zombie_think";
     find_flesh_struct_string = undefined;
 
@@ -419,9 +417,7 @@ dug_zombie_think()
     if ( !isdefined( find_flesh_struct_string ) && isdefined( self.target ) && self.target != "" )
     {
         desired_origin = get_desired_origin();
-/#
         assert( isdefined( desired_origin ), "Spawner @ " + self.origin + " has a .target but did not find a target" );
-#/
         origin = desired_origin;
         node = getclosest( origin, level.exterior_goals );
         self.entrance_nodes[self.entrance_nodes.size] = node;
@@ -458,9 +454,8 @@ dug_zombie_think()
     }
     else if ( isdefined( find_flesh_struct_string ) )
     {
-/#
         assert( isdefined( find_flesh_struct_string ) );
-#/
+
         for ( i = 0; i < level.exterior_goals.size; i++ )
         {
             if ( level.exterior_goals[i].script_string == find_flesh_struct_string )
@@ -506,9 +501,8 @@ dug_zombie_think()
         self zombie_history( "zombie_think -> #1 entrance origin = " + node.origin );
         self thread zombie_assure_node();
     }
-/#
+
     assert( isdefined( node ), "Did not find a node!!! [Should not see this!]" );
-#/
     level thread draw_line_ent_to_pos( self, node.origin, "goal" );
     self.first_node = node;
     self thread zombie_goto_entrance( node );
@@ -1180,15 +1174,10 @@ puzzle_orb_ready_to_leave( str_zone, min_lookat_dot, n_near_dist_sq )
 puzzle_orb_chamber_to_crypt( str_start_point, e_gem_pos )
 {
     a_puzzle_flags = strtok( e_gem_pos.script_flag, " " );
-/#
     assert( a_puzzle_flags.size == 2 );
-#/
+
     foreach ( str_flag in a_puzzle_flags )
-    {
-/#
         assert( level flag_exists( str_flag ) );
-#/
-    }
 
     flag_wait( a_puzzle_flags[0] );
     s_start = getstruct( str_start_point, "targetname" );

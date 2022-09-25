@@ -620,16 +620,16 @@ setup_response_line( player, index, category, type )
 
     switch ( player.entity_num )
     {
-        case "0":
+        case 0:
             level setup_hero_rival( player, nikolai, richtofen, category, type );
             break;
-        case "1":
+        case 1:
             level setup_hero_rival( player, richtofen, takeo, category, type );
             break;
-        case "2":
+        case 2:
             level setup_hero_rival( player, dempsey, nikolai, category, type );
             break;
-        case "3":
+        case 3:
             level setup_hero_rival( player, takeo, dempsey, category, type );
             break;
     }
@@ -1257,18 +1257,11 @@ zmbvoxinitspeaker( speaker, prefix, ent )
 
 zmbvoxadd( speaker, category, type, alias, response )
 {
-/#
     assert( isdefined( speaker ) );
-#/
-/#
     assert( isdefined( category ) );
-#/
-/#
     assert( isdefined( type ) );
-#/
-/#
     assert( isdefined( alias ) );
-#/
+
     if ( !isdefined( self.speaker[speaker] ) )
     {
         self.speaker[speaker] = spawnstruct();

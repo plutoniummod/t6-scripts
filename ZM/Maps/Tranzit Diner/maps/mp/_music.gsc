@@ -4,9 +4,7 @@
 
 music_init()
 {
-/#
     assert( level.clientscripts );
-#/
     level.musicstate = "";
     registerclientsys( "musicCmd" );
 }

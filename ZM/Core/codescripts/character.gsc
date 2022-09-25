@@ -183,9 +183,8 @@ get_least_used_index( prefix, group )
 
         lowest_indices[lowest_indices.size] = i;
     }
-/#
+
     assert( lowest_indices.size, "Tried to spawn a character but the lowest indices didn't exist" );
-#/
     return random( lowest_indices );
 }
 

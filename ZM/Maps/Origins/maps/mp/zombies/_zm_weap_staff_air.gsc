@@ -338,7 +338,7 @@ get_air_blast_range( n_charge )
 {
     switch ( n_charge )
     {
-        case "1":
+        case 1:
             n_range = 100;
             break;
         default:

@@ -21,9 +21,9 @@ main()
         combatidle();
         return;
     }
-/#
+
     assert( isdefined( self.enemy ) );
-#/
+
     if ( !isalive( self.enemy ) )
     {
         combatidle();

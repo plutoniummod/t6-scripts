@@ -884,19 +884,19 @@ escape_pod_state( set, wait_for_current_end )
 
     switch ( set )
     {
-        case "1":
+        case 1:
             self.state_anim = level.escape_elevator_1_state;
             break;
-        case "2":
+        case 2:
             self.state_anim = level.escape_elevator_2_state;
             break;
-        case "3":
+        case 3:
             self.state_anim = level.escape_elevator_3_state;
             break;
-        case "4":
+        case 4:
             self.state_anim = level.escape_elevator_4_state;
             break;
-        case "5":
+        case 5:
             self.state_anim = level.escape_elevator_5_state;
             break;
     }
@@ -925,20 +925,20 @@ escape_pod_state_run()
 
         switch ( self.state )
         {
-            case "1":
+            case 1:
                 self.state_anim = level.escape_elevator_1_state;
                 shouldwait = 0;
                 break;
-            case "2":
+            case 2:
                 self.state_anim = level.escape_elevator_2_state;
                 break;
-            case "3":
+            case 3:
                 self.state_anim = level.escape_elevator_3_state;
                 break;
-            case "4":
+            case 4:
                 self.state_anim = level.escape_elevator_4_state;
                 break;
-            case "5":
+            case 5:
                 self.state_anim = level.escape_elevator_5_state;
                 break;
         }

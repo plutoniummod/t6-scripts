@@ -277,9 +277,8 @@ spawnplayer()
     self thread stoppoisoningandflareonspawn();
     self.sensorgrenadedata = undefined;
     self stopburning();
-/#
     assert( maps\mp\gametypes\_globallogic_utils::isvalidclass( self.class ) );
-#/
+
     if ( sessionmodeiszombiesgame() )
         self maps\mp\gametypes\_class::giveloadoutlevelspecific( self.team, self.class );
     else
@@ -390,9 +389,7 @@ spawnplayer()
 #/
     if ( game["state"] == "postgame" )
     {
-/#
         assert( !level.intermission );
-#/
         self maps\mp\gametypes\_globallogic_player::freezeplayerforroundend();
     }
 }
@@ -671,12 +668,9 @@ showspawnmessage()
 spawnclient( timealreadypassed )
 {
     pixbeginevent( "spawnClient" );
-/#
     assert( isdefined( self.team ) );
-#/
-/#
     assert( maps\mp\gametypes\_globallogic_utils::isvalidclass( self.class ) );
-#/
+
     if ( !self mayspawn() )
     {
         currentorigin = self.origin;

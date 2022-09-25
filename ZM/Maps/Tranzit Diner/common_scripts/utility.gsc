@@ -189,12 +189,8 @@ array_check_for_dupes( array, single )
 
 array_swap( array, index1, index2 )
 {
-/#
     assert( index1 < array.size, "index1 to swap out of range" );
-#/
-/#
     assert( index2 < array.size, "index2 to swap out of range" );
-#/
     temp = array[index1];
     array[index1] = array[index2];
     array[index2] = temp;
@@ -203,12 +199,8 @@ array_swap( array, index1, index2 )
 
 array_average( array )
 {
-/#
     assert( isarray( array ) );
-#/
-/#
     assert( array.size > 0 );
-#/
     total = 0;
 
     for ( i = 0; i < array.size; i++ )
@@ -219,12 +211,8 @@ array_average( array )
 
 array_std_deviation( array, mean )
 {
-/#
     assert( isarray( array ) );
-#/
-/#
     assert( array.size > 0 );
-#/
     tmp = [];
 
     for ( i = 0; i < array.size; i++ )
@@ -367,17 +355,13 @@ track( spot_to_track )
 
 clear_exception( type )
 {
-/#
     assert( isdefined( self.exception[type] ) );
-#/
     self.exception[type] = anim.defaultexception;
 }
 
 set_exception( type, func )
 {
-/#
     assert( isdefined( self.exception[type] ) );
-#/
     self.exception[type] = func;
 }
 
@@ -460,36 +444,28 @@ waittill_multiple_ents( ent1, string1, ent2, string2, ent3, string3, ent4, strin
 
     if ( isdefined( ent1 ) )
     {
-/#
         assert( isdefined( string1 ) );
-#/
         ent1 thread waittill_string( string1, ent );
         ent.threads++;
     }
 
     if ( isdefined( ent2 ) )
     {
-/#
         assert( isdefined( string2 ) );
-#/
         ent2 thread waittill_string( string2, ent );
         ent.threads++;
     }
 
     if ( isdefined( ent3 ) )
     {
-/#
         assert( isdefined( string3 ) );
-#/
         ent3 thread waittill_string( string3, ent );
         ent.threads++;
     }
 
     if ( isdefined( ent4 ) )
     {
-/#
         assert( isdefined( string4 ) );
-#/
         ent4 thread waittill_string( string4, ent );
         ent.threads++;
     }
@@ -559,17 +535,14 @@ waittill_any_array_return( a_notifies )
 
 waittill_any( str_notify1, str_notify2, str_notify3, str_notify4, str_notify5 )
 {
-/#
     assert( isdefined( str_notify1 ) );
-#/
     waittill_any_array( array( str_notify1, str_notify2, str_notify3, str_notify4, str_notify5 ) );
 }
 
 waittill_any_array( a_notifies )
 {
-/#
     assert( isdefined( a_notifies[0] ), "At least the first element has to be defined for waittill_any_array." );
-#/
+
     for ( i = 1; i < a_notifies.size; i++ )
     {
         if ( isdefined( a_notifies[i] ) )
@@ -618,12 +591,9 @@ _timeout( delay )
 
 waittill_any_ents( ent1, string1, ent2, string2, ent3, string3, ent4, string4, ent5, string5, ent6, string6, ent7, string7 )
 {
-/#
     assert( isdefined( ent1 ) );
-#/
-/#
     assert( isdefined( string1 ) );
-#/
+
     if ( isdefined( ent2 ) && isdefined( string2 ) )
         ent2 endon( string2 );
 
@@ -647,12 +617,9 @@ waittill_any_ents( ent1, string1, ent2, string2, ent3, string3, ent4, string4, e
 
 waittill_any_ents_two( ent1, string1, ent2, string2 )
 {
-/#
     assert( isdefined( ent1 ) );
-#/
-/#
     assert( isdefined( string1 ) );
-#/
+
     if ( isdefined( ent2 ) && isdefined( string2 ) )
         ent2 endon( string2 );
 
@@ -690,12 +657,9 @@ isstunned()
 
 flag( flagname )
 {
-/#
     assert( isdefined( flagname ), "Tried to check flag but the flag was not defined." );
-#/
-/#
     assert( isdefined( level.flag[flagname] ), "Tried to check flag " + flagname + " but the flag was not initialized." );
-#/
+
     if ( !level.flag[flagname] )
         return false;
 
@@ -726,11 +690,7 @@ flag_init( flagname, val, b_is_trigger )
         level.sp_stat_tracking_func = ::empty;
 
     if ( !isdefined( level.first_frame ) )
-    {
-/#
         assert( !isdefined( level.flag[flagname] ), "Attempt to reinitialize existing flag: " + flagname );
-#/
-    }
 
     if ( isdefined( val ) && val )
         level.flag[flagname] = 1;
@@ -754,9 +714,7 @@ flag_init( flagname, val, b_is_trigger )
 
 flag_set( flagname )
 {
-/#
     assert( isdefined( level.flag[flagname] ), "Attempt to set a flag before calling flag_init: " + flagname );
-#/
     level.flag[flagname] = 1;
     level notify( flagname );
     set_trigger_flag_permissions( flagname );
@@ -808,9 +766,8 @@ flag_wait_any_array( a_flags )
 
 flag_clear( flagname )
 {
-/#
     assert( isdefined( level.flag[flagname] ), "Attempt to set a flag before calling flag_init: " + flagname );
-#/
+
     if ( level.flag[flagname] )
     {
         level.flag[flagname] = 0;
@@ -943,12 +900,9 @@ call_func( s_func )
 
 array_thread( entities, func, arg1, arg2, arg3, arg4, arg5, arg6 )
 {
-/#
     assert( isdefined( entities ), "Undefined entity array passed to common_scriptsutility::array_thread" );
-#/
-/#
     assert( isdefined( func ), "Undefined function passed to common_scriptsutility::array_thread" );
-#/
+
     if ( isarray( entities ) )
     {
         if ( isdefined( arg6 ) )
@@ -993,12 +947,9 @@ array_thread( entities, func, arg1, arg2, arg3, arg4, arg5, arg6 )
 
 array_ent_thread( entities, func, arg1, arg2, arg3, arg4, arg5 )
 {
-/#
     assert( isdefined( entities ), "Undefined entity array passed to common_scriptsutility::array_ent_thread" );
-#/
-/#
     assert( isdefined( func ), "Undefined function passed to common_scriptsutility::array_ent_thread" );
-#/
+
     if ( isarray( entities ) )
     {
         if ( entities.size )
@@ -1015,9 +966,8 @@ array_ent_thread( entities, func, arg1, arg2, arg3, arg4, arg5 )
 
 single_thread( entity, func, arg1, arg2, arg3, arg4, arg5, arg6 )
 {
-/#
     assert( isdefined( entity ), "Undefined entity passed to common_scriptsutility::single_thread()" );
-#/
+
     if ( isdefined( arg6 ) )
         entity thread [[ func ]]( arg1, arg2, arg3, arg4, arg5, arg6 );
     else if ( isdefined( arg5 ) )
@@ -1103,9 +1053,8 @@ trigger_wait( str_name, str_key, e_entity )
     if ( isdefined( str_name ) )
     {
         triggers = getentarray( str_name, str_key );
-/#
         assert( triggers.size > 0, "trigger not found: " + str_name + " key: " + str_key );
-#/
+
         if ( triggers.size == 1 )
         {
             trigger_hit = triggers[0];
@@ -1278,9 +1227,8 @@ getstruct( name, type )
 {
     if ( !isdefined( type ) )
         type = "targetname";
-/#
+
     assert( isdefined( level.struct_class_names ), "Tried to getstruct before the structs were init" );
-#/
     array = level.struct_class_names[type][name];
 
     if ( !isdefined( array ) )
@@ -1301,9 +1249,8 @@ getstructarray( name, type )
 {
     if ( !isdefined( type ) )
         type = "targetname";
-/#
+
     assert( isdefined( level.struct_class_names ), "Tried to getstruct before the structs were init" );
-#/
     array = level.struct_class_names[type][name];
 
     if ( !isdefined( array ) )
@@ -1329,9 +1276,7 @@ structdelete()
 
 struct_class_init()
 {
-/#
     assert( !isdefined( level.struct_class_names ), "level.struct_class_names is being initialized in the wrong place! It shouldn't be initialized yet." );
-#/
     level.struct_class_names = [];
     level.struct_class_names["target"] = [];
     level.struct_class_names["targetname"] = [];
@@ -1370,9 +1315,7 @@ struct_class_init()
 
         if ( isdefined( s_struct.script_linkname ) )
         {
-/#
             assert( !isdefined( level.struct_class_names["script_linkname"][s_struct.script_linkname] ), "Two structs have the same linkname" );
-#/
             level.struct_class_names["script_linkname"][s_struct.script_linkname][0] = s_struct;
         }
 
@@ -1428,9 +1371,8 @@ fileprint_map_header( binclude_blank_worldspawn )
 {
     if ( !isdefined( binclude_blank_worldspawn ) )
         binclude_blank_worldspawn = 0;
-/#
+
     assert( isdefined( level.fileprint ) );
-#/
 /#
     fileprint_chk( level.fileprint, "iwmap 4" );
     fileprint_chk( level.fileprint, "\"000_Global\" flags  active" );
@@ -1640,9 +1582,8 @@ _disableusability()
 _enableusability()
 {
     self.disabledusability--;
-/#
     assert( self.disabledusability >= 0 );
-#/
+
     if ( !self.disabledusability )
         self enableusability();
 }
@@ -1665,9 +1606,8 @@ _disableweapon()
 _enableweapon()
 {
     self.disabledweapon--;
-/#
     assert( self.disabledweapon >= 0 );
-#/
+
     if ( !self.disabledweapon )
         self enableweapons();
 }
@@ -1692,12 +1632,8 @@ _delay_thread_proc( func, timer, param1, param2, param3, param4, param5, param6 
 
 delay_notify( str_notify, n_delay, str_endon )
 {
-/#
     assert( isdefined( str_notify ) );
-#/
-/#
     assert( isdefined( n_delay ) );
-#/
     self thread _delay_notify_proc( str_notify, n_delay, str_endon );
 }
 
@@ -1718,15 +1654,10 @@ notify_delay_with_ender( snotifystring, fdelay, ender )
 {
     if ( isdefined( ender ) )
         level endon( ender );
-/#
+
     assert( isdefined( self ) );
-#/
-/#
     assert( isdefined( snotifystring ) );
-#/
-/#
     assert( isdefined( fdelay ) );
-#/
     self endon( "death" );
 
     if ( fdelay > 0 )

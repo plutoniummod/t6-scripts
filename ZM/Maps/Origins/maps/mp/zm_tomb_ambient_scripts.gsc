@@ -52,13 +52,9 @@ move_zeppelin_down_new_path( a_structs )
 
     if ( !isdefined( s_path_start.goal_struct ) )
     {
-/#
         assert( isdefined( s_path_start.target ), "move_zeppelin_down_new_path found start struct at " + s_path_start.origin + " without a target! These are needed for zeppelin splines!" );
-#/
         s_path_start.goal_struct = getstruct( s_path_start.target, "targetname" );
-/#
         assert( isdefined( s_path_start.goal_struct ), "move_zeppelin_down_new_path couldn't find goal for path start struct at " + s_path_start.origin );
-#/
     }
 
     n_move_time = randomfloatrange( 120.0, 150.0 );

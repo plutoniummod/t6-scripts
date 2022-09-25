@@ -150,9 +150,7 @@ watchhackertoolfired()
         self forceoffhandend();
         clip_ammo = self getweaponammoclip( "pda_hack_mp" );
         clip_ammo--;
-/#
         assert( clip_ammo >= 0 );
-#/
         self setweaponammoclip( "pda_hack_mp", clip_ammo );
         self switchtoweapon( self getlastweapon() );
     }
@@ -301,9 +299,8 @@ hackertooltargetloop()
 
             if ( self.hackertoollocktimeelapsed < locklengthms / 1000 )
                 continue;
-/#
+
             assert( isdefined( self.hackertooltarget ) );
-#/
             self notify( "stop_lockon_sound" );
             self.hackertoollockfinalized = 1;
             self weaponlockfinalize( self.hackertooltarget );
@@ -564,9 +561,7 @@ gethackertoolradius( target )
 
     if ( isentityhackablecarepackage( target ) )
     {
-/#
         assert( isdefined( target.hackertoolradius ) );
-#/
         radius = target.hackertoolradius;
     }
     else if ( isentityhackableweaponobject( target ) )
@@ -629,9 +624,8 @@ gethacktime( target )
 
     if ( isentityhackablecarepackage( target ) )
     {
-/#
         assert( isdefined( target.hackertooltimems ) );
-#/
+
         if ( isdefined( target.owner ) && target.owner == self )
             time = level.carepackageownerhackertooltimems;
         else if ( isdefined( target.owner ) && target.owner.team == self.team )

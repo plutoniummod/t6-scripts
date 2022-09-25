@@ -142,9 +142,8 @@ addkillstreaktorule( hardpointtype, rule, counttowards, checkagainst )
         level.killstreaktype[hardpointtype] = [];
 
     keys = getarraykeys( level.killstreaktype[hardpointtype] );
-/#
     assert( isdefined( level.killstreakrules[rule] ) );
-#/
+
     if ( !isdefined( level.killstreaktype[hardpointtype][rule] ) )
         level.killstreaktype[hardpointtype][rule] = spawnstruct();
 
@@ -154,14 +153,13 @@ addkillstreaktorule( hardpointtype, rule, counttowards, checkagainst )
 
 killstreakstart( hardpointtype, team, hacked, displayteammessage )
 {
-/#
     assert( isdefined( team ), "team needs to be defined" );
-#/
+
     if ( self iskillstreakallowed( hardpointtype, team ) == 0 )
         return -1;
-/#
+
     assert( isdefined( hardpointtype ) );
-#/
+
     if ( !isdefined( hacked ) )
         hacked = 0;
 
@@ -180,9 +178,8 @@ killstreakstart( hardpointtype, team, hacked, displayteammessage )
     {
         if ( !level.killstreaktype[hardpointtype][key].counts )
             continue;
-/#
+
         assert( isdefined( level.killstreakrules[key] ) );
-#/
         level.killstreakrules[key].cur++;
 
         if ( level.teambased )
@@ -212,12 +209,8 @@ killstreakstart( hardpointtype, team, hacked, displayteammessage )
 
 killstreakstop( hardpointtype, team, id )
 {
-/#
     assert( isdefined( team ), "team needs to be defined" );
-#/
-/#
     assert( isdefined( hardpointtype ) );
-#/
 /#
     killstreak_debug_text( "Stopped killstreak: " + hardpointtype + " for team: " + team + " id: " + id );
 #/
@@ -227,25 +220,17 @@ killstreakstop( hardpointtype, team, id )
     {
         if ( !level.killstreaktype[hardpointtype][key].counts )
             continue;
-/#
+
         assert( isdefined( level.killstreakrules[key] ) );
-#/
         level.killstreakrules[key].cur--;
-/#
         assert( level.killstreakrules[key].cur >= 0 );
-#/
+
         if ( level.teambased )
         {
-/#
             assert( isdefined( team ) );
-#/
-/#
             assert( isdefined( level.killstreakrules[key].curteam[team] ) );
-#/
             level.killstreakrules[key].curteam[team]--;
-/#
             assert( level.killstreakrules[key].curteam[team] >= 0 );
-#/
         }
     }
 
@@ -276,12 +261,8 @@ killstreakstop( hardpointtype, team, id )
 
 iskillstreakallowed( hardpointtype, team )
 {
-/#
     assert( isdefined( team ), "team needs to be defined" );
-#/
-/#
     assert( isdefined( hardpointtype ) );
-#/
     isallowed = 1;
     keys = getarraykeys( level.killstreaktype[hardpointtype] );
 

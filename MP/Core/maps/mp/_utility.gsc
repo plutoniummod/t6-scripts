@@ -7,9 +7,8 @@
 
 addcallback( event, func )
 {
-/#
     assert( isdefined( event ), "Trying to set a callback on an undefined event." );
-#/
+
     if ( !isdefined( level._callbacks ) || !isdefined( level._callbacks[event] ) )
         level._callbacks[event] = [];
 
@@ -171,9 +170,9 @@ brush_delete()
 
     if ( !isdefined( self.model ) )
         return;
-/#
+
     assert( isdefined( self.model ) );
-#/
+
     if ( level.createfx_enabled )
     {
         if ( isdefined( self.exploded ) )
@@ -200,9 +199,8 @@ brush_show()
 {
     if ( isdefined( self.v["delay"] ) )
         wait( self.v["delay"] );
-/#
+
     assert( isdefined( self.model ) );
-#/
     self.model show();
     self.model solid();
 
@@ -379,9 +377,8 @@ deleteplacedentity( entity )
 
 playsoundonplayers( sound, team )
 {
-/#
     assert( isdefined( level.players ) );
-#/
+
     if ( level.splitscreen )
     {
         if ( isdefined( level.players[0] ) )
@@ -563,9 +560,8 @@ clearlowermessage( fadetime )
 
 printonteam( text, team )
 {
-/#
     assert( isdefined( level.players ) );
-#/
+
     for ( i = 0; i < level.players.size; i++ )
     {
         player = level.players[i];
@@ -577,9 +573,8 @@ printonteam( text, team )
 
 printboldonteam( text, team )
 {
-/#
     assert( isdefined( level.players ) );
-#/
+
     for ( i = 0; i < level.players.size; i++ )
     {
         player = level.players[i];
@@ -591,9 +586,8 @@ printboldonteam( text, team )
 
 printboldonteamarg( text, team, arg )
 {
-/#
     assert( isdefined( level.players ) );
-#/
+
     for ( i = 0; i < level.players.size; i++ )
     {
         player = level.players[i];
@@ -633,9 +627,7 @@ printandsoundoneveryone( team, enemyteam, printfriendly, printenemy, soundfriend
 
     if ( isdefined( soundenemy ) )
     {
-/#
         assert( shoulddosounds );
-#/
         shoulddoenemysounds = 1;
     }
 
@@ -673,17 +665,14 @@ printandsoundoneveryone( team, enemyteam, printfriendly, printenemy, soundfriend
 
         if ( shoulddosounds )
         {
-/#
             assert( level.splitscreen );
-#/
             level.players[0] playlocalsound( soundfriendly );
         }
     }
     else
     {
-/#
         assert( shoulddosounds );
-#/
+
         if ( shoulddoenemysounds )
         {
             for ( i = 0; i < level.players.size; i++ )
@@ -1301,9 +1290,8 @@ player_flag_init( message, trigger )
         self.flag = [];
         self.flags_lock = [];
     }
-/#
+
     assert( !isdefined( self.flag[message] ), "Attempt to reinitialize existing message: " + message );
-#/
     self.flag[message] = 0;
 /#
     self.flags_lock[message] = 0;
@@ -1340,9 +1328,8 @@ player_flag_clear( message )
 
 player_flag( message )
 {
-/#
     assert( isdefined( message ), "Tried to check flag but the flag was not defined." );
-#/
+
     if ( !self.flag[message] )
         return false;
 
@@ -1602,9 +1589,7 @@ get_players()
 
 getfx( fx )
 {
-/#
     assert( isdefined( level._effect[fx] ), "Fx " + fx + " is not defined in level._effect." );
-#/
     return level._effect[fx];
 }
 
@@ -1618,9 +1603,7 @@ struct_arrayspawn()
 
 structarray_add( struct, object )
 {
-/#
     assert( !isdefined( object.struct_array_index ) );
-#/
     struct.array[struct.lastindex] = object;
     object.struct_array_index = struct.lastindex;
     struct.lastindex++;
@@ -1663,9 +1646,8 @@ waittill_either( msg1, msg2 )
 
 combinearrays( array1, array2 )
 {
-/#
     assert( isdefined( array1 ) || isdefined( array2 ) );
-#/
+
     if ( !isdefined( array1 ) && isdefined( array2 ) )
         return array2;
 
@@ -2256,12 +2238,8 @@ waittillnotmoving()
 
 mayapplyscreeneffect()
 {
-/#
     assert( isdefined( self ) );
-#/
-/#
     assert( isplayer( self ) );
-#/
     return !isdefined( self.viewlockedentity );
 }
 
@@ -2352,9 +2330,8 @@ spread_array_thread( entities, process, var1, var2, var3 )
 
 freeze_player_controls( boolean )
 {
-/#
     assert( isdefined( boolean ), "'freeze_player_controls()' has not been passed an argument properly." );
-#/
+
     if ( boolean && isdefined( self ) )
         self freezecontrols( boolean );
     else if ( !boolean && isdefined( self ) && !level.gameended )
@@ -2461,15 +2438,9 @@ vectoangles( vector )
 
 deleteaftertime( time )
 {
-/#
     assert( isdefined( self ) );
-#/
-/#
     assert( isdefined( time ) );
-#/
-/#
     assert( time >= 0.05 );
-#/
     self thread deleteaftertimethread( time );
 }
 
@@ -2484,9 +2455,8 @@ setusingremote( remotename )
 {
     if ( isdefined( self.carryicon ) )
         self.carryicon.alpha = 0;
-/#
+
     assert( !self isusingremote() );
-#/
     self.usingremote = remotename;
     self disableoffhandweapons();
     self notify( "using_remote" );
@@ -2494,9 +2464,7 @@ setusingremote( remotename )
 
 getremotename()
 {
-/#
     assert( self isusingremote() );
-#/
     return self.usingremote;
 }
 
@@ -2513,9 +2481,8 @@ getlastweapon()
         last_weapon = self.lastnonkillstreakweapon;
     else if ( self hasweapon( self.lastdroppableweapon ) )
         last_weapon = self.lastdroppableweapon;
-/#
+
     assert( isdefined( last_weapon ) );
-#/
     return last_weapon;
 }
 
@@ -2649,9 +2616,8 @@ getclientfieldtoplayer( field_name )
 
 isenemyplayer( player )
 {
-/#
     assert( isdefined( player ) );
-#/
+
     if ( !isplayer( player ) )
         return false;
 
@@ -2668,9 +2634,8 @@ isenemyplayer( player )
 
 getweaponclass( weapon )
 {
-/#
     assert( isdefined( weapon ) );
-#/
+
     if ( !isdefined( weapon ) )
         return undefined;
 

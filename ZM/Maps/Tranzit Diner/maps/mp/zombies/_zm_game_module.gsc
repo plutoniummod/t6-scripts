@@ -21,11 +21,7 @@ register_game_module( index, module_name, pre_init_func, post_init_func, pre_ini
             continue;
 
         if ( isdefined( level._game_modules[i].index ) && level._game_modules[i].index == index )
-        {
-/#
             assert( level._game_modules[i].index != index, "A Game module is already registered for index (" + index + ")" );
-#/
-        }
     }
 
     level._game_modules[level._num_registered_game_modules] = spawnstruct();
@@ -52,9 +48,7 @@ set_current_game_module( game_module_index )
 
     if ( !isdefined( game_module ) )
     {
-/#
         assert( isdefined( game_module ), "unknown game module (" + game_module_index + ")" );
-#/
         return;
     }
 

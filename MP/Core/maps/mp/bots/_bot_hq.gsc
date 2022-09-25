@@ -151,9 +151,8 @@ bot_patrol_hq()
     }
 
     nodes = getvisiblenodes( nearest );
-/#
     assert( nodes.size );
-#/
+
     for ( i = randomint( nodes.size ); i < nodes.size; i++ )
     {
         if ( self maps\mp\bots\_bot::bot_friend_goal_in_radius( "hq_radio", nodes[i].origin, 128 ) == 0 )

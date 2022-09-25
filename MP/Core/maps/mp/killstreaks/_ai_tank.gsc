@@ -1241,11 +1241,11 @@ update_weapon_hud( player )
 
         switch ( self.numberrockets )
         {
-            case "0":
+            case 0:
                 player.tank_rocket_3 setshader( "mech_check_line", 32, 16 );
-            case "1":
+            case 1:
                 player.tank_rocket_2 setshader( "mech_check_line", 32, 16 );
-            case "2":
+            case 2:
                 player.tank_rocket_1 setshader( "mech_check_line", 32, 16 );
                 break;
         }

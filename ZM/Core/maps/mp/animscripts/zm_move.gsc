@@ -98,9 +98,8 @@ getdesiredsidestepdir( sidesteptype )
         self.desiredstepdir = "forward";
         return self.desiredstepdir;
     }
-/#
+
     assert( sidesteptype == "step", "Unsupported SideStepType" );
-#/
     randomroll = randomfloat( 1 );
 
     if ( self.a.steppeddir < 0 )

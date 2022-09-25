@@ -377,19 +377,19 @@ updatedebughud( hudindex, text, value )
 /#
     switch ( hudindex )
     {
-        case "1":
+        case 1:
             level.sessionadverthud_1a_text = text;
             level.sessionadverthud_1b_text = value;
             break;
-        case "2":
+        case 2:
             level.sessionadverthud_2a_text = text;
             level.sessionadverthud_2b_text = value;
             break;
-        case "3":
+        case 3:
             level.sessionadverthud_3a_text = text;
             level.sessionadverthud_3b_text = value;
             break;
-        case "4":
+        case 4:
             level.sessionadverthud_4a_text = text;
             level.sessionadverthud_4b_text = value;
             break;

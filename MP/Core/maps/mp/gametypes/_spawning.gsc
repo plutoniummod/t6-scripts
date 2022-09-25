@@ -133,9 +133,9 @@ monitorgpsjammer()
 
     if ( minspeedsq == 0 )
         return;
-/#
+
     assert( timeperiodsec >= 0.05 );
-#/
+
     if ( timeperiodsec < 0.05 )
         return;
 
@@ -286,18 +286,11 @@ get_influencer_type_index( curve )
 
 create_player_influencers()
 {
-/#
     assert( !isdefined( self.influencer_enemy_sphere ) );
-#/
-/#
     assert( !isdefined( self.influencer_weapon_cylinder ) );
-#/
-/#
     assert( !level.teambased || !isdefined( self.influencer_friendly_sphere ) );
-#/
-/#
     assert( !level.teambased || !isdefined( self.influencer_friendly_cylinder ) );
-#/
+
     if ( !level.teambased )
     {
         team_mask = level.spawnsystem.ispawn_teammask_free;
@@ -995,12 +988,9 @@ get_best_spawnpoint( point_team, influencer_team, player, predictedspawn )
         vis_team_mask = level.spawnsystem.ispawn_teammask_free;
 
     scored_spawn_points = getsortedspawnpoints( point_team, influencer_team, vis_team_mask, player, predictedspawn );
-/#
     assert( scored_spawn_points.size > 0 );
-#/
-/#
     assert( scored_spawn_points.size == 1 );
-#/
+
     if ( !predictedspawn )
         bbprint( "mpspawnpointsused", "reason %s x %d y %d z %d", "point used", scored_spawn_points[0].origin );
 

@@ -1025,13 +1025,9 @@ nuked_mannequin_init()
 
     for ( i = 0; i < remove_count; i++ )
     {
-/#
         assert( isdefined( mannequins[i].target ) );
-#/
         collision = getent( mannequins[i].target, "targetname" );
-/#
         assert( isdefined( collision ) );
-#/
         collision delete();
         mannequins[i] delete();
         level.mannequin_count--;

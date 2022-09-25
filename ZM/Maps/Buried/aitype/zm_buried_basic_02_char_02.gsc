@@ -376,13 +376,13 @@ main()
 
     switch ( randchar )
     {
-        case "0":
+        case 0:
             character\c_zom_zombie_buried_miner2::main();
             break;
-        case "1":
+        case 1:
             character\c_zom_zombie_buried_miner2_nohat::main();
             break;
-        case "2":
+        case 2:
             character\c_zom_zombie_buried_miner2_nohat::main();
             break;
     }

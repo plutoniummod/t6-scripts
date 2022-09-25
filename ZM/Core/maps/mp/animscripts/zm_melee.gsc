@@ -10,9 +10,7 @@ meleecombat()
 {
     self endon( "end_melee" );
     self endon( "killanimscript" );
-/#
     assert( canmeleeanyrange() );
-#/
     self orientmode( "face enemy" );
 
     if ( is_true( self.sliding_on_goo ) )
@@ -160,9 +158,7 @@ canmeleeinternal( state )
 
     if ( isdefined( self.disablemelee ) )
     {
-/#
         assert( self.disablemelee );
-#/
         return false;
     }
 

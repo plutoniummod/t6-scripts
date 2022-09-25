@@ -208,11 +208,7 @@ weapon_class_register( weapon, weapon_type )
     else if ( weapon_type == "weapon_rifle" )
         level.inventory_array[weapon] = 1;
     else
-    {
-/#
         assert( 0, "Weapon group info is missing from statsTable for: " + weapon_type );
-#/
-    }
 }
 
 cac_init()
@@ -305,9 +301,7 @@ cac_init()
 
 getclasschoice( response )
 {
-/#
     assert( isdefined( level.classmap[response] ) );
-#/
     return level.classmap[response];
 }
 
@@ -368,9 +362,8 @@ givekillstreaks( classnum )
 
         if ( isdefined( killstreakindex ) && killstreakindex > 0 )
         {
-/#
             assert( isdefined( level.tbl_killstreakdata[killstreakindex] ), "KillStreak #:" + killstreakindex + "'s data is undefined" );
-#/
+
             if ( isdefined( level.tbl_killstreakdata[killstreakindex] ) )
             {
                 self.killstreak[currentkillstreak] = level.tbl_killstreakdata[killstreakindex];
@@ -583,9 +576,7 @@ giveloadout( team, class )
     else
     {
         pixbeginevent( "default class" );
-/#
         assert( isdefined( self.pers["class"] ), "Player during spawn and loadout got no class!" );
-#/
         class_num = level.classtoclassnum[class];
         self.class_num = class_num;
         pixendevent();
@@ -700,9 +691,7 @@ giveloadout( team, class )
         spawnweapon = self.spawnweapon;
 
     self.pers["changed_class"] = 0;
-/#
     assert( spawnweapon != "" );
-#/
     self.spawnweapon = spawnweapon;
     self.pers["spawnWeapon"] = self.spawnweapon;
     self setspawnweapon( spawnweapon );
@@ -823,9 +812,7 @@ setweaponammooverall( weaponname, amount )
     {
         self setweaponammoclip( weaponname, amount );
         diff = amount - self getweaponammoclip( weaponname );
-/#
         assert( diff >= 0 );
-#/
         self setweaponammostock( weaponname, diff );
     }
 }
@@ -966,15 +953,10 @@ cac_modified_vehicle_damage( victim, attacker, damage, meansofdeath, weapon, inf
 
 cac_modified_damage( victim, attacker, damage, mod, weapon, inflictor, hitloc )
 {
-/#
     assert( isdefined( victim ) );
-#/
-/#
     assert( isdefined( attacker ) );
-#/
-/#
     assert( isplayer( victim ) );
-#/
+
     if ( victim == attacker )
         return damage;
 

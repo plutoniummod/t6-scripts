@@ -101,9 +101,8 @@ ice_tiles_randomize()
 
         e_tile waittill( "movedone" );
     }
-/#
+
     assert( a_unused_tiles.size == n_total_tiles - a_original_positions.size );
-#/
     array_delete( a_unused_tiles );
 }
 

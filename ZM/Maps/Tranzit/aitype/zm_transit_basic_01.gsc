@@ -471,10 +471,10 @@ main()
 
     switch ( randchar )
     {
-        case "0":
+        case 0:
             character\c_zom_zombie1_01::main();
             break;
-        case "1":
+        case 1:
             character\c_zom_zombie1_02::main();
             break;
     }

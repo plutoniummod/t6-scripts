@@ -332,9 +332,7 @@ maze_do_zombie_spawn( spot )
     self endon( "death" );
     spots = level.maze_hedge_spawnpoints;
     spot = undefined;
-/#
     assert( spots.size > 0, "No spawn locations found" );
-#/
     players_in_maze = maps\mp\zombies\_zm_zonemgr::get_players_in_zone( "zone_maze", 1 );
 
     if ( isdefined( players_in_maze ) && players_in_maze.size != 0 )

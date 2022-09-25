@@ -112,9 +112,7 @@ init_vulture()
     level thread vulture_perk_watch_fire_sale();
     level thread vulture_perk_watch_powerup_drops();
     level thread vulture_handle_solo_quick_revive();
-/#
     assert( !isdefined( level.exit_level_func ), "vulture perk is attempting to use level.exit_level_func, but one already exists for this level!" );
-#/
     level.exit_level_func = ::vulture_zombies_find_exit_point;
     level.perk_vulture.invalid_bonus_ammo_weapons = array( "time_bomb_zm", "time_bomb_detonator_zm" );
 
@@ -210,9 +208,7 @@ vulture_host_migration_func()
 
 vulture_perk_add_invalid_bonus_ammo_weapon( str_weapon )
 {
-/#
     assert( isdefined( level.perk_vulture ), "vulture_perk_add_invalid_bonus_ammo_weapon() was called before vulture perk was initialized. Make sure this is called after the vulture perk initialization func!" );
-#/
     level.perk_vulture.invalid_bonus_ammo_weapons[level.perk_vulture.invalid_bonus_ammo_weapons.size] = str_weapon;
 }
 
@@ -833,9 +829,7 @@ give_vulture_bonus( str_bonus )
             self give_bonus_stink();
             break;
         default:
-/#
             assert( "invalid bonus string '" + str_bonus + "' used in give_vulture_bonus()!" );
-#/
             break;
     }
 }
@@ -1062,9 +1056,7 @@ vulture_debug_text( str_text )
 
 vulture_clientfield_scriptmover_set( str_field_name )
 {
-/#
     assert( isdefined( level.perk_vulture.clientfields.scriptmovers[str_field_name] ), str_field_name + " is not a valid client field for vulture perk!" );
-#/
     n_value = self getclientfield( "vulture_perk_scriptmover" );
     n_value |= 1 << level.perk_vulture.clientfields.scriptmovers[str_field_name];
     self setclientfield( "vulture_perk_scriptmover", n_value );
@@ -1072,9 +1064,7 @@ vulture_clientfield_scriptmover_set( str_field_name )
 
 vulture_clientfield_scriptmover_clear( str_field_name )
 {
-/#
     assert( isdefined( level.perk_vulture.clientfields.scriptmovers[str_field_name] ), str_field_name + " is not a valid client field for vulture perk!" );
-#/
     n_value = self getclientfield( "vulture_perk_scriptmover" );
     n_value &= ~( 1 << level.perk_vulture.clientfields.scriptmovers[str_field_name] );
     self setclientfield( "vulture_perk_scriptmover", n_value );
@@ -1082,9 +1072,7 @@ vulture_clientfield_scriptmover_clear( str_field_name )
 
 vulture_clientfield_actor_set( str_field_name )
 {
-/#
     assert( isdefined( level.perk_vulture.clientfields.actors[str_field_name] ), str_field_name + " is not a valid field for vulture_clientfield_actor_set!" );
-#/
     n_value = getclientfield( "vulture_perk_actor" );
     n_value |= 1 << level.perk_vulture.clientfields.actors[str_field_name];
     self setclientfield( "vulture_perk_actor", n_value );
@@ -1092,9 +1080,7 @@ vulture_clientfield_actor_set( str_field_name )
 
 vulture_clientfield_actor_clear( str_field_name )
 {
-/#
     assert( isdefined( level.perk_vulture.clientfields.actors[str_field_name] ), str_field_name + " is not a valid field for vulture_clientfield_actor_clear!" );
-#/
     n_value = getclientfield( "vulture_perk_actor" );
     n_value &= ~( 1 << level.perk_vulture.clientfields.actors[str_field_name] );
     self setclientfield( "vulture_perk_actor", n_value );
@@ -1102,9 +1088,7 @@ vulture_clientfield_actor_clear( str_field_name )
 
 vulture_clientfield_toplayer_set( str_field_name )
 {
-/#
     assert( isdefined( level.perk_vulture.clientfields.toplayer[str_field_name] ), str_field_name + " is not a valid client field for vulture perk!" );
-#/
     n_value = self getclientfieldtoplayer( "vulture_perk_toplayer" );
     n_value |= 1 << level.perk_vulture.clientfields.toplayer[str_field_name];
     self setclientfieldtoplayer( "vulture_perk_toplayer", n_value );
@@ -1112,9 +1096,7 @@ vulture_clientfield_toplayer_set( str_field_name )
 
 vulture_clientfield_toplayer_clear( str_field_name )
 {
-/#
     assert( isdefined( level.perk_vulture.clientfields.toplayer[str_field_name] ), str_field_name + " is not a valid client field for vulture perk!" );
-#/
     n_value = self getclientfieldtoplayer( "vulture_perk_toplayer" );
     n_value &= ~( 1 << level.perk_vulture.clientfields.toplayer[str_field_name] );
     self setclientfieldtoplayer( "vulture_perk_toplayer", n_value );
@@ -1252,9 +1234,8 @@ _get_zombie_exit_point()
     player = get_players()[0];
     n_dot_best = 9999999;
     a_exit_points = self [[ level.perk_vulture.func_zombies_find_valid_exit_locations ]]();
-/#
     assert( a_exit_points.size > 0, "_get_zombie_exit_point() couldn't find any zombie exit points for player at " + player.origin + "! Add more dog_locations!" );
-#/
+
     for ( i = 0; i < a_exit_points.size; i++ )
     {
         v_to_player = vectornormalize( player.origin - self.origin );

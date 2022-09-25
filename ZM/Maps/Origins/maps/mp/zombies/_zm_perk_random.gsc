@@ -191,9 +191,8 @@ machines_setup()
     wait 0.5;
     level.perk_bottle_weapon_array = arraycombine( level.machine_assets, level._custom_perks, 0, 1 );
     start_machines = getentarray( "start_machine", "script_noteworthy" );
-/#
     assert( isdefined( start_machines.size != 0 ), "missing start random perk machine" );
-#/
+
     if ( start_machines.size == 1 )
         level.random_perk_start_machine = start_machines[0];
     else

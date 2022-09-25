@@ -76,9 +76,7 @@ emp_isteamemped( check_team )
 
 emp_use( lifeid )
 {
-/#
     assert( isdefined( self ) );
-#/
     killstreak_id = self maps\mp\killstreaks\_killstreakrules::killstreakstart( "emp_mp", self.team, 0, 1 );
 
     if ( killstreak_id == -1 )
@@ -104,9 +102,7 @@ emp_jamotherteams( teamname, killstreak_id )
 {
     level endon( "game_ended" );
     overlays = [];
-/#
     assert( isdefined( level.teams[teamname] ) );
-#/
     level notify( "EMP_JamOtherTeams" + teamname );
     level endon( "EMP_JamOtherTeams" + teamname );
     level.empowners[teamname] = self;
@@ -149,9 +145,8 @@ emp_jamplayers( owner, killstreak_id )
     level notify( "EMP_JamPlayers" );
     level endon( "EMP_JamPlayers" );
     overlays = [];
-/#
     assert( isdefined( owner ) );
-#/
+
     foreach ( player in level.players )
     {
         if ( player == owner )

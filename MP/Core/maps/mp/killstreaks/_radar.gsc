@@ -106,9 +106,7 @@ teamhassatellite( team )
 useradaritem( hardpointtype, team, displaymessage )
 {
     team = self.team;
-/#
     assert( isdefined( level.players ) );
-#/
     self maps\mp\killstreaks\_killstreaks::playkillstreakstartdialog( hardpointtype, team );
 
     if ( level.teambased )

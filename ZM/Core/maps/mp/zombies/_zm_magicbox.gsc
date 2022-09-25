@@ -1080,9 +1080,7 @@ treasure_chest_weapon_spawn( chest, player, respin )
 
     self endon( "box_hacked_respin" );
     self thread clean_up_hacked_box();
-/#
     assert( isdefined( player ) );
-#/
     self.weapon_string = undefined;
     modelname = undefined;
     rand = undefined;
@@ -1142,7 +1140,7 @@ treasure_chest_weapon_spawn( chest, player, respin )
     if ( weapon_is_dual_wield( rand ) )
         self.weapon_model_dw = spawn_weapon_model( rand, get_left_hand_weapon_model_name( rand ), self.weapon_model.origin - vectorscale( ( 1, 1, 1 ), 3.0 ), self.weapon_model.angles );
 
-    if ( getdvar( _hash_39A6CD41 ) == "1" && !( isdefined( chest._box_opened_by_fire_sale ) && chest._box_opened_by_fire_sale ) && !( isdefined( level.zombie_vars["zombie_powerup_fire_sale_on"] ) && level.zombie_vars["zombie_powerup_fire_sale_on"] && self [[ level._zombiemode_check_firesale_loc_valid_func ]]() ) )
+    if ( getdvar( "magic_chest_movable" ) == "1" && !( isdefined( chest._box_opened_by_fire_sale ) && chest._box_opened_by_fire_sale ) && !( isdefined( level.zombie_vars["zombie_powerup_fire_sale_on"] ) && level.zombie_vars["zombie_powerup_fire_sale_on"] && self [[ level._zombiemode_check_firesale_loc_valid_func ]]() ) )
     {
         random = randomint( 100 );
 

@@ -176,9 +176,7 @@ watch_zombie_blood_early_exit()
 
 make_zombie_blood_entity()
 {
-/#
     assert( isdefined( level.a_zombie_blood_entities ), "zombie blood powerup not initiliazed in level" );
-#/
     level.a_zombie_blood_entities[level.a_zombie_blood_entities.size] = self;
     self setinvisibletoall();
 

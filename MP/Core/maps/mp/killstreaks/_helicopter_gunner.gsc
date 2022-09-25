@@ -62,9 +62,8 @@ init()
 
 heli_gunner_killstreak( hardpointtype )
 {
-/#
     assert( hardpointtype == "helicopter_player_gunner_mp" );
-#/
+
     if ( !isdefined( level.heli_paths ) || !level.heli_paths.size )
     {
 /#
@@ -313,9 +312,7 @@ heli_fly_well( startnode, destnodes )
     self endon( "crashing" );
     self endon( "leaving" );
     nextnode = getent( startnode.target, "targetname" );
-/#
     assert( isdefined( nextnode ), "Next node in path is undefined, but has targetname" );
-#/
     self setspeed( 150, 80 );
     self setvehgoalpos( nextnode.origin + self.zoffset, 1 );
 

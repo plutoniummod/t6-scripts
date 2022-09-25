@@ -735,16 +735,16 @@ give_team_characters()
 
     switch ( self.characterindex )
     {
-        case "2":
-        case "0":
+        case 2:
+        case 0:
             self setmodel( "c_zom_player_cia_dlc1_fb" );
             self.voice = "american";
             self.skeleton = "base";
             self setviewmodel( "c_zom_suit_viewhands" );
             self.characterindex = 0;
             break;
-        case "3":
-        case "1":
+        case 3:
+        case 1:
             self setmodel( "c_zom_player_cdc_dlc1_fb" );
             self.voice = "american";
             self.skeleton = "base";
@@ -793,7 +793,7 @@ give_personality_characters()
 #/
     switch ( self.characterindex )
     {
-        case "2":
+        case 2:
             self character\c_transit_player_farmgirl::main();
             self setviewmodel( "c_zom_farmgirl_viewhands" );
             level.vox maps\mp\zombies\_zm_audio::zmbvoxinitspeaker( "player", "vox_plr_", self );
@@ -801,7 +801,7 @@ give_personality_characters()
             self.favorite_wall_weapons_list[self.favorite_wall_weapons_list.size] = "870mcs_zm";
             self set_player_is_female( 1 );
             break;
-        case "0":
+        case 0:
             self character\c_transit_player_oldman::main();
             self setviewmodel( "c_zom_oldman_viewhands" );
             level.vox maps\mp\zombies\_zm_audio::zmbvoxinitspeaker( "player", "vox_plr_", self );
@@ -809,7 +809,7 @@ give_personality_characters()
             self.favorite_wall_weapons_list[self.favorite_wall_weapons_list.size] = "claymore_zm";
             self set_player_is_female( 0 );
             break;
-        case "3":
+        case 3:
             self character\c_transit_player_engineer::main();
             self setviewmodel( "c_zom_engineer_viewhands" );
             level.vox maps\mp\zombies\_zm_audio::zmbvoxinitspeaker( "player", "vox_plr_", self );
@@ -817,7 +817,7 @@ give_personality_characters()
             self.favorite_wall_weapons_list[self.favorite_wall_weapons_list.size] = "m16_zm";
             self set_player_is_female( 0 );
             break;
-        case "1":
+        case 1:
             self character\c_buried_player_reporter_dam::main();
             self setviewmodel( "c_zom_reporter_viewhands" );
             level.vox maps\mp\zombies\_zm_audio::zmbvoxinitspeaker( "player", "vox_plr_", self );
@@ -1626,16 +1626,16 @@ buried_audio_custom_response_line( player, index, category, type )
 
     switch ( player.characterindex )
     {
-        case "0":
+        case 0:
             level maps\mp\zombies\_zm_audio::setup_hero_rival( player, samuel, marlton, category, type );
             break;
-        case "1":
+        case 1:
             level maps\mp\zombies\_zm_audio::setup_hero_rival( player, russman, misty, category, type );
             break;
-        case "2":
+        case 2:
             level maps\mp\zombies\_zm_audio::setup_hero_rival( player, marlton, samuel, category, type );
             break;
-        case "3":
+        case 3:
             level maps\mp\zombies\_zm_audio::setup_hero_rival( player, misty, russman, category, type );
             break;
     }

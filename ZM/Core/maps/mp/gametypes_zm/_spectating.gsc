@@ -147,13 +147,13 @@ setspectatepermissions()
 
     switch ( spectatetype )
     {
-        case "0":
+        case 0:
             self allowspectateallteams( 0 );
             self allowspectateteam( "freelook", 0 );
             self allowspectateteam( "none", 1 );
             self allowspectateteam( "localplayers", 0 );
             break;
-        case "3":
+        case 3:
             if ( self issplitscreen() && self otherlocalplayerstillalive() )
             {
                 self allowspectateallteams( 0 );
@@ -162,7 +162,7 @@ setspectatepermissions()
                 self allowspectateteam( "localplayers", 1 );
                 break;
             }
-        case "1":
+        case 1:
             if ( !level.teambased )
             {
                 self allowspectateallteams( 1 );
@@ -187,7 +187,7 @@ setspectatepermissions()
             }
 
             break;
-        case "2":
+        case 2:
             self allowspectateallteams( 1 );
             self allowspectateteam( "freelook", 1 );
             self allowspectateteam( "none", 1 );

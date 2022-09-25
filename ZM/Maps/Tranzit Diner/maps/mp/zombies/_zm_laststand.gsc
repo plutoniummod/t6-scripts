@@ -364,12 +364,9 @@ laststand_clean_up_reviving_any( playerbeingrevived )
 
 laststand_give_pistol()
 {
-/#
     assert( isdefined( self.laststandpistol ) );
-#/
-/#
     assert( self.laststandpistol != "none" );
-#/
+
     if ( isdefined( level.zombie_last_stand ) )
         [[ level.zombie_last_stand ]]();
     else
@@ -701,9 +698,8 @@ revive_trigger_think()
                 continue;
 
             gun = reviver getcurrentweapon();
-/#
             assert( isdefined( gun ) );
-#/
+
             if ( gun == level.revive_tool )
                 continue;
 
@@ -835,9 +831,7 @@ is_facing( facee )
 
 revive_do_revive( playerbeingrevived, revivergun )
 {
-/#
     assert( self is_reviving( playerbeingrevived ) );
-#/
     revivetime = 3;
 
     if ( self hasperk( "specialty_quickrevive" ) )
@@ -1062,15 +1056,9 @@ revive_success( reviver, b_track_stats )
 
 revive_force_revive( reviver )
 {
-/#
     assert( isdefined( self ) );
-#/
-/#
     assert( isplayer( self ) );
-#/
-/#
     assert( self player_is_in_laststand() );
-#/
     self thread revive_success( reviver );
 }
 
@@ -1155,12 +1143,8 @@ faderevivemessageover( playertorevive, time )
 
 revive_hud_show()
 {
-/#
     assert( isdefined( self ) );
-#/
-/#
     assert( isdefined( self.revive_hud ) );
-#/
     self.revive_hud.alpha = 1;
 }
 
@@ -1190,9 +1174,8 @@ drawcylinder( pos, rad, height )
 
 get_lives_remaining()
 {
-/#
     assert( level.laststandgetupallowed, "Lives only exist in the Laststand type GETUP." );
-#/
+
     if ( level.laststandgetupallowed && isdefined( self.laststand_info ) && isdefined( self.laststand_info.type_getup_lives ) )
         return max( 0, self.laststand_info.type_getup_lives );
 
@@ -1201,12 +1184,8 @@ get_lives_remaining()
 
 update_lives_remaining( increment )
 {
-/#
     assert( level.laststandgetupallowed, "Lives only exist in the Laststand type GETUP." );
-#/
-/#
     assert( isdefined( increment ), "Must specify increment true or false" );
-#/
     increment = isdefined( increment ) ? increment : 0;
     self.laststand_info.type_getup_lives = max( 0, increment ? self.laststand_info.type_getup_lives + 1 : self.laststand_info.type_getup_lives - 1 );
     self notify( "laststand_lives_updated" );

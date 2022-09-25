@@ -20,9 +20,7 @@ init()
 
 createteamobjpoint( name, origin, team, shader, alpha, scale )
 {
-/#
     assert( isdefined( level.teams[team] ) || team == "all" );
-#/
     objpoint = getobjpointbyname( name );
 
     if ( isdefined( objpoint ) )
@@ -65,17 +63,12 @@ createteamobjpoint( name, origin, team, shader, alpha, scale )
 
 deleteobjpoint( oldobjpoint )
 {
-/#
     assert( level.objpoints.size == level.objpointnames.size );
-#/
+
     if ( level.objpoints.size == 1 )
     {
-/#
         assert( level.objpointnames[0] == oldobjpoint.name );
-#/
-/#
         assert( isdefined( level.objpoints[oldobjpoint.name] ) );
-#/
         level.objpoints = [];
         level.objpointnames = [];
         oldobjpoint destroy();

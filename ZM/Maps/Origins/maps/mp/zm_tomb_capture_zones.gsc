@@ -255,13 +255,9 @@ setup_inaccessible_zombie_attack_points()
 
 set_attack_point_as_inaccessible( str_zone, n_index )
 {
-/#
     assert( isdefined( level.zone_capture.zones[str_zone] ), "set_attack_point_as_inaccessible couldn't find " + str_zone + " in level.zone_capture's zone array!" );
-#/
     level.zone_capture.zones[str_zone] ent_flag_wait( "zone_initialized" );
-/#
     assert( isdefined( level.zone_capture.zones[str_zone].zombie_attack_points[n_index] ), "set_attack_points_as_inaccessible couldn't find index " + n_index + " on zone " + str_zone );
-#/
     level.zone_capture.zones[str_zone].zombie_attack_points[n_index].inaccessible = 1;
 }
 
@@ -352,9 +348,8 @@ register_elements_powered_by_zone_capture_generators()
 
 register_perk_machine_for_zone( str_zone_name, str_perk_name, str_machine_targetname, func_perk_fx_think )
 {
-/#
     assert( isdefined( level.zone_capture.zones[str_zone_name] ), "register_perk_machine_for_zone can't find " + str_zone_name + " has not been initialized in level.zone_capture.zones array!" );
-#/
+
     if ( !isdefined( level.zone_capture.zones[str_zone_name].perk_machines ) )
         level.zone_capture.zones[str_zone_name].perk_machines = [];
 
@@ -370,9 +365,8 @@ register_perk_machine_for_zone( str_zone_name, str_perk_name, str_machine_target
 
 register_random_perk_machine_for_zone( str_zone_name, str_identifier )
 {
-/#
     assert( isdefined( level.zone_capture.zones[str_zone_name] ), "register_random_perk_machine_for_zone can't find " + str_zone_name + " has not been initialized in level.zone_capture.zones array!" );
-#/
+
     if ( !isdefined( level.zone_capture.zones[str_zone_name].perk_machines_random ) )
         level.zone_capture.zones[str_zone_name].perk_machines_random = [];
 
@@ -387,9 +381,8 @@ register_random_perk_machine_for_zone( str_zone_name, str_identifier )
 
 register_mystery_box_for_zone( str_zone_name, str_identifier )
 {
-/#
     assert( isdefined( level.zone_capture.zones[str_zone_name] ), "register_mystery_box_for_zone can't find " + str_zone_name + " has not been initialized in level.zone_capture.zones array!" );
-#/
+
     if ( !isdefined( level.zone_capture.zones[str_zone_name].mystery_boxes ) )
         level.zone_capture.zones[str_zone_name].mystery_boxes = [];
 
@@ -410,9 +403,8 @@ get_mystery_box_from_script_noteworthy( str_script_noteworthy )
         if ( isdefined( s_mystery_box.script_noteworthy ) && s_mystery_box.script_noteworthy == str_script_noteworthy )
             s_box = s_mystery_box;
     }
-/#
+
     assert( isdefined( s_mystery_box ), "get_mystery_box_from_script_noteworthy() couldn't find a mystery box with script_noteworthy = " + str_script_noteworthy );
-#/
     return s_box;
 }
 
@@ -496,9 +488,7 @@ disable_mystery_boxes_in_zone()
 get_perk_machine_trigger_from_vending_entity( str_vending_machine_targetname )
 {
     e_trigger = getent( str_vending_machine_targetname, "target" );
-/#
     assert( isdefined( e_trigger ), "get_perk_machine_trigger_from_vending_entity couldn't find perk machine trigger with target = " + str_vending_machine_targetname );
-#/
     return e_trigger;
 }
 
@@ -508,9 +498,7 @@ check_perk_machine_valid( player )
         b_machine_valid = 1;
     else
     {
-/#
         assert( isdefined( self.str_zone_name ), "str_zone_name field missing on perk machine! This is required by the zone capture system!" );
-#/
         b_machine_valid = level.zone_capture.zones[self.str_zone_name] ent_flag( "player_controlled" );
     }
 
@@ -522,25 +510,21 @@ check_perk_machine_valid( player )
 
 init_capture_zone()
 {
-/#
     assert( isdefined( self.script_noteworthy ), "capture zone struct is missing script_noteworthy KVP! This is required for init_capture_zone()" );
-#/
+
     if ( !isdefined( level.zone_capture ) )
         level.zone_capture = spawnstruct();
 
     if ( !isdefined( level.zone_capture.zones ) )
         level.zone_capture.zones = [];
-/#
+
     assert( !isdefined( level.zone_capture.zones[self.script_noteworthy] ), "init_capture_zone() attempting to initialize an existing zone with name '" + self.script_noteworthy + "'" );
-#/
     self.n_current_progress = 0;
     self.n_last_progress = 0;
     self setup_generator_unitrigger();
     self.str_zone = get_zone_from_position( self.origin, 1 );
     self.sndent = spawn( "script_origin", self.origin );
-/#
     assert( isdefined( self.script_int ), "script_int KVP is required by init_capture_zone() to identify the objective index, but it's missing on zone '" + self.script_noteworthy + "'" );
-#/
     self ent_flag_init( "attacked_by_recapture_zombies" );
     self ent_flag_init( "current_recapture_target_zone" );
     self ent_flag_init( "player_controlled" );
@@ -763,23 +747,23 @@ get_capture_zombies_needed( b_per_zone )
 
     switch ( a_contested_zones.size )
     {
-        case "0":
+        case 0:
             n_capture_zombies_needed = 0;
             n_capture_zombies_needed_per_zone = 0;
             break;
-        case "1":
+        case 1:
             n_capture_zombies_needed = 4;
             n_capture_zombies_needed_per_zone = 4;
             break;
-        case "2":
+        case 2:
             n_capture_zombies_needed = 6;
             n_capture_zombies_needed_per_zone = 3;
             break;
-        case "3":
+        case 3:
             n_capture_zombies_needed = 6;
             n_capture_zombies_needed_per_zone = 2;
             break;
-        case "4":
+        case 4:
             n_capture_zombies_needed = 8;
             n_capture_zombies_needed_per_zone = 2;
             break;
@@ -1120,9 +1104,8 @@ get_unclaimed_attack_point( s_zone )
 
     if ( a_valid_attack_points.size == 0 )
         a_valid_attack_points = s_zone get_unclaimed_attack_points_between_indicies( 0, 11 );
-/#
+
     assert( a_valid_attack_points.size > 0, "get_unclaimed_attack_point() couldn't find any valid attack points in zone " + s_zone.script_noteworthy );
-#/
     s_attack_point = random( a_valid_attack_points );
     s_attack_point.is_claimed = 1;
     s_attack_point.claimed_by = self;

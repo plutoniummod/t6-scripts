@@ -116,9 +116,7 @@ dotraverse( traversestate, traversealias, no_powerups )
     self.is_traversing = 1;
     self notify( "zombie_start_traverse" );
     self.traversestartnode = self getnegotiationstartnode();
-/#
     assert( isdefined( self.traversestartnode ) );
-#/
     self orientmode( "face angle", self.traversestartnode.angles[1] );
     self.traversestartz = self.origin[2];
 

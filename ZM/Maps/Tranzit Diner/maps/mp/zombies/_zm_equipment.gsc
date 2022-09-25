@@ -119,33 +119,25 @@ init_equipment_upgrade()
 
 get_equipment_hint( equipment_name )
 {
-/#
     assert( isdefined( level.zombie_equipment[equipment_name] ), equipment_name + " was not included or is not registered with the equipment system." );
-#/
     return level.zombie_equipment[equipment_name].hint;
 }
 
 get_equipment_howto_hint( equipment_name )
 {
-/#
     assert( isdefined( level.zombie_equipment[equipment_name] ), equipment_name + " was not included or is not registered with the equipment system." );
-#/
     return level.zombie_equipment[equipment_name].howto_hint;
 }
 
 get_equipment_icon( equipment_name )
 {
-/#
     assert( isdefined( level.zombie_equipment[equipment_name] ), equipment_name + " was not included or is not registered with the equipment system." );
-#/
     return level.zombie_equipment[equipment_name].hint_icon;
 }
 
 add_to_equipment_trigger_list( equipment_name )
 {
-/#
     assert( isdefined( level.zombie_equipment[equipment_name] ), equipment_name + " was not included or is not registered with the equipment system." );
-#/
     level.zombie_equipment[equipment_name].triggers[level.zombie_equipment[equipment_name].triggers.size] = self;
     level.zombie_equipment[equipment_name].models[level.zombie_equipment[equipment_name].models.size] = getent( self.target, "targetname" );
 }
@@ -513,12 +505,8 @@ equipment_onspawnretrievableweaponobject( watcher, player )
 /#
     if ( !isdefined( player.current_equipment ) || player.current_equipment != equipment )
     {
-/#
         assert( player has_deployed_equipment( equipment ) );
-#/
-/#
         assert( !isdefined( player.current_equipment ) );
-#/
     }
 #/
     if ( isdefined( player.current_equipment ) && player.current_equipment == equipment )
@@ -642,12 +630,8 @@ equipment_drop_to_planted( equipment, player )
 /#
     if ( !isdefined( player.current_equipment ) || player.current_equipment != equipment )
     {
-/#
         assert( player has_deployed_equipment( equipment ) );
-#/
-/#
         assert( !isdefined( player.current_equipment ) );
-#/
     }
 #/
     if ( isdefined( player.current_equipment ) && player.current_equipment == equipment )
@@ -681,12 +665,8 @@ equipment_transfer( weaponname, fromplayer, toplayer )
 #/
         toplayer equipment_orphaned( weaponname );
         wait 0.05;
-/#
         assert( !toplayer has_player_equipment( weaponname ) );
-#/
-/#
         assert( fromplayer has_player_equipment( weaponname ) );
-#/
         toplayer equipment_give( weaponname );
         toplayer equipment_to_deployed( weaponname );
 
@@ -694,12 +674,8 @@ equipment_transfer( weaponname, fromplayer, toplayer )
             [[ level.zombie_equipment[weaponname].transfer_fn ]]( fromplayer, toplayer );
 
         fromplayer equipment_release( weaponname );
-/#
         assert( toplayer has_player_equipment( weaponname ) );
-#/
-/#
         assert( !fromplayer has_player_equipment( weaponname ) );
-#/
         equipment_damage = 0;
         toplayer player_set_equipment_damage( weaponname, fromplayer player_get_equipment_damage( weaponname ) );
         fromplayer player_set_equipment_damage( equipment_damage );
@@ -795,9 +771,8 @@ equipment_to_deployed( equipment )
 #/
     if ( !isdefined( self.deployed_equipment ) )
         self.deployed_equipment = [];
-/#
+
     assert( self.current_equipment == equipment );
-#/
     self.deployed_equipment[self.deployed_equipment.size] = equipment;
     self.current_equipment = undefined;
 
@@ -816,9 +791,8 @@ equipment_from_deployed( equipment )
 #/
     if ( isdefined( self.current_equipment ) && equipment != self.current_equipment )
         self equipment_drop( self.current_equipment );
-/#
+
     assert( self has_deployed_equipment( equipment ) );
-#/
     self.current_equipment = equipment;
 
     if ( isdefined( level.riotshield_name ) && equipment != level.riotshield_name )
@@ -1087,9 +1061,7 @@ placed_equipment_unitrigger_think()
 
 pickup_placed_equipment( player )
 {
-/#
     assert( !( isdefined( player.pickup_equipment ) && player.pickup_equipment ) );
-#/
     player.pickup_equipment = 1;
     stub = self.stub;
 

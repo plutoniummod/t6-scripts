@@ -447,9 +447,7 @@ blenddelete( blend )
 
 spawnfx_wrapper( fx_id, origin, forward, up )
 {
-/#
     assert( isdefined( level._effect[fx_id] ), "Missing level._effect[\"" + fx_id + "\"]. You did not setup the fx before calling it in createFx." );
-#/
     fx_object = spawnfx( level._effect[fx_id], origin, forward, up );
     return fx_object;
 }

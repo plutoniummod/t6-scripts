@@ -87,9 +87,7 @@ playerhealthregen()
 
     if ( self.health <= 0 )
     {
-/#
         assert( !isalive( self ) );
-#/
         return;
     }
 

@@ -180,9 +180,7 @@ isvalidclass( class )
 {
     if ( level.oldschool || sessionmodeiszombiesgame() )
     {
-/#
         assert( !isdefined( class ) );
-#/
         return 1;
     }
 
@@ -288,9 +286,7 @@ resumetimer()
 
 getscoreremaining( team )
 {
-/#
     assert( isplayer( self ) || isdefined( team ) );
-#/
     scorelimit = level.scorelimit;
 
     if ( isplayer( self ) )
@@ -309,9 +305,7 @@ getteamscoreforround( team )
 
 getscoreperminute( team )
 {
-/#
     assert( isplayer( self ) || isdefined( team ) );
-#/
     scorelimit = level.scorelimit;
     timelimit = level.timelimit;
     minutespassed = gettimepassed() / 60000 + 0.0001;
@@ -324,9 +318,7 @@ getscoreperminute( team )
 
 getestimatedtimeuntilscorelimit( team )
 {
-/#
     assert( isplayer( self ) || isdefined( team ) );
-#/
     scoreperminute = self getscoreperminute( team );
     scoreremaining = self getscoreremaining( team );
 
@@ -360,9 +352,7 @@ waitfortimeornotifynoartillery( time, notifyname )
 
     while ( isdefined( level.artilleryinprogress ) )
     {
-/#
         assert( level.artilleryinprogress );
-#/
         wait 0.25;
     }
 }

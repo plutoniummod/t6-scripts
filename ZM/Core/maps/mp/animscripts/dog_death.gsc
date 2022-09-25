@@ -11,9 +11,7 @@ main()
 
     if ( isdefined( self.a.nodeath ) )
     {
-/#
         assert( self.a.nodeath, "Nodeath needs to be set to true or undefined." );
-#/
         wait 3;
         return;
     }

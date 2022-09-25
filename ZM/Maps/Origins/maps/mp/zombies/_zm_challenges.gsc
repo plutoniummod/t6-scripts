@@ -202,12 +202,9 @@ challenge_exists( str_name )
 get_stat( str_stat, player )
 {
     s_parent_stat = level._challenges.a_stats[str_stat];
-/#
     assert( isdefined( s_parent_stat ), "Challenge stat: " + str_stat + " does not exist" );
-#/
-/#
     assert( s_parent_stat.b_team || isdefined( player ), "Challenge stat: " + str_stat + " is a player stat, but no player passed in" );
-#/
+
     if ( s_parent_stat.b_team )
         s_stat = level._challenges.s_team.a_stats[str_stat];
     else

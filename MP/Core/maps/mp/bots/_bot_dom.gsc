@@ -59,9 +59,8 @@ bot_move_to_flag( flag )
         nodes = getnodesinradius( flag.origin, flag.radius, 0, 32 );
     else
         nodes = getnodesinradius( flag.origin, flag.radius, 0 );
-/#
+
     assert( nodes.size );
-#/
     node = random( nodes );
     self addgoal( node, 24, 3, "dom_flag" );
 }
@@ -239,9 +238,8 @@ bot_capture_flag( flag )
 
 dom_is_game_start()
 {
-/#
     assert( isdefined( level.flags ) );
-#/
+
     foreach ( flag in level.flags )
     {
         if ( flag getflagteam() != "neutral" )
@@ -259,9 +257,7 @@ dom_get_closest_flag()
 
 dom_get_weighted_flag( owner )
 {
-/#
     assert( isdefined( level.flags ) );
-#/
     best = undefined;
     distsq = 9999999;
 
@@ -284,9 +280,7 @@ dom_get_weighted_flag( owner )
 
 dom_get_weighted_enemy_flag( team )
 {
-/#
     assert( isdefined( level.flags ) );
-#/
     best = undefined;
     distsq = 9999999;
 
@@ -331,9 +325,7 @@ dom_has_two_flags( team )
 
 dom_get_weighted_contested_flag( team )
 {
-/#
     assert( isdefined( level.flags ) );
-#/
     best = undefined;
     distsq = 9999999;
 
@@ -356,9 +348,7 @@ dom_get_weighted_contested_flag( team )
 
 dom_get_random_flag( owner )
 {
-/#
     assert( isdefined( level.flags ) );
-#/
     flagindex = randomintrange( 0, level.flags.size );
 
     if ( !isdefined( owner ) )

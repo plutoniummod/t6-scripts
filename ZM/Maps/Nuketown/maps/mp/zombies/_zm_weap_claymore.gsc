@@ -3,7 +3,6 @@
 #include common_scripts\utility;
 #include maps\mp\_utility;
 #include maps\mp\zombies\_zm_utility;
-#include maps\mp\zombies\_zm_equipment;
 #include maps\mp\zombies\_zm_score;
 #include maps\mp\zombies\_zm_audio;
 #include maps\mp\zombies\_zm_weapons;
@@ -39,7 +38,7 @@ buy_claymores()
 {
     self.zombie_cost = 1000;
     self sethintstring( &"ZOMBIE_CLAYMORE_PURCHASE" );
-    self setcursorhint( "HINT_WEAPON", "claymore_zm" );
+    self setcursorhint( "HINT_NOICON" );
     self endon( "kill_trigger" );
 
     if ( !isdefined( self.stub ) )
@@ -101,11 +100,6 @@ buy_claymores()
                 else
                     who thread show_claymore_hint( "already_purchased" );
             }
-            else
-            {
-                who play_sound_on_ent( "no_purchase" );
-                who maps\mp\zombies\_zm_audio::create_and_play_dialog( "general", "no_money_weapon" );
-            }
         }
     }
 }
@@ -113,14 +107,8 @@ buy_claymores()
 claymore_unitrigger_update_prompt( player )
 {
     if ( player is_player_placeable_mine( "claymore_zm" ) )
-    {
-        self sethintstring( "" );
-        self setcursorhint( "HINT_NOICON" );
         return false;
-    }
 
-    self sethintstring( &"ZOMBIE_CLAYMORE_PURCHASE" );
-    self setcursorhint( "HINT_WEAPON", "claymore_zm" );
     return true;
 }
 
@@ -165,8 +153,6 @@ claymore_wait_and_detonate()
 claymore_watch()
 {
     self endon( "death" );
-    self notify( "claymore_watch" );
-    self endon( "claymore_watch" );
 
     while ( true )
     {
@@ -183,6 +169,7 @@ claymore_watch()
                 if ( isdefined( level.claymore_planted ) )
                     self thread [[ level.claymore_planted ]]( claymore );
 
+                claymore thread satchel_damage();
                 claymore thread claymore_detonation();
                 claymore thread play_claymore_effects();
                 self maps\mp\zombies\_zm_stats::increment_client_stat( "claymores_planted" );
@@ -240,7 +227,6 @@ pickup_claymores()
 
         if ( clip_ammo >= clip_max_ammo )
         {
-            self destroy_ent();
             player notify( "zmb_disable_claymore_prompt" );
             return;
         }
@@ -266,7 +252,6 @@ pickup_claymores_trigger_listener( trigger, player )
 pickup_claymores_trigger_listener_enable( trigger, player )
 {
     self endon( "delete" );
-    self endon( "death" );
 
     while ( true )
     {
@@ -283,7 +268,6 @@ pickup_claymores_trigger_listener_enable( trigger, player )
 pickup_claymores_trigger_listener_disable( trigger, player )
 {
     self endon( "delete" );
-    self endon( "death" );
 
     while ( true )
     {
@@ -339,9 +323,6 @@ claymore_detonation()
         if ( isdefined( ent.pers ) && isdefined( ent.pers["team"] ) && ent.pers["team"] == self.team )
             continue;
 
-        if ( isdefined( ent.ignore_claymore ) && ent.ignore_claymore )
-            continue;
-
         if ( !ent shouldaffectweaponobject( self ) )
             continue;
 
@@ -375,7 +356,6 @@ delete_claymores_on_death( player, ent )
 
 satchel_damage()
 {
-    self endon( "death" );
     self setcandamage( 1 );
     self.health = 100000;
     self.maxhealth = self.health;
@@ -452,6 +432,28 @@ give_claymores_after_rounds()
     }
 }
 
+init_hint_hudelem( x, y, alignx, aligny, fontscale, alpha )
+{
+    self.x = x;
+    self.y = y;
+    self.alignx = alignx;
+    self.aligny = aligny;
+    self.fontscale = fontscale;
+    self.alpha = alpha;
+    self.sort = 20;
+}
+
+setup_client_hintelem()
+{
+    self endon( "death" );
+    self endon( "disconnect" );
+
+    if ( !isdefined( self.hintelem ) )
+        self.hintelem = newclienthudelem( self );
+
+    self.hintelem init_hint_hudelem( 320, 220, "center", "bottom", 1.6, 1.0 );
+}
+
 show_claymore_hint( string )
 {
     self endon( "death" );
@@ -462,5 +464,8 @@ show_claymore_hint( string )
     else
         text = &"ZOMBIE_CLAYMORE_ALREADY_PURCHASED";
 
-    show_equipment_hint_text( text );
+    self setup_client_hintelem();
+    self.hintelem settext( text );
+    wait 3.5;
+    self.hintelem settext( "" );
 }

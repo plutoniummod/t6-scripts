@@ -187,16 +187,16 @@ menuautoassign( comingfrommenu )
 
                 switch ( team )
                 {
-                    case "1":
+                    case 1:
                         assignment = teamkeys[1];
                         break;
-                    case "2":
+                    case 2:
                         assignment = teamkeys[0];
                         break;
-                    case "3":
+                    case 3:
                         assignment = teamkeys[2];
                         break;
-                    case "4":
+                    case 4:
                         if ( !isdefined( level.forceautoassign ) || !level.forceautoassign )
                         {
                             self setclientscriptmainmenu( game["menu_class"] );
@@ -223,9 +223,8 @@ menuautoassign( comingfrommenu )
             else if ( maps\mp\bots\_bot::is_bot_comp_stomp() )
             {
                 host = gethostplayerforbots();
-/#
                 assert( isdefined( host ) );
-#/
+
                 if ( !isdefined( host.team ) || host.team == "spectator" )
                     host.team = random( teamkeys );
 
@@ -428,9 +427,7 @@ closemenus()
 
 beginclasschoice( forcenewchoice )
 {
-/#
     assert( isdefined( level.teams[self.pers["team"]] ) );
-#/
     team = self.pers["team"];
 
     if ( level.disableclassselection == 1 || getdvarint( "migration_soak" ) == 1 )
@@ -456,9 +453,7 @@ beginclasschoice( forcenewchoice )
 
 showmainmenuforteam()
 {
-/#
     assert( isdefined( level.teams[self.pers["team"]] ) );
-#/
     team = self.pers["team"];
 
     if ( level.wagermatch )

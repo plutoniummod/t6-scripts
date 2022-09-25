@@ -529,9 +529,7 @@ build_rumble( rumble, scale, duration, radius, basetime, randomaditionaltime )
         level.vehicle_rumble = [];
 
     struct = build_quake( scale, duration, radius, basetime, randomaditionaltime );
-/#
     assert( isdefined( rumble ) );
-#/
     precacherumble( rumble );
     struct.rumble = rumble;
     level.vehicle_rumble[level.vttype] = struct;
@@ -1510,9 +1508,7 @@ vehicle_disconnect_paths()
 follow_path( node )
 {
     self endon( "death" );
-/#
     assert( isdefined( node ), "vehicle_path() called without a path" );
-#/
     self notify( "newpath" );
 
     if ( isdefined( node ) )

@@ -283,8 +283,6 @@ bot_hill_tactical_insertion()
 hill_nearest_node()
 {
     nodes = getnodesinradiussorted( level.zone.gameobject.curorigin, 256, 0 );
-/#
     assert( nodes.size );
-#/
     return nodes[0];
 }

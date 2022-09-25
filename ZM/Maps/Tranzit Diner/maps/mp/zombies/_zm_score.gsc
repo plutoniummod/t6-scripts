@@ -158,9 +158,7 @@ player_add_points( event, mod, hit_location, is_dog, zombie_team, damage_weapon 
             player_points = mod;
             break;
         default:
-/#
             assert( 0, "Unknown point event" );
-#/
             break;
     }
 
@@ -298,9 +296,7 @@ player_reduce_points( event, mod, hit_location )
             self.score_lost_when_downed = round_up_to_ten( int( points ) );
             break;
         default:
-/#
             assert( 0, "Unknown point event" );
-#/
             break;
     }
 

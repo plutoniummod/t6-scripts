@@ -178,9 +178,8 @@ init_ghost_zone()
             else if ( issubstr( str_targetname, "to_maze" ) )
                 level.ghost_rooms[str_targetname].to_maze = 1;
         }
-/#
+
         assert( isdefined( room.target ), "ghost zone with targetname '" + str_targetname + "' is missing spawner target! This is used to pair zones with spawners." );
-#/
         a_ghost_spawn_locations = getstructarray( room.target, "targetname" );
         level.ghost_rooms[str_targetname].ghost_spawn_locations = arraycombine( a_ghost_spawn_locations, level.ghost_rooms[str_targetname].ghost_spawn_locations, 0, 0 );
         level.ghost_rooms[str_targetname].volumes[level.ghost_rooms[str_targetname].volumes.size] = room;

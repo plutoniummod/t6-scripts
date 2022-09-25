@@ -758,9 +758,8 @@ trigger_hurt_monitor()
 rcbomb_force_explode()
 {
     self endon( "death" );
-/#
     assert( self.targetname == "rcbomb" );
-#/
+
     while ( !isdefined( self getseatoccupant( 0 ) ) )
         wait 0.1;
 

@@ -603,9 +603,7 @@ coptermove()
         }
         else
         {
-/#
             assert( movingvertically );
-#/
             thisdest = ( self.origin[0], self.origin[1], desiredz );
         }
 

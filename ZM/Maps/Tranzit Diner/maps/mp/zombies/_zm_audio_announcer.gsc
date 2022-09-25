@@ -242,9 +242,8 @@ announcegamemoderules()
 
 leaderdialog( dialog, team, group, queue, waittime )
 {
-/#
     assert( isdefined( level.players ) );
-#/
+
     if ( !isdefined( team ) )
     {
         leaderdialogbothteams( dialog, "allies", dialog, "axis", group, queue, waittime );
@@ -270,9 +269,8 @@ leaderdialog( dialog, team, group, queue, waittime )
 
 leaderdialogbothteams( dialog1, team1, dialog2, team2, group, queue, waittime )
 {
-/#
     assert( isdefined( level.players ) );
-#/
+
     if ( level.splitscreen )
     {
         if ( level.players.size )

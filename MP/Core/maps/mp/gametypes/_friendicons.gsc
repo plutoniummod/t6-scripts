@@ -10,12 +10,8 @@ init()
         setdvar( "scr_drawfriend", "0" );
 
     level.drawfriend = getdvarint( "scr_drawfriend" );
-/#
     assert( isdefined( game["headicon_allies"] ), "Allied head icons are not defined.  Check the team set for the level." );
-#/
-/#
     assert( isdefined( game["headicon_axis"] ), "Axis head icons are not defined.  Check the team set for the level." );
-#/
     precacheheadicon( game["headicon_allies"] );
     precacheheadicon( game["headicon_axis"] );
     level thread onplayerconnect();

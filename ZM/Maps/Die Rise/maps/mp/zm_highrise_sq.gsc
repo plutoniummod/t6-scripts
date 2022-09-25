@@ -437,9 +437,7 @@ mahjong_tiles_setup()
     a_winds = array_randomize( array( "north", "south", "east", "west" ) );
     a_colors = array_randomize( array( "blk", "blu", "grn", "red" ) );
     a_locs = array_randomize( getstructarray( "sq_tile_loc_random", "targetname" ) );
-/#
     assert( a_locs.size > a_winds.size, "zm_highrise_sq: not enough locations for mahjong tiles!" );
-#/
     a_wind_order = array( "none" );
 
     for ( i = 0; i < a_winds.size; i++ )
@@ -552,16 +550,16 @@ get_variant_from_entity_num( player_number )
 
     switch ( player_number )
     {
-        case "0":
+        case 0:
             post_fix = "a";
             break;
-        case "1":
+        case 1:
             post_fix = "b";
             break;
-        case "2":
+        case 2:
             post_fix = "c";
             break;
-        case "3":
+        case 3:
             post_fix = "d";
             break;
     }
@@ -870,13 +868,13 @@ vo_richtofen_nav_card()
 {
     switch ( self.characterindex )
     {
-        case "2":
+        case 2:
             break;
-        case "0":
+        case 0:
             break;
-        case "3":
+        case 3:
             break;
-        case "1":
+        case 1:
             break;
     }
 
@@ -901,13 +899,13 @@ vo_find_nav_card()
 {
     switch ( self.characterindex )
     {
-        case "2":
+        case 2:
             break;
-        case "0":
+        case 0:
             break;
-        case "3":
+        case 3:
             break;
-        case "1":
+        case 1:
             break;
     }
 }

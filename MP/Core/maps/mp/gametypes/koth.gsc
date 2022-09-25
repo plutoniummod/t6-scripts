@@ -690,9 +690,7 @@ onzonecontested()
 
 onzoneuncontested( lastclaimteam )
 {
-/#
     assert( lastclaimteam == level.zone.gameobject maps\mp\gametypes\_gameobjects::getownerteam() );
-#/
     level.zone.gameobject.iscontested = 0;
     level.zone.gameobject maps\mp\gametypes\_gameobjects::setclaimteam( lastclaimteam );
 }
@@ -776,9 +774,9 @@ onspawnplayer( predictedspawn )
         spawnteam = self.pers["team"];
         spawnpoint = maps\mp\gametypes\_spawnlogic::getspawnpoint_random( level.spawn_start[spawnteam] );
     }
-/#
+
     assert( isdefined( spawnpoint ) );
-#/
+
     if ( predictedspawn )
         self predictspawnpoint( spawnpoint.origin, spawnpoint.angles );
     else
@@ -884,9 +882,8 @@ setupzones()
                 continue;
             }
         }
-/#
+
         assert( !errored );
-#/
         zone.trigorigin = zone.trig.origin;
         visuals = [];
         visuals[0] = zone;
@@ -1070,9 +1067,8 @@ getnextzonefromqueue()
 {
     if ( level.zonespawnqueue.size == 0 )
         shufflezones();
-/#
+
     assert( level.zonespawnqueue.size > 0 );
-#/
     next_zone = level.zonespawnqueue[0];
     arrayremoveindex( level.zonespawnqueue, 0 );
     return next_zone;
@@ -1181,9 +1177,8 @@ pickzonetospawn()
             bestzone = zone;
         }
     }
-/#
+
     assert( isdefined( bestzone ) );
-#/
     level.prevzone2 = level.prevzone;
     level.prevzone = bestzone;
     return bestzone;

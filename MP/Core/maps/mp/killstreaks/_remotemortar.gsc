@@ -76,9 +76,8 @@ init()
 
 remote_mortar_killstreak( hardpointtype )
 {
-/#
     assert( hardpointtype == "remote_mortar_mp" );
-#/
+
     if ( self maps\mp\killstreaks\_killstreakrules::iskillstreakallowed( hardpointtype, self.team ) == 0 )
         return false;
 
@@ -177,12 +176,8 @@ remote_killstreak_copilot( voice )
 remote_killstreak_abort()
 {
     level endon( "remote_end" );
-/#
     assert( isdefined( self.owner ) );
-#/
-/#
     assert( isplayer( self.owner ) );
-#/
     self.owner waittill_any( "disconnect", "joined_team", "joined_spectators" );
     self thread remote_killstreak_end( 0, 1 );
 }
@@ -225,12 +220,9 @@ remote_owner_exit()
 remote_killstreak_game_end()
 {
     level endon( "remote_end" );
-/#
     assert( isdefined( self.owner ) );
-#/
-/#
     assert( isplayer( self.owner ) );
-#/
+
     level waittill( "game_ended" );
 
     self thread remote_killstreak_end();
@@ -241,9 +233,7 @@ remote_mortar_spawn()
     self setclientflag( 1 );
     self clientnotify( "reapfutz" );
     remote = spawnplane( self, "script_model", level.remotemortarrig gettagorigin( "tag_origin" ) );
-/#
     assert( isdefined( remote ) );
-#/
     remote setmodel( "veh_t6_drone_pegasus_mp" );
     remote.targetname = "remote_mortar";
     remote setowner( self );

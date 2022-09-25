@@ -438,27 +438,27 @@ setup_key_doors()
     {
         switch ( piece_number )
         {
-            case "1":
+            case 1:
                 width = 120;
                 height = 112;
                 length = 120;
                 break;
-            case "2":
+            case 2:
                 width = 120;
                 height = 112;
                 length = 124;
                 break;
-            case "3":
+            case 3:
                 width = 108;
                 height = 112;
                 length = 90;
                 break;
-            case "4":
+            case 4:
                 width = 98;
                 height = 112;
                 length = 108;
                 break;
-            case "5":
+            case 5:
                 width = 60;
                 height = 112;
                 length = 90;
@@ -541,7 +541,7 @@ open_custom_door_master_key( n_door_index, e_triggerer )
 
     switch ( n_door_index )
     {
-        case "1":
+        case 1:
             shower_key_door = getent( "shower_key_door", "targetname" );
             shower_key_door moveto( shower_key_door.origin + vectorscale( ( 1, 0, 0 ), 80.0 ), 0.25 );
             shower_key_door connectpaths();
@@ -551,14 +551,14 @@ open_custom_door_master_key( n_door_index, e_triggerer )
 
             shower_key_door playsound( "zmb_chainlink_open" );
             break;
-        case "2":
+        case 2:
             admin_powerhouse_puzzle_door_clip = getent( "admin_powerhouse_puzzle_door_clip", "targetname" );
             admin_powerhouse_puzzle_door_clip delete();
             admin_powerhouse_puzzle_door = getent( "admin_powerhouse_puzzle_door", "targetname" );
             admin_powerhouse_puzzle_door rotateyaw( 90, 0.5 );
             admin_powerhouse_puzzle_door playsound( "zmb_chainlink_open" );
             break;
-        case "3":
+        case 3:
             m_nixie_door_left = getent( "nixie_door_left", "targetname" );
             m_nixie_door_right = getent( "nixie_door_right", "targetname" );
             m_nixie_door_left rotateyaw( -165, 0.5 );
@@ -570,7 +570,7 @@ open_custom_door_master_key( n_door_index, e_triggerer )
                 e_triggerer door_rumble_on_open();
 
             break;
-        case "4":
+        case 4:
             m_gate_01 = getent( "cable_puzzle_gate_01", "targetname" );
             m_gate_01 moveto( m_gate_01.origin + ( -16, 80, 0 ), 0.5 );
             m_gate_01 connectpaths();
@@ -586,7 +586,7 @@ open_custom_door_master_key( n_door_index, e_triggerer )
             flag_set( "docks_inner_gate_unlocked" );
             flag_set( "docks_inner_gate_open" );
             break;
-        case "5":
+        case 5:
             m_infirmary_case_door_left = getent( "infirmary_case_door_left", "targetname" );
             m_infirmary_case_door_right = getent( "infirmary_case_door_right", "targetname" );
             m_infirmary_case_door_left rotateyaw( -165, 0.5 );
@@ -886,9 +886,7 @@ get_zombies_touching_volume( team, volume_name, volume )
     if ( !isdefined( volume ) )
     {
         volume = getent( volume_name, "targetname" );
-/#
         assert( isdefined( volume ), volume_name + " does not exist" );
-#/
     }
 
     guys = getaiarray( team );
@@ -2060,9 +2058,7 @@ spawn_model( model_name, origin, angles, n_spawnflags )
 
 getfx( fx )
 {
-/#
     assert( isdefined( level._effect[fx] ), "Fx " + fx + " is not defined in level._effect." );
-#/
     return level._effect[fx];
 }
 

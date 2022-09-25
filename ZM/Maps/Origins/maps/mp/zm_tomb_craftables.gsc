@@ -733,9 +733,7 @@ count_staff_piece_pickup( a_staff_pieces )
 
     foreach ( piece in a_staff_pieces )
     {
-/#
         assert( piece.craftablename == str_name );
-#/
         piece thread watch_staff_pickup();
     }
 }

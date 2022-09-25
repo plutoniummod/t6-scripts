@@ -183,16 +183,16 @@ ambushdoghealthincrease()
 {
     switch ( level.numambushrounds )
     {
-        case "1":
+        case 1:
             level.dog_health = 400;
             break;
-        case "2":
+        case 2:
             level.dog_health = 900;
             break;
-        case "3":
+        case 3:
             level.dog_health = 1300;
             break;
-        case "4":
+        case 4:
             level.dog_health = 1600;
             break;
         default:
@@ -266,9 +266,8 @@ setupdogspawnlocs()
             break;
         }
     }
-/#
+
     assert( isdefined( currentzone ), "Bus needs to be in an ambush zone for an ambush round: " + level.the_bus.origin );
-#/
     level.enemy_dog_locations = getstructarray( currentzone.target, "targetname" );
 }
 

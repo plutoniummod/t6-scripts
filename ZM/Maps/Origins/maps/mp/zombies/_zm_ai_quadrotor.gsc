@@ -282,9 +282,7 @@ quadrotor_movementupdate()
     level endon( "end_game" );
     self endon( "death" );
     self endon( "change_state" );
-/#
     assert( isalive( self ) );
-#/
     a_powerups = [];
     old_goalpos = self.goalpos;
     self.goalpos = self make_sure_goal_is_well_above_ground( self.goalpos );
@@ -306,9 +304,8 @@ quadrotor_movementupdate()
             self waittill_any_or_timeout( 2, "near_goal", "force_goal" );
         }
     }
-/#
+
     assert( isalive( self ) );
-#/
     self setvehicleavoidance( 1 );
     goalfailures = 0;
 
@@ -1182,9 +1179,8 @@ death_radius_damage()
 
 set_death_model( smodel, fdelay )
 {
-/#
     assert( isdefined( smodel ) );
-#/
+
     if ( isdefined( fdelay ) && fdelay > 0 )
         wait( fdelay );
 

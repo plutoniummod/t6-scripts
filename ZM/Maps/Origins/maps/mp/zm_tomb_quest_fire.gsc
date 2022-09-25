@@ -311,9 +311,8 @@ fire_puzzle_2_init()
 fire_puzzle_2_run()
 {
     a_ternary = getentarray( "fire_torch_ternary", "script_noteworthy" );
-/#
     assert( a_ternary.size == 4 );
-#/
+
     foreach ( e_number in a_ternary )
     {
         e_number show();

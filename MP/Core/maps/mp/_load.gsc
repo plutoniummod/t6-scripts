@@ -178,25 +178,23 @@ main( bscriptgened, bcsvgened, bsgenabled )
     {
         switch ( p )
         {
-            case "0":
+            case 0:
                 triggertype = "trigger_multiple";
                 break;
-            case "1":
+            case 1:
                 triggertype = "trigger_once";
                 break;
-            case "2":
+            case 2:
                 triggertype = "trigger_use";
                 break;
-            case "3":
+            case 3:
                 triggertype = "trigger_radius";
                 break;
-            case "4":
+            case 4:
                 triggertype = "trigger_lookat";
                 break;
             default:
-/#
                 assert( p == 5 );
-#/
                 triggertype = "trigger_damage";
                 break;
         }
@@ -418,9 +416,8 @@ setupexploders()
             ent.v["fxid"] = exploder.script_fxid;
 
         ent.v["exploder"] = exploder.script_exploder;
-/#
         assert( isdefined( exploder.script_exploder ), "Exploder at origin " + exploder.origin + " has no script_exploder" );
-#/
+
         if ( !isdefined( ent.v["delay"] ) )
             ent.v["delay"] = 0;
 

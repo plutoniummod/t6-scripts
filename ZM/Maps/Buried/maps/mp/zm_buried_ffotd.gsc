@@ -505,9 +505,8 @@ ghost_mansion_from_maze_push_trigger()
 
 push_players_standing_in_trigger_volumes()
 {
-/#
     assert( isdefined( self.push_player_towards_point ), "push_player_towards_point field is undefined on push_trigger! This is required for the push functionality to work" );
-#/
+
     while ( true )
     {
         self waittill( "trigger", player );

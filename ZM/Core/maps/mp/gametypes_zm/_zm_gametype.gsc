@@ -87,8 +87,8 @@ main()
         location = level.default_start_location;
 
     set_gamemode_var_once( "location", location );
-    set_gamemode_var_once( "randomize_mode", getdvarint( _hash_5D1D04D4 ) );
-    set_gamemode_var_once( "randomize_location", getdvarint( _hash_D446AE4D ) );
+    set_gamemode_var_once( "randomize_mode", getdvarint( "zm_rand_mode" ) );
+    set_gamemode_var_once( "randomize_location", getdvarint( "zm_rand_loc" ) );
     set_gamemode_var_once( "team_1_score", 0 );
     set_gamemode_var_once( "team_2_score", 0 );
     set_gamemode_var_once( "current_round", 0 );
@@ -581,9 +581,8 @@ checkzmroundswitch()
 {
     if ( !isdefined( level.zm_roundswitch ) || !level.zm_roundswitch )
         return false;
-/#
+
     assert( get_gamemode_var( "current_round" ) > 0 );
-#/
     return true;
     return false;
 }
@@ -1398,9 +1397,8 @@ onspawnplayer( predictedspawn )
 
             if ( !isdefined( spawnpoints ) || spawnpoints.size == 0 )
                 spawnpoints = getstructarray( "initial_spawn_points", "targetname" );
-/#
+
             assert( isdefined( spawnpoints ), "Could not find initial spawn points!" );
-#/
             spawnpoint = maps\mp\zombies\_zm::getfreespawnpoint( spawnpoints, self );
         }
 

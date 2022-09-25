@@ -117,16 +117,16 @@ give_team_characters()
 
     switch ( self.characterindex )
     {
-        case "2":
-        case "0":
+        case 2:
+        case 0:
             self setmodel( "c_zom_player_grief_inmate_fb" );
             self.voice = "american";
             self.skeleton = "base";
             self setviewmodel( "c_zom_oleary_shortsleeve_viewhands" );
             self.characterindex = 0;
             break;
-        case "3":
-        case "1":
+        case 3:
+        case 1:
             self setmodel( "c_zom_player_grief_guard_fb" );
             self.voice = "american";
             self.skeleton = "base";

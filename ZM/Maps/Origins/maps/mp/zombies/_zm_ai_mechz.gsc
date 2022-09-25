@@ -958,9 +958,9 @@ mechz_get_closest_valid_player()
 
     switch ( players.size )
     {
-        case "0":
+        case 0:
             return undefined;
-        case "1":
+        case 1:
             return players[0];
         default:
             if ( isdefined( level.closest_player_override ) )
@@ -984,9 +984,7 @@ get_favorite_enemy( origin, players )
 
     if ( isdefined( self.favoriteenemy ) && is_player_valid( self.favoriteenemy, 1, 1 ) && !isdefined( self.favoriteenemy.in_giant_robot_head ) && !self.favoriteenemy maps\mp\zm_tomb_chamber::is_player_in_chamber() )
     {
-/#
         assert( isdefined( self.favoriteenemy.hunted_by ) );
-#/
         self.favoriteenemy.hunted_by--;
         least_hunted = self.favoriteenemy;
     }

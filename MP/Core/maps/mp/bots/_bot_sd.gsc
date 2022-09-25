@@ -14,9 +14,7 @@ bot_sd_think()
         if ( !isdefined( zone.nearest_node ) )
         {
             nodes = getnodesinradiussorted( zone.trigger.origin, 256, 0 );
-/#
             assert( nodes.size );
-#/
             zone.nearest_node = nodes[0];
         }
     }

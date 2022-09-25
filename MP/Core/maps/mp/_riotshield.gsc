@@ -276,11 +276,7 @@ watchriotshielddeploy()
             assert( !isdefined( self.riotshieldentity ) );
 
             if ( level.gametype != "shrp" )
-            {
-/#
                 assert( primaries.size > 0 );
-#/
-            }
 #/
             shield_ent setclientfield( "riotshield_state", 1 );
             shield_ent.reconmodel setclientfield( "riotshield_state", 1 );
@@ -323,9 +319,7 @@ watchriotshielddeploy()
 
 riotshielddistancetest( origin )
 {
-/#
     assert( isdefined( origin ) );
-#/
     min_dist_squared = getdvarfloat( "riotshield_deploy_limit_radius" );
     min_dist_squared *= min_dist_squared;
 
@@ -384,9 +378,9 @@ watchdeployedriotshielddamage()
 
         if ( !isdefined( attacker ) )
             continue;
-/#
+
         assert( isdefined( self.owner ) && isdefined( self.owner.team ) );
-#/
+
         if ( isplayer( attacker ) )
         {
             if ( level.teambased && attacker.team == self.owner.team && attacker != self.owner )

@@ -119,9 +119,7 @@ piano_run_chords()
     foreach ( s_chord in a_chords )
     {
         s_chord.notes = strtok( s_chord.script_string, " " );
-/#
         assert( s_chord.notes.size == 3 );
-#/
     }
 
     a_chord_order = array( "a_minor", "e_minor", "d_minor" );
@@ -369,9 +367,7 @@ update_relays()
 
 relay_switch_run()
 {
-/#
     assert( isdefined( self.e_switch ) );
-#/
     self.trigger_stub = spawnstruct();
     self.trigger_stub.origin = self.e_switch.origin;
     self.trigger_stub.radius = 50;

@@ -71,18 +71,10 @@ endselectiononhostmigration()
 
 endselectionthink()
 {
-/#
     assert( isplayer( self ) );
-#/
-/#
     assert( isalive( self ) );
-#/
-/#
     assert( isdefined( self.selectinglocation ) );
-#/
-/#
     assert( self.selectinglocation == 1 );
-#/
     self thread endselectionongameend();
     self thread endselectiononhostmigration();
     event = self waittill_any_return( "death", "disconnect", "cancel_location", "game_ended", "used", "weapon_change", "emp_jammed" );
@@ -150,9 +142,7 @@ callstrike( flightplan )
     level.bomberdamagedents = [];
     level.bomberdamagedentscount = 0;
     level.bomberdamagedentsindex = 0;
-/#
     assert( flightplan.distance != 0, "callStrike can not be passed a zero fly distance" );
-#/
     planehalfdistance = flightplan.distance / 2;
     path = getstrikepath( flightplan.target, flightplan.height, planehalfdistance );
     startpoint = path["start"];
@@ -165,9 +155,8 @@ callstrike( flightplan )
 
     if ( bombtime < 0 )
         bombtime = 0;
-/#
+
     assert( flytime > bombtime );
-#/
     flightplan.owner endon( "disconnect" );
     requireddeathcount = flightplan.owner.deathcount;
     side = vectorcross( anglestoforward( direction ), ( 0, 0, 1 ) );
@@ -394,9 +383,8 @@ gethelipath( start, goal )
 
     if ( !isdefined( goal_points ) )
         return undefined;
-/#
+
     assert( goal_points.size >= 1 );
-#/
     return goal_points;
 }
 
@@ -486,9 +474,8 @@ calculatepath( start, end, startnoflyzones, goalnoflyzones )
 
     if ( !isdefined( points ) )
         return undefined;
-/#
+
     assert( points.size >= 1 );
-#/
     debug_sphere( points[points.size - 1], 10, ( 1, 0, 0 ), 1, 1000 );
     point = start;
 

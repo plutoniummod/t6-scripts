@@ -180,9 +180,8 @@ stingerirtloop()
 
             if ( timepassed < locklength )
                 continue;
-/#
+
             assert( isdefined( self.stingertarget ) );
-#/
             self notify( "stop_lockon_sound" );
             self.stingerlockfinalized = 1;
             self weaponlockfinalize( self.stingertarget );
@@ -428,9 +427,7 @@ initlockfield( target )
 
 lockingon( target, lock )
 {
-/#
     assert( isdefined( target.locking_on ) );
-#/
     clientnum = self getentitynumber();
 
     if ( lock )
@@ -456,9 +453,7 @@ watchclearlockingon( target, clientnum )
 
 lockedon( target, lock )
 {
-/#
     assert( isdefined( target.locked_on ) );
-#/
     clientnum = self getentitynumber();
 
     if ( lock )
@@ -519,9 +514,7 @@ _incomingmissiletracker( missile )
     missile waittill( "death" );
 
     self.incoming_missile--;
-/#
     assert( self.incoming_missile >= 0 );
-#/
 }
 
 missiletarget_ismissileincoming()

@@ -1544,33 +1544,26 @@ weapon_toggle_think()
 
 get_weapon_hint( weapon_name )
 {
-/#
     assert( isdefined( level.zombie_weapons[weapon_name] ), weapon_name + " was not included or is not part of the zombie weapon list." );
-#/
     return level.zombie_weapons[weapon_name].hint;
 }
 
 get_weapon_cost( weapon_name )
 {
-/#
     assert( isdefined( level.zombie_weapons[weapon_name] ), weapon_name + " was not included or is not part of the zombie weapon list." );
-#/
     return level.zombie_weapons[weapon_name].cost;
 }
 
 get_ammo_cost( weapon_name )
 {
-/#
     assert( isdefined( level.zombie_weapons[weapon_name] ), weapon_name + " was not included or is not part of the zombie weapon list." );
-#/
     return level.zombie_weapons[weapon_name].ammo_cost;
 }
 
 get_upgraded_ammo_cost( weapon_name )
 {
-/#
     assert( isdefined( level.zombie_weapons[weapon_name] ), weapon_name + " was not included or is not part of the zombie weapon list." );
-#/
+
     if ( isdefined( level.zombie_weapons[weapon_name].upgraded_ammo_cost ) )
         return level.zombie_weapons[weapon_name].upgraded_ammo_cost;
 
@@ -1594,9 +1587,7 @@ get_weapon_display_name( weapon_name )
 
 get_is_in_box( weapon_name )
 {
-/#
     assert( isdefined( level.zombie_weapons[weapon_name] ), weapon_name + " was not included or is not part of the zombie weapon list." );
-#/
     return level.zombie_weapons[weapon_name].is_in_box;
 }
 
@@ -2348,9 +2339,8 @@ weapon_give( weapon, is_upgrade, magic_box, nosound )
     primaryweapons = self getweaponslistprimaries();
     current_weapon = self getcurrentweapon();
     current_weapon = self maps\mp\zombies\_zm_weapons::switch_from_alt_weapon( current_weapon );
-/#
     assert( self player_can_use_content( weapon ) );
-#/
+
     if ( !isdefined( is_upgrade ) )
         is_upgrade = 0;
 
@@ -2528,12 +2518,8 @@ weapon_type_check( weapon )
 
 get_player_index( player )
 {
-/#
     assert( isplayer( player ) );
-#/
-/#
     assert( isdefined( player.characterindex ) );
-#/
 /#
     if ( player.entity_num == 0 && getdvar( _hash_2222BA21 ) != "" )
     {

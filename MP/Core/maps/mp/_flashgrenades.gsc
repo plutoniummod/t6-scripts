@@ -58,9 +58,9 @@ monitorflash_internal( amount_distance, amount_angle, attacker, direct_on_player
         rumbleduration = 0.75;
     else
         rumbleduration = 0.25;
-/#
+
     assert( isdefined( self.team ) );
-#/
+
     if ( level.teambased && isdefined( attacker ) && isdefined( attacker.team ) && attacker.team == self.team && attacker != self )
     {
         if ( level.friendlyfire == 0 )

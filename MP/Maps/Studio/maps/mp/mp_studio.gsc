@@ -96,14 +96,14 @@ damagetarget( dir )
 
         switch ( dir )
         {
-            case "1":
+            case 1:
                 self rotateroll( self.angles[1] + 90, 0.1 );
                 wait 0.2;
                 self rotateroll( self.angles[1] - 90, 0.1 );
                 wait 0.2;
                 self playsound( "amb_target_flip" );
                 break;
-            case "2":
+            case 2:
                 rotation = 1;
 
                 if ( isdefined( attacker ) && isplayer( attacker ) )
@@ -120,21 +120,21 @@ damagetarget( dir )
                 self waittill( "rotatedone" );
 
                 break;
-            case "3":
+            case 3:
                 self rotatepitch( self.angles[1] + 90, 0.1 );
                 wait 0.2;
                 self rotatepitch( self.angles[1] - 90, 0.1 );
                 wait 0.2;
                 self playsound( "amb_target_flip" );
                 break;
-            case "4":
+            case 4:
                 self rotateroll( self.angles[1] - 90, 0.1 );
                 wait 0.2;
                 self rotateroll( self.angles[1] + 90, 0.1 );
                 wait 0.2;
                 self playsound( "amb_target_flip" );
                 break;
-            case "5":
+            case 5:
                 self rotatepitch( self.angles[1] - 90, 0.1 );
                 wait 0.2;
                 self rotatepitch( self.angles[1] + 90, 0.1 );
@@ -177,25 +177,25 @@ movetarget( dir, dis, speed )
 
     switch ( dir )
     {
-        case "1":
+        case 1:
             farpos = self.origin + ( 0, dis, 0 );
             break;
-        case "2":
+        case 2:
             farpos = self.origin - ( 0, dis, 0 );
             break;
-        case "3":
+        case 3:
             farpos = self.origin + ( dis, 0, 0 );
             break;
-        case "4":
+        case 4:
             farpos = self.origin - ( dis, 0, 0 );
             break;
-        case "5":
+        case 5:
             farpos = self.origin + ( 0, 0, dis );
             break;
-        case "6":
+        case 6:
             farpos = self.origin - ( 0, 0, dis );
             break;
-        case "7":
+        case 7:
             farpos = self.origin - dis;
             break;
     }
@@ -229,7 +229,7 @@ rotatetarget( dir, deg, speed, pausetime )
     {
         switch ( dir )
         {
-            case "1":
+            case 1:
                 self rotateyaw( self.angles[2] + deg, speed );
                 self playsound( "amb_target_rotate" );
                 wait( pausetime );
@@ -237,7 +237,7 @@ rotatetarget( dir, deg, speed, pausetime )
                 self playsound( "amb_target_rotate" );
                 wait( pausetime );
                 break;
-            case "2":
+            case 2:
                 self rotateyaw( self.angles[2] - deg, speed );
                 self playsound( "amb_target_rotate" );
                 wait( pausetime );
@@ -245,7 +245,7 @@ rotatetarget( dir, deg, speed, pausetime )
                 self playsound( "amb_target_rotate" );
                 wait( pausetime );
                 break;
-            case "3":
+            case 3:
                 self rotateroll( self.angles[0] + deg, speed );
                 self playsound( "amb_target_rotate" );
                 wait( pausetime );
@@ -253,7 +253,7 @@ rotatetarget( dir, deg, speed, pausetime )
                 self playsound( "amb_target_rotate" );
                 wait( pausetime );
                 break;
-            case "4":
+            case 4:
                 self rotateroll( self.angles[0] - deg, speed );
                 self playsound( "amb_target_rotate" );
                 wait( pausetime );
@@ -261,7 +261,7 @@ rotatetarget( dir, deg, speed, pausetime )
                 self playsound( "amb_target_rotate" );
                 wait( pausetime );
                 break;
-            case "5":
+            case 5:
                 self rotateroll( self.angles[1] + deg, speed );
                 self playsound( "amb_target_rotate" );
                 wait( pausetime );
@@ -269,13 +269,13 @@ rotatetarget( dir, deg, speed, pausetime )
                 self playsound( "amb_target_rotate" );
                 wait( pausetime );
                 break;
-            case "6":
+            case 6:
                 self rotatepitch( self.angles[1] - deg, speed );
                 wait( pausetime );
                 self rotatepitch( self.angles[1] + deg, speed );
                 wait( pausetime );
                 break;
-            case "7":
+            case 7:
                 self rotateto( ( self.angles[0] + 90, self.angles[1] - 90, self.angles[2] + 45 ), speed );
                 wait( pausetime );
                 self rotateto( ( self.angles[0] - 90, self.angles[1] + 90, self.angles[2] - 45 ), speed );

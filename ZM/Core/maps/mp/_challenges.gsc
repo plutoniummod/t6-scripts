@@ -371,15 +371,11 @@ challengekills( data, time )
         else
             player.attachmentkills[attachmentname] = 1;
     }
-/#
+
     assert( isdefined( player.activecounteruavs ) );
-#/
-/#
     assert( isdefined( player.activeuavs ) );
-#/
-/#
     assert( isdefined( player.activesatellites ) );
-#/
+
     if ( player.activeuavs > 0 )
         player addplayerstat( "kill_while_uav_active", 1 );
 
@@ -779,9 +775,8 @@ perkkills( victim, isstunned, time )
 
     if ( isstunned == 1 && player hasperk( "specialty_stunprotection" ) )
         player addplayerstat( "perk_protection_stun_kills", 1 );
-/#
+
     assert( isdefined( victim.activecounteruavs ) );
-#/
     activeemp = 0;
 
     if ( level.teambased )

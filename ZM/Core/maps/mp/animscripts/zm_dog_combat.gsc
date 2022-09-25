@@ -23,9 +23,9 @@ main()
         combatidle();
         return;
     }
-/#
+
     assert( isdefined( self.enemy ) );
-#/
+
     if ( !isalive( self.enemy ) )
     {
         combatidle();
@@ -51,9 +51,8 @@ shouldwaitincombatidle()
 {
     if ( isdefined( level.hostmigrationtimer ) )
         return 1;
-/#
+
     assert( isdefined( self.enemy ) && isalive( self.enemy ) );
-#/
     return isdefined( self.enemy.dogattackallowtime ) && gettime() < self.enemy.dogattackallowtime;
 }
 
@@ -358,9 +357,7 @@ dog_cant_kill_in_one_hit( player )
 
     if ( isdefined( player.dogs_dont_instant_kill ) )
     {
-/#
         assert( player.dogs_dont_instant_kill, "Dont set player.dogs_dont_instant_kill to false, set to undefined" );
-#/
         return 1;
     }
 

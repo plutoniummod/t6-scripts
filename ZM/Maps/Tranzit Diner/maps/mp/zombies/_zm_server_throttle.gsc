@@ -32,9 +32,8 @@ server_choke_safe( id )
 
 server_choke_action( id, choke_action, arg1, arg2, arg3 )
 {
-/#
     assert( isdefined( level.zombie_server_choke_ids_max[id] ), "server Choke: " + id + " undefined" );
-#/
+
     while ( !server_choke_safe( id ) )
         wait 0.05;
 
@@ -64,9 +63,8 @@ server_safe_init( id, max )
 {
     if ( !isdefined( level.zombie_server_choke_ids_max ) || !isdefined( level.zombie_server_choke_ids_max[id] ) )
         server_choke_init( id, max );
-/#
+
     assert( max == level.zombie_server_choke_ids_max[id] );
-#/
 }
 
 _server_safe_ground_trace( pos )

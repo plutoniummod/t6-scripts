@@ -218,18 +218,12 @@ setup_interaction_matrix()
     {
         int_type = interaction_types[i];
         interaction = level.interaction_types[int_type];
-/#
         assert( !isdefined( level.interaction_priority[interaction.priority] ) );
-#/
         level.interaction_priority[interaction.priority] = int_type;
     }
 /#
     for ( i = 0; i < interaction_types.size; i++ )
-    {
-/#
         assert( isdefined( level.interaction_priority[i] ) );
-#/
-    }
 #/
 }
 
@@ -743,9 +737,7 @@ brutus_round_spawn_failsafe_respawn()
 
 get_interact_offset( item, target_type )
 {
-/#
     assert( isdefined( level.interaction_types[target_type] ) );
-#/
     interaction = level.interaction_types[target_type];
     anim_state = interaction.animstate;
     animationid = self getanimfromasd( anim_state, 0 );
@@ -1279,9 +1271,8 @@ get_priority_item_for_brutus( zone_name, do_secondary_zone_checks )
             if ( int_objects[j] [[ int_struct.validity_func ]]() )
             {
                 score = self [[ int_struct.value_func ]]( int_objects[j] );
-/#
                 assert( score >= 0 );
-#/
+
                 if ( score < best_score || best_score < 0 )
                 {
                     best_object = int_objects[j];
@@ -1350,9 +1341,7 @@ get_trap_score( object )
 
 get_magic_boxes( zone_name )
 {
-/#
     assert( isdefined( level.zones[zone_name] ) );
-#/
     return level.zones[zone_name].magic_boxes;
 }
 
@@ -1378,9 +1367,7 @@ get_perk_machine_trigger()
 
 get_perk_machines( zone_name )
 {
-/#
     assert( isdefined( level.zones[zone_name] ) );
-#/
     return level.zones[zone_name].perk_machines;
 }
 
@@ -1411,9 +1398,7 @@ get_trigger_for_craftable()
 
 get_craftable_tables( zone_name )
 {
-/#
     assert( isdefined( level.zones[zone_name] ) );
-#/
     return level.zones[zone_name].craftable_tables;
 }
 
@@ -1454,9 +1439,7 @@ get_closest_trap_for_brutus()
 
 get_traps( zone_name )
 {
-/#
     assert( isdefined( level.zones[zone_name] ) );
-#/
     return level.zones[zone_name].traps;
 }
 
@@ -1472,9 +1455,7 @@ is_trap_valid()
 
 get_plane_ramps( zone_name )
 {
-/#
     assert( isdefined( level.zones[zone_name] ) );
-#/
     return level.zones[zone_name].plane_triggers;
 }
 
@@ -1758,11 +1739,11 @@ get_lock_hint_string( cost )
 {
     switch ( cost )
     {
-        case "2000":
+        case 2000:
             return &"ZOMBIE_LOCKED_COST_2000";
-        case "4000":
+        case 4000:
             return &"ZOMBIE_LOCKED_COST_4000";
-        case "6000":
+        case 6000:
             return &"ZOMBIE_LOCKED_COST_6000";
         default:
             return &"ZOMBIE_LOCKED_COST";

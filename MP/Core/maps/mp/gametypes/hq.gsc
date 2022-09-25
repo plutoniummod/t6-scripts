@@ -653,9 +653,9 @@ onspawnplayer( predictedspawn )
         spawnteam = self.pers["team"];
         spawnpoint = maps\mp\gametypes\_spawnlogic::getspawnpoint_random( level.spawn_start[spawnteam] );
     }
-/#
+
     assert( isdefined( spawnpoint ) );
-#/
+
     if ( predictedspawn )
         self predictspawnpoint( spawnpoint.origin, spawnpoint.angles );
     else
@@ -765,9 +765,8 @@ setupradios()
                 continue;
             }
         }
-/#
+
         assert( !errored );
-#/
         radio.trigorigin = radio.trig.origin;
         visuals = [];
         visuals[0] = radio;
@@ -867,9 +866,8 @@ setupnodes()
         if ( temp istouching( self.trig ) )
             self.nodes[self.nodes.size] = node;
     }
-/#
+
     assert( self.nodes.size );
-#/
     temp delete();
 }
 
@@ -937,9 +935,8 @@ getnextradiofromqueue()
 {
     if ( level.radiospawnqueue.size == 0 )
         shuffleradios();
-/#
+
     assert( level.radiospawnqueue.size > 0 );
-#/
     next_radio = level.radiospawnqueue[0];
     arrayremoveindex( level.radiospawnqueue, 0 );
     return next_radio;
@@ -1048,9 +1045,8 @@ pickradiotospawn()
             bestradio = radio;
         }
     }
-/#
+
     assert( isdefined( bestradio ) );
-#/
     level.prevradio2 = level.prevradio;
     level.prevradio = bestradio;
     return bestradio;

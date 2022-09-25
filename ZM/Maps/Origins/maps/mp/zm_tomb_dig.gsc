@@ -670,9 +670,8 @@ ee_zombie_blood_dig()
                 break;
             }
         }
-/#
+
         assert( isdefined( n_index ), "No more zombie blood dig spots.  Add more to the map." );
-#/
         s_z_spot = a_randomized[n_index];
         s_z_spot.n_player = self getentitynumber();
         s_z_spot create_zombie_blood_dig_spot( self );

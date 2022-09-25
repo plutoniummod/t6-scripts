@@ -398,22 +398,22 @@ main()
 
     switch ( randchar )
     {
-        case "0":
+        case 0:
             character\c_zom_zombie_civ_shorts::main();
             break;
-        case "1":
+        case 1:
             character\c_zom_zombie_civ_shorts2::main();
             break;
-        case "2":
+        case 2:
             character\c_zom_zombie_civ_shorts3::main();
             break;
-        case "3":
+        case 3:
             character\c_zom_zombie_civ_shorts4::main();
             break;
-        case "4":
+        case 4:
             character\c_zom_zombie_civ_shorts5::main();
             break;
-        case "5":
+        case 5:
             character\c_zom_zombie_civ_shorts6::main();
             break;
     }

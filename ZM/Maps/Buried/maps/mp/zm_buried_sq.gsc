@@ -1034,9 +1034,8 @@ warp_to_struct_position( str_value, str_key )
 
     a_warp_structs = getstructarray( str_value, str_key );
     a_players = get_players();
-/#
     assert( a_warp_structs.size > a_players.size, "warp_to_struct_position found more players than structs for '" + str_key + "' = '" + str_value + "'! Add more structs to fix this" );
-#/
+
     for ( i = 0; i < a_players.size; i++ )
     {
         a_players[i] setorigin( a_warp_structs[i].origin );
@@ -1370,25 +1369,25 @@ vo_stuhlingerpossessed()
 
         switch ( nvo )
         {
-            case "1":
+            case 1:
                 richtofensay( "vox_zmba_stuhlinger_3rd_possession_1_0", 5, play_in_3d );
                 break;
-            case "2":
+            case 2:
                 richtofensay( "vox_zmba_stuhlinger_3rd_possession_2_0", 7, play_in_3d );
                 break;
-            case "3":
+            case 3:
                 richtofensay( "vox_zmba_stuhlinger_3rd_possession_3_0", 9, play_in_3d );
                 break;
-            case "4":
+            case 4:
                 richtofensay( "vox_zmba_stuhlinger_3rd_possession_4_0", 12, play_in_3d );
                 break;
-            case "5":
+            case 5:
                 richtofensay( "vox_zmba_stuhlinger_3rd_possession_5_0", 7, play_in_3d );
                 break;
-            case "6":
+            case 6:
                 richtofensay( "vox_zmba_stuhlinger_3rd_possession_6_0", 8, play_in_3d );
                 break;
-            case "7":
+            case 7:
                 richtofensay( "vox_zmba_stuhlinger_3rd_possession_7_0", 8, play_in_3d );
                 break;
         }

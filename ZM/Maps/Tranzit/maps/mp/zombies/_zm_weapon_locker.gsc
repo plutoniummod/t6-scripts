@@ -165,9 +165,7 @@ triggerweaponslockerthink()
 
             weapondata = player maps\mp\zombies\_zm_weapons::get_player_weapondata( player );
             player wl_set_stored_weapondata( weapondata );
-/#
             assert( curweapon == weapondata["name"], "weapon data does not match" );
-#/
             player takeweapon( curweapon );
             primaries = player getweaponslistprimaries();
 

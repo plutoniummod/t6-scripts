@@ -817,9 +817,7 @@ getallalliedandenemyplayers( obj )
 {
     if ( level.teambased )
     {
-/#
         assert( isdefined( level.teams[self.team] ) );
-#/
         obj.allies = [];
         obj.enemies = [];
 
@@ -2152,9 +2150,8 @@ getrandomintermissionpoint()
 
     if ( !spawnpoints.size )
         spawnpoints = getentarray( "info_player_start", "classname" );
-/#
+
     assert( spawnpoints.size );
-#/
     spawnpoint = maps\mp\gametypes_zm\_spawnlogic::getspawnpoint_random( spawnpoints );
     return spawnpoint;
 }

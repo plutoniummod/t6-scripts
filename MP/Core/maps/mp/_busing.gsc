@@ -4,9 +4,7 @@
 
 businit()
 {
-/#
     assert( level.clientscripts );
-#/
     level.busstate = "";
     registerclientsys( "busCmd" );
 }

@@ -23,11 +23,7 @@ add_buildable_to_pool( stub, poolname )
     if ( !isdefined( level.buildablepools[poolname].buildable_slot ) )
         level.buildablepools[poolname].buildable_slot = stub.buildablestruct.buildable_slot;
     else
-    {
-/#
         assert( level.buildablepools[poolname].buildable_slot == stub.buildablestruct.buildable_slot );
-#/
-    }
 
     stub.buildable_pool = level.buildablepools[poolname];
     stub.original_prompt_and_visibility_func = stub.prompt_and_visibility_func;
@@ -174,9 +170,8 @@ pooledbuildablestub_update_prompt( player, trigger )
         }
         else if ( isdefined( self.bound_to_buildable ) )
         {
-/#
             assert( isdefined( level.zombie_buildables[self.equipname].hint ), "Missing buildable hint" );
-#/
+
             if ( isdefined( level.zombie_buildables[self.equipname].hint ) )
                 self.hint_string = level.zombie_buildables[self.equipname].hint;
             else
@@ -184,9 +179,8 @@ pooledbuildablestub_update_prompt( player, trigger )
         }
         else
         {
-/#
             assert( isdefined( level.zombie_buildables[self.equipname].hint ), "Missing buildable hint" );
-#/
+
             if ( isdefined( level.zombie_buildables[self.equipname].hint ) )
                 self.hint_string = level.zombie_buildables[self.equipname].hint;
             else
@@ -387,19 +381,19 @@ pooled_buildable_place_think()
 
     switch ( self.stub.persistent )
     {
-        case "1":
+        case 1:
             self bptrigger_think_persistent( player_built );
             break;
-        case "0":
+        case 0:
             self bptrigger_think_one_time( player_built );
             break;
-        case "3":
+        case 3:
             self bptrigger_think_unbuild( player_built );
             break;
-        case "2":
+        case 2:
             self bptrigger_think_one_use_and_fly( player_built );
             break;
-        case "4":
+        case 4:
             self [[ self.stub.custom_completion_callback ]]( player_built );
             break;
     }

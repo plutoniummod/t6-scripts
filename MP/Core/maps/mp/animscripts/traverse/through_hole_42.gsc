@@ -10,9 +10,7 @@ main()
     self traversemode( "nogravity" );
     self traversemode( "noclip" );
     startnode = self getnegotiationstartnode();
-/#
     assert( isdefined( startnode ) );
-#/
     self orientmode( "face angle", startnode.angles[1] );
 
     if ( isdefined( startnode.traverse_height ) )

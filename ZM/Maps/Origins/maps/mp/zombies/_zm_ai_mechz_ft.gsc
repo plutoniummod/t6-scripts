@@ -16,9 +16,8 @@ init_flamethrower_triggers()
 {
     flag_wait( "initial_players_connected" );
     level.flamethrower_trigger_array = getentarray( "flamethrower_trigger", "script_noteworthy" );
-/#
     assert( isdefined( level.flamethrower_trigger_array ) && level.flamethrower_trigger_array.size >= 4 );
-#/
+
     for ( i = 0; i < level.flamethrower_trigger_array.size; i++ )
         level.flamethrower_trigger_array[i] enablelinkto();
 }
@@ -407,9 +406,7 @@ on_fire_timeout()
 
 should_do_flamethrower_attack()
 {
-/#
     assert( isdefined( self.favoriteenemy ) );
-#/
 /#
     if ( getdvarint( _hash_E7121222 ) > 1 )
         println( "\\n\\tMZ: Checking should flame\\n" );

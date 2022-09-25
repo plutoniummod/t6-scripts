@@ -382,22 +382,22 @@ main()
 
     switch ( randchar )
     {
-        case "0":
+        case 0:
             character\c_zom_tomb_crusader_1a::main();
             break;
-        case "1":
+        case 1:
             character\c_zom_tomb_crusader_1a_nohat::main();
             break;
-        case "2":
+        case 2:
             character\c_zom_tomb_crusader_2b::main();
             break;
-        case "3":
+        case 3:
             character\c_zom_tomb_crusader_2b_nohat::main();
             break;
-        case "4":
+        case 4:
             character\c_zom_tomb_crusader_2c::main();
             break;
-        case "5":
+        case 5:
             character\c_zom_tomb_crusader_1c::main();
             break;
     }

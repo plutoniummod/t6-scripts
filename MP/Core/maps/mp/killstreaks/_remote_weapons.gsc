@@ -66,9 +66,8 @@ initremoteweapon( weapon, weaponname )
 
 setactiveremotecontrolledweapon( weapon )
 {
-/#
     assert( !isdefined( self.remoteweapon ), "Trying to activate remote weapon without cleaning up the current one" );
-#/
+
     if ( isdefined( self.remoteweapon ) )
         return;
 
@@ -129,9 +128,7 @@ collectweaponpings()
 
     if ( isdefined( self ) )
     {
-/#
         assert( isdefined( self.remoteweaponqueue ) );
-#/
         best_weapon = undefined;
 
         foreach ( weapon in self.remoteweaponqueue )
@@ -151,9 +148,8 @@ collectweaponpings()
 watchremotecontrolledweapondeath()
 {
     self endon( "remove_remote_weapon" );
-/#
     assert( isdefined( self.remoteweapon ) );
-#/
+
     self.remoteweapon waittill( "death" );
 
     if ( isdefined( self ) )

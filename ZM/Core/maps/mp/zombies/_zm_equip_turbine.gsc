@@ -461,14 +461,14 @@ turbinefxonce( withaoe )
 
         switch ( self.turbine_power_level )
         {
-            case "4":
-            case "3":
+            case 4:
+            case 3:
                 value = 1;
                 break;
-            case "2":
+            case 2:
                 value = 2;
                 break;
-            case "1":
+            case 1:
                 value = 3;
                 break;
         }
@@ -543,16 +543,16 @@ turbineanim( wait_for_end )
     {
         switch ( self.turbine_power_level )
         {
-            case "4":
-            case "3":
+            case 4:
+            case 3:
                 animlength = getanimlength( %o_zombie_buildable_turbine_fullpower );
                 self.buildableturbine setanim( %o_zombie_buildable_turbine_fullpower );
                 break;
-            case "2":
+            case 2:
                 animlength = getanimlength( %o_zombie_buildable_turbine_halfpower );
                 self.buildableturbine setanim( %o_zombie_buildable_turbine_halfpower );
                 break;
-            case "1":
+            case 1:
                 animlength = getanimlength( %o_zombie_buildable_turbine_neardeath );
                 self.buildableturbine setanim( %o_zombie_buildable_turbine_neardeath );
                 break;
@@ -681,11 +681,11 @@ turbinepowerdiminish( origin, powerradius )
         {
             switch ( self.turbine_power_level )
             {
-                case "4":
+                case 4:
                     break;
-                case "3":
+                case 3:
                     break;
-                case "2":
+                case 2:
                     self.turbine_power_on = 1;
                     wait( randomintrange( 12, 20 ) );
                     self turbinepoweroff( origin, powerradius );
@@ -693,7 +693,7 @@ turbinepowerdiminish( origin, powerradius )
                     wait( randomintrange( 3, 8 ) );
                     self turbinepoweron( origin, powerradius );
                     break;
-                case "1":
+                case 1:
                     self.turbine_power_on = 1;
                     wait( randomintrange( 3, 7 ) );
                     self turbinepoweroff( origin, powerradius );

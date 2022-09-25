@@ -28,11 +28,11 @@ main()
 
         switch ( x )
         {
-            case "10":
+            case 10:
                 script_noteworthy = "front";
                 break;
-            case "12":
-            case "11":
+            case 12:
+            case 11:
                 script_noteworthy = "door";
                 break;
         }
@@ -61,9 +61,7 @@ busaddopening( tag_name, script_noteworthy )
     opening.rebuildtrigger = undefined;
     opening.tagname = tag_name;
     opening.bindtag = _busfindclosesttag( self gettagorigin( tag_name ) );
-/#
     assert( isdefined( opening.bindtag ) );
-#/
     opening.jumptag = _busgetjumptagfrombindtag( opening.bindtag );
     opening.jumpent = level.the_bus;
     opening.roofjoint = _busgetroofjointfrombindtag( opening.bindtag );
@@ -73,9 +71,7 @@ busaddopening( tag_name, script_noteworthy )
 
     if ( !isdefined( targets ) )
     {
-/#
         assert( 0 );
-#/
         return;
     }
 
@@ -151,9 +147,7 @@ busaddopening( tag_name, script_noteworthy )
         opening blocker_attack_spots();
 
     opening notify( "opening_init_complete" );
-/#
     assert( opening.boardsnum == 0 || opening.boardsnum == opening.boards.size );
-#/
 }
 
 post_carpenter_callback()
@@ -234,9 +228,8 @@ _busfindclosesttag( checkpos )
 {
     closest = undefined;
     closestdist = -1.0;
-/#
     assert( isdefined( self.openingtags ) );
-#/
+
     for ( i = 0; i < self.openingtags.size; i++ )
     {
         tag = self.openingtags[i];

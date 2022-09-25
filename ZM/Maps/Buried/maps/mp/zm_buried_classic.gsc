@@ -1230,9 +1230,7 @@ _append_name( str_name, str_name_append )
 
 blocker_model_promote()
 {
-/#
     assert( isdefined( self.model ), "model not set for minigame blocker at " + self.origin );
-#/
     m_blocker = spawn( "script_model", self.origin + vectorscale( ( 0, 0, -1 ), 100.0 ) );
 
     if ( !isdefined( self.angles ) )
@@ -1372,9 +1370,7 @@ minigame_blockers_precache()
 
     foreach ( struct in a_structs )
     {
-/#
         assert( isdefined( struct.model ), "blocker struct is missing model at " + struct.origin );
-#/
         precachemodel( struct.model );
     }
 }

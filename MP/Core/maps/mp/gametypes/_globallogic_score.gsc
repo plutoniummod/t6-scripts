@@ -296,9 +296,7 @@ giveplayermomentum( event, player, victim, weapon, descvalue )
         return;
 
     score = maps\mp\gametypes\_rank::getscoreinfovalue( event );
-/#
     assert( isdefined( score ) );
-#/
     label = maps\mp\gametypes\_rank::getscoreinfolabel( event );
     countstowardrampage = maps\mp\gametypes\_rank::doesscoreinfocounttowardrampage( event );
 
@@ -380,9 +378,8 @@ giveplayerscore( event, player, victim, weapon, descvalue )
 default_onplayerscore( event, player, victim )
 {
     score = maps\mp\gametypes\_rank::getscoreinfovalue( event );
-/#
     assert( isdefined( score ) );
-#/
+
     if ( level.wagermatch )
         player thread maps\mp\gametypes\_rank::updaterankscorehud( score );
 
@@ -809,9 +806,7 @@ onteamscore_postprocess( team )
 default_onteamscore( event, team )
 {
     score = maps\mp\gametypes\_rank::getscoreinfovalue( event );
-/#
     assert( isdefined( score ) );
-#/
     onteamscore( score, team );
 }
 
@@ -1289,15 +1284,11 @@ processkillstreakassists( attacker, inflictor, weaponname )
 
         if ( player.sessionstate != "playing" )
             continue;
-/#
+
         assert( isdefined( player.activecounteruavs ) );
-#/
-/#
         assert( isdefined( player.activeuavs ) );
-#/
-/#
         assert( isdefined( player.activesatellites ) );
-#/
+
         if ( player.activecounteruavs > 0 && !maps\mp\killstreaks\_killstreaks::iskillstreakweapon( weaponname ) )
         {
             scoregiven = thread maps\mp\_scoreevents::processscoreevent( "counter_uav_assist", player );

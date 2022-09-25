@@ -34,9 +34,7 @@ init()
 
 swarm_killstreak( hardpointtype )
 {
-/#
     assert( hardpointtype == "missile_swarm_mp" );
-#/
     level.missile_swarm_origin = level.mapcenter + ( 0, 0, level.missile_swarm_flyheight );
 
     if ( level.script == "mp_drone" )
@@ -277,9 +275,8 @@ swarm_think( owner, killstreak_id )
 
     while ( gettime() < end_time )
     {
-/#
         assert( level.missile_swarm_count >= 0 );
-#/
+
         if ( level.missile_swarm_count >= level.missile_swarm_max )
         {
             wait 0.5;

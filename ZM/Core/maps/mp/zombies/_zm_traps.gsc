@@ -146,9 +146,9 @@ trap_init()
 
         self._trap_fx_structs[self._trap_fx_structs.size] = components[i];
     }
-/#
+
     assert( self._trap_use_trigs.size > 0, "_zm_traps::init no use triggers found for " + self.target );
-#/
+
     if ( !isdefined( self.zombie_cost ) )
         self.zombie_cost = 1000;
 

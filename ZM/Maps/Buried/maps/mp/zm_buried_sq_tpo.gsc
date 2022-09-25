@@ -398,9 +398,8 @@ promote_to_corpse_model( str_model )
 
 _pose_corpse()
 {
-/#
     assert( isdefined( self.script_noteworthy ), "sq_tpo_corpse_spawn_location at " + self.origin + " is missing script_noteworthy! This is required to set deadpose" );
-#/
+
     switch ( self.script_noteworthy )
     {
         case "deadpose_1":
@@ -564,16 +563,16 @@ item_is_on_corpse()
 
     switch ( level.sq_tpo.times_searched )
     {
-        case "0":
+        case 0:
             n_chance = 1;
             break;
-        case "1":
+        case 1:
             n_chance = 15;
             break;
-        case "2":
+        case 2:
             n_chance = 33;
             break;
-        case "3":
+        case 3:
             n_chance = 100;
             break;
     }

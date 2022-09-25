@@ -359,9 +359,7 @@ onspawnplayer( predictedspawn )
     }
 
     spawnpoints = maps\mp\gametypes\_spawnlogic::getspawnpointarray( spawnpointname );
-/#
     assert( spawnpoints.size );
-#/
     spawnpoint = maps\mp\gametypes\_spawnlogic::getspawnpoint_random( spawnpoints );
 
     if ( predictedspawn )
@@ -737,9 +735,7 @@ bombs()
 
         level.bombzones[level.bombzones.size] = bombzone;
         bombzone.bombdefusetrig = defusetrig;
-/#
         assert( isdefined( bombzone.bombdefusetrig ) );
-#/
         bombzone.bombdefusetrig.origin += vectorscale( ( 0, 0, -1 ), 10000.0 );
         bombzone.bombdefusetrig.label = scriptlabel;
         dem_enemy_base_influencer_score = level.spawnsystem.dem_enemy_base_influencer_score;
@@ -800,9 +796,8 @@ onbeginuse( player )
                     closestbomb = bomb;
                 }
             }
-/#
+
             assert( isdefined( closestbomb ) );
-#/
             player.defusing = closestbomb;
             closestbomb hide();
         }
@@ -1148,9 +1143,8 @@ waitlongdurationwithbombtimeupdate( whichbomb, duration )
 {
     if ( duration == 0 )
         return;
-/#
+
     assert( duration > 0 );
-#/
     starttime = gettime();
     endtime = gettime() + duration * 1000;
 

@@ -537,9 +537,7 @@ player_wait_take_meat( meat_name )
             self switchtoweapon( primaryweapons[0] );
         else
         {
-/#
             assert( 0, "Player has no weapon" );
-#/
             self maps\mp\zombies\_zm_weapons::give_fallback_weapon();
         }
     }
@@ -1735,9 +1733,7 @@ item_meat_caught( player, in_air )
 
 item_meat_on_pickup( player )
 {
-/#
     assert( !player maps\mp\zombies\_zm_laststand::player_is_in_laststand(), "Player in last stand triggered meat pickup" );
-#/
     player maps\mp\gametypes_zm\_weaponobjects::deleteweaponobjecthelper( self );
     self cleanup_meat();
     level.item_meat = undefined;

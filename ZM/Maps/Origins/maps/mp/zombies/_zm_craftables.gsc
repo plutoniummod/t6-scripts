@@ -129,9 +129,7 @@ explosiondamage( damage, pos )
 
 make_zombie_craftable_open( str_craftable, str_model, v_angle_offset, v_origin_offset )
 {
-/#
     assert( isdefined( level.zombie_craftablestubs[str_craftable] ), "Craftable " + str_craftable + " has not been added yet." );
-#/
     precachemodel( str_model );
     s_craftable = level.zombie_craftablestubs[str_craftable];
     s_craftable.is_open_table = 1;
@@ -254,9 +252,7 @@ generate_zombie_craftable_piece( craftablename, piecename, modelname, radius, he
     {
         if ( isdefined( is_shared ) && is_shared )
         {
-/#
             assert( isstring( client_field_value ), "Client field value for shared item (" + piecename + ") should be a string (the name of the ClientField to use)" );
-#/
             piecestub.client_field_id = client_field_value;
         }
         else
@@ -520,9 +516,8 @@ dbline( from, to )
 
 player_throw_piece( piece, origin, dir, return_to_spawn, return_time, endangles )
 {
-/#
     assert( isdefined( piece ) );
-#/
+
     if ( isdefined( piece ) )
     {
 /#
@@ -789,9 +784,9 @@ piece_allocate_spawn( piecestub )
 
             totalweight += spawnweights[i];
         }
-/#
+
         assert( any_good || any_okay, "There is nowhere to spawn this piece" );
-#/
+
         if ( any_good )
             totalweight = float( int( totalweight ) );
 
@@ -1043,12 +1038,8 @@ generate_piece( piecestub )
 
 craftable_piece_unitriggers( craftable_name, origin )
 {
-/#
     assert( isdefined( craftable_name ) );
-#/
-/#
     assert( isdefined( level.zombie_craftablestubs[craftable_name] ), "Called craftable_think() without including the craftable - " + craftable_name );
-#/
     craftable = level.zombie_craftablestubs[craftable_name];
 
     if ( !isdefined( craftable.a_piecestubs ) )
@@ -1538,9 +1529,8 @@ player_craft( craftablespawn )
     else
     {
         self playsound( "zmb_buildable_piece_add" );
-/#
         assert( isdefined( level.zombie_craftablestubs[craftablespawn.craftable_name].str_crafting ), "Missing builing hint" );
-#/
+
         if ( isdefined( level.zombie_craftablestubs[craftablespawn.craftable_name].str_crafting ) )
             return level.zombie_craftablestubs[craftablespawn.craftable_name].str_crafting;
     }
@@ -1649,9 +1639,8 @@ craftablestub_update_prompt( player, unitrigger )
                 return false;
             }
         }
-/#
+
         assert( isdefined( level.zombie_craftablestubs[self.equipname].str_to_craft ), "Missing craftable hint" );
-#/
         self.hint_string = level.zombie_craftablestubs[self.equipname].str_to_craft;
     }
     else if ( self.persistent == 1 )
@@ -1788,7 +1777,7 @@ open_craftablestub_update_prompt( player )
 
         switch ( self.a_uts_open_craftables_available.size )
         {
-            case "0":
+            case 0:
                 if ( !isdefined( player.current_craftable_piece ) )
                 {
                     self.hint_string = &"ZOMBIE_BUILD_PIECE_MORE";
@@ -1797,7 +1786,7 @@ open_craftablestub_update_prompt( player )
                 }
 
                 break;
-            case "1":
+            case 1:
                 self.n_open_craftable_choice = 0;
                 self.equipname = self.a_uts_open_craftables_available[self.n_open_craftable_choice].equipname;
                 return true;
@@ -2551,9 +2540,7 @@ craftable_complete()
 
 get_craftable_hint( craftable_name )
 {
-/#
     assert( isdefined( level.zombie_craftablestubs[craftable_name] ), craftable_name + " was not included or is not part of the zombie weapon list." );
-#/
     return level.zombie_craftablestubs[craftable_name].str_to_craft;
 }
 

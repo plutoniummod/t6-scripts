@@ -406,9 +406,7 @@ detonateweaponobjectarray( forcedetonation, weapon )
 addweaponobjecttowatcher( watchername, weapon )
 {
     watcher = getweaponobjectwatcher( watchername );
-/#
     assert( isdefined( watcher ), "Weapon object watcher " + watchername + " does not exist" );
-#/
     self addweaponobject( watcher, weapon );
 }
 
@@ -1080,9 +1078,7 @@ weaponobjectdetectiontrigger( ownerteam )
 hackertriggersetvisibility( owner )
 {
     self endon( "death" );
-/#
     assert( isplayer( owner ) );
-#/
     ownerteam = owner.pers["team"];
 
     for (;;)

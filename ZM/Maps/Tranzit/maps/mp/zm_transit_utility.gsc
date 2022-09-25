@@ -142,9 +142,7 @@ is_theelectricalengineer()
 get_random_encounter_match( location )
 {
     match_pool = [];
-/#
     assert( match_pool.size > 0, "Could not find a random encounters match for " + location );
-#/
     return random( match_pool );
 }
 

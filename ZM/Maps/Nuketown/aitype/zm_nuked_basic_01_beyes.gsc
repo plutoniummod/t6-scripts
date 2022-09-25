@@ -314,10 +314,10 @@ main()
 
     switch ( randchar )
     {
-        case "0":
+        case 0:
             character\c_zom_dlc0_zombie_hazmat_1_beyes::main();
             break;
-        case "1":
+        case 1:
             character\c_zom_dlc0_zombie_hazmat_2_beyes::main();
             break;
     }

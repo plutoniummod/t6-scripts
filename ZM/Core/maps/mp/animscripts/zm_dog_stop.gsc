@@ -50,9 +50,7 @@ dogidlenotetracks( note )
 
 isfacingenemy( tolerancecosangle )
 {
-/#
     assert( isdefined( self.enemy ) );
-#/
     vectoenemy = self.enemy.origin - self.origin;
     disttoenemy = length( vectoenemy );
 

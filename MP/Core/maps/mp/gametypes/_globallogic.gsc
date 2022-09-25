@@ -1785,9 +1785,7 @@ removedisconnectedplayerfromplacement()
         return;
 
     level.placement["all"][numplayers - 1] = undefined;
-/#
     assert( level.placement["all"].size == numplayers - 1 );
-#/
 /#
     maps\mp\gametypes\_globallogic_utils::assertproperplacement();
 #/
@@ -1900,9 +1898,8 @@ istopscoringplayer( player )
 {
     topplayer = 0;
     updateplacement();
-/#
     assert( level.placement["all"].size > 0 );
-#/
+
     if ( level.placement["all"].size == 0 )
         return 0;
 
@@ -2117,9 +2114,8 @@ updateteamstatus()
 
 checkteamscorelimitsoon( team )
 {
-/#
     assert( isdefined( team ) );
-#/
+
     if ( level.scorelimit <= 0 )
         return;
 
@@ -2137,9 +2133,8 @@ checkteamscorelimitsoon( team )
 
 checkplayerscorelimitsoon()
 {
-/#
     assert( isplayer( self ) );
-#/
+
     if ( level.scorelimit <= 0 )
         return;
 
@@ -2333,36 +2328,16 @@ assertteamvariables()
     {
         foreach ( team in level.teams )
         {
-/#
             assert( isdefined( game["strings"][team + "_win"] ) );
-#/
-/#
             assert( isdefined( game["strings"][team + "_win_round"] ) );
-#/
-/#
             assert( isdefined( game["strings"][team + "_mission_accomplished"] ) );
-#/
-/#
             assert( isdefined( game["strings"][team + "_eliminated"] ) );
-#/
-/#
             assert( isdefined( game["strings"][team + "_forfeited"] ) );
-#/
-/#
             assert( isdefined( game["strings"][team + "_name"] ) );
-#/
-/#
             assert( isdefined( game["music"]["spawn_" + team] ) );
-#/
-/#
             assert( isdefined( game["music"]["victory_" + team] ) );
-#/
-/#
             assert( isdefined( game["icons"][team] ) );
-#/
-/#
             assert( isdefined( game["voice"][team] ) );
-#/
         }
     }
 }
@@ -2398,9 +2373,9 @@ callback_startgametype()
 
         if ( !isdefined( game["defenders"] ) )
             game["defenders"] = "axis";
-/#
+
         assert( game["attackers"] != game["defenders"] );
-#/
+
         foreach ( team in level.teams )
         {
             if ( !isdefined( game[team] ) )
@@ -2770,9 +2745,9 @@ checkroundswitch()
 
     if ( !isdefined( level.onroundswitch ) )
         return false;
-/#
+
     assert( game["roundsplayed"] > 0 );
-#/
+
     if ( game["roundsplayed"] % level.roundswitch == 0 )
     {
         [[ level.onroundswitch ]]();

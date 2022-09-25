@@ -172,10 +172,10 @@ damageinpoisonarea( gaseffectarea, killcament, trace, position )
         {
             switch ( timer )
             {
-                case "0":
+                case 0:
                     self shellshock( "tabun_gas_mp", 1.0 );
                     break;
-                case "1":
+                case 1:
                     self shellshock( "tabun_gas_nokick_mp", 1.0 );
                     break;
                 default:
@@ -348,19 +348,19 @@ spawnalllocs( owner, startpos )
 
         switch ( fxtoplay )
         {
-            case "0":
+            case 0:
                 locations["fxtoplay"][i] = level.fx_tabun_0;
                 locations["radius"][i] = level.fx_tabun_radius0;
                 continue;
-            case "1":
+            case 1:
                 locations["fxtoplay"][i] = level.fx_tabun_1;
                 locations["radius"][i] = level.fx_tabun_radius1;
                 continue;
-            case "2":
+            case 2:
                 locations["fxtoplay"][i] = level.fx_tabun_2;
                 locations["radius"][i] = level.fx_tabun_radius2;
                 continue;
-            case "3":
+            case 3:
                 locations["fxtoplay"][i] = level.fx_tabun_3;
                 locations["radius"][i] = level.fx_tabun_radius3;
                 continue;

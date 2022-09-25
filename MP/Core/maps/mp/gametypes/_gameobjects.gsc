@@ -554,9 +554,7 @@ updatecarryobjectobjectiveorigin()
 
 giveobject( object )
 {
-/#
     assert( !isdefined( self.carryobject ) );
-#/
     self.carryobject = object;
     self thread trackcarrier();
 
@@ -779,9 +777,8 @@ shouldbereset( minz, maxz )
 
     for ( index = 0; index < elevators.size; index++ )
     {
-/#
         assert( isdefined( elevators[index].occupy_volume ) );
-#/
+
         if ( self.visuals[0] istouchingswept( elevators[index].occupy_volume, minz, maxz ) )
             return true;
     }
@@ -1075,9 +1072,7 @@ useobjectusethink()
 
 getearliestclaimplayer()
 {
-/#
     assert( self.claimteam != "none" );
-#/
     team = self.claimteam;
     earliestplayer = self.claimplayer;
 
@@ -1345,9 +1340,8 @@ clearprogress()
 
 setclaimteam( newteam )
 {
-/#
     assert( newteam != self.claimteam );
-#/
+
     if ( self.claimteam == "none" && gettime() - self.lastclaimtime > self.claimgraceperiod * 1000 )
         self clearprogress();
     else if ( newteam != "none" && newteam != self.lastclaimteam )
@@ -1605,19 +1599,15 @@ useholdthink( player )
 
     if ( isdefined( useweapon ) )
     {
-/#
         assert( isdefined( lastweapon ) );
-#/
+
         if ( lastweapon == useweapon )
         {
-/#
             assert( isdefined( player.lastnonuseweapon ) );
-#/
             lastweapon = player.lastnonuseweapon;
         }
-/#
+
         assert( lastweapon != useweapon );
-#/
         player.lastnonuseweapon = lastweapon;
         player giveweapon( useweapon );
         player setweaponammostock( useweapon, 0 );
@@ -2444,9 +2434,7 @@ caninteractwith( player )
             else
                 return false;
         default:
-/#
             assert( 0, "invalid interactTeam" );
-#/
             return false;
     }
 }
@@ -2521,16 +2509,14 @@ getnextobjid()
 
 releaseobjid( objid )
 {
-/#
     assert( objid < level.numgametypereservedobjectives );
-#/
+
     for ( i = 0; i < level.releasedobjectives.size; i++ )
     {
         if ( objid == level.releasedobjectives[i] && objid == 31 )
             return;
-/#
+
         assert( objid != level.releasedobjectives[i] );
-#/
     }
 
     level.releasedobjectives[level.releasedobjectives.size] = objid;

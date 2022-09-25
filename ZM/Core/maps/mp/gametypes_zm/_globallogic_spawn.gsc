@@ -238,9 +238,7 @@ spawnplayer()
     pixbeginevent( "spawnPlayer_postUTS" );
     self thread stoppoisoningandflareonspawn();
     self stopburning();
-/#
     assert( maps\mp\gametypes_zm\_globallogic_utils::isvalidclass( self.class ) );
-#/
     self giveloadoutlevelspecific( self.team, self.class );
 
     if ( level.inprematchperiod )
@@ -379,9 +377,7 @@ spawnplayer()
 
     if ( game["state"] == "postgame" )
     {
-/#
         assert( !level.intermission );
-#/
         self maps\mp\gametypes_zm\_globallogic_player::freezeplayerforroundend();
     }
 }
@@ -683,12 +679,9 @@ showspawnmessage()
 spawnclient( timealreadypassed )
 {
     pixbeginevent( "spawnClient" );
-/#
     assert( isdefined( self.team ) );
-#/
-/#
     assert( maps\mp\gametypes_zm\_globallogic_utils::isvalidclass( self.class ) );
-#/
+
     if ( !self mayspawn() )
     {
         currentorigin = self.origin;

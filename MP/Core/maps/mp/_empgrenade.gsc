@@ -47,9 +47,8 @@ monitorempgrenade()
 
         hurtvictim = 1;
         hurtattacker = 0;
-/#
         assert( isdefined( self.team ) );
-#/
+
         if ( level.teambased && isdefined( attacker ) && isdefined( attacker.team ) && attacker.team == self.team && attacker != self )
         {
             if ( level.friendlyfire == 0 )

@@ -5,9 +5,8 @@
 
 add_timed_event( seconds, notify_string, client_notify_string )
 {
-/#
     assert( seconds >= 0 );
-#/
+
     if ( level.timelimit > 0 )
         level thread timed_event_monitor( seconds, notify_string, client_notify_string );
 }
@@ -34,9 +33,8 @@ timed_event_monitor( seconds, notify_string, client_notify_string )
 
 add_score_event( score, notify_string, client_notify_string )
 {
-/#
     assert( score >= 0 );
-#/
+
     if ( level.scorelimit > 0 )
     {
         if ( level.teambased )

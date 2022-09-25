@@ -529,12 +529,8 @@ do_melee_weapon_flourish_begin( flourish_weapon_name )
 
 do_melee_weapon_flourish_end( gun, flourish_weapon_name, weapon_name, ballistic_weapon_name, ballistic_upgraded_weapon_name )
 {
-/#
     assert( !is_zombie_perk_bottle( gun ) );
-#/
-/#
     assert( gun != level.revive_tool );
-#/
     self enable_player_move_states();
     weapon = flourish_weapon_name;
 

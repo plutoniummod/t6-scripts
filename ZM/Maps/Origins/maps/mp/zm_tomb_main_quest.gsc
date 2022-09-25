@@ -212,16 +212,16 @@ watch_gramophone_vinyl_pickup()
 
     switch ( self.script_int )
     {
-        case "1":
+        case 1:
             str_vinyl_record = "vinyl_fire";
             break;
-        case "2":
+        case 2:
             str_vinyl_record = "vinyl_air";
             break;
-        case "3":
+        case 3:
             str_vinyl_record = "vinyl_elec";
             break;
-        case "4":
+        case 4:
             str_vinyl_record = "vinyl_ice";
             break;
         default:
@@ -238,16 +238,16 @@ get_gramophone_song()
 {
     switch ( self.script_int )
     {
-        case "1":
+        case 1:
             return "mus_gramophone_fire";
             break;
-        case "2":
+        case 2:
             return "mus_gramophone_air";
             break;
-        case "3":
+        case 3:
             return "mus_gramophone_electric";
             break;
-        case "4":
+        case 4:
             return "mus_gramophone_ice";
             break;
         default:

@@ -269,9 +269,8 @@ addactivecounteruav()
     }
     else
     {
-/#
         assert( isdefined( self.owner.entnum ) );
-#/
+
         if ( !isdefined( self.owner.entnum ) )
             self.owner.entnum = self.owner getentitynumber();
 
@@ -303,9 +302,8 @@ addactiveuav()
     }
     else
     {
-/#
         assert( isdefined( self.owner.entnum ) );
-#/
+
         if ( !isdefined( self.owner.entnum ) )
             self.owner.entnum = self.owner getentitynumber();
 
@@ -324,9 +322,8 @@ addactivesatellite()
     }
     else
     {
-/#
         assert( isdefined( self.owner.entnum ) );
-#/
+
         if ( !isdefined( self.owner.entnum ) )
             self.owner.entnum = self.owner getentitynumber();
 
@@ -343,32 +340,28 @@ removeactiveuav()
         if ( isdefined( self.owner ) && self.owner.spawntime < self.birthtime )
         {
             self.owner.activeuavs--;
-/#
             assert( self.owner.activeuavs >= 0 );
-#/
+
             if ( self.owner.activeuavs < 0 )
                 self.owner.activeuavs = 0;
         }
 
         level.activeuavs[self.team]--;
-/#
         assert( level.activeuavs[self.team] >= 0 );
-#/
+
         if ( level.activeuavs[self.team] < 0 )
             level.activeuavs[self.team] = 0;
     }
     else if ( isdefined( self.owner ) )
     {
-/#
         assert( isdefined( self.owner.entnum ) );
-#/
+
         if ( !isdefined( self.owner.entnum ) )
             self.owner.entnum = self.owner getentitynumber();
 
         level.activeuavs[self.owner.entnum]--;
-/#
         assert( level.activeuavs[self.owner.entnum] >= 0 );
-#/
+
         if ( level.activeuavs[self.owner.entnum] < 0 )
             level.activeuavs[self.owner.entnum] = 0;
     }
@@ -384,32 +377,28 @@ removeactivecounteruav()
         if ( isdefined( self.owner ) && self.owner.spawntime < self.birthtime )
         {
             self.owner.activecounteruavs--;
-/#
             assert( self.owner.activecounteruavs >= 0 );
-#/
+
             if ( self.owner.activecounteruavs < 0 )
                 self.owner.activecounteruavs = 0;
         }
 
         level.activecounteruavs[self.team]--;
-/#
         assert( level.activecounteruavs[self.team] >= 0 );
-#/
+
         if ( level.activecounteruavs[self.team] < 0 )
             level.activecounteruavs[self.team] = 0;
     }
     else if ( isdefined( self.owner ) )
     {
-/#
         assert( isdefined( self.owner.entnum ) );
-#/
+
         if ( !isdefined( self.owner.entnum ) )
             self.owner.entnum = self.owner getentitynumber();
 
         level.activecounteruavs[self.owner.entnum]--;
-/#
         assert( level.activecounteruavs[self.owner.entnum] >= 0 );
-#/
+
         if ( level.activecounteruavs[self.owner.entnum] < 0 )
             level.activecounteruavs[self.owner.entnum] = 0;
     }
@@ -425,32 +414,28 @@ removeactivesatellite()
         if ( self.owner.spawntime < self.birthtime && isdefined( self.owner ) )
         {
             self.owner.activesatellites--;
-/#
             assert( self.owner.activesatellites >= 0 );
-#/
+
             if ( self.owner.activesatellites < 0 )
                 self.owner.activesatellites = 0;
         }
 
         level.activesatellites[self.team]--;
-/#
         assert( level.activesatellites[self.team] >= 0 );
-#/
+
         if ( level.activesatellites[self.team] < 0 )
             level.activesatellites[self.team] = 0;
     }
     else if ( isdefined( self.owner ) )
     {
-/#
         assert( isdefined( self.owner.entnum ) );
-#/
+
         if ( !isdefined( self.owner.entnum ) )
             self.owner.entnum = self.owner getentitynumber();
 
         level.activesatellites[self.owner.entnum]--;
-/#
         assert( level.activesatellites[self.owner.entnum] >= 0 );
-#/
+
         if ( level.activesatellites[self.owner.entnum] < 0 )
             level.activesatellites[self.owner.entnum] = 0;
     }
@@ -1053,9 +1038,8 @@ updateplayersuavstatus()
     for ( i = 0; i < level.players.size; i++ )
     {
         player = level.players[i];
-/#
         assert( isdefined( player.entnum ) );
-#/
+
         if ( !isdefined( player.entnum ) )
             player.entnum = player getentitynumber();
 

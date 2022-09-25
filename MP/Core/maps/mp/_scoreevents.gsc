@@ -28,9 +28,8 @@ scoreeventtablelookup( index, scoreeventcolumn )
 getscoreeventcolumn( gametype )
 {
     columnoffset = getcolumnoffsetforgametype( gametype );
-/#
     assert( columnoffset >= 0 );
-#/
+
     if ( columnoffset >= 0 )
         columnoffset += 0;
 
@@ -40,9 +39,8 @@ getscoreeventcolumn( gametype )
 getxpeventcolumn( gametype )
 {
     columnoffset = getcolumnoffsetforgametype( gametype );
-/#
     assert( columnoffset >= 0 );
-#/
+
     if ( columnoffset >= 0 )
         columnoffset += 1;
 
@@ -55,9 +53,9 @@ getcolumnoffsetforgametype( gametype )
 
     if ( !isdefined( level.scoreeventtableid ) )
         level.scoreeventtableid = getscoreeventtableid();
-/#
+
     assert( isdefined( level.scoreeventtableid ) );
-#/
+
     if ( !isdefined( level.scoreeventtableid ) )
         return -1;
 
@@ -81,9 +79,8 @@ getcolumnoffsetforgametype( gametype )
 
         gamemodecolumn += 2;
     }
-/#
+
     assert( foundgamemode, "Could not find gamemode in scoreInfo.csv:" + gametype );
-#/
     return gamemodecolumn;
 }
 
@@ -94,9 +91,8 @@ getscoreeventtableid()
 
     if ( isdefined( scoreinfotableid ) )
         scoreinfotableloaded = 1;
-/#
+
     assert( scoreinfotableloaded, "Score Event Table is not loaded: " + "mp/scoreInfo.csv" );
-#/
     return scoreinfotableid;
 }
 
@@ -525,9 +521,7 @@ specificweaponkill( attacker, victim, weapon, killstreak )
 
 multikill( killcount, weapon )
 {
-/#
     assert( killcount > 1 );
-#/
     self maps\mp\_challenges::multikill( killcount, weapon );
 
     if ( killcount > 8 )
@@ -740,9 +734,7 @@ decrementlastobituaryplayercountafterfade()
     level endon( "reset_obituary_count" );
     wait 5;
     level.lastobituaryplayercount--;
-/#
     assert( level.lastobituaryplayercount >= 0 );
-#/
 }
 
 ongameend( data )

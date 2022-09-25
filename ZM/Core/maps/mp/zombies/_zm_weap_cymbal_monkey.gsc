@@ -4,7 +4,6 @@
 #include maps\mp\_utility;
 #include maps\mp\zombies\_zm_utility;
 #include maps\mp\zombies\_zm_laststand;
-#include maps\mp\zombies\_zm_clone;
 
 init()
 {
@@ -13,11 +12,6 @@ init()
 /#
     level.zombiemode_devgui_cymbal_monkey_give = ::player_give_cymbal_monkey;
 #/
-    if ( isdefined( level.legacy_cymbal_monkey ) && level.legacy_cymbal_monkey )
-        level.cymbal_monkey_model = "weapon_zombie_monkey_bomb";
-    else
-        level.cymbal_monkey_model = "t6_wpn_zmb_monkey_bomb_world";
-
     level._effect["monkey_glow"] = loadfx( "maps/zombie/fx_zombie_monkey_light" );
     level._effect["grenade_samantha_steal"] = loadfx( "maps/zombie/fx_zmb_blackhole_trap_end" );
     level.cymbal_monkeys = [];
@@ -59,7 +53,7 @@ player_handle_cymbal_monkey()
     }
 }
 
-watch_for_dud( model, actor )
+watch_for_dud( model )
 {
     self endon( "death" );
 
@@ -73,24 +67,15 @@ watch_for_dud( model, actor )
     if ( isdefined( model ) )
         model delete();
 
-    if ( isdefined( actor ) )
-        actor delete();
-
-    if ( isdefined( self.damagearea ) )
-        self.damagearea delete();
-
     if ( isdefined( self ) )
         self delete();
 }
 
 #using_animtree("zombie_cymbal_monkey");
 
-watch_for_emp( model, actor )
+watch_for_emp( model )
 {
     self endon( "death" );
-
-    if ( !should_watch_for_emp() )
-        return;
 
     while ( true )
     {
@@ -116,137 +101,8 @@ watch_for_emp( model, actor )
     if ( isdefined( model ) )
         model delete();
 
-    if ( isdefined( actor ) )
-        actor delete();
-
-    if ( isdefined( self.damagearea ) )
-        self.damagearea delete();
-
     if ( isdefined( self ) )
         self delete();
-}
-
-clone_player_angles( owner )
-{
-    self endon( "death" );
-    owner endon( "death" );
-
-    while ( isdefined( self ) )
-    {
-        self.angles = owner.angles;
-        wait 0.05;
-    }
-}
-
-show_briefly( showtime )
-{
-    self endon( "show_owner" );
-
-    if ( isdefined( self.show_for_time ) )
-    {
-        self.show_for_time = showtime;
-        return;
-    }
-
-    self.show_for_time = showtime;
-    self setvisibletoall();
-
-    while ( self.show_for_time > 0 )
-    {
-        self.show_for_time -= 0.05;
-        wait 0.05;
-    }
-
-    self setvisibletoallexceptteam( level.zombie_team );
-    self.show_for_time = undefined;
-}
-
-show_owner_on_attack( owner )
-{
-    owner endon( "hide_owner" );
-    owner endon( "show_owner" );
-    self endon( "explode" );
-    self endon( "death" );
-    self endon( "grenade_dud" );
-    owner.show_for_time = undefined;
-
-    for (;;)
-    {
-        owner waittill( "weapon_fired" );
-
-        owner thread show_briefly( 0.5 );
-    }
-}
-
-hide_owner( owner )
-{
-    owner notify( "hide_owner" );
-    owner endon( "hide_owner" );
-    owner setperk( "specialty_immunemms" );
-    owner.no_burning_sfx = 1;
-    owner notify( "stop_flame_sounds" );
-    owner setvisibletoallexceptteam( level.zombie_team );
-    owner.hide_owner = 1;
-
-    if ( isdefined( level._effect["human_disappears"] ) )
-        playfx( level._effect["human_disappears"], owner.origin );
-
-    self thread show_owner_on_attack( owner );
-    evt = self waittill_any_return( "explode", "death", "grenade_dud" );
-/#
-    println( "ZMCLONE: Player visible again because of " + evt );
-#/
-    owner notify( "show_owner" );
-    owner unsetperk( "specialty_immunemms" );
-
-    if ( isdefined( level._effect["human_disappears"] ) )
-        playfx( level._effect["human_disappears"], owner.origin );
-
-    owner.no_burning_sfx = undefined;
-    owner setvisibletoall();
-    owner.hide_owner = undefined;
-    owner show();
-}
-
-proximity_detonate( owner )
-{
-    wait 1.5;
-
-    if ( !isdefined( self ) )
-        return;
-
-    detonateradius = 96;
-    explosionradius = detonateradius * 2;
-    damagearea = spawn( "trigger_radius", self.origin + ( 0, 0, 0 - detonateradius ), 4, detonateradius, detonateradius * 1.5 );
-    damagearea setexcludeteamfortrigger( owner.team );
-    damagearea enablelinkto();
-    damagearea linkto( self );
-    self.damagearea = damagearea;
-
-    while ( isdefined( self ) )
-    {
-        damagearea waittill( "trigger", ent );
-
-        if ( isdefined( owner ) && ent == owner )
-            continue;
-
-        if ( isdefined( ent.team ) && ent.team == owner.team )
-            continue;
-
-        self playsound( "wpn_claymore_alert" );
-        dist = distance( self.origin, ent.origin );
-        radiusdamage( self.origin + vectorscale( ( 0, 0, 1 ), 12.0 ), explosionradius, 1, 1, owner, "MOD_GRENADE_SPLASH", "cymbal_monkey_zm" );
-
-        if ( isdefined( owner ) )
-            self detonate( owner );
-        else
-            self detonate( undefined );
-
-        break;
-    }
-
-    if ( isdefined( damagearea ) )
-        damagearea delete();
 }
 
 player_throw_cymbal_monkey( grenade, num_attractors, max_attract_dist, attract_dist_diff )
@@ -260,35 +116,19 @@ player_throw_cymbal_monkey( grenade, num_attractors, max_attract_dist, attract_d
 
         if ( self maps\mp\zombies\_zm_laststand::player_is_in_laststand() )
         {
-            if ( isdefined( grenade.damagearea ) )
-                grenade.damagearea delete();
-
             grenade delete();
             return;
         }
 
         grenade hide();
         model = spawn( "script_model", grenade.origin );
-        model setmodel( level.cymbal_monkey_model );
+        model setmodel( "weapon_zombie_monkey_bomb" );
         model useanimtree( -1 );
         model linkto( grenade );
         model.angles = grenade.angles;
         model thread monkey_cleanup( grenade );
-        clone = undefined;
-
-        if ( isdefined( level.cymbal_monkey_dual_view ) && level.cymbal_monkey_dual_view )
-        {
-            model setvisibletoallexceptteam( level.zombie_team );
-            clone = maps\mp\zombies\_zm_clone::spawn_player_clone( self, vectorscale( ( 0, 0, -1 ), 999.0 ), level.cymbal_monkey_clone_weapon, undefined );
-            model.simulacrum = clone;
-            clone maps\mp\zombies\_zm_clone::clone_animate( "idle" );
-            clone thread clone_player_angles( self );
-            clone notsolid();
-            clone ghost();
-        }
-
-        grenade thread watch_for_dud( model, clone );
-        grenade thread watch_for_emp( model, clone );
+        grenade thread watch_for_dud( model );
+        grenade thread watch_for_emp( model );
         info = spawnstruct();
         info.sound_attractors = [];
         grenade thread monitor_zombie_groans( info );
@@ -312,22 +152,9 @@ player_throw_cymbal_monkey( grenade, num_attractors, max_attract_dist, attract_d
                 }
             }
 
-            if ( isdefined( clone ) )
-            {
-                clone forceteleport( grenade.origin, grenade.angles );
-                clone thread hide_owner( self );
-                grenade thread proximity_detonate( self );
-                clone show();
-                clone setinvisibletoall();
-                clone setvisibletoteam( level.zombie_team );
-            }
-
             grenade resetmissiledetonationtime();
             playfxontag( level._effect["monkey_glow"], model, "origin_animate_jnt" );
-            valid_poi = check_point_in_enabled_zone( grenade.origin, undefined, undefined );
-
-            if ( isdefined( level.check_valid_poi ) )
-                valid_poi = grenade [[ level.check_valid_poi ]]( valid_poi );
+            valid_poi = check_point_in_active_zone( grenade.origin );
 
             if ( valid_poi )
             {
@@ -341,18 +168,18 @@ player_throw_cymbal_monkey( grenade, num_attractors, max_attract_dist, attract_d
             else
             {
                 grenade.script_noteworthy = undefined;
-                level thread grenade_stolen_by_sam( grenade, model, clone );
+                level thread grenade_stolen_by_sam( grenade, model );
             }
         }
         else
         {
             grenade.script_noteworthy = undefined;
-            level thread grenade_stolen_by_sam( grenade, model, clone );
+            level thread grenade_stolen_by_sam( grenade, model );
         }
     }
 }
 
-grenade_stolen_by_sam( ent_grenade, ent_model, ent_actor )
+grenade_stolen_by_sam( ent_grenade, ent_model )
 {
     if ( !isdefined( ent_model ) )
         return;
@@ -379,21 +206,10 @@ grenade_stolen_by_sam( ent_grenade, ent_model, ent_actor )
 
     ent_model waittill( "movedone" );
 
-    if ( isdefined( self.damagearea ) )
-        self.damagearea delete();
-
     ent_model delete();
 
-    if ( isdefined( ent_actor ) )
-        ent_actor delete();
-
     if ( isdefined( ent_grenade ) )
-    {
-        if ( isdefined( ent_grenade.damagearea ) )
-            ent_grenade.damagearea delete();
-
         ent_grenade delete();
-    }
 }
 
 wait_for_attractor_positions_complete()
@@ -411,9 +227,6 @@ monkey_cleanup( parent )
         {
             if ( isdefined( self ) && ( isdefined( self.dud ) && self.dud ) )
                 wait 6;
-
-            if ( isdefined( self.simulacrum ) )
-                self.simulacrum delete();
 
             self_delete();
             return;
@@ -437,12 +250,7 @@ do_monkey_sound( model, info )
     }
 
     if ( !self.monk_scream_vox && level.music_override == 0 )
-    {
-        if ( isdefined( level.cymbal_monkey_dual_view ) && level.cymbal_monkey_dual_view )
-            self playsoundtoteam( "zmb_monkey_song", "allies" );
-        else
-            self playsound( "zmb_monkey_song" );
-    }
+        self playsound( "zmb_monkey_song" );
 
     if ( !self.monk_scream_vox )
         self thread play_delayed_explode_vox();

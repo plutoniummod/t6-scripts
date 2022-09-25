@@ -19,21 +19,18 @@ init()
     else
         cost = 6000;
 
-    level.use_tazer_impact_fx = 0;
-    maps\mp\zombies\_zm_melee_weapon::init( "tazer_knuckles_zm", "zombie_tazer_flourish", "knife_ballistic_no_melee_zm", "knife_ballistic_no_melee_upgraded_zm", cost, "tazer_upgrade", &"ZOMBIE_WEAPON_TAZER_BUY", "tazerknuckles", ::tazer_flourish_fx );
+    maps\mp\zombies\_zm_melee_weapon::init( "tazer_knuckles_zm", "zombie_tazer_flourish", "knife_ballistic_no_melee_zm", "knife_ballistic_no_melee_upgraded_zm", cost, "tazer_upgrade", &"ZOMBIE_WEAPON_TAZER_BUY", "tazerknuckles", ::has_tazer, ::give_tazer, ::take_tazer, ::tazer_flourish_fx );
     maps\mp\zombies\_zm_weapons::add_retrievable_knife_init_name( "knife_ballistic_no_melee" );
     maps\mp\zombies\_zm_weapons::add_retrievable_knife_init_name( "knife_ballistic_no_melee_upgraded" );
     maps\mp\zombies\_zm_spawner::add_cusom_zombie_spawn_logic( ::watch_bodily_functions );
     level._effect["fx_zmb_taser_vomit"] = loadfx( "maps/zombie/fx_zmb_taser_vomit" );
     level._effect["fx_zmb_taser_flourish"] = loadfx( "weapon/taser/fx_taser_knuckles_anim_zmb" );
-
-    if ( level.script != "zm_transit" )
-    {
-        level._effect["fx_zmb_tazer_impact"] = loadfx( "weapon/taser/fx_taser_knuckles_impact_zmb" );
-        level.use_tazer_impact_fx = 1;
-    }
-
     level.tazer_flourish_delay = 0.5;
+}
+
+spectator_respawn()
+{
+    maps\mp\zombies\_zm_melee_weapon::spectator_respawn( "tazer_upgrade", ::take_tazer, ::has_tazer );
 }
 
 watch_bodily_functions()
@@ -41,7 +38,7 @@ watch_bodily_functions()
     if ( isdefined( self.isscreecher ) && self.isscreecher || isdefined( self.is_avogadro ) && self.is_avogadro )
         return;
 
-    while ( isdefined( self ) && isalive( self ) )
+    while ( true )
     {
         self waittill( "damage", amount, attacker, direction_vec, point, type );
 
@@ -61,14 +58,6 @@ watch_bodily_functions()
 
         if ( ch < 4 )
             playfxontag( level._effect["fx_zmb_taser_vomit"], self, "j_neck" );
-
-        if ( level.use_tazer_impact_fx )
-        {
-            tags = [];
-            tags[0] = "J_Head";
-            tags[1] = "J_Neck";
-            playfxontag( level._effect["fx_zmb_tazer_impact"], self, random( tags ) );
-        }
     }
 }
 
@@ -105,6 +94,29 @@ watchtazerknucklemelee()
 tazerknuckle_melee()
 {
 
+}
+
+has_tazer()
+{
+    if ( isdefined( level._allow_melee_weapon_switching ) && level._allow_melee_weapon_switching )
+        return false;
+
+    if ( isdefined( self._sickle_zm_equipped ) && self._sickle_zm_equipped || isdefined( self._bowie_zm_equipped ) && self._bowie_zm_equipped || isdefined( self._tazer_zm_equipped ) && self._tazer_zm_equipped )
+        return true;
+
+    return false;
+}
+
+give_tazer()
+{
+    self._tazer_zm_equipped = 1;
+    self._bowie_zm_equipped = undefined;
+    self._sickle_zm_equipped = undefined;
+}
+
+take_tazer()
+{
+    self._tazer_zm_equipped = undefined;
 }
 
 tazer_flourish_fx()

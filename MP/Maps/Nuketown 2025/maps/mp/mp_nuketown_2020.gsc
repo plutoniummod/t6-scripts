@@ -82,16 +82,13 @@ nuked_mannequin_init()
 
     for ( i = 0; i < remove_count; i++ )
     {
-/#
         assert( isdefined( mannequins[i].target ) );
-#/
+
         if ( level.endgamemannequin == mannequins[i] )
             continue;
 
         collision = getent( mannequins[i].target, "targetname" );
-/#
         assert( isdefined( collision ) );
-#/
         collision delete();
         mannequins[i] delete();
         level.mannequin_count--;
@@ -154,9 +151,7 @@ nuke_detonation()
     }
 
     displaysign = getent( "nuke_display_glass_server", "targetname" );
-/#
     assert( isdefined( displaysign ) );
-#/
     displaysign hide();
     bombwaitpretime = getdvarfloatdefault( "scr_nuke_car_pre", 0.5 );
     wait( bombwaitpretime );

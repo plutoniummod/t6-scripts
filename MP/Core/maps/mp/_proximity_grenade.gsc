@@ -198,12 +198,8 @@ damageplayerinradius( position, owner, einflictor )
     for ( i = 0; i < level.proximitygrenadedotdamageinstances; i++ )
     {
         wait( level.proximitygrenadedotdamagetime );
-/#
         assert( isdefined( owner ) );
-#/
-/#
         assert( isdefined( killcament ) );
-#/
         self dodamage( damage, position, owner, killcament, "none", "MOD_GAS", 0, "proximity_grenade_aoe_mp" );
     }
 

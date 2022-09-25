@@ -695,9 +695,8 @@ grief_laststand_weapons_return()
         self switchtoweapon( primaries[0] );
         return true;
     }
-/#
+
     assert( primaries.size > 0, "GRIEF: There was a problem restoring the weapons" );
-#/
     return false;
 }
 

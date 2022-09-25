@@ -70,9 +70,7 @@ get_zone_magic_boxes( zone_name )
         return undefined;
 
     zone = level.zones[zone_name];
-/#
     assert( isdefined( zone_name ) );
-#/
     return zone.magic_boxes;
 }
 
@@ -82,9 +80,7 @@ get_zone_zbarriers( zone_name )
         return undefined;
 
     zone = level.zones[zone_name];
-/#
     assert( isdefined( zone_name ) );
-#/
     return zone.zbarriers;
 }
 
@@ -191,9 +187,9 @@ zone_init( zone_name )
         if ( volumes[i].classname == "info_volume" )
             zone.volumes[zone.volumes.size] = volumes[i];
     }
-/#
+
     assert( isdefined( zone.volumes[0] ), "zone_init: No volumes found for zone: " + zone_name );
-#/
+
     if ( isdefined( zone.volumes[0].target ) )
     {
         spots = getstructarray( zone.volumes[0].target, "targetname" );
@@ -428,9 +424,8 @@ reinit_zone_spawners()
 
 enable_zone( zone_name )
 {
-/#
     assert( isdefined( level.zones ) && isdefined( level.zones[zone_name] ), "enable_zone: zone has not been initialized" );
-#/
+
     if ( level.zones[zone_name].is_enabled )
         return;
 
@@ -472,9 +467,7 @@ make_zone_adjacent( main_zone_name, adj_zone_name, flag_name )
     }
     else
     {
-/#
         assert( !isarray( flag_name ), "make_zone_adjacent: can't mix single and arrays of flags" );
-#/
         adj_zone = main_zone.adjacent_zones[adj_zone_name];
         size = adj_zone.flags.size;
         adj_zone.flags_do_or_check = 1;
@@ -656,18 +649,14 @@ connect_zones( zone_name_a, zone_name_b, one_way )
 
 manage_zones( initial_zone )
 {
-/#
     assert( isdefined( initial_zone ), "You must specify an initial zone to manage" );
-#/
     deactivate_initial_barrier_goals();
     zone_choke = 0;
     spawn_points = maps\mp\gametypes_zm\_zm_gametype::get_player_spawns_for_gametype();
 
     for ( i = 0; i < spawn_points.size; i++ )
     {
-/#
         assert( isdefined( spawn_points[i].script_noteworthy ), "player_respawn_point: You must specify a script noteworthy with the zone name" );
-#/
         spawn_points[i].locked = 1;
     }
 
@@ -828,17 +817,13 @@ debug_show_spawn_locations()
 
 old_manage_zones( initial_zone )
 {
-/#
     assert( isdefined( initial_zone ), "You must specify an initial zone to manage" );
-#/
     deactivate_initial_barrier_goals();
     spawn_points = maps\mp\gametypes_zm\_zm_gametype::get_player_spawns_for_gametype();
 
     for ( i = 0; i < spawn_points.size; i++ )
     {
-/#
         assert( isdefined( spawn_points[i].script_noteworthy ), "player_respawn_point: You must specify a script noteworthy with the zone name" );
-#/
         spawn_points[i].locked = 1;
     }
 

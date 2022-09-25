@@ -322,9 +322,8 @@ doflameaudio()
 
 leaderdialog( dialog, team, group, excludelist, squaddialog )
 {
-/#
     assert( isdefined( level.players ) );
-#/
+
     if ( level.wagermatch )
         return;
 
@@ -363,9 +362,8 @@ leaderdialog( dialog, team, group, excludelist, squaddialog )
 
 leaderdialogallteams( dialogs, group, excludelist )
 {
-/#
     assert( isdefined( level.players ) );
-#/
+
     for ( i = 0; i < level.players.size; i++ )
     {
         player = level.players[i];
@@ -451,9 +449,7 @@ addgroupdialogtoplayer( dialog, group )
 
 leaderdialogonplayer( dialog, group )
 {
-/#
     assert( isdefined( dialog ) );
-#/
     team = self.pers["team"];
 
     if ( !isdefined( team ) )
@@ -500,13 +496,9 @@ playnextleaderdialog()
 
     self.leaderdialogactive = 1;
     waittillframeend;
-/#
     assert( self.leaderdialogqueue.size > 0 );
-#/
     dialog = self.leaderdialogqueue[0];
-/#
     assert( isdefined( dialog ) );
-#/
     arrayremoveindex( self.leaderdialogqueue, 0 );
     team = self.pers["team"];
 
@@ -622,9 +614,8 @@ actionmusicset()
 
 play_2d_on_team( alias, team )
 {
-/#
     assert( isdefined( level.players ) );
-#/
+
     for ( i = 0; i < level.players.size; i++ )
     {
         player = level.players[i];
@@ -638,9 +629,9 @@ set_music_on_team( state, team, save_state, return_state, wait_time )
 {
     if ( sessionmodeiszombiesgame() )
         return;
-/#
+
     assert( isdefined( level.players ) );
-#/
+
     if ( !isdefined( team ) )
     {
         team = "both";
@@ -704,9 +695,9 @@ set_music_on_player( state, save_state, return_state, wait_time )
 
     if ( sessionmodeiszombiesgame() )
         return;
-/#
+
     assert( isplayer( self ) );
-#/
+
     if ( !isdefined( save_state ) )
     {
         save_state = 0;

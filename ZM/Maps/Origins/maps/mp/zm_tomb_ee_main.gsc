@@ -194,19 +194,19 @@ get_step_announce_vox()
 {
     switch ( level.n_ee_step )
     {
-        case "1":
+        case 1:
             return "vox_sam_all_staff_upgrade_key_0";
-        case "2":
+        case 2:
             return "vox_sam_all_staff_ascend_darkness_0";
-        case "3":
+        case 3:
             return "vox_sam_all_staff_rain_fire_0";
-        case "4":
+        case 4:
             return "vox_sam_all_staff_unleash_hoard_0";
-        case "5":
+        case 5:
             return "vox_sam_all_staff_skewer_beast_0";
-        case "6":
+        case 6:
             return "vox_sam_all_staff_fist_iron_0";
-        case "7":
+        case 7:
             return "vox_sam_all_staff_raise_hell_0";
         default:
             return undefined;

@@ -284,14 +284,14 @@ get_ice_blast_range( n_charge )
 {
     switch ( n_charge )
     {
-        case "1":
-        case "0":
+        case 1:
+        case 0:
             n_range = 250000;
             break;
-        case "2":
+        case 2:
             n_range = 640000;
             break;
-        case "3":
+        case 3:
             n_range = 1000000;
             break;
     }
