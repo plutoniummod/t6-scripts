@@ -1777,14 +1777,8 @@ fartherfunc( dist1, dist2 )
     return dist1 <= dist2;
 }
 
-get_array_of_closest( org, array, excluders, max, maxdist )
+get_array_of_closest( org, array, excluders = [], max = array.size, maxdist )
 {
-    if ( !isdefined( max ) )
-        max = array.size;
-
-    if ( !isdefined( excluders ) )
-        excluders = [];
-
     maxdists2rd = undefined;
 
     if ( isdefined( maxdist ) )
@@ -1854,11 +1848,8 @@ get_array_of_closest( org, array, excluders, max, maxdist )
     return newarray;
 }
 
-set_dvar_if_unset( dvar, value, reset )
+set_dvar_if_unset( dvar, value, reset = 0 )
 {
-    if ( !isdefined( reset ) )
-        reset = 0;
-
     if ( reset || getdvar( dvar ) == "" )
     {
         setdvar( dvar, value );
@@ -1868,22 +1859,16 @@ set_dvar_if_unset( dvar, value, reset )
     return getdvar( dvar );
 }
 
-set_dvar_float_if_unset( dvar, value, reset )
+set_dvar_float_if_unset( dvar, value, reset = 0 )
 {
-    if ( !isdefined( reset ) )
-        reset = 0;
-
     if ( reset || getdvar( dvar ) == "" )
         setdvar( dvar, value );
 
     return getdvarfloat( dvar );
 }
 
-set_dvar_int_if_unset( dvar, value, reset )
+set_dvar_int_if_unset( dvar, value, reset = 0 )
 {
-    if ( !isdefined( reset ) )
-        reset = 0;
-
     if ( reset || getdvar( dvar ) == "" )
     {
         setdvar( dvar, value );

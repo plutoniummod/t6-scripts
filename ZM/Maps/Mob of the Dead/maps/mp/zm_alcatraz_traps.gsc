@@ -17,12 +17,12 @@ init_fan_trap_trigs()
     init_fan_fxanim( "wardens_office" );
 }
 
+#using_animtree("fxanim_props");
+
 init_fan_trap_animtree()
 {
-    scriptmodelsuseanimtree( -1 );
+    scriptmodelsuseanimtree( #animtree );
 }
-
-#using_animtree("fxanim_props");
 
 init_fan_fxanim( str_loc )
 {
@@ -113,7 +113,7 @@ activate_fan_trap()
 {
     self.zombie_dmg_trig thread fan_trap_damage( self );
     e_fan = getent( "fxanim_fan_" + self.script_string, "targetname" );
-    e_fan useanimtree( -1 );
+    e_fan useanimtree( #animtree );
     e_fan playsound( "zmb_trap_fan_start" );
     e_fan playloopsound( "zmb_trap_fan_loop", 2 );
     n_start_time = getanimlength( level.fan_trap_fxanims["fan_trap_start"] );

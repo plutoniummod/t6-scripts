@@ -367,12 +367,12 @@ headchopper_zombie_death_remove_chopper( chopper )
     }
 }
 
+#using_animtree("zombie_headchopper");
+
 init_animtree()
 {
-    scriptmodelsuseanimtree( -1 );
+    scriptmodelsuseanimtree( #animtree );
 }
-
-#using_animtree("zombie_headchopper");
 
 init_anim_slice_times()
 {
@@ -394,7 +394,7 @@ headchopper_animate( weapon, armed )
     self endon( "disconnect" );
     self endon( "equip_headchopper_zm_taken" );
     weapon endon( "death" );
-    weapon useanimtree( -1 );
+    weapon useanimtree( #animtree );
     f_animlength = getanimlength( %o_zmb_chopper_slice_fast );
     s_animlength = getanimlength( %o_zmb_chopper_slice_slow );
     weapon thread headchopper_audio();
@@ -764,11 +764,8 @@ headchopper_add_chop_ent( ent )
     self.chop_targets = add_to_array( self.chop_targets, ent, 0 );
 }
 
-headchopper_expired( weapon, usedestroyfx )
+headchopper_expired( weapon, usedestroyfx = 1 )
 {
-    if ( !isdefined( usedestroyfx ) )
-        usedestroyfx = 1;
-
     weapon maps\mp\zombies\_zm_equipment::dropped_equipment_destroy( usedestroyfx );
     self maps\mp\zombies\_zm_equipment::equipment_release( level.headchopper_name );
     self.headchopper_kills = 0;
@@ -853,11 +850,8 @@ getheadchopperstouching()
     return headchoppers;
 }
 
-getheadchoppersnear( source_origin, max_distance )
+getheadchoppersnear( source_origin, max_distance = 128 )
 {
-    if ( !isdefined( max_distance ) )
-        max_distance = 128;
-
     headchoppers = [];
     players = get_players();
 

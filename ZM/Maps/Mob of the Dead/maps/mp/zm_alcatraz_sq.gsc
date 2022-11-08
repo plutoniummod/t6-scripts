@@ -2039,14 +2039,8 @@ play_fx( str_fx, v_origin, v_angles, time_to_delete_or_notify, b_link_to_self, s
     }
 }
 
-spawn_model( model_name, origin, angles, n_spawnflags )
+spawn_model( model_name, origin = ( 0, 0, 0 ), angles, n_spawnflags = 0 )
 {
-    if ( !isdefined( n_spawnflags ) )
-        n_spawnflags = 0;
-
-    if ( !isdefined( origin ) )
-        origin = ( 0, 0, 0 );
-
     model = spawn( "script_model", origin, n_spawnflags );
     model setmodel( model_name );
 
@@ -2062,11 +2056,8 @@ getfx( fx )
     return level._effect[fx];
 }
 
-_play_fx_delete( ent, time_to_delete_or_notify )
+_play_fx_delete( ent, time_to_delete_or_notify = -1 )
 {
-    if ( !isdefined( time_to_delete_or_notify ) )
-        time_to_delete_or_notify = -1;
-
     if ( isstring( time_to_delete_or_notify ) )
         ent waittill_either( "death", time_to_delete_or_notify );
     else if ( time_to_delete_or_notify > 0 )

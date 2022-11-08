@@ -534,11 +534,8 @@ in_player_fov( player )
     return inplayerfov;
 }
 
-potentially_visible( how_close )
+potentially_visible( how_close = 1000000 )
 {
-    if ( !isdefined( how_close ) )
-        how_close = 1000000;
-
     potentiallyvisible = 0;
     players = getplayers();
 

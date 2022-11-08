@@ -18,11 +18,8 @@
 #include maps\mp\_scoreevents;
 #include maps\mp\gametypes\_hostmigration;
 
-precachehelicopter( model, type )
+precachehelicopter( model, type = "blackhawk" )
 {
-    if ( !isdefined( type ) )
-        type = "blackhawk";
-
     precachemodel( model );
     level.vehicle_deathmodel[model] = model;
     precacheitem( "cobra_20mm_mp" );
@@ -2001,11 +1998,8 @@ updatetargetyaw()
     }
 }
 
-fire_missile( smissiletype, ishots, etarget )
+fire_missile( smissiletype, ishots = 1, etarget )
 {
-    if ( !isdefined( ishots ) )
-        ishots = 1;
-
     assert( self.health > 0 );
     weaponname = undefined;
     weaponshoottime = undefined;

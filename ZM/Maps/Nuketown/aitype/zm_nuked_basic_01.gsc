@@ -333,7 +333,7 @@ spawner()
 precache( ai_index )
 {
     level thread reference_anims_from_animtree();
-    precacheanimstatedef( ai_index, -1, "zm_nuked_basic" );
+    precacheanimstatedef( ai_index, #animtree, "zm_nuked_basic" );
     character\c_zom_dlc0_zombie_hazmat_1::precache();
     character\c_zom_dlc0_zombie_hazmat_2::precache();
 }

@@ -308,11 +308,8 @@ player_reduce_points( event, mod, hit_location )
     self.score = points;
 }
 
-add_to_player_score( points, add_to_total )
+add_to_player_score( points, add_to_total = 1 )
 {
-    if ( !isdefined( add_to_total ) )
-        add_to_total = 1;
-
     if ( !isdefined( points ) || level.intermission )
         return;
 

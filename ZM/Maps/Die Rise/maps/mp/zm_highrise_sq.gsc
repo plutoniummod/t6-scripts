@@ -150,7 +150,7 @@ init_sidequest()
         m_ball hide();
     }
 
-    scriptmodelsuseanimtree( -1 );
+    scriptmodelsuseanimtree( #animtree );
     level.scr_anim["fxanim_props"]["trample_gen_ab"] = %fxanim_zom_highrise_trample_gen_ab_anim;
     level.scr_anim["fxanim_props"]["trample_gen_ba"] = %fxanim_zom_highrise_trample_gen_ba_anim;
     level.scr_anim["fxanim_props"]["trample_gen_cd"] = %fxanim_zom_highrise_trample_gen_cd_anim;
@@ -541,11 +541,8 @@ sidequest_done()
 
 }
 
-get_variant_from_entity_num( player_number )
+get_variant_from_entity_num( player_number = 0 )
 {
-    if ( !isdefined( player_number ) )
-        player_number = 0;
-
     post_fix = "a";
 
     switch ( player_number )

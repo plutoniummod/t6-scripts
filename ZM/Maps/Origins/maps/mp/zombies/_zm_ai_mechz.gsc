@@ -45,6 +45,8 @@ precache()
     precacheshellshock( "lava_small" );
 }
 
+#using_animtree("mechz_claw");
+
 init()
 {
     maps\mp\zombies\_zm_ai_mechz_ffotd::mechz_init_start();
@@ -124,7 +126,7 @@ init()
     else
         level thread mechz_spawning_logic();
 
-    scriptmodelsuseanimtree( -1 );
+    scriptmodelsuseanimtree( #animtree );
 /#
     setup_devgui();
 #/
@@ -462,7 +464,7 @@ mechz_attach_objects()
     self.m_claw setmodel( "c_zom_mech_claw" );
     self.m_claw.angles = ang;
     self.m_claw linkto( self, "tag_claw" );
-    self.m_claw useanimtree( -1 );
+    self.m_claw useanimtree( #animtree );
 
     if ( isdefined( self.m_claw_damage_trigger ) )
     {
@@ -622,11 +624,8 @@ get_closest_mechz_spawn_pos( org )
     return best_pos;
 }
 
-get_best_mechz_spawn_pos( ignore_used_positions )
+get_best_mechz_spawn_pos( ignore_used_positions = 0 )
 {
-    if ( !isdefined( ignore_used_positions ) )
-        ignore_used_positions = 0;
-
     best_dist = -1;
     best_pos = undefined;
     players = get_players();
@@ -796,8 +795,6 @@ mechz_interrupt()
     self notify( "kill_ft" );
     self notify( "kill_jump" );
 }
-
-#using_animtree("mechz_claw");
 
 mechz_stun( time )
 {

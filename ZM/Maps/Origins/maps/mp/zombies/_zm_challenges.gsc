@@ -94,17 +94,8 @@ stats_init()
     team_stats_init();
 }
 
-add_stat( str_name, b_team, str_hint, n_goal, str_reward_model, fp_give_reward, fp_init_stat )
+add_stat( str_name, b_team = 0, str_hint = &"", n_goal = 1, str_reward_model, fp_give_reward, fp_init_stat )
 {
-    if ( !isdefined( b_team ) )
-        b_team = 0;
-
-    if ( !isdefined( str_hint ) )
-        str_hint = &"";
-
-    if ( !isdefined( n_goal ) )
-        n_goal = 1;
-
     stat = spawnstruct();
     stat.str_name = str_name;
     stat.b_team = b_team;
@@ -213,11 +204,8 @@ get_stat( str_stat, player )
     return s_stat;
 }
 
-increment_stat( str_stat, n_increment )
+increment_stat( str_stat, n_increment = 1 )
 {
-    if ( !isdefined( n_increment ) )
-        n_increment = 1;
-
     s_stat = get_stat( str_stat, self );
 
     if ( !s_stat.b_medal_awarded )
@@ -370,9 +358,11 @@ board_init( m_board )
     level.a_m_challenge_boards[level.a_m_challenge_boards.size] = m_board;
 }
 
+#using_animtree("fxanim_props_dlc4");
+
 box_init()
 {
-    self useanimtree( -1 );
+    self useanimtree( #animtree );
     s_unitrigger_stub = spawnstruct();
     s_unitrigger_stub.origin = self.origin + ( 0, 0, 0 );
     s_unitrigger_stub.angles = self.angles;
@@ -585,8 +575,6 @@ get_reward_stat( s_category )
     return undefined;
 }
 
-#using_animtree("fxanim_props_dlc4");
-
 open_box( player, ut_stub, fp_reward_override, param1 )
 {
     m_box = ut_stub.m_box;
@@ -660,11 +648,8 @@ spawn_reward( player, s_select_stat )
     }
 }
 
-reward_grab_wait( n_timeout )
+reward_grab_wait( n_timeout = 10 )
 {
-    if ( !isdefined( n_timeout ) )
-        n_timeout = 10;
-
     self ent_flag_clear( "reward_timeout" );
     self ent_flag_set( "waiting_for_grab" );
     self endon( "waiting_for_grab" );

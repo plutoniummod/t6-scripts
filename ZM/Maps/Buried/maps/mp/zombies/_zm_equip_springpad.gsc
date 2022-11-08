@@ -278,12 +278,12 @@ startspringpaddeploy( weapon, armed )
     }
 }
 
+#using_animtree("zombie_springpad");
+
 init_animtree()
 {
-    scriptmodelsuseanimtree( -1 );
+    scriptmodelsuseanimtree( #animtree );
 }
-
-#using_animtree("zombie_springpad");
 
 springpad_animate( weapon, armed )
 {
@@ -291,7 +291,7 @@ springpad_animate( weapon, armed )
     self endon( "disconnect" );
     self endon( "equip_springpad_zm_taken" );
     weapon endon( "death" );
-    weapon useanimtree( -1 );
+    weapon useanimtree( #animtree );
     f_animlength = getanimlength( %o_zombie_buildable_tramplesteam_reset_zombie );
     r_animlength = getanimlength( %o_zombie_buildable_tramplesteam_reset );
     l_animlength = getanimlength( %o_zombie_buildable_tramplesteam_launch );

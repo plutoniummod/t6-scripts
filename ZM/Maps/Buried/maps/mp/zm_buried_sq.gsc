@@ -416,11 +416,8 @@ sidequest_logic()
     sq_metagame_reset_machine();
 }
 
-playfx_on_tower( str_fx, delete_old )
+playfx_on_tower( str_fx, delete_old = 0 )
 {
-    if ( !isdefined( delete_old ) )
-        delete_old = 0;
-
     a_fx_spots = getentarray( "sq_complete_tower_fx", "targetname" );
 
     if ( delete_old )
@@ -1027,11 +1024,8 @@ sq_set_stat( sq_player, sq_level, sq_cmd )
 #/
 }
 
-warp_to_struct_position( str_value, str_key )
+warp_to_struct_position( str_value, str_key = "targetname" )
 {
-    if ( !isdefined( str_key ) )
-        str_key = "targetname";
-
     a_warp_structs = getstructarray( str_value, str_key );
     a_players = get_players();
     assert( a_warp_structs.size > a_players.size, "warp_to_struct_position found more players than structs for '" + str_key + "' = '" + str_value + "'! Add more structs to fix this" );

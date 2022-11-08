@@ -169,9 +169,11 @@ can_buy_perk()
     return true;
 }
 
+#using_animtree("zm_perk_random");
+
 init_animtree()
 {
-    scriptmodelsuseanimtree( -1 );
+    scriptmodelsuseanimtree( #animtree );
 }
 
 start_random_machine()
@@ -208,7 +210,7 @@ machines_setup()
         forward_dir = anglestoright( machine.angles );
         spawn_location.origin += vectorscale( ( 0, 0, 1 ), 65.0 );
         machine.bottle_spawn_location = spawn_location;
-        machine useanimtree( -1 );
+        machine useanimtree( #animtree );
         machine thread machine_power_indicators();
 
         if ( machine != level.random_perk_start_machine )
@@ -606,8 +608,6 @@ get_perk_weapon_model( perk )
 
     return getweaponmodel( weapon );
 }
-
-#using_animtree("zm_perk_random");
 
 update_animation( animation )
 {

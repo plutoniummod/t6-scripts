@@ -612,7 +612,7 @@ watchweaponusage()
                     level.globalcrossbowfired++;
                     self addweaponstat( curweapon, "shots", 1 );
                     self thread begingrenadetracking();
-                    continue;
+                    break;
                 }
             case "spread":
             case "smg":
@@ -620,13 +620,13 @@ watchweaponusage()
             case "mg":
                 self trackweaponfire( curweapon );
                 level.globalshotsfired++;
-                continue;
+                break;
             case "rocketlauncher":
             case "grenade":
                 self addweaponstat( curweapon, "shots", 1 );
-                continue;
+                break;
             default:
-                continue;
+                break;
         }
     }
 }
@@ -1696,14 +1696,14 @@ scavenger_think()
             case "claymore_mp":
             case "bouncingbetty_mp":
                 if ( isdefined( player.grenadetypeprimarycount ) && player.grenadetypeprimarycount < 1 )
-                    continue;
+                    break;
 
                 if ( player getweaponammostock( weapon ) != loadout_primary_count )
                 {
                     if ( player.scavenger_lethal_proc < scavenger_lethal_proc )
                     {
                         player.scavenger_lethal_proc++;
-                        continue;
+                        break;
                     }
 
                     player.scavenger_lethal_proc = 0;
@@ -1720,14 +1720,14 @@ scavenger_think()
             case "emp_grenade_mp":
             case "concussion_grenade_mp":
                 if ( isdefined( player.grenadetypesecondarycount ) && player.grenadetypesecondarycount < 1 )
-                    continue;
+                    break;
 
                 if ( weapon == loadout_secondary && player getweaponammostock( weapon ) != loadout_secondary_count )
                 {
                     if ( player.scavenger_tactical_proc < scavenger_tactical_proc )
                     {
                         player.scavenger_tactical_proc++;
-                        continue;
+                        break;
                     }
 
                     player.scavenger_tactical_proc = 0;
@@ -1755,7 +1755,7 @@ scavenger_think()
                     player thread maps\mp\_challenges::scavengedgrenade();
                 }
 
-                continue;
+                break;
             default:
                 if ( islauncherweapon( weapon ) )
                 {
@@ -1775,7 +1775,7 @@ scavenger_think()
                         player setweaponammostock( weapon, maxammo );
                 }
 
-                continue;
+                break;
         }
     }
 

@@ -845,10 +845,8 @@ level_use_unified_spawning( use )
 
 }
 
-onspawnplayer_unified( predictedspawn )
+onspawnplayer_unified( predictedspawn = 0 )
 {
-    if ( !isdefined( predictedspawn ) )
-        predictedspawn = 0;
 /#
     if ( getdvarint( "scr_spawn_point_test_mode" ) != 0 )
     {
@@ -912,11 +910,8 @@ onspawnplayer_unified( predictedspawn )
         self.uspawn_already_spawned = 1;
 }
 
-getspawnpoint( player_entity, predictedspawn )
+getspawnpoint( player_entity, predictedspawn = 0 )
 {
-    if ( !isdefined( predictedspawn ) )
-        predictedspawn = 0;
-
     if ( level.teambased )
     {
         point_team = player_entity.pers["team"];

@@ -267,11 +267,8 @@ door_delay()
     }
 }
 
-door_activate( time, open, quick, use_blocker_clip_for_pathing )
+door_activate( time, open = 1, quick, use_blocker_clip_for_pathing )
 {
-    if ( !isdefined( open ) )
-        open = 1;
-
     if ( !isdefined( time ) )
     {
         time = 1;

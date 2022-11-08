@@ -465,11 +465,8 @@ tablet_cleanliness_thread()
     }
 }
 
-tablet_cleanliness_chastise( e_player, b_cleaned )
+tablet_cleanliness_chastise( e_player, b_cleaned = 0 )
 {
-    if ( !isdefined( b_cleaned ) )
-        b_cleaned = 0;
-
     if ( !isdefined( e_player ) || isdefined( level.sam_talking ) && level.sam_talking || flag( "story_vo_playing" ) )
         return;
 

@@ -264,11 +264,8 @@ on_fire_timeout( n_duration )
     self notify( "stop_flame_damage" );
 }
 
-flame_damage_fx( damageweapon, e_attacker, pct_damage )
+flame_damage_fx( damageweapon, e_attacker, pct_damage = 1.0 )
 {
-    if ( !isdefined( pct_damage ) )
-        pct_damage = 1.0;
-
     was_on_fire = is_true( self.is_on_fire );
     n_initial_dmg = get_impact_damage( damageweapon ) * pct_damage;
     is_upgraded = damageweapon == "staff_fire_upgraded_zm" || damageweapon == "staff_fire_upgraded2_zm" || damageweapon == "staff_fire_upgraded3_zm";

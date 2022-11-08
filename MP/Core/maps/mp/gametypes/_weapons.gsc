@@ -958,48 +958,48 @@ beginothergrenadetracking()
         switch ( weaponname )
         {
             case "flash_grenade_mp":
-                continue;
+                break;
             case "concussion_grenade_mp":
-                continue;
+                break;
             case "willy_pete_mp":
                 grenade thread maps\mp\_smokegrenade::watchsmokegrenadedetonation( self );
-                continue;
+                break;
             case "tabun_gas_mp":
                 grenade thread maps\mp\_tabun::watchtabungrenadedetonation( self );
-                continue;
+                break;
             case "sticky_grenade_mp":
                 grenade thread checkstucktoplayer( 1, 1, weaponname );
                 grenade thread checkstucktoshield();
-                continue;
+                break;
             case "satchel_charge_mp":
             case "c4_mp":
                 grenade thread checkstucktoplayer( 1, 0, weaponname );
-                continue;
+                break;
             case "proximity_grenade_mp":
                 grenade thread checkstucktoshield();
                 grenade thread maps\mp\_proximity_grenade::watchproximitygrenadehitplayer( self );
-                continue;
+                break;
             case "tactical_insertion_mp":
                 grenade thread maps\mp\_tacticalinsertion::watch( self );
-                continue;
+                break;
             case "scrambler_mp":
-                continue;
+                break;
             case "explosive_bolt_mp":
                 grenade.ownerweaponatlaunch = self.currentweapon;
                 grenade.owneradsatlaunch = self playerads() == 1 ? 1 : 0;
                 grenade thread maps\mp\_explosive_bolt::watch_bolt_detonation( self );
                 grenade thread checkstucktoplayer( 1, 0, weaponname );
                 grenade thread checkstucktoshield();
-                continue;
+                break;
             case "hatchet_mp":
                 grenade.lastweaponbeforetoss = self getlastweapon();
                 grenade thread checkhatchetbounce();
                 grenade thread checkstucktoplayer( 0, 0, weaponname );
                 self addweaponstat( weaponname, "used", 1 );
-                continue;
+                break;
             case "emp_grenade_mp":
                 grenade thread maps\mp\_empgrenade::watchempexplosion( self, weaponname );
-                continue;
+                break;
         }
     }
 }
@@ -1836,14 +1836,14 @@ scavenger_think()
         {
             case "satchel_charge_mp":
                 if ( player maps\mp\gametypes\_weaponobjects::anyobjectsinworld( weapon ) )
-                    continue;
+                    break;
             case "sticky_grenade_mp":
             case "hatchet_mp":
             case "frag_grenade_mp":
             case "claymore_mp":
             case "bouncingbetty_mp":
                 if ( isdefined( player.grenadetypeprimarycount ) && player.grenadetypeprimarycount < 1 )
-                    continue;
+                    break;
             case "willy_pete_mp":
             case "trophy_system_mp":
             case "tabun_gas_mp":
@@ -1855,7 +1855,7 @@ scavenger_think()
             case "emp_grenade_mp":
             case "concussion_grenade_mp":
                 if ( isdefined( player.grenadetypesecondarycount ) && player.grenadetypesecondarycount < 1 )
-                    continue;
+                    break;
 
                 maxammo = weaponmaxammo( weapon );
                 stock = player getweaponammostock( weapon );
@@ -1879,7 +1879,7 @@ scavenger_think()
                     player thread maps\mp\_challenges::scavengedgrenade();
                 }
 
-                continue;
+                break;
         }
     }
 

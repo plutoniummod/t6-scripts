@@ -103,11 +103,8 @@ fontpulse( player )
     }
 }
 
-fadetoblackforxsec( startwait, blackscreenwait, fadeintime, fadeouttime, shadername, n_sort )
+fadetoblackforxsec( startwait, blackscreenwait, fadeintime, fadeouttime, shadername, n_sort = 50 )
 {
-    if ( !isdefined( n_sort ) )
-        n_sort = 50;
-
     wait( startwait );
 
     if ( !isdefined( self ) )

@@ -3183,11 +3183,8 @@ round_spawning_test()
     }
 }
 
-round_pause( delay )
+round_pause( delay = 30 )
 {
-    if ( !isdefined( delay ) )
-        delay = 30;
-
     level.countdown_hud = create_counter_hud();
     level.countdown_hud setvalue( delay );
     level.countdown_hud.color = ( 1, 1, 1 );
@@ -3383,10 +3380,8 @@ round_over()
     wait( time );
 }
 
-round_think( restart )
+round_think( restart = 0 )
 {
-    if ( !isdefined( restart ) )
-        restart = 0;
 /#
     println( "ZM >> round_think start" );
 #/
@@ -5403,11 +5398,8 @@ set_default_laststand_pistol( solo_mode )
         level.laststandpistol = level.default_solo_laststandpistol;
 }
 
-update_quick_revive( solo_mode )
+update_quick_revive( solo_mode = 0 )
 {
-    if ( !isdefined( solo_mode ) )
-        solo_mode = 0;
-
     clip = undefined;
 
     if ( isdefined( level.quick_revive_machine_clip ) )

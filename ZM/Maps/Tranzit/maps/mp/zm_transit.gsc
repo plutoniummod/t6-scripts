@@ -2226,11 +2226,8 @@ custom_zombie_setup()
     }
 }
 
-bunkerdoorrotate( open, time )
+bunkerdoorrotate( open, time = 0.2 )
 {
-    if ( !isdefined( time ) )
-        time = 0.2;
-
     rotate = self.script_float;
 
     if ( !open )

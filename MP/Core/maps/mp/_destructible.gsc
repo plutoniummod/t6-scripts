@@ -417,11 +417,8 @@ destructible_barrel_fire_think( attacker )
     self thread destructible_barrel_explosion( attacker );
 }
 
-destructible_barrel_explosion( attacker, physics_explosion )
+destructible_barrel_explosion( attacker, physics_explosion = 1 )
 {
-    if ( !isdefined( physics_explosion ) )
-        physics_explosion = 1;
-
     self notify( "barrel_dead" );
 
     if ( isdefined( self.target ) )

@@ -29,11 +29,8 @@ register_unitrigger_system_func( system, trigger_func )
     level._unitriggers.system_trigger_funcs[system] = trigger_func;
 }
 
-unitrigger_force_per_player_triggers( unitrigger_stub, opt_on_off )
+unitrigger_force_per_player_triggers( unitrigger_stub, opt_on_off = 1 )
 {
-    if ( !isdefined( opt_on_off ) )
-        opt_on_off = 1;
-
     unitrigger_stub.trigger_per_player = opt_on_off;
 }
 
@@ -286,12 +283,12 @@ debug_unitriggers()
                         if ( triggerstub.script_height )
                             line( origin, origin + ( 0, 0, triggerstub.script_height ), color, 0, 1 );
 
-                        continue;
+                        break;
                     case "unitrigger_box_use":
                     case "unitrigger_box":
                         vec = ( triggerstub.script_width / 2, triggerstub.script_length / 2, triggerstub.script_height / 2 );
                         box( origin, vec * -1, vec, triggerstub.angles[1], color, 1, 0, 1 );
-                        continue;
+                        break;
                 }
             }
         }
@@ -640,11 +637,8 @@ trigger_thread( trigger_func )
         self [[ trigger_func ]]();
 }
 
-get_closest_unitrigger_index( org, array, dist )
+get_closest_unitrigger_index( org, array, dist = 9999999 )
 {
-    if ( !isdefined( dist ) )
-        dist = 9999999;
-
     distsq = dist * dist;
 
     if ( array.size < 1 )

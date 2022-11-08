@@ -459,7 +459,7 @@ delete_stage_assets()
                 }
 
                 asset delete();
-                continue;
+                break;
             case "entity":
                 if ( isdefined( asset.trigger ) )
                 {
@@ -470,7 +470,7 @@ delete_stage_assets()
                     asset.trigger = undefined;
                 }
 
-                continue;
+                break;
         }
     }
 

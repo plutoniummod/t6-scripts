@@ -78,6 +78,6 @@ spawner()
 precache( ai_index )
 {
     level thread reference_anims_from_animtree();
-    precacheanimstatedef( ai_index, -1, "zm_alcatraz_brutus" );
+    precacheanimstatedef( ai_index, #animtree, "zm_alcatraz_brutus" );
     character\c_zom_cellbreaker::precache();
 }

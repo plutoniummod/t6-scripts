@@ -495,11 +495,8 @@ sliding_bookcase_think()
     }
 }
 
-sliding_bookcase_activate( open )
+sliding_bookcase_activate( open = 1 )
 {
-    if ( !isdefined( open ) )
-        open = 1;
-
     if ( isdefined( self.door_moving ) )
         return;
 
@@ -1255,11 +1252,8 @@ blocker_model_remove()
         self delete();
 }
 
-toggle_doors_along_richtofen_street( b_should_close )
+toggle_doors_along_richtofen_street( b_should_close = 1 )
 {
-    if ( !isdefined( b_should_close ) )
-        b_should_close = 1;
-
     a_door_names = array( "general_store_door1" );
     a_doors = getentarray( "zombie_door", "targetname" );
 
@@ -1309,11 +1303,8 @@ close_open_door()
     }
 }
 
-open_closed_door( bignoreminigameflag )
+open_closed_door( bignoreminigameflag = 0 )
 {
-    if ( !isdefined( bignoreminigameflag ) )
-        bignoreminigameflag = 0;
-
     if ( bignoreminigameflag || isdefined( self.closed_by_minigame ) && self.closed_by_minigame )
     {
         if ( isdefined( self.is_moving ) && self.is_moving )
@@ -1339,11 +1330,8 @@ open_closed_door( bignoreminigameflag )
     }
 }
 
-toggle_door_triggers( b_allow_use )
+toggle_door_triggers( b_allow_use = 1 )
 {
-    if ( !isdefined( b_allow_use ) )
-        b_allow_use = 1;
-
     a_triggers = getentarray( "zombie_door", "targetname" );
 
     for ( i = 0; i < a_triggers.size; i++ )

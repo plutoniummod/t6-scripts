@@ -375,14 +375,8 @@ piecestub_get_unitrigger_origin()
     return self.origin;
 }
 
-generate_piece_unitrigger( classname, origin, angles, flags, radius, script_height, moving )
+generate_piece_unitrigger( classname, origin, angles, flags, radius = 64, script_height = 64, moving )
 {
-    if ( !isdefined( radius ) )
-        radius = 64;
-
-    if ( !isdefined( script_height ) )
-        script_height = 64;
-
     script_width = script_height;
 
     if ( !isdefined( script_width ) )
@@ -560,21 +554,16 @@ player_get_buildable_pieces()
     return self.current_buildable_pieces;
 }
 
-player_get_buildable_piece( slot )
+player_get_buildable_piece( slot = 0 )
 {
-    if ( !isdefined( slot ) )
-        slot = 0;
-
     if ( !isdefined( self.current_buildable_pieces ) )
         self.current_buildable_pieces = [];
 
     return self.current_buildable_pieces[slot];
 }
 
-player_set_buildable_piece( piece, slot )
+player_set_buildable_piece( piece, slot = 0 )
 {
-    if ( !isdefined( slot ) )
-        slot = 0;
 /#
     if ( isdefined( slot ) && isdefined( piece ) && isdefined( piece.buildable_slot ) )
         assert( slot == piece.buildable_slot );
@@ -712,11 +701,8 @@ piece_wait_and_return( return_time )
     self piece_spawn_at();
 }
 
-player_return_piece_to_original_spawn( slot )
+player_return_piece_to_original_spawn( slot = 0 )
 {
-    if ( !isdefined( slot ) )
-        slot = 0;
-
     self notify( "piece_released" + slot );
     piece = self player_get_buildable_piece( slot );
     self player_set_buildable_piece( undefined, slot );
@@ -747,11 +733,8 @@ player_drop_piece_on_death( slot )
         piece [[ piece.ondrop ]]( self );
 }
 
-player_drop_piece( piece, slot )
+player_drop_piece( piece, slot = 0 )
 {
-    if ( !isdefined( slot ) )
-        slot = 0;
-
     if ( !isdefined( piece ) )
         piece = self player_get_buildable_piece( slot );
     else
@@ -812,11 +795,8 @@ player_take_piece( piece )
     }
 }
 
-player_destroy_piece( piece )
+player_destroy_piece( piece = self player_get_buildable_piece() )
 {
-    if ( !isdefined( piece ) )
-        piece = self player_get_buildable_piece();
-
     if ( isplayer( self ) )
     {
         slot = piece.buildable_slot;
@@ -1738,11 +1718,8 @@ buildablestub_update_prompt( player )
     return true;
 }
 
-player_continue_building( buildablezone, build_stub )
+player_continue_building( buildablezone, build_stub = buildablezone.stub )
 {
-    if ( !isdefined( build_stub ) )
-        build_stub = buildablezone.stub;
-
     if ( self maps\mp\zombies\_zm_laststand::player_is_in_laststand() || self in_revive_trigger() )
         return false;
 
@@ -1822,11 +1799,8 @@ player_progress_bar( start_time, build_time, building_prompt )
     self.usebar destroyelem();
 }
 
-buildable_use_hold_think_internal( player, bind_stub )
+buildable_use_hold_think_internal( player, bind_stub = self.stub )
 {
-    if ( !isdefined( bind_stub ) )
-        bind_stub = self.stub;
-
     wait 0.01;
 
     if ( !isdefined( self ) )
@@ -1909,11 +1883,8 @@ buildable_play_build_fx( player )
     }
 }
 
-buildable_use_hold_think( player, bind_stub )
+buildable_use_hold_think( player, bind_stub = self.stub )
 {
-    if ( !isdefined( bind_stub ) )
-        bind_stub = self.stub;
-
     self thread buildable_play_build_fx( player );
     self thread buildable_use_hold_think_internal( player, bind_stub );
     retval = self waittill_any_return( "build_succeed", "build_failed" );

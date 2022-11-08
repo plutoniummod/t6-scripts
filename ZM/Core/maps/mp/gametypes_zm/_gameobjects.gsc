@@ -2143,11 +2143,8 @@ getvisiblecarriermodel()
     return self.visiblecarriermodel;
 }
 
-destroyobject( deletetrigger, forcehide )
+destroyobject( deletetrigger, forcehide = 1 )
 {
-    if ( !isdefined( forcehide ) )
-        forcehide = 1;
-
     self disableobject( forcehide );
 
     foreach ( visual in self.visuals )

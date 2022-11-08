@@ -448,7 +448,7 @@ _pose_corpse()
             break;
     }
 
-    self.corpse_model useanimtree( -1 );
+    self.corpse_model useanimtree( #animtree );
     self.corpse_model setanim( anim_pose, 1, 0.05, 1 );
 }
 

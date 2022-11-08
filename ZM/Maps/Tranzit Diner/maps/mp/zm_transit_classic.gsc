@@ -272,11 +272,8 @@ track_clip_damage()
     self notify( "damage", amount, attacker, direction, point, dmg_type );
 }
 
-bunkerdoorrotate( open, time )
+bunkerdoorrotate( open, time = 0.2 )
 {
-    if ( !isdefined( time ) )
-        time = 0.2;
-
     rotate = self.script_float;
 
     if ( !open )

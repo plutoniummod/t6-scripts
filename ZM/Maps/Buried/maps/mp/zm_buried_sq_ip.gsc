@@ -308,6 +308,8 @@ sq_ml_show_lever_debug( v_spot, n_index )
 #/
 }
 
+#using_animtree("fxanim_props_dlc3");
+
 sq_ml_spawn_trigger()
 {
     v_right = anglestoforward( self.angles );
@@ -320,7 +322,7 @@ sq_ml_spawn_trigger()
     self.trig triggerignoreteam();
     self.trig usetriggerrequirelookat();
     self.is_flipped = 0;
-    self useanimtree( -1 );
+    self useanimtree( #animtree );
 
     while ( true )
     {

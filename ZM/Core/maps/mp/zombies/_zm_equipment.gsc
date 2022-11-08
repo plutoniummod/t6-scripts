@@ -26,11 +26,8 @@ init()
         registerclientfield( "scriptmover", "equipment_activated", 12000, 4, "int" );
 }
 
-signal_equipment_activated( val )
+signal_equipment_activated( val = 1 )
 {
-    if ( !isdefined( val ) )
-        val = 1;
-
     if ( isdefined( level._no_equipment_activated_clientfield ) && level._no_equipment_activated_clientfield )
         return;
 
@@ -191,11 +188,8 @@ set_equipment_invisibility_to_player( equipment, invisible )
     }
 }
 
-equipment_take( equipment )
+equipment_take( equipment = self get_player_equipment() )
 {
-    if ( !isdefined( equipment ) )
-        equipment = self get_player_equipment();
-
     if ( !isdefined( equipment ) )
         return;
 
@@ -782,10 +776,8 @@ equipment_to_deployed( equipment )
     self setactionslot( 1, "" );
 }
 
-equipment_from_deployed( equipment )
+equipment_from_deployed( equipment = "none" )
 {
-    if ( !isdefined( equipment ) )
-        equipment = "none";
 /#
     println( "ZM EQUIPMENT: " + self.name + " retrieved " + equipment + "\\n" );
 #/
@@ -842,14 +834,8 @@ equipment_buy( equipment )
     self equipment_give( equipment );
 }
 
-generate_equipment_unitrigger( classname, origin, angles, flags, radius, script_height, hint, icon, think, moving )
+generate_equipment_unitrigger( classname, origin, angles, flags, radius = 64, script_height = 64, hint, icon, think, moving )
 {
-    if ( !isdefined( radius ) )
-        radius = 64;
-
-    if ( !isdefined( script_height ) )
-        script_height = 64;
-
     script_width = script_height;
 
     if ( !isdefined( script_width ) )

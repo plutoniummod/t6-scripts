@@ -87,7 +87,7 @@ declare_objectives()
 
 init_pap_animtree()
 {
-    scriptmodelsuseanimtree( -1 );
+    scriptmodelsuseanimtree( #animtree );
 }
 
 setup_capture_zones()
@@ -738,11 +738,8 @@ calculate_capture_event_zombies_needed()
     return n_capture_zombies_needed + n_recapture_zombies_needed;
 }
 
-get_capture_zombies_needed( b_per_zone )
+get_capture_zombies_needed( b_per_zone = 0 )
 {
-    if ( !isdefined( b_per_zone ) )
-        b_per_zone = 0;
-
     a_contested_zones = get_contested_zones();
 
     switch ( a_contested_zones.size )
@@ -808,11 +805,8 @@ get_recapture_zombies_needed()
     return n_recapture_zombies_needed;
 }
 
-activate_capture_zone( b_show_emergence_holes )
+activate_capture_zone( b_show_emergence_holes = 1 )
 {
-    if ( !isdefined( b_show_emergence_holes ) )
-        b_show_emergence_holes = 1;
-
     if ( !flag( "recapture_event_in_progress" ) )
         self thread generator_initiated_vo();
 
@@ -1428,11 +1422,8 @@ set_player_controlled_zone()
     level notify( "zone_captured_by_player", self.str_zone );
 }
 
-set_zombie_controlled_area( b_is_level_initializing )
+set_zombie_controlled_area( b_is_level_initializing = 0 )
 {
-    if ( !isdefined( b_is_level_initializing ) )
-        b_is_level_initializing = 0;
-
     update_captured_zone_count();
 
     if ( b_is_level_initializing )
@@ -1454,11 +1445,8 @@ play_pap_anim( b_assemble )
     level setclientfield( "packapunch_anim", get_captured_zone_count() );
 }
 
-set_zombie_controlled_zone( b_is_level_initializing )
+set_zombie_controlled_zone( b_is_level_initializing = 0 )
 {
-    if ( !isdefined( b_is_level_initializing ) )
-        b_is_level_initializing = 0;
-
     n_hud_state = 2;
 
     if ( b_is_level_initializing )
@@ -2271,11 +2259,8 @@ recapture_round_start()
     flag_clear( "generator_under_attack" );
 }
 
-broadcast_vo_category_to_team( str_category, n_delay )
+broadcast_vo_category_to_team( str_category, n_delay = 1 )
 {
-    if ( !isdefined( n_delay ) )
-        n_delay = 1;
-
     a_players = get_players();
     a_speakers = [];
 
@@ -2305,11 +2290,8 @@ get_players_too_far_to_hear( a_players )
     return a_distant;
 }
 
-get_random_speaker( a_players )
+get_random_speaker( a_players = get_players() )
 {
-    if ( !isdefined( a_players ) )
-        a_players = get_players();
-
     a_valid_players = [];
 
     foreach ( player in a_players )

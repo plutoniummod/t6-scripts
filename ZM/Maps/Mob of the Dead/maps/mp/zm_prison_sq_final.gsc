@@ -148,17 +148,8 @@ nixie_final_audio_cue_code()
     m_nixie_tube waittill( "scary_voice" );
 }
 
-nixie_tube_win_effects_all_tubes_final( goal_num_1, goal_num_2, goal_num_3 )
+nixie_tube_win_effects_all_tubes_final( goal_num_1 = 0, goal_num_2 = 0, goal_num_3 = 0 )
 {
-    if ( !isdefined( goal_num_1 ) )
-        goal_num_1 = 0;
-
-    if ( !isdefined( goal_num_2 ) )
-        goal_num_2 = 0;
-
-    if ( !isdefined( goal_num_3 ) )
-        goal_num_3 = 0;
-
     a_nixie_tube = [];
     a_nixie_tube[1] = getent( "nixie_tube_1", "targetname" );
     a_nixie_tube[2] = getent( "nixie_tube_2", "targetname" );

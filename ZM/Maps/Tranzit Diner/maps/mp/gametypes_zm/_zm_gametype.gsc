@@ -1327,11 +1327,8 @@ onspawnplayerunified()
     onspawnplayer( 0 );
 }
 
-onspawnplayer( predictedspawn )
+onspawnplayer( predictedspawn = 0 )
 {
-    if ( !isdefined( predictedspawn ) )
-        predictedspawn = 0;
-
     pixbeginevent( "ZSURVIVAL:onSpawnPlayer" );
     self.usingobj = undefined;
     self.is_zombie = 0;

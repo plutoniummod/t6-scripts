@@ -10,9 +10,11 @@
 #include maps\mp\zombies\_zm_ai_basic;
 #include maps\mp\zombies\_zm_ai_leaper;
 
+#using_animtree("zombie_perk_elevator");
+
 init_perk_elvators_animtree()
 {
-    scriptmodelsuseanimtree( -1 );
+    scriptmodelsuseanimtree( #animtree );
 }
 
 init_elevators()
@@ -55,8 +57,6 @@ quick_revive_solo_watch()
     }
 }
 
-#using_animtree("zombie_perk_elevator");
-
 init_perk_elevators_anims()
 {
     level.perk_elevators_door_open_state = %v_zombie_elevator_doors_open;
@@ -81,7 +81,7 @@ init_perk_elevators_anims()
 
 perkelevatoruseanimtree()
 {
-    self useanimtree( -1 );
+    self useanimtree( #animtree );
 }
 
 perkelevatordoor( set )

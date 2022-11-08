@@ -443,11 +443,8 @@ check_point_in_playable_area( origin )
     return valid_point;
 }
 
-check_point_in_enabled_zone( origin, zone_is_active, player_zones )
+check_point_in_enabled_zone( origin, zone_is_active, player_zones = getentarray( "player_volume", "script_noteworthy" ) )
 {
-    if ( !isdefined( player_zones ) )
-        player_zones = getentarray( "player_volume", "script_noteworthy" );
-
     if ( !isdefined( level.zones ) || !isdefined( player_zones ) )
         return 1;
 
@@ -2431,14 +2428,8 @@ onplayerdisconnect_callback( func )
     addcallback( "on_player_disconnect", func );
 }
 
-set_zombie_var( var, value, is_float, column, is_team_based )
+set_zombie_var( var, value, is_float = 0, column = 1, is_team_based )
 {
-    if ( !isdefined( is_float ) )
-        is_float = 0;
-
-    if ( !isdefined( column ) )
-        column = 1;
-
     table = "mp/zombiemode.csv";
     table_value = tablelookup( table, 0, var, column );
 
@@ -2461,17 +2452,8 @@ set_zombie_var( var, value, is_float, column, is_team_based )
     return value;
 }
 
-get_table_var( table, var_name, value, is_float, column )
+get_table_var( table = "mp/zombiemode.csv", var_name, value, is_float = 0, column = 1 )
 {
-    if ( !isdefined( table ) )
-        table = "mp/zombiemode.csv";
-
-    if ( !isdefined( is_float ) )
-        is_float = 0;
-
-    if ( !isdefined( column ) )
-        column = 1;
-
     table_value = tablelookup( table, 0, var_name, column );
 
     if ( isdefined( table_value ) && table_value != "" )
@@ -2963,11 +2945,8 @@ isplayerexplosiveweapon( weapon, meansofdeath )
     return true;
 }
 
-create_counter_hud( x )
+create_counter_hud( x = 0 )
 {
-    if ( !isdefined( x ) )
-        x = 0;
-
     hud = create_simple_hud();
     hud.alignx = "left";
     hud.aligny = "top";
@@ -3181,11 +3160,8 @@ getweaponclasszm( weapon )
     return weaponclass;
 }
 
-spawn_weapon_model( weapon, model, origin, angles, options )
+spawn_weapon_model( weapon, model = getweaponmodel( weapon ), origin, angles, options )
 {
-    if ( !isdefined( model ) )
-        model = getweaponmodel( weapon );
-
     weapon_model = spawn( "script_model", origin );
 
     if ( isdefined( angles ) )
@@ -4275,11 +4251,8 @@ add_gameloc( gl, dummy1, name, dummy2 )
 
 }
 
-get_closest_index( org, array, dist )
+get_closest_index( org, array, dist = 9999999 )
 {
-    if ( !isdefined( dist ) )
-        dist = 9999999;
-
     distsq = dist * dist;
 
     if ( array.size < 1 )
@@ -4751,11 +4724,8 @@ check_and_create_node_lists()
         level._unlink_node_list = [];
 }
 
-link_nodes( a, b, bdontunlinkonmigrate )
+link_nodes( a, b, bdontunlinkonmigrate = 0 )
 {
-    if ( !isdefined( bdontunlinkonmigrate ) )
-        bdontunlinkonmigrate = 0;
-
     if ( nodesarelinked( a, b ) )
         return;
 
@@ -4789,11 +4759,8 @@ link_nodes( a, b, bdontunlinkonmigrate )
     linknodes( a, b );
 }
 
-unlink_nodes( a, b, bdontlinkonmigrate )
+unlink_nodes( a, b, bdontlinkonmigrate = 0 )
 {
-    if ( !isdefined( bdontlinkonmigrate ) )
-        bdontlinkonmigrate = 0;
-
     if ( !nodesarelinked( a, b ) )
         return;
 

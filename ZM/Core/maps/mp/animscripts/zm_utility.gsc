@@ -675,11 +675,8 @@ getgrenademodel()
     return getweaponmodel( self.grenadeweapon );
 }
 
-sawenemymove( timer )
+sawenemymove( timer = 500 )
 {
-    if ( !isdefined( timer ) )
-        timer = 500;
-
     return gettime() - self.personalsighttime < timer;
 }
 

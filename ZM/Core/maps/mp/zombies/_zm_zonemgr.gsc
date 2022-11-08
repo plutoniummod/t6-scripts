@@ -498,11 +498,8 @@ add_zone_flags( wait_flag, add_flags )
     level.zone_flags[wait_flag] = add_flags;
 }
 
-add_adjacent_zone( zone_name_a, zone_name_b, flag_name, one_way )
+add_adjacent_zone( zone_name_a, zone_name_b, flag_name, one_way = 0 )
 {
-    if ( !isdefined( one_way ) )
-        one_way = 0;
-
     if ( !isdefined( level.flag[flag_name] ) )
         flag_init( flag_name );
 
@@ -621,11 +618,8 @@ door_close_disconnect( flag_name )
     level thread zone_flag_wait( flag_name );
 }
 
-connect_zones( zone_name_a, zone_name_b, one_way )
+connect_zones( zone_name_a, zone_name_b, one_way = 0 )
 {
-    if ( !isdefined( one_way ) )
-        one_way = 0;
-
     zone_init( zone_name_a );
     zone_init( zone_name_b );
     enable_zone( zone_name_a );

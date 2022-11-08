@@ -8,6 +8,8 @@
 #include maps\mp\zombies\_zm_clone;
 #include maps\mp\zombies\_zm_audio;
 
+#using_animtree("zombie_beacon");
+
 init()
 {
     if ( !beacon_exists() )
@@ -28,7 +30,7 @@ init()
     level._effect["grenade_samantha_steal"] = loadfx( "maps/zombie/fx_zmb_blackhole_trap_end" );
     level.beacons = [];
     level.zombie_weapons_callbacks["beacon_zm"] = ::player_give_beacon;
-    scriptmodelsuseanimtree( -1 );
+    scriptmodelsuseanimtree( #animtree );
 }
 
 player_give_beacon()
@@ -274,7 +276,7 @@ player_throw_beacon( grenade, num_attractors, max_attract_dist, attract_dist_dif
         model = spawn( "script_model", grenade.origin );
         model endon( "weapon_beacon_timeout" );
         model setmodel( "t6_wpn_zmb_homing_beacon_world" );
-        model useanimtree( -1 );
+        model useanimtree( #animtree );
         model linkto( grenade );
         model.angles = grenade.angles;
         model thread beacon_cleanup( grenade );
@@ -369,8 +371,6 @@ player_throw_beacon( grenade, num_attractors, max_attract_dist, attract_dist_dif
         }
     }
 }
-
-#using_animtree("zombie_beacon");
 
 weapon_beacon_anims()
 {
@@ -717,11 +717,8 @@ homing_beacon_vo()
     }
 }
 
-artillery_barrage_logic( grenade, b_ee )
+artillery_barrage_logic( grenade, b_ee = 0 )
 {
-    if ( !isdefined( b_ee ) )
-        b_ee = 0;
-
     if ( isdefined( b_ee ) && b_ee )
     {
         a_v_land_offsets = self build_weap_beacon_landing_offsets_ee();

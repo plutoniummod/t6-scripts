@@ -333,7 +333,7 @@ spawner()
 precache( ai_index )
 {
     level thread reference_anims_from_animtree();
-    precacheanimstatedef( ai_index, -1, "zm_nuked_basic" );
+    precacheanimstatedef( ai_index, #animtree, "zm_nuked_basic" );
     character\c_zom_dlc0_zombie_soldier_1_beyes::precache();
     character\c_zom_dlc0_zombie_soldier_civ_1_beyes::precache();
 }

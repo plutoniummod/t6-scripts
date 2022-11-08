@@ -21,9 +21,11 @@ precache()
 
 }
 
+#using_animtree("zm_buried_ghost");
+
 init_animtree()
 {
-    scriptmodelsuseanimtree( -1 );
+    scriptmodelsuseanimtree( #animtree );
 }
 
 precache_fx()
@@ -2317,8 +2319,6 @@ get_next_spot_during_ghost_round_presentation()
     return level.ghost_front_standing_locations[level.current_ghost_window_index];
 }
 
-#using_animtree("zm_buried_ghost");
-
 spawn_ghost_round_presentation_ghost()
 {
     spawn_point = get_next_spot_during_ghost_round_presentation();
@@ -2341,7 +2341,7 @@ spawn_ghost_round_presentation_ghost()
     }
 
     wait 0.5;
-    ghost useanimtree( -1 );
+    ghost useanimtree( #animtree );
     ghost setanim( %ai_zombie_ghost_idle );
     ghost.script_mover = spawn( "script_origin", ghost.origin );
     ghost.script_mover.angles = ghost.angles;

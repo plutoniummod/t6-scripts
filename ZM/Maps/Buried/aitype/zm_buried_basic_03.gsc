@@ -399,7 +399,7 @@ spawner()
 precache( ai_index )
 {
     level thread reference_anims_from_animtree();
-    precacheanimstatedef( ai_index, -1, "zm_buried_basic" );
+    precacheanimstatedef( ai_index, #animtree, "zm_buried_basic" );
     character\c_zom_zombie_buried_saloongirl1::precache();
     character\c_zom_zombie_buried_saloongirl2::precache();
     character\c_zom_zombie_buried_saloongirl3::precache();

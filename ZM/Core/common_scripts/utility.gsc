@@ -678,11 +678,8 @@ flag_delete( flagname )
     }
 }
 
-flag_init( flagname, val, b_is_trigger )
+flag_init( flagname, val, b_is_trigger = 0 )
 {
-    if ( !isdefined( b_is_trigger ) )
-        b_is_trigger = 0;
-
     if ( !isdefined( level.flag ) )
         level.flag = [];
 
@@ -816,11 +813,8 @@ flag_exists( flagname )
     return false;
 }
 
-script_gen_dump_addline( string, signature )
+script_gen_dump_addline( string = "nowrite", signature )
 {
-    if ( !isdefined( string ) )
-        string = "nowrite";
-
     if ( !isdefined( level._loadstarted ) )
     {
         if ( !isdefined( level.script_gen_dump_preload ) )
@@ -859,11 +853,8 @@ array_func( entities, func, arg1, arg2, arg3, arg4, arg5, arg6 )
         single_func( entities, func, arg1, arg2, arg3, arg4, arg5, arg6 );
 }
 
-single_func( entity, func, arg1, arg2, arg3, arg4, arg5, arg6 )
+single_func( entity = level, func, arg1, arg2, arg3, arg4, arg5, arg6 )
 {
-    if ( !isdefined( entity ) )
-        entity = level;
-
     if ( isdefined( arg6 ) )
         return entity [[ func ]]( arg1, arg2, arg3, arg4, arg5, arg6 );
     else if ( isdefined( arg5 ) )
@@ -1045,11 +1036,8 @@ trigger_off_proc()
     }
 }
 
-trigger_wait( str_name, str_key, e_entity )
+trigger_wait( str_name, str_key = "targetname", e_entity )
 {
-    if ( !isdefined( str_key ) )
-        str_key = "targetname";
-
     if ( isdefined( str_name ) )
     {
         triggers = getentarray( str_name, str_key );
@@ -1104,17 +1092,8 @@ _trigger_wait_think( s_tracker, e_entity )
     s_tracker notify( "trigger", e_other, self );
 }
 
-trigger_use( str_name, str_key, ent, b_assert )
+trigger_use( str_name, str_key = "targetname", ent = get_players()[0], b_assert = 1 )
 {
-    if ( !isdefined( str_key ) )
-        str_key = "targetname";
-
-    if ( !isdefined( b_assert ) )
-        b_assert = 1;
-
-    if ( !isdefined( ent ) )
-        ent = get_players()[0];
-
     if ( isdefined( str_name ) )
     {
         e_trig = getent( str_name, str_key );
@@ -1223,11 +1202,8 @@ is_trigger_once( trig )
     return isdefined( trig ) ? trig has_spawnflag( 1024 ) || !isdefined( self.classname ) && !isdefined( "trigger_once" ) || isdefined( self.classname ) && isdefined( "trigger_once" ) && self.classname == "trigger_once" : 0;
 }
 
-getstruct( name, type )
+getstruct( name, type = "targetname" )
 {
-    if ( !isdefined( type ) )
-        type = "targetname";
-
     assert( isdefined( level.struct_class_names ), "Tried to getstruct before the structs were init" );
     array = level.struct_class_names[type][name];
 
@@ -1245,11 +1221,8 @@ getstruct( name, type )
     return array[0];
 }
 
-getstructarray( name, type )
+getstructarray( name, type = "targetname" )
 {
-    if ( !isdefined( type ) )
-        type = "targetname";
-
     assert( isdefined( level.struct_class_names ), "Tried to getstruct before the structs were init" );
     array = level.struct_class_names[type][name];
 
@@ -1367,11 +1340,8 @@ fileprint_chk( file, str )
 #/
 }
 
-fileprint_map_header( binclude_blank_worldspawn )
+fileprint_map_header( binclude_blank_worldspawn = 0 )
 {
-    if ( !isdefined( binclude_blank_worldspawn ) )
-        binclude_blank_worldspawn = 0;
-
     assert( isdefined( level.fileprint ) );
 /#
     fileprint_chk( level.fileprint, "iwmap 4" );

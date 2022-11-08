@@ -39,9 +39,11 @@ onplayerconnect()
     self thread fire_puzzle_watch_staff();
 }
 
+#using_animtree("zm_tomb_basic");
+
 init_animtree()
 {
-    scriptmodelsuseanimtree( -1 );
+    scriptmodelsuseanimtree( #animtree );
 }
 
 fire_puzzle_1_init()
@@ -230,8 +232,6 @@ delete_oldest_clone()
     clone delete();
 }
 
-#using_animtree("zm_tomb_basic");
-
 fire_sacrifice_death_clone( e_sacrifice_volume )
 {
     if ( level.clone_list.size >= 15 )
@@ -282,7 +282,7 @@ spawn_zombie_clone()
         clone attach( clone.headmodel, "", 1 );
     }
 
-    clone useanimtree( -1 );
+    clone useanimtree( #animtree );
     return clone;
 }
 

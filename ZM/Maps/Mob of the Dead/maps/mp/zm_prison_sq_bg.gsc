@@ -246,11 +246,8 @@ sq_bg_spawn_rumble()
     }
 }
 
-take_old_weapon_and_give_reward( current_weapon, reward_weapon, weapon_limit_override )
+take_old_weapon_and_give_reward( current_weapon, reward_weapon, weapon_limit_override = 0 )
 {
-    if ( !isdefined( weapon_limit_override ) )
-        weapon_limit_override = 0;
-
     if ( weapon_limit_override == 1 )
         self takeweapon( current_weapon );
     else

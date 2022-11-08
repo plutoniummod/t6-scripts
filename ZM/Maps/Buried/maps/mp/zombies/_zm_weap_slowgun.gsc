@@ -306,11 +306,8 @@ zombie_change_rate( time, newrate )
         wait( time );
 }
 
-zombie_slow_for_time( time, multiplier )
+zombie_slow_for_time( time, multiplier = 2.0 )
 {
-    if ( !isdefined( multiplier ) )
-        multiplier = 2.0;
-
     paralyzer_time_per_frame = 0.1 * ( 1.0 + multiplier );
 
     if ( self.paralyzer_slowtime <= time )

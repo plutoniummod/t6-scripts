@@ -292,11 +292,8 @@ player_slow_movement_speed_monitor()
     }
 }
 
-dug_zombie_spawn_init( animname_set )
+dug_zombie_spawn_init( animname_set = 0 )
 {
-    if ( !isdefined( animname_set ) )
-        animname_set = 0;
-
     self.targetname = "zombie";
     self.script_noteworthy = undefined;
 
@@ -538,11 +535,8 @@ dug_zombie_complete_emerging_into_playable_area()
     self thread zombie_free_cam_allowed();
 }
 
-dug_zombie_rise( spot, func_rise_fx )
+dug_zombie_rise( spot, func_rise_fx = ::zombie_rise_fx )
 {
-    if ( !isdefined( func_rise_fx ) )
-        func_rise_fx = ::zombie_rise_fx;
-
     self endon( "death" );
     self.in_the_ground = 1;
     self.no_eye_glow = 1;
@@ -828,11 +822,8 @@ set_unitrigger_hint_string( str_message )
     maps\mp\zombies\_zm_unitrigger::register_unitrigger( self, ::tomb_unitrigger_think );
 }
 
-tomb_spawn_trigger_radius( origin, radius, use_trigger, func_per_player_msg )
+tomb_spawn_trigger_radius( origin, radius, use_trigger = 0, func_per_player_msg )
 {
-    if ( !isdefined( use_trigger ) )
-        use_trigger = 0;
-
     trigger_stub = spawnstruct();
     trigger_stub.origin = origin;
     trigger_stub.radius = radius;
@@ -1236,11 +1227,8 @@ puzzle_orb_chamber_to_crypt( str_start_point, e_gem_pos )
     return e_model_nofx;
 }
 
-capture_zombie_spawn_init( animname_set )
+capture_zombie_spawn_init( animname_set = 0 )
 {
-    if ( !isdefined( animname_set ) )
-        animname_set = 0;
-
     self.targetname = "capture_zombie_ai";
 
     if ( !animname_set )
@@ -1329,11 +1317,8 @@ capture_zombie_spawn_init( animname_set )
     self notify( "zombie_init_done" );
 }
 
-rumble_players_in_chamber( n_rumble_enum, n_rumble_time )
+rumble_players_in_chamber( n_rumble_enum, n_rumble_time = 0.1 )
 {
-    if ( !isdefined( n_rumble_time ) )
-        n_rumble_time = 0.1;
-
     a_players = getplayers();
     a_rumbled_players = [];
 

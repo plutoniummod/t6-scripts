@@ -288,6 +288,8 @@ is_springpad_in_place( m_springpad, is_generator )
     }
 }
 
+#using_animtree("fxanim_props");
+
 pts_springpad_fling( str_spot_name, m_buddy_springpad )
 {
     str_anim1 = undefined;
@@ -318,7 +320,7 @@ pts_springpad_fling( str_spot_name, m_buddy_springpad )
     m_anim = spawn( "script_model", ( 2090, 675, 3542 ) );
     m_anim.angles = ( 0, 0, 0 );
     m_anim setmodel( "fxanim_zom_highrise_trample_gen_mod" );
-    m_anim useanimtree( -1 );
+    m_anim useanimtree( #animtree );
     m_anim.targetname = "trample_gen_" + str_spot_name;
     pts_springpad_anim_ball( m_buddy_springpad, m_anim, str_anim1, str_anim2 );
 }

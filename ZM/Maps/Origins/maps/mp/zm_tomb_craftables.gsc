@@ -1206,11 +1206,8 @@ is_unclaimed_staff_weapon( str_weapon )
     return true;
 }
 
-get_staff_info_from_weapon_name( str_name, b_base_info_only )
+get_staff_info_from_weapon_name( str_name, b_base_info_only = 1 )
 {
-    if ( !isdefined( b_base_info_only ) )
-        b_base_info_only = 1;
-
     foreach ( s_staff in level.a_elemental_staffs )
     {
         if ( s_staff.weapname == str_name || s_staff.upgrade.weapname == str_name )

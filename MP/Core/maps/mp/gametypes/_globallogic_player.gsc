@@ -2537,11 +2537,8 @@ updateweapon( einflictor, sweapon )
     return sweapon;
 }
 
-getclosestkillcamentity( attacker, killcamentities, depth )
+getclosestkillcamentity( attacker, killcamentities, depth = 0 )
 {
-    if ( !isdefined( depth ) )
-        depth = 0;
-
     closestkillcament = undefined;
     closestkillcamentindex = undefined;
     closestkillcamentdist = undefined;

@@ -1056,11 +1056,8 @@ bot_has_radar()
     return isdefined( self.hasspyplane ) && self.hasspyplane || isdefined( self.hassatellite ) && self.hassatellite;
 }
 
-bot_get_enemies( on_radar )
+bot_get_enemies( on_radar = 0 )
 {
-    if ( !isdefined( on_radar ) )
-        on_radar = 0;
-
     enemies = self getenemies( 1 );
 /#
     for ( i = 0; i < enemies.size; i++ )

@@ -409,11 +409,8 @@ watch_for_drop()
     }
 }
 
-add_zombie_powerup( powerup_name, model_name, hint, func_should_drop_with_regular_powerups, solo, caution, zombie_grabbable, fx, client_field_name, time_name, on_name, clientfield_version )
+add_zombie_powerup( powerup_name, model_name, hint, func_should_drop_with_regular_powerups, solo, caution, zombie_grabbable, fx, client_field_name, time_name, on_name, clientfield_version = 1 )
 {
-    if ( !isdefined( clientfield_version ) )
-        clientfield_version = 1;
-
     if ( isdefined( level.zombie_include_powerups ) && !isdefined( level.zombie_include_powerups[powerup_name] ) )
         return;
 

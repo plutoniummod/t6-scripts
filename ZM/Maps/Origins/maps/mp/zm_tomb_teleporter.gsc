@@ -30,7 +30,7 @@ teleporter_init()
 
     foreach ( e_model in a_entrance_models )
     {
-        e_model useanimtree( -1 );
+        e_model useanimtree( #animtree );
         level.a_teleport_models[e_model.script_int] = e_model;
     }
 
@@ -40,7 +40,7 @@ teleporter_init()
 
     foreach ( e_frame in a_portal_frames )
     {
-        e_frame useanimtree( -1 );
+        e_frame useanimtree( #animtree );
         e_frame ghost();
         level.a_portal_exit_frames[e_frame.script_int] = e_frame;
     }
@@ -67,7 +67,7 @@ teleporter_init()
 
 init_animtree()
 {
-    scriptmodelsuseanimtree( -1 );
+    scriptmodelsuseanimtree( #animtree );
 }
 
 teleporter_samantha_chamber_line()
@@ -228,11 +228,8 @@ run_chamber_entrance_teleporter()
     }
 }
 
-teleporter_radius_think( radius )
+teleporter_radius_think( radius = 120.0 )
 {
-    if ( !isdefined( radius ) )
-        radius = 120.0;
-
     self endon( "teleporter_radius_stop" );
     radius_sq = radius * radius;
 
@@ -308,14 +305,8 @@ spawn_stargate_fx_origins()
     }
 }
 
-stargate_teleport_player( str_teleport_to, player, n_teleport_time_sec, show_fx )
+stargate_teleport_player( str_teleport_to, player, n_teleport_time_sec = 2.0, show_fx = 1 )
 {
-    if ( !isdefined( n_teleport_time_sec ) )
-        n_teleport_time_sec = 2.0;
-
-    if ( !isdefined( show_fx ) )
-        show_fx = 1;
-
     player.teleporting = 1;
 
     if ( show_fx )

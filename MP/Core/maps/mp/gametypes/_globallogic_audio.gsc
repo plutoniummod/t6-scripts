@@ -473,11 +473,8 @@ leaderdialogonplayer( dialog, group )
         self thread playnextleaderdialog();
 }
 
-waitforsound( sound, extratime )
+waitforsound( sound, extratime = 0.1 )
 {
-    if ( !isdefined( extratime ) )
-        extratime = 0.1;
-
     time = soundgetplaybacktime( sound );
 
     if ( time < 0 )

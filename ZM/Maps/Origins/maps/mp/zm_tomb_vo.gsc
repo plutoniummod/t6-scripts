@@ -1161,16 +1161,16 @@ game_start_vo()
             {
                 case "Dempsey":
                     e_dempsey = player;
-                    continue;
+                    break;
                 case "Nikolai":
                     e_nikolai = player;
-                    continue;
+                    break;
                 case "Richtofen":
                     e_richtofen = player;
-                    continue;
+                    break;
                 case "Takeo":
                     e_takeo = player;
-                    continue;
+                    break;
             }
         }
     }
@@ -1497,16 +1497,16 @@ round_one_end_vo()
             {
                 case "Dempsey":
                     e_dempsey = player;
-                    continue;
+                    break;
                 case "Nikolai":
                     e_nikolai = player;
-                    continue;
+                    break;
                 case "Richtofen":
                     e_richtofen = player;
-                    continue;
+                    break;
                 case "Takeo":
                     e_takeo = player;
-                    continue;
+                    break;
             }
         }
     }
@@ -1666,19 +1666,19 @@ wait_and_play_first_magic_box_seen_vo( struct )
                                 case "Dempsey":
                                     e_dempsey = player;
                                     a_speakers[a_speakers.size] = e_dempsey;
-                                    continue;
+                                    break;
                                 case "Nikolai":
                                     e_nikolai = player;
                                     a_speakers[a_speakers.size] = e_nikolai;
-                                    continue;
+                                    break;
                                 case "Richtofen":
                                     e_richtofen = player;
                                     a_speakers[a_speakers.size] = e_richtofen;
-                                    continue;
+                                    break;
                                 case "Takeo":
                                     e_takeo = player;
                                     a_speakers[a_speakers.size] = e_takeo;
-                                    continue;
+                                    break;
                             }
                         }
                     }
@@ -1944,14 +1944,8 @@ say_puzzle_completion_line( n_element_enum )
     set_players_dontspeak( 0 );
 }
 
-watch_occasional_line( str_category, str_line, str_notify, n_time_between, n_times_to_play )
+watch_occasional_line( str_category, str_line, str_notify, n_time_between = 30.0, n_times_to_play = 100 )
 {
-    if ( !isdefined( n_time_between ) )
-        n_time_between = 30.0;
-
-    if ( !isdefined( n_times_to_play ) )
-        n_times_to_play = 100;
-
     for ( i = 0; i < n_times_to_play; i++ )
     {
         level waittill( str_notify, e_player );
@@ -2169,14 +2163,8 @@ samantha_discourage_think()
     }
 }
 
-samanthasay( vox_line, e_source, b_wait_for_nearby_speakers, intro_line )
+samanthasay( vox_line, e_source, b_wait_for_nearby_speakers = 0, intro_line = 0 )
 {
-    if ( !isdefined( b_wait_for_nearby_speakers ) )
-        b_wait_for_nearby_speakers = 0;
-
-    if ( !isdefined( intro_line ) )
-        intro_line = 0;
-
     level endon( "end_game" );
 
     if ( !intro_line && !flag( "samantha_intro_done" ) )
@@ -2268,11 +2256,8 @@ maxissayvoplay( m_vo_spot, vox_line )
     level notify( "MaxisSay_vo_finished" );
 }
 
-richtofenrespondvoplay( vox_category, b_richtofen_first, str_flag )
+richtofenrespondvoplay( vox_category, b_richtofen_first = 0, str_flag )
 {
-    if ( !isdefined( b_richtofen_first ) )
-        b_richtofen_first = 0;
-
     if ( flag( "story_vo_playing" ) )
         return;
 

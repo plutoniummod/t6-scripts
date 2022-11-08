@@ -547,11 +547,8 @@ whirlwind_attract_anim_watch_cancel()
     self._whirlwind_attract_anim = 0;
 }
 
-whirlwind_attract_anim( v_attract_point, b_move_fast )
+whirlwind_attract_anim( v_attract_point, b_move_fast = 0 )
 {
-    if ( !isdefined( b_move_fast ) )
-        b_move_fast = 0;
-
     self endon( "death" );
     level endon( "whirlwind_stopped" );
 

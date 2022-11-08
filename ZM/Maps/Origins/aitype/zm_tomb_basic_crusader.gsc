@@ -413,7 +413,7 @@ spawner()
 precache( ai_index )
 {
     level thread reference_anims_from_animtree();
-    precacheanimstatedef( ai_index, -1, "zm_tomb_basic" );
+    precacheanimstatedef( ai_index, #animtree, "zm_tomb_basic" );
     character\c_zom_tomb_crusader_1a::precache();
     character\c_zom_tomb_crusader_1a_nohat::precache();
     character\c_zom_tomb_crusader_2b::precache();

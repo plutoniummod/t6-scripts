@@ -348,11 +348,8 @@ clean_up_stink( e_temp )
     e_temp clear_stink_ent();
 }
 
-_delete_vulture_ent( n_delay )
+_delete_vulture_ent( n_delay = 0 )
 {
-    if ( !isdefined( n_delay ) )
-        n_delay = 0;
-
     if ( n_delay > 0 )
     {
         self ghost();
@@ -362,11 +359,8 @@ _delete_vulture_ent( n_delay )
     self clear_bonus_ent();
 }
 
-_vulture_drop_model( str_identifier, str_model, v_model_origin, v_offset )
+_vulture_drop_model( str_identifier, str_model, v_model_origin, v_offset = ( 0, 0, 0 ) )
 {
-    if ( !isdefined( v_offset ) )
-        v_offset = ( 0, 0, 0 );
-
     if ( !isdefined( self.perk_vulture_models ) )
         self.perk_vulture_models = [];
 
@@ -705,11 +699,8 @@ toggle_stink_overlay( b_show_overlay )
         self thread _ramp_down_stink_overlay();
 }
 
-_ramp_up_stink_overlay( b_instant_change )
+_ramp_up_stink_overlay( b_instant_change = 0 )
 {
-    if ( !isdefined( b_instant_change ) )
-        b_instant_change = 0;
-
     self notify( "vulture_perk_stink_ramp_up_done" );
     self endon( "vulture_perk_stink_ramp_up_done" );
     self endon( "death_or_disconnect" );
@@ -749,11 +740,8 @@ _get_disease_meter_fraction()
     return self.vulture_stink_value / ( pow( 2, 5 ) - 1 );
 }
 
-_ramp_down_stink_overlay( b_instant_change )
+_ramp_down_stink_overlay( b_instant_change = 0 )
 {
-    if ( !isdefined( b_instant_change ) )
-        b_instant_change = 0;
-
     self notify( "vulture_perk_stink_ramp_down_done" );
     self endon( "vulture_perk_stink_ramp_down_done" );
     self endon( "death_or_disconnect" );

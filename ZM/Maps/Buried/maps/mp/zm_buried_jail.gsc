@@ -4,12 +4,12 @@
 #include common_scripts\utility;
 #include maps\mp\zombies\_zm_utility;
 
+#using_animtree("zm_buried_props");
+
 init_jail_animtree()
 {
-    scriptmodelsuseanimtree( -1 );
+    scriptmodelsuseanimtree( #animtree );
 }
-
-#using_animtree("zm_buried_props");
 
 init_jail_anims()
 {
@@ -21,7 +21,7 @@ init_jail_anims()
 
 jailuseanimtree()
 {
-    self useanimtree( -1 );
+    self useanimtree( #animtree );
 }
 
 init_jail()

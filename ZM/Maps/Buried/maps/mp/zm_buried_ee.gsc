@@ -116,7 +116,7 @@ spawn_and_animate_ghost_pianist()
     e_temp.angles = s_anim.angles;
     e_temp setclientfield( "ghost_fx", 3 );
     e_temp setmodel( "c_zom_zombie_buried_ghost_woman_fb" );
-    e_temp useanimtree( -1 );
+    e_temp useanimtree( #animtree );
     e_temp setanim( %ai_zombie_ghost_playing_piano );
     e_temp setclientfield( "sndGhostAudio", 1 );
 /#
@@ -206,11 +206,8 @@ devgui_support_ee()
     }
 }
 
-warp_to_struct( str_value, str_key )
+warp_to_struct( str_value, str_key = "targetname" )
 {
-    if ( !isdefined( str_key ) )
-        str_key = "targetname";
-
     s_warp = getstruct( str_value, str_key );
     self setorigin( s_warp.origin );
 

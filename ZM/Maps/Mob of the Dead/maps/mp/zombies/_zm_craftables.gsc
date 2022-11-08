@@ -196,14 +196,8 @@ include_zombie_craftable( craftablestub )
     level.zombie_include_craftables[craftablestub.name] = craftablestub;
 }
 
-generate_zombie_craftable_piece( craftablename, piecename, modelname, radius, height, drop_offset, hud_icon, onpickup, ondrop, oncrafted, use_spawn_num, tag_name, can_reuse, client_field_value, is_shared, vox_id, b_one_time_vo )
+generate_zombie_craftable_piece( craftablename, piecename, modelname, radius, height, drop_offset, hud_icon, onpickup, ondrop, oncrafted, use_spawn_num, tag_name, can_reuse, client_field_value, is_shared = 0, vox_id, b_one_time_vo = 0 )
 {
-    if ( !isdefined( is_shared ) )
-        is_shared = 0;
-
-    if ( !isdefined( b_one_time_vo ) )
-        b_one_time_vo = 0;
-
     precachemodel( modelname );
 
     if ( isdefined( hud_icon ) )
@@ -349,14 +343,8 @@ piecestub_get_unitrigger_origin()
     return self.origin;
 }
 
-generate_piece_unitrigger( classname, origin, angles, flags, radius, script_height, moving )
+generate_piece_unitrigger( classname, origin, angles, flags, radius = 64, script_height = 64, moving )
 {
-    if ( !isdefined( radius ) )
-        radius = 64;
-
-    if ( !isdefined( script_height ) )
-        script_height = 64;
-
     script_width = script_height;
 
     if ( !isdefined( script_width ) )
@@ -649,11 +637,8 @@ player_drop_piece_on_death()
         self setclientfieldtoplayer( "craftable", 0 );
 }
 
-player_drop_piece( piece )
+player_drop_piece( piece = self.current_craftable_piece )
 {
-    if ( !isdefined( piece ) )
-        piece = self.current_craftable_piece;
-
     if ( isdefined( piece ) )
     {
         piece.damage = 0;
@@ -706,11 +691,8 @@ player_take_piece( piecespawn )
     self track_craftable_piece_pickedup( piecespawn );
 }
 
-player_destroy_piece( piece )
+player_destroy_piece( piece = self.current_craftable_piece )
 {
-    if ( !isdefined( piece ) )
-        piece = self.current_craftable_piece;
-
     if ( isdefined( piece ) )
         self setclientfieldtoplayer( "craftable", 0 );
 

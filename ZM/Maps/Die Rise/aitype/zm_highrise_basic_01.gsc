@@ -429,7 +429,7 @@ spawner()
 precache( ai_index )
 {
     level thread reference_anims_from_animtree();
-    precacheanimstatedef( ai_index, -1, "zm_highrise_basic" );
+    precacheanimstatedef( ai_index, #animtree, "zm_highrise_basic" );
     character\c_zom_zombie_civ_shorts::precache();
     character\c_zom_zombie_civ_shorts2::precache();
     character\c_zom_zombie_civ_shorts3::precache();

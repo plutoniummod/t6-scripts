@@ -2796,11 +2796,8 @@ player_can_see_sloth()
     return false;
 }
 
-sloth_check_turn( pos, dot_limit )
+sloth_check_turn( pos, dot_limit = -0.707 )
 {
-    if ( !isdefined( dot_limit ) )
-        dot_limit = -0.707;
-
     self endon( "death" );
 
     if ( !isdefined( self.locomotion ) )
@@ -3747,11 +3744,8 @@ watch_prompt_reassessment()
     self.active_reasses_time = 0.3;
 }
 
-is_facing( facee, dot_limit )
+is_facing( facee, dot_limit = 0.7 )
 {
-    if ( !isdefined( dot_limit ) )
-        dot_limit = 0.7;
-
     if ( isplayer( self ) )
         orientation = self getplayerangles();
     else

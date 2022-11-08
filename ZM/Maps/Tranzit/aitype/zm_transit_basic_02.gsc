@@ -494,7 +494,7 @@ spawner()
 precache( ai_index )
 {
     level thread reference_anims_from_animtree();
-    precacheanimstatedef( ai_index, -1, "zm_transit_basic" );
+    precacheanimstatedef( ai_index, #animtree, "zm_transit_basic" );
     character\c_zom_zombie2_01::precache();
     character\c_zom_zombie2_02::precache();
     character\c_zom_zombie2_03::precache();

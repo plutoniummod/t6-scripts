@@ -1005,11 +1005,8 @@ remote_revive( reviver )
     self auto_revive( reviver );
 }
 
-revive_success( reviver, b_track_stats )
+revive_success( reviver, b_track_stats = 1 )
 {
-    if ( !isdefined( b_track_stats ) )
-        b_track_stats = 1;
-
     if ( !isplayer( self ) )
     {
         self notify( "player_revived", reviver );

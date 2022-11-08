@@ -44,11 +44,8 @@ removechild( element )
     element.index = undefined;
 }
 
-setpoint( point, relativepoint, xoffset, yoffset, movetime )
+setpoint( point, relativepoint, xoffset, yoffset, movetime = 0 )
 {
-    if ( !isdefined( movetime ) )
-        movetime = 0;
-
     element = self getparent();
 
     if ( movetime )
@@ -969,11 +966,8 @@ hideperks( fadetime )
         hideloadoutattribute( self.perkhudelem, fadetime );
 }
 
-hideperk( index, fadetime, hidetextonly )
+hideperk( index, fadetime = 0.05, hidetextonly )
 {
-    if ( !isdefined( fadetime ) )
-        fadetime = 0.05;
-
     if ( level.perksenabled == 1 )
     {
         if ( game["state"] == "postgame" )

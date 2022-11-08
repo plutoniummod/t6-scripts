@@ -153,11 +153,8 @@ spawned_collision_fix()
     }
 }
 
-connect_zones_for_ffotd( zone_name_a, zone_name_b, one_way )
+connect_zones_for_ffotd( zone_name_a, zone_name_b, one_way = 0 )
 {
-    if ( !isdefined( one_way ) )
-        one_way = 0;
-
     zone_init( zone_name_a );
     zone_init( zone_name_b );
     enable_zone( zone_name_a );

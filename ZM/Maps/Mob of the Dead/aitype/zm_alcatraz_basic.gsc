@@ -401,7 +401,7 @@ spawner()
 precache( ai_index )
 {
     level thread reference_anims_from_animtree();
-    precacheanimstatedef( ai_index, -1, "zm_prison_basic" );
+    precacheanimstatedef( ai_index, #animtree, "zm_prison_basic" );
     character\c_zom_guard::precache();
     character\c_zom_inmate1::precache();
     character\c_zom_inmate2::precache();

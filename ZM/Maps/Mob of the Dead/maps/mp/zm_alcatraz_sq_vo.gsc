@@ -403,16 +403,16 @@ vo_play_four_part_conversation( convo )
                 {
                     case "Arlington":
                         e_arlington = player;
-                        continue;
+                        break;
                     case "Sal":
                         e_sal = player;
-                        continue;
+                        break;
                     case "Billy":
                         e_billy = player;
-                        continue;
+                        break;
                     case "Finn":
                         e_finn = player;
-                        continue;
+                        break;
                 }
             }
         }

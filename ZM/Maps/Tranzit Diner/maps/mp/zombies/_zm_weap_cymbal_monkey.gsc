@@ -6,6 +6,8 @@
 #include maps\mp\zombies\_zm_laststand;
 #include maps\mp\zombies\_zm_clone;
 
+#using_animtree("zombie_cymbal_monkey");
+
 init()
 {
     if ( !cymbal_monkey_exists() )
@@ -21,7 +23,7 @@ init()
     level._effect["monkey_glow"] = loadfx( "maps/zombie/fx_zombie_monkey_light" );
     level._effect["grenade_samantha_steal"] = loadfx( "maps/zombie/fx_zmb_blackhole_trap_end" );
     level.cymbal_monkeys = [];
-    scriptmodelsuseanimtree( -1 );
+    scriptmodelsuseanimtree( #animtree );
 }
 
 player_give_cymbal_monkey()
@@ -82,8 +84,6 @@ watch_for_dud( model, actor )
     if ( isdefined( self ) )
         self delete();
 }
-
-#using_animtree("zombie_cymbal_monkey");
 
 watch_for_emp( model, actor )
 {
@@ -270,7 +270,7 @@ player_throw_cymbal_monkey( grenade, num_attractors, max_attract_dist, attract_d
         grenade hide();
         model = spawn( "script_model", grenade.origin );
         model setmodel( level.cymbal_monkey_model );
-        model useanimtree( -1 );
+        model useanimtree( #animtree );
         model linkto( grenade );
         model.angles = grenade.angles;
         model thread monkey_cleanup( grenade );

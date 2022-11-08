@@ -184,20 +184,20 @@ uploadglobalstatcounters()
             case "ctf":
                 totalflagscaptured += player.captures;
                 totalflagsreturned += player.returns;
-                continue;
+                break;
             case "koth":
                 totalhqsdestroyed += player.destructions;
                 totalhqscaptured += player.captures;
-                continue;
+                break;
             case "sd":
                 totalsddefused += player.defuses;
                 totalsdplants += player.plants;
-                continue;
+                break;
             case "sab":
                 if ( isdefined( player.team ) && isdefined( level.teams[player.team] ) )
                     totalsabdestroyedbyteam[player.team] += player.destructions;
 
-                continue;
+                break;
         }
     }
 

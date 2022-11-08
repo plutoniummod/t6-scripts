@@ -166,11 +166,8 @@ add_custom_zombie_spawn_logic( func )
     level._zombie_custom_spawn_logic[level._zombie_custom_spawn_logic.size] = func;
 }
 
-zombie_spawn_init( animname_set )
+zombie_spawn_init( animname_set = 0 )
 {
-    if ( !isdefined( animname_set ) )
-        animname_set = 0;
-
     self.targetname = "zombie";
     self.script_noteworthy = undefined;
     recalc_zombie_array();

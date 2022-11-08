@@ -407,11 +407,8 @@ followpath( path, donenotify, stopatgoal )
         self notify( donenotify );
 }
 
-setgoalposition( goal, donenotify, stopatgoal )
+setgoalposition( goal, donenotify, stopatgoal = 1 )
 {
-    if ( !isdefined( stopatgoal ) )
-        stopatgoal = 1;
-
     start = self.origin;
     goal_points = gethelipath( start, goal );
 

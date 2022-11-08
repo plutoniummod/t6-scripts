@@ -148,14 +148,16 @@ zm_mantle_over_40_move_speed_override()
     return traversealias;
 }
 
+#using_animtree("zm_tomb_tank");
+
 init_animtree()
 {
-    scriptmodelsuseanimtree( -1 );
+    scriptmodelsuseanimtree( #animtree );
 }
 
 tankuseanimtree()
 {
-    self useanimtree( -1 );
+    self useanimtree( #animtree );
 }
 
 drawtag( tag, opcolor )
@@ -828,11 +830,8 @@ tank_tag_array_setup()
     return a_tank_tags;
 }
 
-get_players_on_tank( valid_targets_only )
+get_players_on_tank( valid_targets_only = 0 )
 {
-    if ( !isdefined( valid_targets_only ) )
-        valid_targets_only = 0;
-
     a_players_on_tank = [];
     a_players = getplayers();
 
@@ -920,11 +919,8 @@ get_closest_mechz_tag_on_tank( mechz, target_org )
     return undefined;
 }
 
-tank_tag_is_valid( s_tag, disable_sides )
+tank_tag_is_valid( s_tag, disable_sides = 0 )
 {
-    if ( !isdefined( disable_sides ) )
-        disable_sides = 0;
-
     if ( disable_sides )
     {
         if ( s_tag.side == "right" || s_tag.side == "left" )
@@ -1386,11 +1382,8 @@ is_tag_crowded( str_tag )
     return false;
 }
 
-get_closest_valid_tank_tag( jumping_down )
+get_closest_valid_tank_tag( jumping_down = 0 )
 {
-    if ( !isdefined( jumping_down ) )
-        jumping_down = 0;
-
     closest_dist_sq = 100000000;
     closest_tag = undefined;
     disable_sides = 0;

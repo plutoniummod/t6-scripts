@@ -73,6 +73,6 @@ spawner()
 precache( ai_index )
 {
     level thread reference_anims_from_animtree();
-    precacheanimstatedef( ai_index, -1, "zm_transit_screecher" );
+    precacheanimstatedef( ai_index, #animtree, "zm_transit_screecher" );
     character\c_zom_screecher::precache();
 }

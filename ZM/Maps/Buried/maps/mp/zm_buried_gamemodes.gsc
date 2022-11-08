@@ -98,11 +98,8 @@ deleteslothbarricade( location )
     }
 }
 
-spawnmapcollision( collision_model, origin )
+spawnmapcollision( collision_model, origin = ( 0, 0, 0 ) )
 {
-    if ( !isdefined( origin ) )
-        origin = ( 0, 0, 0 );
-
     collision = spawn( "script_model", origin, 1 );
     collision setmodel( collision_model );
     collision disconnectpaths();

@@ -71,7 +71,7 @@ box_footprint_think()
     if ( getdvarint( _hash_FA81816F ) > 0 )
         n_souls_required = 10;
 #/
-    self useanimtree( -1 );
+    self useanimtree( #animtree );
     self thread watch_for_foot_stomp();
     wait 1;
     self setclientfield( "foot_print_box_glow", 1 );
@@ -247,11 +247,8 @@ reward_powerup_zombie_blood( player, n_timeout )
     return reward_powerup( player, "zombie_blood", n_timeout );
 }
 
-reward_powerup( player, str_powerup, n_timeout )
+reward_powerup( player, str_powerup, n_timeout = 10 )
 {
-    if ( !isdefined( n_timeout ) )
-        n_timeout = 10;
-
     if ( !isdefined( level.zombie_powerups[str_powerup] ) )
         return;
 

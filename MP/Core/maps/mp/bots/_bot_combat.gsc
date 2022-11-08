@@ -608,11 +608,8 @@ threat_is_ai_tank()
     return isdefined( ent ) && isdefined( ent.targetname ) && ent.targetname == "talon";
 }
 
-threat_is_qrdrone( ent )
+threat_is_qrdrone( ent = self.bot.threat.entity )
 {
-    if ( !isdefined( ent ) )
-        ent = self.bot.threat.entity;
-
     return isdefined( ent ) && isdefined( ent.helitype ) && ent.helitype == "qrdrone";
 }
 

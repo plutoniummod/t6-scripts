@@ -468,7 +468,7 @@ givecrateammo( ammo )
             case "m220_tow_mp":
             case "m202_flash_mp":
             case "inventory_supplydrop_mp":
-                continue;
+                break;
             case "sticky_grenade_mp":
             case "satchel_charge_mp":
             case "hatchet_mp":
@@ -484,7 +484,7 @@ givecrateammo( ammo )
                 if ( stock < maxammo )
                     self setweaponammostock( weapon, maxammo );
 
-                continue;
+                break;
             case "willy_pete_mp":
             case "tabun_gas_mp":
             case "proximity_grenade_mp":
@@ -501,10 +501,10 @@ givecrateammo( ammo )
                 if ( stock < maxammo )
                     self setweaponammostock( weapon, maxammo );
 
-                continue;
+                break;
             default:
                 self givemaxammo( weapon );
-                continue;
+                break;
         }
     }
 }
@@ -551,11 +551,8 @@ usesupplydropmarker( package_contents_id )
     return true;
 }
 
-issupplydropgrenadeallowed( hardpointtype, killstreakweapon )
+issupplydropgrenadeallowed( hardpointtype, killstreakweapon = hardpointtype )
 {
-    if ( !isdefined( killstreakweapon ) )
-        killstreakweapon = hardpointtype;
-
     if ( self maps\mp\killstreaks\_killstreakrules::iskillstreakallowed( hardpointtype, self.team ) == 0 )
     {
         self switchtoweapon( self getlastweapon() );
@@ -860,7 +857,7 @@ geticonforcrate()
                 icon = level.killstreakicons[killstreak];
             }
 
-            asm_jump( loc_5A1C );
+            break;
         case "weapon":
             switch ( self.cratetype.name )
             {
@@ -1132,11 +1129,8 @@ cratespawn( category, owner, team, drop_origin, drop_angle )
     return crate;
 }
 
-cratedelete( drop_all_to_ground )
+cratedelete( drop_all_to_ground = 1 )
 {
-    if ( !isdefined( drop_all_to_ground ) )
-        drop_all_to_ground = 1;
-
     if ( isdefined( self.friendlyobjid ) )
     {
         objective_delete( self.friendlyobjid );

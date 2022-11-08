@@ -337,9 +337,9 @@ watchweaponusagezm()
             case "m220_tow_mp":
             case "m202_flash_mp":
                 self.usedkillstreakweapon[curweapon] = 1;
-                continue;
+                break;
             default:
-                continue;
+                break;
         }
     }
 }
@@ -1360,11 +1360,11 @@ init_weapon_toggle()
                 case "light":
                     struct.light = target_array[j];
                     struct.light setmodel( level.zombie_weapon_toggle_disabled_light );
-                    continue;
+                    break;
                 case "weapon":
                     struct.weapon_model = target_array[j];
                     struct.weapon_model hide();
-                    continue;
+                    break;
             }
         }
 

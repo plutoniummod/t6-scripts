@@ -543,11 +543,8 @@ watch_staff_ammo_reload()
     }
 }
 
-rotate_forever( rotate_time )
+rotate_forever( rotate_time = 20.0 )
 {
-    if ( !isdefined( rotate_time ) )
-        rotate_time = 20.0;
-
     self endon( "death" );
 
     while ( true )

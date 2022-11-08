@@ -50,9 +50,11 @@ init_giant_robot_glows()
     maps\mp\zm_tomb_giant_robot_ffotd::init_giant_robot_glows_end();
 }
 
+#using_animtree("zm_tomb_giant_robot_hatch");
+
 init_animtree()
 {
-    scriptmodelsuseanimtree( -1 );
+    scriptmodelsuseanimtree( #animtree );
 }
 
 init_giant_robot()
@@ -281,11 +283,8 @@ giant_robot_intro_exploder()
     stop_exploder( 111 );
 }
 
-giant_robot_start_walk( n_robot_id, b_has_hatch )
+giant_robot_start_walk( n_robot_id, b_has_hatch = 1 )
 {
-    if ( !isdefined( b_has_hatch ) )
-        b_has_hatch = 1;
-
     ai = getent( "giant_robot_walker_" + n_robot_id, "targetname" );
     level.gr_foot_hatch_closed[n_robot_id] = 1;
     ai.b_has_hatch = b_has_hatch;
@@ -299,7 +298,7 @@ giant_robot_start_walk( n_robot_id, b_has_hatch )
     {
         m_sole setcandamage( 1 );
         m_sole.health = 99999;
-        m_sole useanimtree( -1 );
+        m_sole useanimtree( #animtree );
         m_sole unlink();
     }
 
@@ -401,8 +400,6 @@ giant_robot_think( trig_stomp_kill_right, trig_stomp_kill_left, clip_foot_right,
     self detachall();
     level notify( "giant_robot_walk_cycle_complete" );
 }
-
-#using_animtree("zm_tomb_giant_robot_hatch");
 
 sole_cleanup( m_sole )
 {
@@ -706,11 +703,8 @@ rumble_and_shake( robot )
     }
 }
 
-toggle_kill_trigger_flag( trig_stomp, b_flag, foot_side )
+toggle_kill_trigger_flag( trig_stomp, b_flag, foot_side = undefined )
 {
-    if ( !isdefined( foot_side ) )
-        foot_side = undefined;
-
     if ( b_flag )
     {
         self ent_flag_set( "kill_trigger_active" );
@@ -1170,11 +1164,8 @@ player_exits_giant_robot_head_trigger_think()
     }
 }
 
-init_player_eject_logic( s_unitrigger, player, b_timeout )
+init_player_eject_logic( s_unitrigger, player, b_timeout = 0 )
 {
-    if ( !isdefined( b_timeout ) )
-        b_timeout = 0;
-
     s_unitrigger.is_available = 0;
     s_origin = getstruct( s_unitrigger.target, "targetname" );
     v_origin = s_origin.origin;
@@ -1203,11 +1194,8 @@ init_player_eject_logic( s_unitrigger, player, b_timeout )
     s_unitrigger.is_available = 1;
 }
 
-giant_robot_head_player_eject_thread( m_linkpoint, str_tube, b_timeout )
+giant_robot_head_player_eject_thread( m_linkpoint, str_tube, b_timeout = 0 )
 {
-    if ( !isdefined( b_timeout ) )
-        b_timeout = 0;
-
     self endon( "death_or_disconnect" );
     self maps\mp\zm_tomb_giant_robot_ffotd::giant_robot_head_player_eject_start();
     str_current_weapon = self getcurrentweapon();
@@ -1630,14 +1618,8 @@ turn_clientside_rumble_off()
     self setclientfieldtoplayer( "giant_robot_rumble_and_shake", 0 );
 }
 
-spawn_model( model_name, origin, angles, n_spawnflags )
+spawn_model( model_name, origin = ( 0, 0, 0 ), angles, n_spawnflags = 0 )
 {
-    if ( !isdefined( n_spawnflags ) )
-        n_spawnflags = 0;
-
-    if ( !isdefined( origin ) )
-        origin = ( 0, 0, 0 );
-
     model = spawn( "script_model", origin, n_spawnflags );
     model setmodel( model_name );
 

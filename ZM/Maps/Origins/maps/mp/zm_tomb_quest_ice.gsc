@@ -176,11 +176,8 @@ ice_puzzle_1_run()
     change_ice_gem_value();
 }
 
-ceiling_tile_flip( b_flip_to_tile_side )
+ceiling_tile_flip( b_flip_to_tile_side = !self.showing_tile_side )
 {
-    if ( !isdefined( b_flip_to_tile_side ) )
-        b_flip_to_tile_side = !self.showing_tile_side;
-
     if ( b_flip_to_tile_side == self.showing_tile_side )
         return;
 

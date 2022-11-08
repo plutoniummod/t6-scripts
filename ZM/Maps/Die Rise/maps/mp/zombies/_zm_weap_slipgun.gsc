@@ -86,10 +86,10 @@ watch_for_slip_bolt()
         {
             case "slip_bolt_zm":
                 grenade thread slip_bolt( self, 0 );
-                continue;
+                break;
             case "slip_bolt_upgraded_zm":
                 grenade thread slip_bolt( self, 1 );
-                continue;
+                break;
         }
     }
 }

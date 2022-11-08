@@ -378,11 +378,8 @@ debug_origin()
 #/
 }
 
-ctw_find_zombies_for_powerup( v_origin, n_radius, m_ignore )
+ctw_find_zombies_for_powerup( v_origin, n_radius, m_ignore = undefined )
 {
-    if ( !isdefined( m_ignore ) )
-        m_ignore = undefined;
-
     a_zombies = getaispeciesarray( level.zombie_team, "zombie" );
     n_radius_sq = n_radius * n_radius;
     a_near_zombies = [];

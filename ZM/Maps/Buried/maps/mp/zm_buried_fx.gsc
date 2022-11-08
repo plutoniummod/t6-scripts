@@ -152,5 +152,5 @@ precache_fxanim_props()
     level.maze_switch_anim["switch_down"] = %o_zombie_maze_switch_down;
     level.maze_switch_anim["switch_neutral"] = %o_zombie_maze_switch_neutral;
     level.scr_anim["fxanim_props"]["bank_sign"] = %fxanim_zom_buried_sign_bank_anim;
-    scriptmodelsuseanimtree( -1 );
+    scriptmodelsuseanimtree( #animtree );
 }

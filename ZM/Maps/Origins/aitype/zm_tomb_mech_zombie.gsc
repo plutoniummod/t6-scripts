@@ -120,6 +120,6 @@ spawner()
 precache( ai_index )
 {
     level thread reference_anims_from_animtree();
-    precacheanimstatedef( ai_index, -1, "zm_tomb_mechz" );
+    precacheanimstatedef( ai_index, #animtree, "zm_tomb_mechz" );
     character\c_zom_dlc_mech::precache();
 }

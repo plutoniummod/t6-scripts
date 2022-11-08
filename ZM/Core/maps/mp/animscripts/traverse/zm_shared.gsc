@@ -77,11 +77,8 @@ handletraversealignment()
     }
 }
 
-dosimpletraverse( traversealias, no_powerups, traversestate )
+dosimpletraverse( traversealias, no_powerups, traversestate = "zm_traverse" )
 {
-    if ( !isdefined( traversestate ) )
-        traversestate = "zm_traverse";
-
     if ( isdefined( level.ignore_traverse ) )
     {
         if ( self [[ level.ignore_traverse ]]() )

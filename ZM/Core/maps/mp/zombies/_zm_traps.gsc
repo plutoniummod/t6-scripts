@@ -124,7 +124,7 @@ trap_init()
         {
             case "trigger_use":
                 self._trap_use_trigs[self._trap_use_trigs.size] = components[i];
-                continue;
+                break;
             case "script_model":
                 if ( components[i].model == self._trap_light_model_off )
                     self._trap_lights[self._trap_lights.size] = components[i];
@@ -859,14 +859,14 @@ register_visionsets( a_traps )
 
                 maps\mp\_visionset_mgr::vsmgr_register_info( "overlay", "zm_trap_electric", 16000, level.vsmgr_prio_overlay_zm_trap_electrified, 15, 1, maps\mp\_visionset_mgr::vsmgr_duration_lerp_thread_per_player, 0 );
                 level.trap_electric_visionset_registered = 1;
-                continue;
+                break;
             case "fire":
                 if ( !isdefined( level.vsmgr_prio_overlay_zm_trap_burn ) )
                     level.vsmgr_prio_overlay_zm_trap_burn = 61;
 
                 maps\mp\_visionset_mgr::vsmgr_register_info( "overlay", "zm_trap_burn", 16000, level.vsmgr_prio_overlay_zm_trap_burn, 15, 1, maps\mp\_visionset_mgr::vsmgr_duration_lerp_thread_per_player, 0 );
                 level.trap_fire_visionset_registered = 1;
-                continue;
+                break;
         }
     }
 }

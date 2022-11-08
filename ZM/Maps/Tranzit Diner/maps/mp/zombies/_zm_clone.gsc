@@ -9,11 +9,8 @@ init()
     init_mover_tree();
 }
 
-spawn_player_clone( player, origin, forceweapon, forcemodel )
+spawn_player_clone( player, origin = player.origin, forceweapon, forcemodel )
 {
-    if ( !isdefined( origin ) )
-        origin = player.origin;
-
     primaryweapons = player getweaponslistprimaries();
 
     if ( isdefined( forceweapon ) )
@@ -104,16 +101,16 @@ clone_actor_animate( animtype )
     }
 }
 
+#using_animtree("zm_ally");
+
 init_mover_tree()
 {
-    scriptmodelsuseanimtree( -1 );
+    scriptmodelsuseanimtree( #animtree );
 }
-
-#using_animtree("zm_ally");
 
 clone_mover_animate( animtype )
 {
-    self useanimtree( -1 );
+    self useanimtree( #animtree );
 
     switch ( animtype )
     {

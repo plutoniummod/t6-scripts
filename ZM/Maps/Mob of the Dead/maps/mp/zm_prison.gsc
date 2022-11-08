@@ -1102,7 +1102,7 @@ alcatraz_afterlife_doors()
             m_shockbox = getent( s_struct.target, "targetname" );
             m_shockbox.health = 5000;
             m_shockbox setcandamage( 1 );
-            m_shockbox useanimtree( -1 );
+            m_shockbox useanimtree( #animtree );
             t_bump = spawn( "trigger_radius", m_shockbox.origin, 0, 28, 64 );
             t_bump.origin = m_shockbox.origin + anglestoforward( m_shockbox.angles ) * 0 + anglestoright( m_shockbox.angles ) * 28 + anglestoup( m_shockbox.angles ) * 0;
 

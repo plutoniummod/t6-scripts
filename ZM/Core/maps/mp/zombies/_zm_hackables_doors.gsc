@@ -29,11 +29,8 @@ door_struct_debug()
     }
 }
 
-hack_doors( targetname, door_activate_func )
+hack_doors( targetname = "zombie_door", door_activate_func )
 {
-    if ( !isdefined( targetname ) )
-        targetname = "zombie_door";
-
     doors = getentarray( targetname, "targetname" );
 
     if ( !isdefined( door_activate_func ) )

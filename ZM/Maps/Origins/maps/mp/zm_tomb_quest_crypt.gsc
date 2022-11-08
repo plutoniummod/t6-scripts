@@ -68,7 +68,7 @@ chamber_disc_run()
         self thread chamber_disc_move_to_position();
     }
 
-    self useanimtree( -1 );
+    self useanimtree( #animtree );
     n_wait = randomfloatrange( 0.0, 5.0 );
     wait( n_wait );
     self setanim( %fxanim_zom_tomb_chamber_piece_anim );
@@ -218,11 +218,8 @@ chamber_disc_move_to_position()
     rumble_nearby_players( self.origin, 1000, 2 );
 }
 
-chamber_discs_move_all_to_position( discs )
+chamber_discs_move_all_to_position( discs = undefined )
 {
-    if ( !isdefined( discs ) )
-        discs = undefined;
-
     flag_set( "disc_rotation_active" );
 
     if ( !isdefined( discs ) )
@@ -267,11 +264,8 @@ chamber_disc_rotate( b_clockwise )
     self chamber_disc_move_to_position();
 }
 
-bryce_cake_light_update( b_on )
+bryce_cake_light_update( b_on = 1 )
 {
-    if ( !isdefined( b_on ) )
-        b_on = 1;
-
     if ( !isdefined( self.n_bryce_cake ) )
         self.n_bryce_cake = 0;
 
@@ -310,7 +304,7 @@ chamber_disc_switch_spark()
 chamber_disc_trigger_run( e_disc, e_lever, b_clockwise )
 {
     discs_to_rotate = array( e_disc );
-    e_lever useanimtree( -1 );
+    e_lever useanimtree( #animtree );
     n_anim_time = getanimlength( %fxanim_zom_tomb_puzzle_lever_switch_anim );
 
     while ( true )

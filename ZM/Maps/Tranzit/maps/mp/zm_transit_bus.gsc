@@ -22,6 +22,8 @@
 #include maps\mp\zm_transit_lava;
 #include maps\mp\zombies\_zm_audio;
 
+#using_animtree("zombie_bus");
+
 bussetup()
 {
     flag_init( "ladder_attached" );
@@ -69,7 +71,7 @@ bussetup()
     self setmovingplatformenabled( 1 );
     self.supportsanimscripted = 1;
     self setvehmaxspeed( 25 );
-    self useanimtree( -1 );
+    self useanimtree( #animtree );
     level.callbackactordamage = ::transit_actor_damage_override_wrapper;
     self maps\mp\zm_transit_automaton::main();
     maps\mp\zm_transit_cling::initializecling();
@@ -1795,10 +1797,8 @@ busdoorsdisablefortime( time )
 
 init_animtree()
 {
-    scriptmodelsuseanimtree( -1 );
+    scriptmodelsuseanimtree( #animtree );
 }
-
-#using_animtree("zombie_bus");
 
 init_bus_door_anims()
 {
@@ -1810,7 +1810,7 @@ init_bus_door_anims()
 
 bususeanimtree()
 {
-    self useanimtree( -1 );
+    self useanimtree( #animtree );
 }
 
 bususedoor( set )
@@ -1858,12 +1858,12 @@ busidledoor()
     }
 }
 
+#using_animtree("zombie_bus_props");
+
 init_props_animtree()
 {
-    scriptmodelsuseanimtree( -1 );
+    scriptmodelsuseanimtree( #animtree );
 }
-
-#using_animtree("zombie_bus_props");
 
 init_bus_props_anims()
 {
@@ -1877,7 +1877,7 @@ busfxanims()
     self.fxanimmodel = spawn( "script_model", self gettagorigin( "tag_body" ) );
     self.fxanimmodel setmodel( "fxanim_zom_bus_interior_mod" );
     self.fxanimmodel linkto( self, "tag_body" );
-    self.fxanimmodel useanimtree( -1 );
+    self.fxanimmodel useanimtree( #animtree );
 }
 
 busfxanims_start()

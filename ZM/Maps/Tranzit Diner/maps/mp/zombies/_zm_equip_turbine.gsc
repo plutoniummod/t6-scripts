@@ -9,14 +9,8 @@
 #include maps\mp\zombies\_zm_unitrigger;
 #include maps\mp\zombies\_zm_buildables;
 
-init( hint, howto )
+init( hint = &"ZOMBIE_EQUIP_TURBINE_PICKUP_HINT_STRING", howto = &"ZOMBIE_EQUIP_TURBINE_HOWTO" )
 {
-    if ( !isdefined( hint ) )
-        hint = &"ZOMBIE_EQUIP_TURBINE_PICKUP_HINT_STRING";
-
-    if ( !isdefined( howto ) )
-        howto = &"ZOMBIE_EQUIP_TURBINE_HOWTO";
-
     if ( !maps\mp\zombies\_zm_equipment::is_equipment_included( "equip_turbine_zm" ) )
         return;
 
@@ -514,12 +508,12 @@ turbineaudio()
     self.buildableturbine playloopsound( "zmb_turbine_loop", 2 );
 }
 
+#using_animtree("zombie_turbine");
+
 init_animtree()
 {
-    scriptmodelsuseanimtree( -1 );
+    scriptmodelsuseanimtree( #animtree );
 }
-
-#using_animtree("zombie_turbine");
 
 turbineanim( wait_for_end )
 {
@@ -527,7 +521,7 @@ turbineanim( wait_for_end )
         return;
 
     animlength = 0;
-    self.buildableturbine useanimtree( -1 );
+    self.buildableturbine useanimtree( #animtree );
 
     if ( isdefined( self.buildableturbine.dying ) && self.buildableturbine.dying )
     {

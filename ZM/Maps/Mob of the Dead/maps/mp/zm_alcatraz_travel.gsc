@@ -336,11 +336,8 @@ zipline_call_trigger_think()
     }
 }
 
-move_gondola( b_suppress_doors_close )
+move_gondola( b_suppress_doors_close = 0 )
 {
-    if ( !isdefined( b_suppress_doors_close ) )
-        b_suppress_doors_close = 0;
-
     level clientnotify( "sndGS" );
     gondola_lights_red();
     e_gondola = level.e_gondola;
@@ -607,7 +604,7 @@ tear_down_gondola_poi()
 gondola_chain_fx_anim()
 {
     m_chains = self.fxanim_chains;
-    m_chains useanimtree( -1 );
+    m_chains useanimtree( #animtree );
     n_start_time = getanimlength( level.gondola_chains_fxanims["gondola_chains_start"] );
     n_idle_time = getanimlength( level.gondola_chains_fxanims["gondola_chains_idle"] );
     m_chains setanim( level.gondola_chains_fxanims["gondola_chains_start"], 1, 0.1, 1 );
@@ -723,7 +720,7 @@ array_players_on_gondola()
 
 init_gondola_chains_animtree()
 {
-    scriptmodelsuseanimtree( -1 );
+    scriptmodelsuseanimtree( #animtree );
 }
 
 gondola_hostmigration()

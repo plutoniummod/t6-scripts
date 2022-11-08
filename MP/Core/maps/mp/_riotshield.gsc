@@ -241,7 +241,7 @@ spawnriotshieldcover( origin, angles )
     shield_ent.team = self.team;
     shield_ent setteam( self.team );
     shield_ent attachreconmodel( level.detectshieldmodel, self );
-    shield_ent useanimtree( -1 );
+    shield_ent useanimtree( #animtree );
     shield_ent setscriptmoverflag( 0 );
     shield_ent disconnectpaths();
     return shield_ent;

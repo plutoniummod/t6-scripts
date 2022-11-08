@@ -371,30 +371,21 @@ add_global_stat( stat_name, value )
     self adddstat( "PlayerStatsList", stat_name, "StatValue", value );
 }
 
-get_map_stat( stat_name, map )
+get_map_stat( stat_name, map = level.script )
 {
-    if ( !isdefined( map ) )
-        map = level.script;
-
     return self getdstat( "PlayerStatsByMap", map, stat_name );
 }
 
-set_map_stat( stat_name, value, map )
+set_map_stat( stat_name, value, map = level.script )
 {
-    if ( !isdefined( map ) )
-        map = level.script;
-
     if ( is_true( level.zm_disable_recording_stats ) )
         return;
 
     self setdstat( "PlayerStatsByMap", map, stat_name, value );
 }
 
-add_map_stat( stat_name, value, map )
+add_map_stat( stat_name, value, map = level.script )
 {
-    if ( !isdefined( map ) )
-        map = level.script;
-
     if ( is_true( level.zm_disable_recording_stats ) )
         return;
 
@@ -422,19 +413,13 @@ add_location_gametype_stat( start_location, game_type, stat_name, value )
     self adddstat( "PlayerStatsByStartLocation", start_location, "startLocationGameTypeStats", game_type, "stats", stat_name, "StatValue", value );
 }
 
-get_map_weaponlocker_stat( stat_name, map )
+get_map_weaponlocker_stat( stat_name, map = level.script )
 {
-    if ( !isdefined( map ) )
-        map = level.script;
-
     return self getdstat( "PlayerStatsByMap", map, "weaponLocker", stat_name );
 }
 
-set_map_weaponlocker_stat( stat_name, value, map )
+set_map_weaponlocker_stat( stat_name, value, map = level.script )
 {
-    if ( !isdefined( map ) )
-        map = level.script;
-
     if ( is_true( level.zm_disable_recording_stats ) )
         return;
 
@@ -444,22 +429,16 @@ set_map_weaponlocker_stat( stat_name, value, map )
         self setdstat( "PlayerStatsByMap", map, "weaponLocker", stat_name, 0 );
 }
 
-add_map_weaponlocker_stat( stat_name, value, map )
+add_map_weaponlocker_stat( stat_name, value, map = level.script )
 {
-    if ( !isdefined( map ) )
-        map = level.script;
-
     if ( is_true( level.zm_disable_recording_stats ) )
         return;
 
     self adddstat( "PlayerStatsByMap", map, "weaponLocker", stat_name, value );
 }
 
-has_stored_weapondata( map )
+has_stored_weapondata( map = level.script )
 {
-    if ( !isdefined( map ) )
-        map = level.script;
-
     storedweapon = self get_map_weaponlocker_stat( "name", map );
 
     if ( !isdefined( storedweapon ) || isstring( storedweapon ) && storedweapon == "" || isint( storedweapon ) && storedweapon == 0 )
@@ -468,11 +447,8 @@ has_stored_weapondata( map )
     return true;
 }
 
-get_stored_weapondata( map )
+get_stored_weapondata( map = level.script )
 {
-    if ( !isdefined( map ) )
-        map = level.script;
-
     if ( self has_stored_weapondata( map ) )
     {
         weapondata = [];
@@ -488,11 +464,8 @@ get_stored_weapondata( map )
     return undefined;
 }
 
-clear_stored_weapondata( map )
+clear_stored_weapondata( map = level.script )
 {
-    if ( !isdefined( map ) )
-        map = level.script;
-
     self set_map_weaponlocker_stat( "name", "", map );
     self set_map_weaponlocker_stat( "lh_clip", 0, map );
     self set_map_weaponlocker_stat( "clip", 0, map );
@@ -501,11 +474,8 @@ clear_stored_weapondata( map )
     self set_map_weaponlocker_stat( "alt_stock", 0, map );
 }
 
-set_stored_weapondata( weapondata, map )
+set_stored_weapondata( weapondata, map = level.script )
 {
-    if ( !isdefined( map ) )
-        map = level.script;
-
     self set_map_weaponlocker_stat( "name", weapondata["name"], map );
     self set_map_weaponlocker_stat( "lh_clip", weapondata["lh_clip"], map );
     self set_map_weaponlocker_stat( "clip", weapondata["clip"], map );

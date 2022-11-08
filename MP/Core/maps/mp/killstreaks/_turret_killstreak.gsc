@@ -1868,25 +1868,25 @@ microwave_play_fx( trace, traceright, traceleft, origin )
             switch ( i )
             {
                 case 0:
-                    continue;
+                    break;
                 case 1:
                     playfxontag( level.auto_turret_settings["microwave"].fx, self, "tag_fx21" );
                     wait 0.05;
-                    continue;
+                    break;
                 case 2:
                     playfxontag( level.auto_turret_settings["microwave"].fx, self, "tag_fx31" );
                     wait 0.05;
-                    continue;
+                    break;
                 case 3:
                     playfxontag( level.auto_turret_settings["microwave"].fx, self, "tag_fx41" );
                     wait 0.05;
-                    continue;
+                    break;
                 case 4:
                     playfxontag( level.auto_turret_settings["microwave"].fx, self, "tag_fx51" );
                     wait 0.05;
                     playfxontag( level.auto_turret_settings["microwave"].fx, self, "tag_fx52" );
                     wait 0.05;
-                    continue;
+                    break;
             }
         }
     }

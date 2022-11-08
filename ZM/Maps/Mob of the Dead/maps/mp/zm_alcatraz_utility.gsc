@@ -177,7 +177,7 @@ blundergat_upgrade_station()
     v_weapon_angles_offset = ( 0, 90, -90 );
     m_converter.v_weapon_origin = m_converter gettagorigin( "tag_origin" ) + v_weapon_origin_offset;
     m_converter.v_weapon_angles = v_angles + v_weapon_angles_offset;
-    m_converter useanimtree( -1 );
+    m_converter useanimtree( #animtree );
     m_converter.fxanims["close"] = %fxanim_zom_al_packasplat_start_anim;
     m_converter.fxanims["inject"] = %fxanim_zom_al_packasplat_idle_anim;
     m_converter.fxanims["open"] = %fxanim_zom_al_packasplat_end_anim;

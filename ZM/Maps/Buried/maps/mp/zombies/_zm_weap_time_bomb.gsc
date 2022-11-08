@@ -291,11 +291,8 @@ time_bomb_saves_data( b_show_icon, save_struct )
     level thread _time_bomb_saves_data( b_show_icon, save_struct );
 }
 
-_time_bomb_saves_data( b_show_icon, save_struct )
+_time_bomb_saves_data( b_show_icon = 1, save_struct )
 {
-    if ( !isdefined( b_show_icon ) )
-        b_show_icon = 1;
-
     debug_time_bomb_print( "TIME BOMB SET! Saving..." );
 
     if ( !isdefined( save_struct ) && !time_bomb_save_exists() )
@@ -694,11 +691,8 @@ time_bomb_inventory_slot_think()
     }
 }
 
-time_bomb_restores_saved_data( b_show_fx, save_struct )
+time_bomb_restores_saved_data( b_show_fx = 1, save_struct )
 {
-    if ( !isdefined( b_show_fx ) )
-        b_show_fx = 1;
-
     level setclientfield( "time_bomb_lua_override", 1 );
     debug_time_bomb_print( "GO BACK IN TIME!" );
     n_time_start = gettime();
@@ -1962,11 +1956,8 @@ time_bomb_post_traverse()
     self.is_about_to_traverse = undefined;
 }
 
-set_actor_anim_rate( rate, b_force_update )
+set_actor_anim_rate( rate, b_force_update = 0 )
 {
-    if ( !isdefined( b_force_update ) )
-        b_force_update = 0;
-
     self endon( "death" );
     level endon( "time_bomb_stop_slow_all_actors" );
 

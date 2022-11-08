@@ -636,14 +636,16 @@ is_player_killable( player, checkignoremeflag )
     return true;
 }
 
+#using_animtree("zombie_escape_elevator");
+
 init_escape_elevators_animtree()
 {
-    scriptmodelsuseanimtree( -1 );
+    scriptmodelsuseanimtree( #animtree );
 }
 
 escapeelevatoruseanimtree()
 {
-    self useanimtree( -1 );
+    self useanimtree( #animtree );
 }
 
 init_escape_pod()
@@ -655,8 +657,6 @@ init_escape_pod()
     level thread watch_escapepod_devgui();
 #/
 }
-
-#using_animtree("zombie_escape_elevator");
 
 init_escape_elevators_anims()
 {

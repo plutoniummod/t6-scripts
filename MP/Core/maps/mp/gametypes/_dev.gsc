@@ -3083,7 +3083,7 @@ devhelipathdebugdraw()
                             ent draworiginlines();
                             ent drawtargetnametext( textcolor, textalpha, textscale );
                             ent draworigintext( textcolor, textalpha, textscale, origintextoffset );
-                            continue;
+                            break;
                     }
                 }
             }

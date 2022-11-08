@@ -123,11 +123,8 @@ wait_for_blundersplat_upgraded_fired()
     }
 }
 
-_titus_locate_target( is_not_upgraded )
+_titus_locate_target( is_not_upgraded = 1 )
 {
-    if ( !isdefined( is_not_upgraded ) )
-        is_not_upgraded = 1;
-
     fire_angles = self getplayerangles();
     fire_origin = self getplayercamerapos();
     a_targets = arraycombine( getaiarray( "axis" ), getvehiclearray( "axis" ), 0, 0 );
@@ -256,14 +253,8 @@ _titus_grenade_detonate_on_target_death( target )
     self resetmissiledetonationtime( 0.05 );
 }
 
-_titus_reset_grenade_fuse( n_fuse_timer, is_not_upgraded )
+_titus_reset_grenade_fuse( n_fuse_timer = randomfloatrange( 1, 1.5 ), is_not_upgraded = 1 )
 {
-    if ( !isdefined( is_not_upgraded ) )
-        is_not_upgraded = 1;
-
-    if ( !isdefined( n_fuse_timer ) )
-        n_fuse_timer = randomfloatrange( 1, 1.5 );
-
     self waittill( "death" );
 
     a_grenades = getentarray( "grenade", "classname" );

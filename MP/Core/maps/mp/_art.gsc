@@ -359,10 +359,8 @@ create_reflection_objects()
 #/
 }
 
-create_reflection_object( model )
+create_reflection_object( model = "test_sphere_silver" )
 {
-    if ( !isdefined( model ) )
-        model = "test_sphere_silver";
 /#
     if ( isdefined( level.debug_reflectionobject ) )
         level.debug_reflectionobject delete();

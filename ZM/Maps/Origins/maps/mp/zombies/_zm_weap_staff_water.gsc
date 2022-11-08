@@ -349,17 +349,8 @@ ice_affect_mechz( e_player, is_upgraded )
     self.is_on_ice = 0;
 }
 
-ice_affect_zombie( str_weapon, e_player, always_kill, n_mod )
+ice_affect_zombie( str_weapon = "staff_water_zm", e_player, always_kill = 0, n_mod = 1 )
 {
-    if ( !isdefined( str_weapon ) )
-        str_weapon = "staff_water_zm";
-
-    if ( !isdefined( always_kill ) )
-        always_kill = 0;
-
-    if ( !isdefined( n_mod ) )
-        n_mod = 1;
-
     self endon( "death" );
     instakill_on = e_player maps\mp\zombies\_zm_powerups::is_insta_kill_active();
 

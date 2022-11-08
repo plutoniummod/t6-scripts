@@ -200,11 +200,8 @@ init_player()
     self thread afterlife_player_refill_watch();
 }
 
-afterlife_remove( b_afterlife_death )
+afterlife_remove( b_afterlife_death = 0 )
 {
-    if ( !isdefined( b_afterlife_death ) )
-        b_afterlife_death = 0;
-
     if ( isdefined( b_afterlife_death ) && b_afterlife_death )
         self.lives = 0;
     else if ( self.lives > 0 )
@@ -405,11 +402,8 @@ afterlife_enter()
     }
 }
 
-afterlife_leave( b_revived )
+afterlife_leave( b_revived = 1 )
 {
-    if ( !isdefined( b_revived ) )
-        b_revived = 1;
-
     while ( self ismantling() )
         wait 0.05;
 
@@ -489,11 +483,8 @@ afterlife_leave( b_revived )
     reset_all_afterlife_unitriggers();
 }
 
-afterlife_laststand( b_electric_chair )
+afterlife_laststand( b_electric_chair = 0 )
 {
-    if ( !isdefined( b_electric_chair ) )
-        b_electric_chair = 0;
-
     self endon( "disconnect" );
     self endon( "afterlife_bleedout" );
     level endon( "end_game" );
@@ -615,11 +606,8 @@ afterlife_create_mana_bar( corpse )
     self thread afterlife_jump_watch( corpse );
 }
 
-afterlife_infinite_mana( b_infinite )
+afterlife_infinite_mana( b_infinite = 1 )
 {
-    if ( !isdefined( b_infinite ) )
-        b_infinite = 1;
-
     if ( isdefined( b_infinite ) && b_infinite )
         self.infinite_mana = 1;
     else
@@ -1730,7 +1718,7 @@ afterlife_interact_object_think()
     n_count = 0;
     self.health = 5000;
     self setcandamage( 1 );
-    self useanimtree( -1 );
+    self useanimtree( #animtree );
     self playloopsound( "zmb_afterlife_shockbox_off", 1 );
 
     if ( !isdefined( level.shockbox_anim ) )

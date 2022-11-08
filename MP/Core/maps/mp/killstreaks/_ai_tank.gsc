@@ -861,11 +861,8 @@ tank_rocket_think()
     }
 }
 
-tank_set_target( entity, use_rocket )
+tank_set_target( entity, use_rocket = 0 )
 {
-    if ( !isdefined( use_rocket ) )
-        use_rocket = 0;
-
     self.target_entity = entity;
 
     if ( use_rocket )

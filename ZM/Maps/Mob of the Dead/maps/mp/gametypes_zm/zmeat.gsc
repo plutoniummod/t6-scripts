@@ -560,12 +560,12 @@ cleanup_meat()
     self delete();
 }
 
+#using_animtree("zombie_meat");
+
 init_animtree()
 {
-    scriptmodelsuseanimtree( -1 );
+    scriptmodelsuseanimtree( #animtree );
 }
-
-#using_animtree("zombie_meat");
 
 animate_meat( grenade )
 {
@@ -577,7 +577,7 @@ animate_meat( grenade )
         grenade hide();
         altmodel = spawn( "script_model", grenade.origin );
         altmodel setmodel( get_gamemode_var( "item_meat_model" ) );
-        altmodel useanimtree( -1 );
+        altmodel useanimtree( #animtree );
         altmodel.angles = grenade.angles;
         altmodel linkto( grenade, "", ( 0, 0, 0 ), ( 0, 0, 0 ) );
         altmodel setanim( %o_zombie_head_idle_v1 );
@@ -798,11 +798,8 @@ show_meat_throw_hint()
     self thread meat_screen_message_delete();
 }
 
-meat_create_hint_message( string_message_1, string_message_2, string_message_3, n_offset_y )
+meat_create_hint_message( string_message_1, string_message_2, string_message_3, n_offset_y = 0 )
 {
-    if ( !isdefined( n_offset_y ) )
-        n_offset_y = 0;
-
     if ( !isdefined( self._screen_message_1 ) )
     {
         self._screen_message_1 = newclienthudelem( self );

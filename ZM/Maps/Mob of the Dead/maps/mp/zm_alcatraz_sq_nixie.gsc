@@ -220,11 +220,8 @@ sndnixietubecountdown( num )
     ent playsound( "zmb_quest_nixie_fail" );
 }
 
-nixie_tube_thread( n_tube_index, b_force_reset )
+nixie_tube_thread( n_tube_index, b_force_reset = 1 )
 {
-    if ( !isdefined( b_force_reset ) )
-        b_force_reset = 1;
-
     level endon( "kill_nixie_input" );
 
     if ( b_force_reset )
@@ -262,11 +259,8 @@ nixie_tube_thread( n_tube_index, b_force_reset )
     }
 }
 
-nixie_tube_win_effects( n_tube_index, n_blink_rate )
+nixie_tube_win_effects( n_tube_index, n_blink_rate = 0.25 )
 {
-    if ( !isdefined( n_blink_rate ) )
-        n_blink_rate = 0.25;
-
     while ( !flag( "nixie_countdown_started" ) )
     {
         self hidepart( "J_" + level.a_nixie_tube_code[n_tube_index] );
@@ -278,17 +272,8 @@ nixie_tube_win_effects( n_tube_index, n_blink_rate )
     self showpart( "J_" + level.a_nixie_tube_code[n_tube_index] );
 }
 
-nixie_tube_win_effects_all_tubes( goal_num_1, goal_num_2, goal_num_3 )
+nixie_tube_win_effects_all_tubes( goal_num_1 = 0, goal_num_2 = 0, goal_num_3 = 0 )
 {
-    if ( !isdefined( goal_num_1 ) )
-        goal_num_1 = 0;
-
-    if ( !isdefined( goal_num_2 ) )
-        goal_num_2 = 0;
-
-    if ( !isdefined( goal_num_3 ) )
-        goal_num_3 = 0;
-
     a_nixie_tube = [];
     a_nixie_tube[1] = getent( "nixie_tube_1", "targetname" );
     a_nixie_tube[2] = getent( "nixie_tube_2", "targetname" );
