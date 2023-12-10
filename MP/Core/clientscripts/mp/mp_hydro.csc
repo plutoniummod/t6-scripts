@@ -198,8 +198,8 @@ playprewave( localclientnum, oldval, newval, bnewent, binitialsnap, fieldname, b
 
     if ( newval )
     {
-        multiplier = getdvarflaot( #"_id_EF33F5E5" );
-        seconds = getdvarflaot( #"_id_25994707" );
+        multiplier = getdvarfloat( #"_id_EF33F5E5" );
+        seconds = getdvarfloat( #"_id_25994707" );
         diff = abs( multiplier - level.water_multiplier );
         frames = 60 * seconds;
         level.water_multiplier = multiplier;
@@ -208,7 +208,7 @@ playprewave( localclientnum, oldval, newval, bnewent, binitialsnap, fieldname, b
     else
     {
         multiplier = 1;
-        seconds = getdvarflaot( #"_id_71478E3A" );
+        seconds = getdvarfloat( #"_id_71478E3A" );
         diff = abs( multiplier - level.water_multiplier );
         frames = 60 * seconds;
         level.water_multiplier = multiplier;

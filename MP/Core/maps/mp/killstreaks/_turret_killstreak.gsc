@@ -2078,7 +2078,7 @@ disableresult( player, owner )
 {
     success = 1;
     time = gettime();
-    hacktime = getdvarflaot( #"perk_disarmExplosiveTime" );
+    hacktime = getdvarfloat( #"perk_disarmExplosiveTime" );
 
     if ( !candisable( player, owner, 1 ) )
         return 0;

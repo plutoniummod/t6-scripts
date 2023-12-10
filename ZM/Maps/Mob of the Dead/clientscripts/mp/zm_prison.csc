@@ -624,8 +624,8 @@ player_lightning( localclientnum )
             playfx( localclientnum, level._effect["lightning_flash"], v_end_pos );
             playsound( 0, "amb_thunder_clap_zm", v_end_pos );
             serverwait( localclientnum, randomfloatrange( 0.2, 0.3 ) );
-            n_level_sunlight = getdvarflaot( #"r_lightTweakSunLight" );
-            n_level_exposure = getdvarflaot( #"r_exposureValue" );
+            n_level_sunlight = getdvarfloat( #"r_lightTweakSunLight" );
+            n_level_exposure = getdvarfloat( #"r_exposureValue" );
             n_strikes = randomintrange( 3, 5 );
 
             for ( i = 0; i < n_strikes; i++ )
@@ -688,8 +688,8 @@ scripted_player_lightning_strike()
     v_end_pos = v_end_pos + v_offset;
     playfx( localclientnum, level._effect["lightning_flash"], v_end_pos );
     playsound( 0, "amb_thunder_clap_zm", v_end_pos );
-    n_level_sunlight = getdvarflaot( #"r_lightTweakSunLight" );
-    n_level_exposure = getdvarflaot( #"r_exposureValue" );
+    n_level_sunlight = getdvarfloat( #"r_lightTweakSunLight" );
+    n_level_exposure = getdvarfloat( #"r_exposureValue" );
     n_strikes = randomintrange( 3, 5 );
 
     for ( i = 0; i < n_strikes; i++ )
@@ -730,7 +730,7 @@ fxanim_pulley_down_start( localclientnum, oldval, newval, bnewent, binitialsnap,
 
 lerp_dvar( str_dvar, n_val, n_lerp_time, b_saved_dvar, localclientnum )
 {
-    n_start_val = getdvarflaot( str_dvar );
+    n_start_val = getdvarfloat( str_dvar );
     n_time_delta = 0;
 
     do

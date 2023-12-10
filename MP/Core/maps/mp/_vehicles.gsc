@@ -638,8 +638,8 @@ wait_until_severely_damaged()
 get_random_cleanup_wait_time( state )
 {
     varnameprefix = "scr_veh_" + state + "_cleanuptime";
-    mintime = getdvarflaot( varnameprefix + "min" );
-    maxtime = getdvarflaot( varnameprefix + "max" );
+    mintime = getdvarfloat( varnameprefix + "min" );
+    maxtime = getdvarfloat( varnameprefix + "max" );
 
     if ( maxtime > mintime )
         return randomfloatrange( mintime, maxtime );
@@ -655,11 +655,11 @@ do_alive_cleanup_wait( test_name )
 
     while ( true )
     {
-        curve_begin = getdvarflaot( #"scr_veh_cleanuptime_dmgfraction_curve_begin" );
-        curve_end = getdvarflaot( #"scr_veh_cleanuptime_dmgfraction_curve_end" );
-        factor_min = getdvarflaot( #"scr_veh_cleanuptime_dmgfactor_min" );
-        factor_max = getdvarflaot( #"scr_veh_cleanuptime_dmgfactor_max" );
-        treaddeaddamagefactor = getdvarflaot( #"scr_veh_cleanuptime_dmgfactor_deadtread" );
+        curve_begin = getdvarfloat( #"scr_veh_cleanuptime_dmgfraction_curve_begin" );
+        curve_end = getdvarfloat( #"scr_veh_cleanuptime_dmgfraction_curve_end" );
+        factor_min = getdvarfloat( #"scr_veh_cleanuptime_dmgfactor_min" );
+        factor_max = getdvarfloat( #"scr_veh_cleanuptime_dmgfactor_max" );
+        treaddeaddamagefactor = getdvarfloat( #"scr_veh_cleanuptime_dmgfactor_deadtread" );
         damagefraction = 0.0;
 
         if ( self is_vehicle() )
@@ -752,15 +752,15 @@ vehicle_wait_tread_damage()
 
 wait_for_vehicle_to_stop_outside_min_radius()
 {
-    maxwaittime = getdvarflaot( #"scr_veh_waittillstoppedandmindist_maxtime" );
+    maxwaittime = getdvarfloat( #"scr_veh_waittillstoppedandmindist_maxtime" );
     iterationwaitseconds = 1.0;
-    maxwaittimeenabledistinches = 12 * getdvarflaot( #"scr_veh_waittillstoppedandmindist_maxtimeenabledistfeet" );
+    maxwaittimeenabledistinches = 12 * getdvarfloat( #"scr_veh_waittillstoppedandmindist_maxtimeenabledistfeet" );
     initialorigin = self.initial_state.origin;
 
     for ( totalsecondswaited = 0.0; totalsecondswaited < maxwaittime; totalsecondswaited = totalsecondswaited + iterationwaitseconds )
     {
         speedmph = self getspeedmph();
-        cutoffmph = getdvarflaot( #"scr_veh_cleanupmaxspeedmph" );
+        cutoffmph = getdvarfloat( #"scr_veh_cleanupmaxspeedmph" );
 
         if ( speedmph > cutoffmph )
             cleanup_debug_print( "(" + ( maxwaittime - totalsecondswaited ) + "s) Speed: " + speedmph + ">" + cutoffmph );
@@ -1153,7 +1153,7 @@ wait_for_unnoticeable_cleanup_opportunity()
     maxpreventvisibilityfeet = getdvarint( #"scr_veh_disappear_maxpreventvisibilityfeet" );
     maxpreventdistanceinchessq = 144 * maxpreventdistancefeet * maxpreventdistancefeet;
     maxpreventvisibilityinchessq = 144 * maxpreventvisibilityfeet * maxpreventvisibilityfeet;
-    maxsecondstowait = getdvarflaot( #"scr_veh_disappear_maxwaittime" );
+    maxsecondstowait = getdvarfloat( #"scr_veh_disappear_maxwaittime" );
     iterationwaitseconds = 1.0;
 
     for ( secondswaited = 0.0; secondswaited < maxsecondstowait; secondswaited = secondswaited + iterationwaitseconds )

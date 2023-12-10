@@ -486,7 +486,7 @@ menu_fx_option_set()
         setting = getdvarint( #"fx" );
 
     if ( option["type"] == "float" )
-        setting = getdvarflaot( #"fx" );
+        setting = getdvarfloat( #"fx" );
 
     if ( option["type"] == "vector" )
     {

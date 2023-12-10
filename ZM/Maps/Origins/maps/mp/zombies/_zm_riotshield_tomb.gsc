@@ -450,7 +450,7 @@ doriotshielddeploy( origin, angles )
 riotshielddistancetest( origin )
 {
     assert( isdefined( origin ) );
-    min_dist_squared = getdvarflaot( #"riotshield_deploy_limit_radius" );
+    min_dist_squared = getdvarfloat( #"riotshield_deploy_limit_radius" );
     min_dist_squared = min_dist_squared * min_dist_squared;
 
     for ( i = 0; i < level.players.size; i++ )
@@ -523,13 +523,13 @@ watchdeployedriotshielddamage()
         else
         {
             if ( type == "MOD_MELEE" )
-                damage = damage * getdvarflaot( #"riotshield_melee_damage_scale" );
+                damage = damage * getdvarfloat( #"riotshield_melee_damage_scale" );
             else if ( type == "MOD_PISTOL_BULLET" || type == "MOD_RIFLE_BULLET" )
-                damage = damage * getdvarflaot( #"riotshield_bullet_damage_scale" );
+                damage = damage * getdvarfloat( #"riotshield_bullet_damage_scale" );
             else if ( type == "MOD_GRENADE" || type == "MOD_GRENADE_SPLASH" || type == "MOD_EXPLOSIVE" || type == "MOD_EXPLOSIVE_SPLASH" || type == "MOD_PROJECTILE" || type == "MOD_PROJECTILE_SPLASH" )
-                damage = damage * getdvarflaot( #"riotshield_explosive_damage_scale" );
+                damage = damage * getdvarfloat( #"riotshield_explosive_damage_scale" );
             else if ( type == "MOD_IMPACT" )
-                damage = damage * getdvarflaot( #"riotshield_projectile_damage_scale" );
+                damage = damage * getdvarfloat( #"riotshield_projectile_damage_scale" );
 
             self.damagetaken = self.damagetaken + damage;
 
@@ -545,7 +545,7 @@ damagethendestroyriotshield()
     self.owner.riotshieldretrievetrigger delete();
     self notsolid();
     self setclientflag( 14 );
-    wait( getdvarflaot( #"riotshield_destroyed_cleanup_time" ) );
+    wait( getdvarfloat( #"riotshield_destroyed_cleanup_time" ) );
     self.owner notify( "destroy_riotshield" );
 }
 

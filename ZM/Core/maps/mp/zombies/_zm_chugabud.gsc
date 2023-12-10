@@ -83,7 +83,7 @@ chugabud_laststand()
         return;
     }
 
-    bleedout_time = getdvarflaot( #"player_lastStandBleedoutTime" );
+    bleedout_time = getdvarfloat( #"player_lastStandBleedoutTime" );
     self thread chugabud_bleed_timeout( bleedout_time, corpse );
     self thread chugabud_handle_multiple_instances( corpse );
     corpse waittill( "player_revived", e_reviver );

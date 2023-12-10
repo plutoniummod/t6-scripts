@@ -23,7 +23,7 @@ main()
 
 need_to_turn_around( deltayaw )
 {
-    angle = getdvarflaot( #"dog_turn180_angle" );
+    angle = getdvarfloat( #"dog_turn180_angle" );
 
     if ( deltayaw >= angle || deltayaw <= -1 * angle )
     {

@@ -114,7 +114,7 @@ remote_mortar_killstreak( hardpointtype )
         return false;
     }
 
-    self.killstreak_waitamount = getdvarflaot( #"scr_remote_mortar_lifetime" ) * 1000;
+    self.killstreak_waitamount = getdvarfloat( #"scr_remote_mortar_lifetime" ) * 1000;
     remote = self remote_mortar_spawn();
     remote setdrawinfrared( 1 );
     remote thread remote_killstreak_abort();

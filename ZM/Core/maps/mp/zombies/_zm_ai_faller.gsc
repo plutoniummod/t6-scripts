@@ -516,8 +516,8 @@ in_player_fov( player )
     playertobanzaiunitvec = vectornormalize( playertobanzaivec );
     forwarddotbanzai = vectordot( playerunitforwardvec, playertobanzaiunitvec );
     anglefromcenter = acos( forwarddotbanzai );
-    playerfov = getdvarflaot( #"cg_fov" );
-    banzaivsplayerfovbuffer = getdvarflaot( #"_id_BCB625CF" );
+    playerfov = getdvarfloat( #"cg_fov" );
+    banzaivsplayerfovbuffer = getdvarfloat( #"_id_BCB625CF" );
 
     if ( banzaivsplayerfovbuffer <= 0 )
         banzaivsplayerfovbuffer = 0.2;

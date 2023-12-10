@@ -163,7 +163,7 @@ registerdvars()
     if ( getdvar( #"scr_vehicle_damage_scalar" ) == "" )
         setdvar( "scr_vehicle_damage_scalar", "1" );
 
-    level.vehicledamagescalar = getdvarflaot( #"scr_vehicle_damage_scalar" );
+    level.vehicledamagescalar = getdvarfloat( #"scr_vehicle_damage_scalar" );
     level.fire_audio_repeat_duration = getdvarint( #"_id_917E4521" );
     level.fire_audio_random_max_duration = getdvarint( #"_id_C2DCBC26" );
 }

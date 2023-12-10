@@ -166,20 +166,20 @@ tweakart()
             setdvar( "scr_fog_max_opacity", fogsettings[16] );
         }
 
-        level.fogexphalfplane = getdvarflaot( #"scr_fog_exp_halfplane" );
-        level.fogexphalfheight = getdvarflaot( #"scr_fog_exp_halfheight" );
-        level.fognearplane = getdvarflaot( #"scr_fog_nearplane" );
-        level.fogbaseheight = getdvarflaot( #"scr_fog_baseheight" );
+        level.fogexphalfplane = getdvarfloat( #"scr_fog_exp_halfplane" );
+        level.fogexphalfheight = getdvarfloat( #"scr_fog_exp_halfheight" );
+        level.fognearplane = getdvarfloat( #"scr_fog_nearplane" );
+        level.fogbaseheight = getdvarfloat( #"scr_fog_baseheight" );
         level.fogcolorred = getdvarcolorred( #"scr_fog_color" );
         level.fogcolorgreen = getdvarcolorgreen( #"scr_fog_color" );
         level.fogcolorblue = getdvarcolorblue( #"scr_fog_color" );
-        level.fogcolorscale = getdvarflaot( #"scr_fog_color_scale" );
+        level.fogcolorscale = getdvarfloat( #"scr_fog_color_scale" );
         level.sunfogcolorred = getdvarcolorred( #"scr_sun_fog_color" );
         level.sunfogcolorgreen = getdvarcolorgreen( #"scr_sun_fog_color" );
         level.sunfogcolorblue = getdvarcolorblue( #"scr_sun_fog_color" );
-        level.sunstartangle = getdvarflaot( #"scr_sun_fog_start_angle" );
-        level.sunendangle = getdvarflaot( #"scr_sun_fog_end_angle" );
-        level.fogmaxopacity = getdvarflaot( #"scr_fog_max_opacity" );
+        level.sunstartangle = getdvarfloat( #"scr_sun_fog_start_angle" );
+        level.sunendangle = getdvarfloat( #"scr_sun_fog_end_angle" );
+        level.fogmaxopacity = getdvarfloat( #"scr_fog_max_opacity" );
 
         if ( getdvarint( #"scr_art_sun_fog_dir_set" ) )
         {

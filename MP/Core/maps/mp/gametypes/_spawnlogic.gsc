@@ -1317,7 +1317,7 @@ loopbotspawns()
         }
 
         if ( getdvar( #"scr_killbottimer" ) != "" )
-            wait( getdvarflaot( #"scr_killbottimer" ) );
+            wait( getdvarfloat( #"scr_killbottimer" ) );
         else
             wait 0.05;
     }
@@ -1619,7 +1619,7 @@ avoidweapondamage( spawnpoints )
     weapondamagepenalty = 100000;
 
     if ( getdvar( #"_id_76B8F046" ) != "" && getdvar( #"_id_76B8F046" ) != "0" )
-        weapondamagepenalty = getdvarflaot( #"_id_76B8F046" );
+        weapondamagepenalty = getdvarfloat( #"_id_76B8F046" );
 
     mingrenadedistsquared = 62500;
 
@@ -1796,7 +1796,7 @@ spawnpointupdate( spawnpoint )
 getlospenalty()
 {
     if ( getdvar( #"_id_CACDB8AA" ) != "" && getdvar( #"_id_CACDB8AA" ) != "0" )
-        return getdvarflaot( #"_id_CACDB8AA" );
+        return getdvarfloat( #"_id_CACDB8AA" );
 
     return 100000;
 }
@@ -1912,11 +1912,11 @@ avoidvisibleenemies( spawnpoints, teambased )
         mindistteam = "all";
     }
 
-    avoidweight = getdvarflaot( #"scr_spawn_enemyavoidweight" );
+    avoidweight = getdvarfloat( #"scr_spawn_enemyavoidweight" );
 
     if ( avoidweight != 0 )
     {
-        nearbyenemyouterrange = getdvarflaot( #"scr_spawn_enemyavoiddist" );
+        nearbyenemyouterrange = getdvarfloat( #"scr_spawn_enemyavoiddist" );
         nearbyenemyouterrangesq = nearbyenemyouterrange * nearbyenemyouterrange;
         nearbyenemypenalty = 1500 * avoidweight;
         nearbyenemyminorpenalty = 800 * avoidweight;

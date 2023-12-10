@@ -119,7 +119,7 @@ main()
     zombe_gametype_premain();
     clientscripts\mp\zm_tomb_capture_zones::init_structs();
     level thread clientscripts\mp\zm_tomb_ffotd::main_end();
-    level.n_level_sunlight = getdvarflaot( #"r_lightTweakSunLight" );
+    level.n_level_sunlight = getdvarfloat( #"r_lightTweakSunLight" );
     waitforclient( 0 );
     level thread clientscripts\mp\zm_tomb_fx::setup_prop_anims();
     level thread init_fog_vol_to_visionset();
@@ -1172,7 +1172,7 @@ _lightning_disconnect_thread( localclientnum )
 
 lerp_dvar( str_dvar, n_val, n_lerp_time, b_saved_dvar, localclientnum )
 {
-    n_start_val = getdvarflaot( str_dvar );
+    n_start_val = getdvarfloat( str_dvar );
     n_time_delta = 0;
 
     do

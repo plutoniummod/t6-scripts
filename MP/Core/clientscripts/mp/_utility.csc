@@ -996,7 +996,7 @@ timerwait( n_wait )
 
 lerpdvar( str_dvar, n_val, n_lerp_time, b_saved_dvar )
 {
-    n_start_val = getdvarflaot( str_dvar );
+    n_start_val = getdvarfloat( str_dvar );
     s_timer = newtimer();
 
     do
@@ -1041,7 +1041,7 @@ servertimerwait( localclientnum, n_wait )
 
 serverlerpdvar( localclientnum, str_dvar, n_val, n_lerp_time, b_saved_dvar )
 {
-    n_start_val = getdvarflaot( str_dvar );
+    n_start_val = getdvarfloat( str_dvar );
     s_timer = newtimer();
 
     do

@@ -108,7 +108,7 @@ giveplayermomentumnotification( score, label, descvalue, countstowardrampage )
     score = score + rampagebonus;
 
     if ( score > 0 && self hasperk( "specialty_earnmoremomentum" ) )
-        score = roundtonearestfive( int( score * getdvarflaot( #"perk_killstreakMomentumMultiplier" ) + 0.5 ) );
+        score = roundtonearestfive( int( score * getdvarfloat( #"perk_killstreakMomentumMultiplier" ) + 0.5 ) );
 
     _setplayermomentum( self, self.pers["momentum"] + score );
 }

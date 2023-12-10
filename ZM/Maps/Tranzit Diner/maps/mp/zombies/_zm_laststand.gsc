@@ -205,7 +205,7 @@ playerlaststand( einflictor, attacker, idamage, smeansofdeath, sweapon, vdir, sh
         self thread laststand_getup();
     else
     {
-        bleedout_time = getdvarflaot( #"player_lastStandBleedoutTime" );
+        bleedout_time = getdvarfloat( #"player_lastStandBleedoutTime" );
         self thread laststand_bleedout( bleedout_time );
     }
 

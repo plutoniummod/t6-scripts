@@ -705,7 +705,7 @@ manipulate_createfx_ents( highlightedent, leftclick, leftheld, ctrlheld, colors,
         return;
     }
 
-    scale = getdvarflaot( #"createfx_scaleid" );
+    scale = getdvarfloat( #"createfx_scaleid" );
     print_frames = getdvarint( #"createfx_print_frames" );
 
     if ( !isdefined( level.createfx_manipulate_offset ) )

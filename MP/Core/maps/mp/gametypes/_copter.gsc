@@ -90,7 +90,7 @@ createcopter( location, team, damagetrig )
     scriptorigin.health = 2000;
 
     if ( getdvar( #"_id_A8262D2E" ) != "" )
-        scriptorigin.health = getdvarflaot( #"_id_A8262D2E" );
+        scriptorigin.health = getdvarfloat( #"_id_A8262D2E" );
 
     scriptorigin.team = team;
     scriptorigin thread copterai();

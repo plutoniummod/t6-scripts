@@ -481,12 +481,12 @@ kickifidontspawninternal()
     waittime = 90;
 
     if ( getdvar( #"_id_4257CF5C" ) != "" )
-        waittime = getdvarflaot( #"_id_4257CF5C" );
+        waittime = getdvarfloat( #"_id_4257CF5C" );
 
     mintime = 45;
 
     if ( getdvar( #"_id_0DF057E0" ) != "" )
-        mintime = getdvarflaot( #"_id_0DF057E0" );
+        mintime = getdvarfloat( #"_id_0DF057E0" );
 
     starttime = gettime();
     kickwait( waittime );

@@ -1683,7 +1683,7 @@ bot_update_crate()
 
     self.bot.update_crate = time + randomintrange( 1000, 3000 );
     self cancelgoal( "care package" );
-    radius = getdvarflaot( #"player_useRadius" );
+    radius = getdvarfloat( #"player_useRadius" );
     crates = getentarray( "care_package", "script_noteworthy" );
 
     foreach ( crate in crates )

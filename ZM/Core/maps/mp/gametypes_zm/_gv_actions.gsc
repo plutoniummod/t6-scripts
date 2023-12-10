@@ -588,7 +588,7 @@ announcemessage( target, messagetext, time )
     clientannouncement( target, messagetext, int( time * 1000 ) );
 
     if ( time == 0 )
-        time = getdvarflaot( #"_id_E8C4FC20" );
+        time = getdvarfloat( #"_id_E8C4FC20" );
 
     target.doingnotify = 1;
     wait( time );

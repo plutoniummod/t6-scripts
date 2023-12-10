@@ -113,10 +113,10 @@ register_unitrigger_internal( unitrigger_stub, trigger_func )
 
         if ( isdefined( level.fixed_max_player_use_radius ) )
         {
-            if ( level.fixed_max_player_use_radius > getdvarflaot( #"player_useRadius_zm" ) )
+            if ( level.fixed_max_player_use_radius > getdvarfloat( #"player_useRadius_zm" ) )
                 setdvar( "player_useRadius_zm", level.fixed_max_player_use_radius );
         }
-        else if ( level._unitriggers.largest_radius > getdvarflaot( #"player_useRadius_zm" ) )
+        else if ( level._unitriggers.largest_radius > getdvarfloat( #"player_useRadius_zm" ) )
             setdvar( "player_useRadius_zm", level._unitriggers.largest_radius );
     }
 

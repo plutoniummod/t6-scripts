@@ -593,7 +593,7 @@ calckillcamtime( sweapon, entitystarttime, predelay, respawn, maxtime )
             camtime = 2.5;
     }
     else
-        camtime = getdvarflaot( #"_id_C45D9077" );
+        camtime = getdvarfloat( #"_id_C45D9077" );
 
     if ( isdefined( maxtime ) )
     {
@@ -615,7 +615,7 @@ calcpostdelay()
         postdelay = 2;
     else
     {
-        postdelay = getdvarflaot( #"_id_0D34D95D" );
+        postdelay = getdvarfloat( #"_id_0D34D95D" );
 
         if ( postdelay < 0.05 )
             postdelay = 0.05;

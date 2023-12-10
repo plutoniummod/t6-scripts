@@ -322,7 +322,7 @@ electric_cherry_cooldown_timer( str_current_weapon )
     n_reload_time = weaponreloadtime( str_current_weapon );
 
     if ( self hasperk( "specialty_fastreload" ) )
-        n_reload_time = n_reload_time * getdvarflaot( #"perk_weapReloadMultiplier" );
+        n_reload_time = n_reload_time * getdvarfloat( #"perk_weapReloadMultiplier" );
 
     n_cooldown_time = n_reload_time + 3;
     wait( n_cooldown_time );

@@ -10,10 +10,10 @@
 init()
 {
     level.scoreinfo = [];
-    level.xpscale = getdvarflaot( #"scr_xpscale" );
-    level.codpointsxpscale = getdvarflaot( #"scr_codpointsxpscale" );
-    level.codpointsmatchscale = getdvarflaot( #"scr_codpointsmatchscale" );
-    level.codpointschallengescale = getdvarflaot( #"scr_codpointsperchallenge" );
+    level.xpscale = getdvarfloat( #"scr_xpscale" );
+    level.codpointsxpscale = getdvarfloat( #"scr_codpointsxpscale" );
+    level.codpointsmatchscale = getdvarfloat( #"scr_codpointsmatchscale" );
+    level.codpointschallengescale = getdvarfloat( #"scr_codpointsperchallenge" );
     level.rankxpcap = getdvarint( #"scr_rankXpCap" );
     level.codpointscap = getdvarint( #"scr_codPointsCap" );
     level.usingmomentum = 1;
@@ -21,7 +21,7 @@ init()
     level.scorestreaksmaxstacking = getdvarint( #"scr_scorestreaks_maxstacking" );
     level.maxinventoryscorestreaks = getdvarintdefault( "scr_maxinventory_scorestreaks", 3 );
     level.usingrampage = !isdefined( level.usingscorestreaks ) || !level.usingscorestreaks;
-    level.rampagebonusscale = getdvarflaot( #"scr_rampagebonusscale" );
+    level.rampagebonusscale = getdvarfloat( #"scr_rampagebonusscale" );
     level.ranktable = [];
     precacheshader( "white" );
     precachestring( &"RANK_PLAYER_WAS_PROMOTED_N" );

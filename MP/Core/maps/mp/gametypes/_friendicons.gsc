@@ -67,7 +67,7 @@ showfriendicon()
 
 updatefriendiconsettings()
 {
-    drawfriend = getdvarflaot( #"scr_drawfriend" );
+    drawfriend = getdvarfloat( #"scr_drawfriend" );
 
     if ( level.drawfriend != drawfriend )
     {

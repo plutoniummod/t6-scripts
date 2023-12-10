@@ -101,8 +101,8 @@ playlightning( localclientnum )
         clientscripts\mp\_fx::activate_exploder( lightning_id );
         lightning_origin = level.createfxexploders[lightning_id][0].v["origin"];
         serverwait( localclientnum, randomfloatrange( 0.05, 0.15 ) );
-        n_level_sunlight = getdvarflaot( #"r_lightTweakSunLight" );
-        n_level_exposure = getdvarflaot( #"r_exposureValue" );
+        n_level_sunlight = getdvarfloat( #"r_lightTweakSunLight" );
+        n_level_exposure = getdvarfloat( #"r_exposureValue" );
         n_strikes = randomintrange( 2, 4 );
 
         for ( i = 0; i < n_strikes; i++ )

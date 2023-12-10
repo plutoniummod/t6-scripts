@@ -420,7 +420,7 @@ dog_init()
     health_multiplier = 1.0;
 
     if ( getdvar( #"_id_CAA5B74F" ) != "" )
-        health_multiplier = getdvarflaot( #"_id_CAA5B74F" );
+        health_multiplier = getdvarfloat( #"_id_CAA5B74F" );
 
     self.maxhealth = int( level.dog_health * health_multiplier );
     self.health = int( level.dog_health * health_multiplier );

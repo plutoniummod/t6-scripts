@@ -777,7 +777,7 @@ dvarfloatvalue( dvar, defval, minval, maxval )
         return defval;
     }
 
-    value = getdvarflaot( dvar );
+    value = getdvarfloat( dvar );
 
     if ( value > maxval )
         value = maxval;
@@ -1871,7 +1871,7 @@ set_dvar_float_if_unset( dvar, value, reset )
     if ( reset || getdvar( dvar ) == "" )
         setdvar( dvar, value );
 
-    return getdvarflaot( dvar );
+    return getdvarfloat( dvar );
 }
 
 set_dvar_int_if_unset( dvar, value, reset )

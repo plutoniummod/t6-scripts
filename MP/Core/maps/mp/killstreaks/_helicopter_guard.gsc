@@ -337,7 +337,7 @@ heliguardsupport_watchtimeout()
     self.owner endon( "joined_spectators" );
     timeout = 60.0;
 /#
-    timeout = getdvarflaot( #"scr_lbguard_timeout" );
+    timeout = getdvarfloat( #"scr_lbguard_timeout" );
 #/
     maps\mp\gametypes\_hostmigration::waitlongdurationwithhostmigrationpause( timeout );
     shouldtimeout = getdvar( #"scr_heli_guard_no_timeout" );

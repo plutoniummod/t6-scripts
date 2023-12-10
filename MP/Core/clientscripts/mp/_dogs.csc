@@ -298,7 +298,7 @@ dog_get_dvar_int( dvar, def )
 dog_get_dvar( dvar, def )
 {
     if ( getdvar( dvar ) != "" )
-        return getdvarflaot( dvar );
+        return getdvarfloat( dvar );
     else
         return def;
 }

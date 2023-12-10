@@ -5,7 +5,7 @@
 
 main_start()
 {
-    if ( 65 < getdvarflaot( #"cg_fov" ) )
+    if ( 65 < getdvarfloat( #"cg_fov" ) )
         zacklodscalerigid( 0.65, 0.64 );
     else
         zacklodscalerigid( 1, 0.64 );
@@ -21,11 +21,11 @@ main_end()
 buried_watch_for_fov_change()
 {
     self endon( "disconnect" );
-    previous_fov = getdvarflaot( #"cg_fov" );
+    previous_fov = getdvarfloat( #"cg_fov" );
 
     while ( true )
     {
-        current_fov = getdvarflaot( #"cg_fov" );
+        current_fov = getdvarfloat( #"cg_fov" );
 
         if ( current_fov != previous_fov )
         {

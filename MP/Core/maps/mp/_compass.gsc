@@ -3,7 +3,7 @@
 
 setupminimap( material )
 {
-    requiredmapaspectratio = getdvarflaot( #"scr_RequiredMapAspectratio" );
+    requiredmapaspectratio = getdvarfloat( #"scr_RequiredMapAspectratio" );
     corners = getentarray( "minimap_corner", "targetname" );
 
     if ( corners.size != 2 )

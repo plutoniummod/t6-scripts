@@ -78,7 +78,7 @@ weapons_get_dvar_int( dvar, def )
 weapons_get_dvar( dvar, def )
 {
     if ( getdvar( dvar ) != "" )
-        return getdvarflaot( dvar );
+        return getdvarfloat( dvar );
     else
     {
         setdvar( dvar, def );
@@ -1214,7 +1214,7 @@ hackerresult( player, owner )
 {
     success = 1;
     time = gettime();
-    hacktime = getdvarflaot( #"perk_disarmExplosiveTime" );
+    hacktime = getdvarfloat( #"perk_disarmExplosiveTime" );
 
     if ( !canhack( player, owner, 1 ) )
         return 0;
@@ -1430,7 +1430,7 @@ proximityweaponobjectdetonation( watcher )
     wait( watcher.detectiongraceperiod );
 
     if ( isplayer( ent ) && ent hasperk( "specialty_delayexplosive" ) )
-        wait( getdvarflaot( #"perk_delayExplosiveTime" ) );
+        wait( getdvarfloat( #"perk_delayExplosiveTime" ) );
 
     self.origin = traceorigin;
 

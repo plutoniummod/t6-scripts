@@ -157,8 +157,8 @@ player_can_see_me( player )
     else
         anglefromcenter = acos( forwarddotbanzai );
 
-    playerfov = getdvarflaot( #"cg_fov" );
-    banzaivsplayerfovbuffer = getdvarflaot( #"_id_BCB625CF" );
+    playerfov = getdvarfloat( #"cg_fov" );
+    banzaivsplayerfovbuffer = getdvarfloat( #"_id_BCB625CF" );
 
     if ( banzaivsplayerfovbuffer <= 0 )
         banzaivsplayerfovbuffer = 0.2;

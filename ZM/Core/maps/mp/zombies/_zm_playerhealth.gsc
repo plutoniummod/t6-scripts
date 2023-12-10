@@ -134,7 +134,7 @@ playerhealthregen()
     if ( getdvar( #"_id_FCECE67E" ) == "" )
         setdvar( "scr_playerInvulTimeScale", 1.0 );
 
-    playerinvultimescale = getdvarflaot( #"_id_FCECE67E" );
+    playerinvultimescale = getdvarfloat( #"_id_FCECE67E" );
 
     for (;;)
     {

@@ -24,7 +24,7 @@ main()
 
 need_to_turn_around( deltayaw )
 {
-    angle = getdvarflaot( #"dog_turn180_angle" );
+    angle = getdvarfloat( #"dog_turn180_angle" );
 
     if ( deltayaw > angle || deltayaw < -1 * angle )
     {
@@ -95,7 +95,7 @@ turn_90( deltayaw )
     self animmode( "zonly_physics" );
     debug_turn_print( "turn_90 deltaYaw: " + deltayaw );
 
-    if ( deltayaw > getdvarflaot( #"dog_turn90_angle" ) )
+    if ( deltayaw > getdvarfloat( #"dog_turn90_angle" ) )
     {
         debug_turn_print( "turn_90 left", 1 );
         self turn_left();
@@ -125,7 +125,7 @@ turn_180( deltayaw )
             self turn_180_left();
         }
     }
-    else if ( deltayaw > getdvarflaot( #"dog_turn180_angle" ) )
+    else if ( deltayaw > getdvarfloat( #"dog_turn180_angle" ) )
     {
         debug_turn_print( "turn_around left", 1 );
         self turn_180_left();

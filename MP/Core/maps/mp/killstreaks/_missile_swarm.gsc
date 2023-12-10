@@ -267,7 +267,7 @@ swarm_killstreak_fx()
 swarm_think( owner, killstreak_id )
 {
     level endon( "swarm_end" );
-    lifetime = getdvarflaot( #"scr_missile_swarm_lifetime" );
+    lifetime = getdvarfloat( #"scr_missile_swarm_lifetime" );
     end_time = gettime() + lifetime * 1000;
     level.missile_swarm_count = 0;
 

@@ -150,10 +150,10 @@ jump_pad_start( ent_player, endon_condition )
             if ( getdvarint( #"_id_D5FD01C3" ) )
             {
                 if ( getdvar( #"_id_E2494021" ) != "" )
-                    z_dist = z_dist * getdvarflaot( #"_id_E2494021" );
+                    z_dist = z_dist * getdvarfloat( #"_id_E2494021" );
 
                 if ( getdvar( #"_id_4E3BC729" ) != "" )
-                    forward_scaling = getdvarflaot( #"_id_4E3BC729" );
+                    forward_scaling = getdvarfloat( #"_id_4E3BC729" );
             }
 #/
         }
@@ -165,10 +165,10 @@ jump_pad_start( ent_player, endon_condition )
             if ( getdvarint( #"_id_D5FD01C3" ) )
             {
                 if ( getdvar( #"_id_E2494021" ) != "" )
-                    z_dist = z_dist * getdvarflaot( #"_id_E2494021" );
+                    z_dist = z_dist * getdvarfloat( #"_id_E2494021" );
 
                 if ( getdvar( #"_id_4E3BC729" ) != "" )
-                    forward_scaling = getdvarflaot( #"_id_4E3BC729" );
+                    forward_scaling = getdvarfloat( #"_id_4E3BC729" );
             }
 #/
         }
@@ -180,10 +180,10 @@ jump_pad_start( ent_player, endon_condition )
             if ( getdvarint( #"_id_D5FD01C3" ) )
             {
                 if ( getdvar( #"_id_E2494021" ) != "" )
-                    z_dist = z_dist * getdvarflaot( #"_id_E2494021" );
+                    z_dist = z_dist * getdvarfloat( #"_id_E2494021" );
 
                 if ( getdvar( #"_id_4E3BC729" ) != "" )
-                    forward_scaling = getdvarflaot( #"_id_4E3BC729" );
+                    forward_scaling = getdvarfloat( #"_id_4E3BC729" );
             }
 #/
         }

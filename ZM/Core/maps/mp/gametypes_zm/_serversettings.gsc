@@ -39,16 +39,16 @@ init()
 
     if ( getdvar( #"scr_mapsize" ) == "" )
         setdvar( "scr_mapsize", "64" );
-    else if ( getdvarflaot( #"scr_mapsize" ) >= 64 )
+    else if ( getdvarfloat( #"scr_mapsize" ) >= 64 )
         setdvar( "scr_mapsize", "64" );
-    else if ( getdvarflaot( #"scr_mapsize" ) >= 32 )
+    else if ( getdvarfloat( #"scr_mapsize" ) >= 32 )
         setdvar( "scr_mapsize", "32" );
-    else if ( getdvarflaot( #"scr_mapsize" ) >= 16 )
+    else if ( getdvarfloat( #"scr_mapsize" ) >= 16 )
         setdvar( "scr_mapsize", "16" );
     else
         setdvar( "scr_mapsize", "8" );
 
-    level.mapsize = getdvarflaot( #"scr_mapsize" );
+    level.mapsize = getdvarfloat( #"scr_mapsize" );
     constraingametype( getdvar( #"g_gametype" ) );
     constrainmapsize( level.mapsize );
 

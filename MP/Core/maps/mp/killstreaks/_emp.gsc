@@ -129,7 +129,7 @@ emp_jamotherteams( teamname, killstreak_id )
     level destroyotherteamsactivevehicles( self, teamname );
     level destroyotherteamsequipment( self, teamname );
 /#
-    level.emptimeout = getdvarflaot( #"scr_emp_timeout" );
+    level.emptimeout = getdvarfloat( #"scr_emp_timeout" );
 #/
     maps\mp\gametypes\_hostmigration::waitlongdurationwithhostmigrationpauseemp( level.emptimeout );
     level.teamemping[teamname] = 0;
@@ -171,7 +171,7 @@ emp_jamplayers( owner, killstreak_id )
     level destroyequipment( owner );
     level notify( "emp_update" );
 /#
-    level.emptimeout = getdvarflaot( #"scr_emp_timeout" );
+    level.emptimeout = getdvarfloat( #"scr_emp_timeout" );
 #/
     maps\mp\gametypes\_hostmigration::waitlongdurationwithhostmigrationpause( level.emptimeout );
     maps\mp\killstreaks\_killstreakrules::killstreakstop( "emp_mp", level.empplayer.team, killstreak_id );

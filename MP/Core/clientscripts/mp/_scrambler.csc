@@ -253,7 +253,7 @@ scramblerupdate( localclientnum )
             if ( enemyvoscrambleramount > 1 )
                 enemyvoscrambleramount = 1;
 
-            if ( getdvarflaot( #"snd_futz" ) != enemyvoscrambleramount )
+            if ( getdvarfloat( #"snd_futz" ) != enemyvoscrambleramount )
                 setdvarfloat( "snd_futz", enemyvoscrambleramount );
         }
 

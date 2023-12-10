@@ -224,11 +224,11 @@ crane_move( claw, desired, z_dist )
     self.roller unlink();
     goal = ( desired.origin[0], desired.origin[1], self.roller.origin[2] );
     diff = distance2d( goal, self.roller.origin );
-    speed = getdvarflaot( #"scr_crane_claw_drop_speed" );
+    speed = getdvarfloat( #"scr_crane_claw_drop_speed" );
     time = diff / speed;
 
-    if ( time < getdvarflaot( #"scr_crane_claw_drop_time_min" ) )
-        time = getdvarflaot( #"scr_crane_claw_drop_time_min" );
+    if ( time < getdvarfloat( #"scr_crane_claw_drop_time_min" ) )
+        time = getdvarfloat( #"scr_crane_claw_drop_time_min" );
 
     self.roller moveto( goal, time, time * 0.25, time * 0.25 );
     self.roller thread physics_move();
@@ -272,10 +272,10 @@ claw_crate_grab( crate, z_dist )
     self claw_z_arms( -33 );
     self playsound( "amb_crane_arms" );
     self arms_close( crate );
-    crate movez( 33, getdvarflaot( #"scr_crane_arm_z_move_time" ) );
+    crate movez( 33, getdvarfloat( #"scr_crane_arm_z_move_time" ) );
     self claw_z_arms( 33 );
     crate linkto( self );
-    self movez( z_dist, getdvarflaot( #"scr_crane_claw_move_time" ) );
+    self movez( z_dist, getdvarfloat( #"scr_crane_claw_move_time" ) );
     self thread wire_render();
     level notify( "wires_move" );
     self waittill( "movedone" );
@@ -331,7 +331,7 @@ claw_crate_move( crate, claw )
     crate unlink();
     self playsound( "amb_crane_arms_b" );
     level notify( "wires_stop" );
-    crate movez( -33, getdvarflaot( #"scr_crane_arm_z_move_time" ) );
+    crate movez( -33, getdvarfloat( #"scr_crane_arm_z_move_time" ) );
     self claw_z_arms( -33 );
     self playsound( "amb_crane_arms_b" );
     playfxontag( level._effect["crane_dust"], crate, "tag_origin" );
@@ -340,7 +340,7 @@ claw_crate_move( crate, claw )
     level notify( "wires_move" );
     self claw_z_arms( 33 );
     z_dist = self.z_initial - self.origin[2];
-    self movez( z_dist, getdvarflaot( #"scr_crane_claw_move_time" ) );
+    self movez( z_dist, getdvarfloat( #"scr_crane_claw_move_time" ) );
     self thread wire_render();
 }
 
@@ -352,7 +352,7 @@ claw_crate_drop( target, data )
     target unlink();
     level notify( "wires_stop" );
     self playsound( "amb_crane_arms_b" );
-    target movez( -33, getdvarflaot( #"scr_crane_arm_z_move_time" ) );
+    target movez( -33, getdvarfloat( #"scr_crane_arm_z_move_time" ) );
     self claw_z_arms( -33 );
     playfxontag( level._effect["crane_dust"], target, "tag_origin" );
     self playsound( "amb_crate_drop" );
@@ -363,7 +363,7 @@ claw_crate_drop( target, data )
     target.origin = data.origin;
     self claw_z_arms( 33 );
     self playsound( "amb_crane_arms" );
-    self movez( 318, getdvarflaot( #"scr_crane_claw_move_time" ) );
+    self movez( 318, getdvarfloat( #"scr_crane_claw_move_time" ) );
     self thread wire_render();
     self waittill( "movedone" );
 }
@@ -371,8 +371,8 @@ claw_crate_drop( target, data )
 crate_lower( lower, data )
 {
     z_dist = abs( self.origin[2] - lower.origin[2] );
-    self movez( z_dist * -1, getdvarflaot( #"scr_crane_crate_lower_time" ) );
-    lower movez( z_dist * -1, getdvarflaot( #"scr_crane_crate_lower_time" ) );
+    self movez( z_dist * -1, getdvarfloat( #"scr_crane_crate_lower_time" ) );
+    lower movez( z_dist * -1, getdvarfloat( #"scr_crane_crate_lower_time" ) );
     level notify( "pit_move" );
     lower waittill( "movedone" );
     level notify( "pit_stop" );
@@ -390,8 +390,8 @@ crate_raise( upper, data )
     wait 0.2;
     self show();
     z_dist = abs( upper.origin[2] - self.origin[2] );
-    self movez( z_dist, getdvarflaot( #"scr_crane_crate_raise_time" ) );
-    upper movez( z_dist, getdvarflaot( #"scr_crane_crate_raise_time" ) );
+    self movez( z_dist, getdvarfloat( #"scr_crane_crate_raise_time" ) );
+    upper movez( z_dist, getdvarfloat( #"scr_crane_crate_raise_time" ) );
     level notify( "wires_stop" );
     level notify( "pit_move" );
     upper thread raise_think();
@@ -460,13 +460,13 @@ claw_move_arms( dist, crate )
         if ( arm.targetname == "claw_arm_y" )
         {
             arms[arms.size] = arm;
-            arm moveto( arm.goal, getdvarflaot( #"scr_crane_arm_y_move_time" ) );
+            arm moveto( arm.goal, getdvarfloat( #"scr_crane_arm_y_move_time" ) );
         }
     }
 
     if ( dist > 0 )
     {
-        wait( getdvarflaot( #"scr_crane_arm_y_move_time" ) / 2 );
+        wait( getdvarfloat( #"scr_crane_arm_y_move_time" ) / 2 );
 
         foreach ( arm in self.arms )
         {
@@ -501,7 +501,7 @@ claw_z_arms( z )
         if ( arm.targetname == "claw_arm_z" )
         {
             arms[arms.size] = arm;
-            arm movez( z, getdvarflaot( #"scr_crane_arm_z_move_time" ) );
+            arm movez( z, getdvarfloat( #"scr_crane_arm_z_move_time" ) );
         }
     }
 

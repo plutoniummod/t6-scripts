@@ -139,7 +139,7 @@ playerhealthregen()
             regentime = level.playerhealth_regularregendelay;
 
             if ( player hasperk( "specialty_healthregen" ) )
-                regentime = int( regentime / getdvarflaot( #"perk_healthRegenMultiplier" ) );
+                regentime = int( regentime / getdvarfloat( #"perk_healthRegenMultiplier" ) );
 
             if ( gettime() - hurttime < regentime )
                 continue;
@@ -159,7 +159,7 @@ playerhealthregen()
                 veryhurttime = 3000;
 
                 if ( player hasperk( "specialty_healthregen" ) )
-                    veryhurttime = int( veryhurttime / getdvarflaot( #"perk_healthRegenMultiplier" ) );
+                    veryhurttime = int( veryhurttime / getdvarfloat( #"perk_healthRegenMultiplier" ) );
 
                 if ( gettime() > hurttime + veryhurttime )
                     newhealth = newhealth + regenrate;

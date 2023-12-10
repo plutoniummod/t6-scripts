@@ -325,7 +325,7 @@ cardetonatewaiter( vehicle )
         wait 0.05;
 
     watcher thread maps\mp\gametypes\_weaponobjects::waitanddetonate( vehicle, 0 );
-    self thread maps\mp\gametypes\_hud::fadetoblackforxsec( getdvarflaot( #"_id_CDE26736" ), getdvarflaot( #"_id_AFCAD5CD" ), getdvarflaot( #"_id_88490433" ), getdvarflaot( #"_id_A925AA4E" ) );
+    self thread maps\mp\gametypes\_hud::fadetoblackforxsec( getdvarfloat( #"_id_CDE26736" ), getdvarfloat( #"_id_AFCAD5CD" ), getdvarfloat( #"_id_88490433" ), getdvarfloat( #"_id_A925AA4E" ) );
 }
 
 jumpwaiter( vehicle )
@@ -373,7 +373,7 @@ gameendwatcher( vehicle )
     level waittill( "game_ended" );
     watcher = maps\mp\gametypes\_weaponobjects::getweaponobjectwatcher( "rcbomb" );
     watcher thread maps\mp\gametypes\_weaponobjects::waitanddetonate( vehicle, 0 );
-    self thread maps\mp\gametypes\_hud::fadetoblackforxsec( getdvarflaot( #"_id_CDE26736" ), getdvarflaot( #"_id_AFCAD5CD" ), getdvarflaot( #"_id_88490433" ), getdvarflaot( #"_id_A925AA4E" ) );
+    self thread maps\mp\gametypes\_hud::fadetoblackforxsec( getdvarfloat( #"_id_CDE26736" ), getdvarfloat( #"_id_AFCAD5CD" ), getdvarfloat( #"_id_88490433" ), getdvarfloat( #"_id_A925AA4E" ) );
 }
 
 exitcarwaiter( vehicle )

@@ -1099,7 +1099,7 @@ xkillsy( attackername, victimname )
 updateminimapsetting()
 {
 /#
-    requiredmapaspectratio = getdvarflaot( #"scr_RequiredMapAspectratio" );
+    requiredmapaspectratio = getdvarfloat( #"scr_RequiredMapAspectratio" );
 
     if ( !isdefined( level.minimapheight ) )
     {
@@ -1107,7 +1107,7 @@ updateminimapsetting()
         level.minimapheight = 0;
     }
 
-    minimapheight = getdvarflaot( #"scr_minimap_height" );
+    minimapheight = getdvarfloat( #"scr_minimap_height" );
 
     if ( minimapheight != level.minimapheight )
     {
