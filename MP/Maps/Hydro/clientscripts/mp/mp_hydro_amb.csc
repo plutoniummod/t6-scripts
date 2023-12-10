@@ -1,0 +1,153 @@
+// T6 GSC SOURCE
+// Decompiled by https://github.com/xensik/gsc-tool
+#include clientscripts\mp\_utility;
+#include clientscripts\mp\_ambientpackage;
+#include clientscripts\mp\_audio;
+
+main()
+{
+    declareambientroom( "hydro_outdoor", 1 );
+    setambientroomtone( "hydro_outdoor", "amb_wind_extreior_2d", 0.2, 0.5 );
+    setambientroomreverb( "hydro_outdoor", "hydro_outdoor", 1, 1 );
+    setambientroomcontext( "hydro_outdoor", "ringoff_plr", "outdoor" );
+    declareambientroom( "hydro_tunnel" );
+    setambientroomreverb( "hydro_tunnel", "hydro_pipe_sml", 1, 1 );
+    setambientroomcontext( "hydro_tunnel", "ringoff_plr", "indoor" );
+    declareambientroom( "hydro_tunnel_partial" );
+    setambientroomreverb( "hydro_tunnel_partial", "hydro_pipe_sml", 1, 1 );
+    setambientroomcontext( "hydro_tunnel_partial", "ringoff_plr", "outdoor" );
+    declareambientroom( "hydro_concrete_room_sml" );
+    setambientroomreverb( "hydro_concrete_room_sml", "hyrdo_concroom", 1, 1 );
+    setambientroomcontext( "hydro_concrete_room_sml", "ringoff_plr", "indoor" );
+    declareambientroom( "hydro_concrete_room_sml_prt" );
+    setambientroomreverb( "hydro_concrete_room_sml_prt", "hyrdo_concroom", 1, 1 );
+    setambientroomcontext( "hydro_concrete_room_sml_prt", "ringoff_plr", "outdoor" );
+    declareambientroom( "hydro_concrete_stairs_sml" );
+    setambientroomreverb( "hydro_concrete_stairs_sml", "hyrdo_concstairs", 1, 1 );
+    setambientroomcontext( "hydro_concrete_stairs_sml", "ringoff_plr", "indoor" );
+    declareambientroom( "hydro_concrete_room_med" );
+    setambientroomreverb( "hydro_concrete_room_med", "hydro_mediumroom", 1, 1 );
+    setambientroomcontext( "hydro_concrete_room_med", "ringoff_plr", "indoor" );
+    declareambientroom( "hydro_concrete_room_med_part" );
+    setambientroomreverb( "hydro_concrete_room_med_part", "hydro_mediumroom", 1, 1 );
+    setambientroomcontext( "hydro_concrete_room_med_part", "ringoff_plr", "outdoor" );
+    declareambientroom( "hydro_engine_room" );
+    setambientroomreverb( "hydro_engine_room", "hyrdo_turbine_room", 1, 1 );
+    setambientroomcontext( "hydro_engine_room", "ringoff_plr", "indoor" );
+    declareambientroom( "hydro_tunnel_med" );
+    setambientroomreverb( "hydro_tunnel_med", "hydro_tunnel_med", 1, 1 );
+    setambientroomcontext( "hydro_tunnel_med", "ringoff_plr", "indoor" );
+    declareambientroom( "hydro_metal_room_sml" );
+    setambientroomreverb( "hydro_metal_room_sml", "hyrdo_small_metal_room", 1, 1 );
+    setambientroomcontext( "hydro_metal_room_sml", "ringoff_plr", "indoor" );
+    declareambientroom( "hydro_metal_tower_sml" );
+    setambientroomreverb( "hydro_metal_tower_sml", "hyrdo_smallroom", 1, 1 );
+    setambientroomcontext( "hydro_metal_tower_sml", "ringoff_plr", "indoor" );
+    declareambientroom( "hydro_server_room" );
+    setambientroomreverb( "hydro_server_room", "hyrdo_smallroom", 1, 1 );
+    setambientroomcontext( "hydro_server_room", "ringoff_plr", "indoor" );
+    declareambientroom( "hydro_container" );
+    setambientroomreverb( "hydro_container", "hydro_container", 1, 1 );
+    setambientroomcontext( "hydro_container", "ringoff_plr", "indoor" );
+    thread snd_start_autofx_audio();
+    thread snd_play_loopers();
+}
+
+snd_play_loopers()
+{
+    playloopat( "amb_dam_water_low", ( -2035, -1762, 610 ) );
+    playloopat( "amb_dam_water_low", ( -2308, -1751, 611 ) );
+    playloopat( "amb_dam_water_churn", ( -1718, -1816, 566 ) );
+    playloopat( "amb_dam_water_churn", ( -2121, -1746, 700 ) );
+    playloopat( "amb_dam_water_churn", ( -1514, 94, 106 ) );
+    playloopat( "amb_dam_water_churn", ( -1514, 94, 106 ) );
+    playloopat( "amb_dam_water_churn", ( 1491, 123, 109 ) );
+    playloopat( "amb_dam_water_low", ( 1689, -1839, 507 ) );
+    playloopat( "amb_dam_water_low", ( 2228, -1731, 472 ) );
+    playloopat( "amb_dam_water_churn", ( 1689, -1839, 507 ) );
+    playloopat( "amb_dam_water_churn", ( 2090, -1861, 232 ) );
+    playloopat( "amb_under_water_hatch", ( -30, -1576, 362 ) );
+    playloopat( "amb_dam_water_low_bot", ( 1172, 621, -957 ) );
+    playloopat( "amb_dam_water_low_bot", ( -1225, 589, -957 ) );
+    playloopat( "amb_dam_water_low_bot", ( 150, 656, -948 ) );
+    playloopat( "amb_dam_water_low_bot", ( -196, 650, -954 ) );
+    playloopat( "amb_wind_door_open", ( 1146, -1547, 439 ) );
+    playloopat( "amb_wind_door_open", ( 1158, -734, 435 ) );
+    playloopat( "amb_wind_door_open", ( -1235, -1540, 456 ) );
+    playloopat( "amb_wind_door_open", ( -1228, -723, 425 ) );
+    playloopat( "amb_wind_door_open", ( 2541, -326, 322 ) );
+    playloopat( "amb_wind_door_open", ( -2556, 395, 348 ) );
+    playloopat( "amb_water_turbine", ( -990, -1946, 361 ) );
+    playloopat( "amb_water_turbine", ( 866, -1955, 382 ) );
+    playloopat( "amb_lrg_comp_monitor", ( -869, -1791, 261 ) );
+    playloopat( "amb_lrg_comp_monitor", ( -1264, -1791, 254 ) );
+    playloopat( "amb_lrg_comp_monitor", ( 794, -1795, 258 ) );
+    playloopat( "amb_lrg_comp_monitor", ( 1199, -1790, 250 ) );
+    playloopat( "amb_water_pipe_lrg", ( 470, -1470, 587 ) );
+    playloopat( "amb_water_pipe_lrg", ( -536, -1470, 587 ) );
+    playloopat( "amb_water_pipe_lrg", ( 456, -1715, 426 ) );
+    playloopat( "amb_water_pipe_lrg", ( -521, -1715, 426 ) );
+    playloopat( "amb_water_pipe_lrg", ( -2534, -1485, 429 ) );
+    playloopat( "amb_water_pipe_lrg", ( -1769, -1446, 443 ) );
+    playloopat( "amb_water_pipe_lrg", ( 1645, -1465, 394 ) );
+    playloopat( "amb_water_pipe_lrg", ( 2455, -1469, 385 ) );
+    playloopat( "amb_electrical_box", ( -1559, -830, 333 ) );
+    playloopat( "amb_electrical_box", ( 1488, -816, 314 ) );
+    playloopat( "amb_electrical_box", ( 614, -1340, 332 ) );
+    playloopat( "amb_electrical_box", ( -655, -1346, 337 ) );
+    playloopat( "amb_electrical_box", ( -2730, -1580, 345 ) );
+    playloopat( "amb_electrical_box", ( 2658, -1557, 352 ) );
+    playloopat( "amb_fan_lrg", ( 17, -1823, 300 ) );
+    playloopat( "amb_fan_lrg", ( -80, -1824, 299 ) );
+    playloopat( "amb_fan_lrg", ( 1478, -1924, 367 ) );
+    playloopat( "amb_fan_lrg", ( -1541, -1925, 368 ) );
+    playloopat( "amb_fan_lrg", ( 466, -2072, 312 ) );
+    playloopat( "amb_fan_lrg", ( -525, -2074, 282 ) );
+    playloopat( "amb_dam_water_churn", ( -36, -1810, 224 ) );
+    playloopat( "amb_dam_water_churn", ( -33, -1542, 221 ) );
+    playloopat( "amb_dam_water_churn", ( -33, -878, 225 ) );
+    playloopat( "amb_dam_water_churn", ( -31, -334, 221 ) );
+    playloopat( "amb_dam_water_churn", ( -317, 294, 213 ) );
+    playloopat( "amb_dam_water_churn", ( 246, -287, 208 ) );
+    playloopat( "amb_dam_water_churn", ( 377, -1979, 208 ) );
+    playloopat( "amb_dam_water_churn", ( -443, -1989, 196 ) );
+    playloopat( "amb_dam_water_churn", ( -239, -1679, 195 ) );
+    playloopat( "amb_dam_water_churn", ( 178, 1668, 189 ) );
+    playloopat( "amb_dam_water_churn", ( -323, -315, 197 ) );
+    playloopat( "amb_dam_water_churn", ( -2026, -919, 112 ) );
+    playloopat( "amb_dam_water_churn", ( -2131, -801, 113 ) );
+    playloopat( "amb_dam_water_churn", ( -1911, -751, 11 ) );
+    playloopat( "amb_water_drips", ( -2231, -1022, 214 ) );
+    playloopat( "amb_water_drips", ( -2235, -1159, 217 ) );
+    playloopat( "amb_water_drips", ( 2156, -1167, 216 ) );
+    playloopat( "amb_water_drips", ( 2158, -1050, 215 ) );
+    playloopat( "amb_mainframe", ( -30, -1193, 419 ) );
+    playloopat( "amb_tunnel_wind", ( 1211, -1054, 317 ) );
+    playloopat( "amb_tunnel_wind", ( 1154, -1308, 318 ) );
+    playloopat( "amb_tunnel_wind", ( -1208, -1318, 318 ) );
+    playloopat( "amb_tunnel_wind", ( -1212, -1056, 320 ) );
+    playloopat( "amb_tunnel_wind", ( 1507, -1671, 313 ) );
+    playloopat( "amb_tunnel_wind", ( -1575, -1672, 313 ) );
+    playloopat( "amb_water_mixer", ( -33, -1762, 219 ) );
+    playloopat( "amb_container_wind", ( 2374, -298, 308 ) );
+    playloopat( "amb_container_wind", ( 2615, -419, 308 ) );
+    playloopat( "amb_container_wind", ( -2376, -297, 338 ) );
+    playloopat( "amb_container_wind", ( -2754, -512, 338 ) );
+    playloopat( "amb_container_wind", ( -1334, -650, 374 ) );
+    playloopat( "amb_container_wind", ( -1387, -1537, 306 ) );
+    playloopat( "amb_container_wind", ( -1164, -487, 309 ) );
+    playloopat( "amb_container_wind", ( 229, -1366, 416 ) );
+    playloopat( "amb_container_wind", ( -270, -1359, 412 ) );
+    playloopat( "amb_container_wind", ( 1312, -1544, 311 ) );
+    playloopat( "amb_container_wind", ( 1284, -647, 365 ) );
+    playloopat( "amb_water_splash", ( 1731, -443, 109 ) );
+    playloopat( "amb_water_splash", ( -1797, -428, 100 ) );
+}
+
+snd_start_autofx_audio()
+{
+    snd_play_auto_fx( "fx_mp_hydro_water_pipe", "amb_water_pipe_spray", 0, 0, 0, 0 );
+    snd_play_auto_fx( "fx_mp_hydro_dam_tunnel_glare", "amb_lights_sml", 0, 0, 0, 0 );
+    snd_play_auto_fx( "fx_village_tube_light", "amb_lights_sml", 0, 0, 0, 0 );
+    snd_play_auto_fx( "fx_mp_vent_heat_distort", "amb_exhaust", 0, 0, 0, 0 );
+}
