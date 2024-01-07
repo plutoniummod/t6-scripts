@@ -42,7 +42,7 @@ magicbox_glow_callback( localclientnum, oldval, newval, bnewent, binitialsnap, f
     {
         fx_obj = spawn( localclientnum, self.origin, "script_model" );
         fx_obj setmodel( "tag_origin" );
-        fx_obj.angles = vectorangles( anglestoup( self.angles ) ) + vectorscale( ( 1, 0, 0 ), 180.0 );
+        fx_obj.angles = vectortoangles( anglestoup( self.angles ) ) + vectorscale( ( 1, 0, 0 ), 180.0 );
         playfxontag( localclientnum, level._effect["chest_light"], fx_obj, "tag_origin" );
         self.glow_obj_array[localclientnum] = fx_obj;
         self glow_obj_demo_jump_listener( localclientnum );

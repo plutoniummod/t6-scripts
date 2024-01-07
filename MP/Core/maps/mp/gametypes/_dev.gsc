@@ -2208,7 +2208,7 @@ plot_circle_fortime( radius1, radius2, time, color, origin, normal )
     while ( gettime() < timer )
     {
         radius = radius2;
-        angletoplayer = vectorangles( normal );
+        angletoplayer = vectortoangles( normal );
 
         for ( i = 0; i < circleres; i++ )
         {

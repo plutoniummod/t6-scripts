@@ -70,9 +70,9 @@ createcopter( location, team, damagetrig )
 {
     location = getabovebuildingslocation( location );
     scriptorigin = spawn( "script_origin", location );
-    scriptorigin.angles = vectorangles( ( 1, 0, 0 ) );
+    scriptorigin.angles = vectortoangles( ( 1, 0, 0 ) );
     copter = spawn( "script_model", location );
-    copter.angles = vectorangles( ( 0, 1, 0 ) );
+    copter.angles = vectortoangles( ( 0, 1, 0 ) );
     copter linkto( scriptorigin );
     scriptorigin.copter = copter;
     copter setmodel( level.coptermodel );
@@ -673,7 +673,7 @@ coptermove()
             newz = newdir[2] / veclength( ( newdir[0], newdir[1], 0 ) );
             interpz = oldz + ( newz - oldz ) * ( thisangle / angle );
             newdir = vectornormalize( ( newdir2d[0], newdir2d[1], interpz ) );
-            copterangles = vectorangles( newdir );
+            copterangles = vectortoangles( newdir );
             copterangles = combineangles( copterangles, vectorscale( ( 0, -1, 0 ), 90.0 ) );
             self rotateto( copterangles, interval * 0.999 );
         }
@@ -686,7 +686,7 @@ coptermove()
 
             newdir = vectortowardsothervector( olddir, newdir, thisangle );
             newdir = vectornormalize( newdir );
-            copterangles = vectorangles( newdir );
+            copterangles = vectortoangles( newdir );
             copterangles = combineangles( copterangles, vectorscale( ( 0, -1, 0 ), 90.0 ) );
             self rotateto( copterangles, interval * 0.999 );
         }

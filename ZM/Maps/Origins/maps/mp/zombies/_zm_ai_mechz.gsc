@@ -1087,7 +1087,7 @@ mechz_check_in_arc( right_offset )
     if ( enemy_dot < cos( level.mechz_aim_max_yaw ) )
         return false;
 
-    enemy_angles = vectorangles( enemy_vec );
+    enemy_angles = vectortoangles( enemy_vec );
 
     if ( abs( angleclamp180( enemy_angles[0] ) ) > level.mechz_aim_max_pitch )
         return false;
@@ -1110,7 +1110,7 @@ mechz_get_aim_anim( anim_prefix, target_pos, right_offset )
         origin = origin + right_angle * right_offset;
     }
 
-    aiming_vec = vectorangles( target_pos - origin );
+    aiming_vec = vectortoangles( target_pos - origin );
     pitch = angleclamp180( aiming_vec[0] );
     yaw = angleclamp180( self.angles[1] - aiming_vec[1] );
     centered_ud = abs( pitch ) < level.mechz_aim_max_pitch / 2;
@@ -1331,7 +1331,7 @@ mechz_find_flesh()
                     if ( getdvarint( #"_id_E7121222" ) > 1 )
                         println( "\\n\\tMZ: Enemy on tank, reached tank pos, doing flamethrower sweep\\n" );
 #/
-                    self.angles = vectorangles( level.vh_tank.origin - self.origin );
+                    self.angles = vectortoangles( level.vh_tank.origin - self.origin );
                     self mechz_do_flamethrower_attack( 1 );
                     self notify( "tank_flamethrower_attack_complete" );
                 }

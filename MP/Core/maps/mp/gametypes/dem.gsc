@@ -976,7 +976,7 @@ dropbombmodel( player, site )
     tempangle = randomfloat( 360 );
     forward = ( cos( tempangle ), sin( tempangle ), 0 );
     forward = vectornormalize( forward - vectorscale( trace["normal"], vectordot( forward, trace["normal"] ) ) );
-    dropangles = vectorangles( forward );
+    dropangles = vectortoangles( forward );
 
     if ( isdefined( trace["surfacetype"] ) && trace["surfacetype"] == "water" )
     {
@@ -1009,7 +1009,7 @@ bombplanted( destroyedobj, player )
     tempangle = randomfloat( 360 );
     forward = ( cos( tempangle ), sin( tempangle ), 0 );
     forward = vectornormalize( forward - vectorscale( trace["normal"], vectordot( forward, trace["normal"] ) ) );
-    dropangles = vectorangles( forward );
+    dropangles = vectortoangles( forward );
     self dropbombmodel( player, destroyedobj.label );
     destroyedobj maps\mp\gametypes\_gameobjects::allowuse( "none" );
     destroyedobj maps\mp\gametypes\_gameobjects::setvisibleteam( "none" );

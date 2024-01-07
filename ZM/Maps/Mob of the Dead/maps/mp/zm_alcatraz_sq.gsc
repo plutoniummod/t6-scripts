@@ -1265,7 +1265,7 @@ plane_boarding_thread()
     self setorigin( a_nml_teleport_targets[self.n_passenger_index].origin );
     e_poi = getstruct( "plane_crash_poi", "targetname" );
     vec_to_target = e_poi.origin - self.origin;
-    vec_to_target = vectorangles( vec_to_target );
+    vec_to_target = vectortoangles( vec_to_target );
     vec_to_target = ( 0, vec_to_target[1], 0 );
     self setplayerangles( vec_to_target );
     n_shellshock_duration = 5;

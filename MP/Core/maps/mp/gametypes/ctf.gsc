@@ -446,7 +446,7 @@ createflagzone( trigger )
     tracestart = trigger.origin + vectorscale( ( 0, 0, 1 ), 32.0 );
     traceend = trigger.origin + vectorscale( ( 0, 0, -1 ), 32.0 );
     trace = bullettrace( tracestart, traceend, 0, undefined );
-    upangles = vectorangles( trace["normal"] );
+    upangles = vectortoangles( trace["normal"] );
     flagzone.baseeffectforward = anglestoforward( upangles );
     flagzone.baseeffectright = anglestoright( upangles );
     flagzone.baseeffectpos = trace["position"];

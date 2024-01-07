@@ -1615,7 +1615,7 @@ attack_item( item )
     }
 
     self orientmode( "face point", item.origin );
-    self animscripted( self.origin, flat_angle( vectorangles( item.origin - self.origin ) ), melee_anim );
+    self animscripted( self.origin, flat_angle( vectortoangles( item.origin - self.origin ) ), melee_anim );
     self notify( "item_attack" );
 
     if ( isdefined( self.custom_item_dmg ) )

@@ -628,7 +628,7 @@ zombie_trap_death( trap, param )
             break;
         case "centrifuge":
         case "rotating":
-            ang = vectorangles( trap.origin - self.origin );
+            ang = vectortoangles( trap.origin - self.origin );
             direction_vec = vectorscale( anglestoright( ang ), param );
 
             if ( isdefined( self.trap_reaction_func ) )

@@ -165,7 +165,7 @@ shouldrun()
     if ( self.lookaheaddist <= 90 )
         return false;
 
-    angles = vectorangles( self.lookaheaddir );
+    angles = vectortoangles( self.lookaheaddir );
     yaw_desired = absangleclamp180( angles[1] );
     yaw = absangleclamp180( self.angles[1] );
 

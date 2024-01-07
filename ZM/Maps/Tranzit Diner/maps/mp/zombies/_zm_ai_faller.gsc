@@ -94,7 +94,7 @@ do_zombie_fall( spot )
 
     if ( isdefined( target_org ) )
     {
-        anim_ang = vectorangles( target_org - self.origin );
+        anim_ang = vectortoangles( target_org - self.origin );
         self.anchor rotateto( ( 0, anim_ang[1], 0 ), 0.05 );
         self.anchor waittill( "rotatedone" );
     }

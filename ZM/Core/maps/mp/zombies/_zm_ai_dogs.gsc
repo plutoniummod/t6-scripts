@@ -205,7 +205,7 @@ dog_spawn_fx( ai, ent )
     earthquake( 0.5, 0.75, ent.origin, 1000 );
     playrumbleonposition( "explosion_generic", ent.origin );
     playsoundatposition( "zmb_hellhound_spawn", ent.origin );
-    angle = vectorangles( ai.favoriteenemy.origin - ent.origin );
+    angle = vectortoangles( ai.favoriteenemy.origin - ent.origin );
     angles = ( ai.angles[0], angle[1], ai.angles[2] );
     ai forceteleport( ent.origin, angles );
     assert( isdefined( ai ), "Ent isn't defined." );
@@ -560,7 +560,7 @@ dog_behind_audio()
 
         for ( i = 0; i < players.size; i++ )
         {
-            dogangle = angleclamp180( vectorangles( self.origin - players[i].origin )[1] - players[i].angles[1] );
+            dogangle = angleclamp180( vectortoangles( self.origin - players[i].origin )[1] - players[i].angles[1] );
 
             if ( isalive( players[i] ) && !isdefined( players[i].revivetrigger ) )
             {

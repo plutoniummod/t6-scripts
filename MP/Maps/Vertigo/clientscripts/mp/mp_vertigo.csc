@@ -51,7 +51,7 @@ cameratrackplayer( localclientnum )
         if ( isdefined( localplayer ) && isdefined( localplayer.origin ) )
         {
             direction = localplayer.origin - self.origin;
-            angles = vectorangles( direction );
+            angles = vectortoangles( direction );
             flattenedangles = ( pitch, angles[1] + 90, roll );
             self rotateto( flattenedangles, 0.5 );
         }

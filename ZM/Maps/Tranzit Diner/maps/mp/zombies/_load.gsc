@@ -385,7 +385,7 @@ setupexploders()
         if ( isdefined( exploder.target ) )
         {
             org = getent( ent.v["target"], "targetname" ).origin;
-            ent.v["angles"] = vectorangles( org - ent.v["origin"] );
+            ent.v["angles"] = vectortoangles( org - ent.v["origin"] );
         }
 
         if ( exploder.classname == "script_brushmodel" || isdefined( exploder.model ) )

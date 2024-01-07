@@ -360,7 +360,7 @@ fake_launch_claw()
 /#
     self.launching_claw = 1;
     v_claw_origin = self gettagorigin( "tag_claw" );
-    v_claw_angles = vectorangles( self.origin - level.players[0].origin );
+    v_claw_angles = vectortoangles( self.origin - level.players[0].origin );
     self.fx_field = self.fx_field | 256;
     self setclientfield( "mechz_fx", self.fx_field );
     self.m_claw setanim( %ai_zombie_mech_grapple_arm_open_idle, 1, 0, 1 );

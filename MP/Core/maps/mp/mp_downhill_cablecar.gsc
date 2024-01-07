@@ -72,7 +72,7 @@ main()
         grip = spawn( "script_model", cablecar.origin );
 
         if ( cablecar.nextnodeindex >= level.cablecartrack.size - 1 )
-            grip.angles = vectorangles( level.cablecartrack[cablecar.nextnodeindex - 1].origin - level.cablecartrack[cablecar.nextnodeindex].origin );
+            grip.angles = vectortoangles( level.cablecartrack[cablecar.nextnodeindex - 1].origin - level.cablecartrack[cablecar.nextnodeindex].origin );
         else
         {
             if ( is_true( level.cablecartrack[cablecar.nextnodeindex].pause ) )
@@ -80,7 +80,7 @@ main()
             else
                 carnode = level.cablecartrack[cablecar.nextnodeindex];
 
-            grip.angles = vectorangles( carnode.origin - cablecar.origin );
+            grip.angles = vectortoangles( carnode.origin - cablecar.origin );
         }
 
         grip.origin = grip.origin - ( 0, cos( grip.angles[1] ) * -12, 8 );
@@ -344,7 +344,7 @@ cablecarrun( cablecar )
 
             if ( isdefined( currentnode ) && isdefined( nextnode ) )
             {
-                angles = vectorangles( currentnode.origin - nextnode.origin );
+                angles = vectortoangles( currentnode.origin - nextnode.origin );
                 grip.nextangles = angles;
 
                 if ( grip.forceangles == 1 )

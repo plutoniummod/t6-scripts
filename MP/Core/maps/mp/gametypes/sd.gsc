@@ -802,7 +802,7 @@ bombplanted( destroyedobj, player )
         tempangle = randomfloat( 360 );
         forward = ( cos( tempangle ), sin( tempangle ), 0 );
         forward = vectornormalize( forward - vectorscale( trace["normal"], vectordot( forward, trace["normal"] ) ) );
-        dropangles = vectorangles( forward );
+        dropangles = vectortoangles( forward );
         level.sdbombmodel = spawn( "script_model", trace["position"] );
         level.sdbombmodel.angles = dropangles;
         level.sdbombmodel setmodel( "prop_suitcase_bomb" );

@@ -329,7 +329,7 @@ body_moveto_wolf( m_wolf, localclientnum )
     self setanimrestart( %ai_zombie_dreamcatch_rise, 1, 0.2, 1 );
     vec_dir = m_wolf.origin - self.origin;
     vec_dir_scaled = vectorscale( vec_dir, 0.2 );
-    self.m_soul_fx_player.angles = vectorangles( vec_dir );
+    self.m_soul_fx_player.angles = vectortoangles( vec_dir );
     self.m_soul_fx_player linkto( self );
     move_fx = playfxontag( localclientnum, level._effect["soul_charge_start"], self.m_soul_fx_player, "tag_origin" );
     self playsound( 0, "evt_soulsuck_body" );

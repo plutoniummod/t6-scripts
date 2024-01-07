@@ -25,7 +25,7 @@ meleecombat()
 
         if ( isdefined( self.enemy ) )
         {
-            angles = vectorangles( self.enemy.origin - self.origin );
+            angles = vectortoangles( self.enemy.origin - self.origin );
             self orientmode( "face angle", angles[1] );
         }
 

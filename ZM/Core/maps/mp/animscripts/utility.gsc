@@ -58,7 +58,7 @@ debug_turn_print( text, line )
         currentyaw = angleclamp180( self.angles[1] );
         desiredyaw = angleclamp180( self.desiredangle );
         lookaheaddir = self.lookaheaddir;
-        lookaheadangles = vectorangles( lookaheaddir );
+        lookaheadangles = vectortoangles( lookaheaddir );
         lookaheadyaw = angleclamp180( lookaheadangles[1] );
         println( text + " " + gettime() + " cur: " + currentyaw + " look: " + lookaheadyaw + " desired: " + desiredyaw );
     }

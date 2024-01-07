@@ -365,13 +365,13 @@ wallbuy_callback_idx( localclientnum, oldval, newval, bnewent, binitialsnap, fie
                 switch ( level.buildable_wallbuy_weapon_angles[weaponname] )
                 {
                     case 90:
-                        angles = vectorangles( anglestoright( angles ) );
+                        angles = vectortoangles( anglestoright( angles ) );
                         break;
                     case 180:
-                        angles = vectorangles( anglestoforward( angles ) * -1 );
+                        angles = vectortoangles( anglestoforward( angles ) * -1 );
                         break;
                     case 270:
-                        angles = vectorangles( anglestoright( angles ) * -1 );
+                        angles = vectortoangles( anglestoright( angles ) * -1 );
                         break;
                 }
             }

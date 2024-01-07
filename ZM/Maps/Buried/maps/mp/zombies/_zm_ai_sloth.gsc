@@ -3295,7 +3295,7 @@ protect_action()
             {
                 self sloth_check_turn( self.target_zombie.origin, -0.923 );
                 self.anchor.origin = self.origin;
-                self.anchor.angles = flat_angle( vectorangles( self.target_zombie.origin - self.origin ) );
+                self.anchor.angles = flat_angle( vectortoangles( self.target_zombie.origin - self.origin ) );
                 self animscripted( self.anchor.origin, self.anchor.angles, "zm_melee_attack" );
                 maps\mp\animscripts\zm_shared::donotetracks( "melee_attack", ::sloth_melee_notetracks );
                 self.target_zombie = undefined;
@@ -3429,7 +3429,7 @@ lamp_action()
     ground_pos = groundpos( ground_pos );
     self setgoalpos( ground_pos );
     self waittill( "goal" );
-    generator_angle = vectorangles( vec_right );
+    generator_angle = vectortoangles( vec_right );
     self orientmode( "face angle", generator_angle[1] );
     wait 0.75;
     self action_animscripted( "zm_wallbuy_add", "wallbuy_add_anim" );
@@ -3537,7 +3537,7 @@ powerup_cycle_action()
         if ( isdefined( self.active_powerup ) )
         {
             self.anchor.origin = self.origin;
-            self.anchor.angles = flat_angle( vectorangles( powerup_pos - self.origin ) );
+            self.anchor.angles = flat_angle( vectortoangles( powerup_pos - self.origin ) );
             self animscripted( self.anchor.origin, self.anchor.angles, "zm_cycle_powerup" );
             maps\mp\animscripts\zm_shared::donotetracks( "cycle_powerup_anim", ::powerup_change );
         }

@@ -1560,7 +1560,7 @@ get_insta_kill_spawn_point_from_nodes( v_origin, min_radius, max_radius, max_hei
     {
         level.chugabud_spawn_struct.origin = found_node.origin;
         v_dir = vectornormalize( v_origin - level.chugabud_spawn_struct.origin );
-        level.chugabud_spawn_struct.angles = vectorangles( v_dir );
+        level.chugabud_spawn_struct.angles = vectortoangles( v_dir );
         return true;
     }
 

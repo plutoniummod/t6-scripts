@@ -628,7 +628,7 @@ attack_shield( shield )
         attackanim = attackanim + "_crawl";
 
     self orientmode( "face point", shield.origin );
-    self animscripted( self.origin, flat_angle( vectorangles( shield.origin - self.origin ) ), attackanim );
+    self animscripted( self.origin, flat_angle( vectortoangles( shield.origin - self.origin ) ), attackanim );
 
     if ( isdefined( shield.owner.player_shield_apply_damage ) )
         shield.owner [[ shield.owner.player_shield_apply_damage ]]( 100, 0 );

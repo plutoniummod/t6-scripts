@@ -1046,7 +1046,7 @@ script_move_update()
 
     if ( is_player_valid( player ) && isdefined( self.script_move_target_node ) )
     {
-        desired_angles = vectorangles( vectornormalize( player.origin - self.origin ) );
+        desired_angles = vectortoangles( vectornormalize( player.origin - self.origin ) );
         distance_squared = distancesquared( self.origin, self.script_move_target_node.origin );
 
         if ( distance_squared < 24 )

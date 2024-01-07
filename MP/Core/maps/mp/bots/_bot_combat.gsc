@@ -535,7 +535,7 @@ bot_get_aim_error()
 
 bot_update_lookat( origin, frac )
 {
-    angles = vectorangles( origin - self.origin );
+    angles = vectortoangles( origin - self.origin );
     right = anglestoright( angles );
     error = bot_get_aim_error() * ( 1 - frac );
 
@@ -702,7 +702,7 @@ bot_best_enemy()
                     continue;
 
                 origin = self getplayercamerapos();
-                angles = vectorangles( enemy.origin - origin );
+                angles = vectortoangles( enemy.origin - origin );
 
                 if ( angles[0] < 290 )
                 {

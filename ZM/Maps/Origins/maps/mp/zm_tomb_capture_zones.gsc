@@ -1249,7 +1249,7 @@ play_melee_attack_animation()
     if ( isdefined( self.attacking_point ) )
     {
         v_angles = self.attacking_point.v_center_pillar - self.origin;
-        v_angles = vectorangles( ( v_angles[0], v_angles[1], 0 ) );
+        v_angles = vectortoangles( ( v_angles[0], v_angles[1], 0 ) );
     }
 
     self animscripted( self.origin, v_angles, "zm_generator_melee" );

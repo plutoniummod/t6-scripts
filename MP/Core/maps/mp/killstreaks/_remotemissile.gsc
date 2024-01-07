@@ -209,7 +209,7 @@ _fire( lifeid, player, team, killstreak_id )
 
     rocket = magicbullet( "remote_missile_missile_mp", startpos, targetpos, player );
     forceanglevector = vectornormalize( targetpos - startpos );
-    rocket.angles = vectorangles( forceanglevector );
+    rocket.angles = vectortoangles( forceanglevector );
     rocket.targetname = "remote_missile";
     rocket.team = team;
     rocket setteam( team );

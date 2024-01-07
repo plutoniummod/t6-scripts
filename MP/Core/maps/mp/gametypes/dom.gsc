@@ -319,7 +319,7 @@ domflags()
         tracestart = visuals[0].origin + vectorscale( ( 0, 0, 1 ), 32.0 );
         traceend = visuals[0].origin + vectorscale( ( 0, 0, -1 ), 32.0 );
         trace = bullettrace( tracestart, traceend, 0, undefined );
-        upangles = vectorangles( trace["normal"] );
+        upangles = vectortoangles( trace["normal"] );
         domflag.baseeffectforward = anglestoforward( upangles );
         domflag.baseeffectright = anglestoright( upangles );
         domflag.baseeffectpos = trace["position"];

@@ -1993,7 +1993,7 @@ getheliend( drop_origin, drop_direction )
 
 addoffsetontopoint( point, direction, offset )
 {
-    angles = vectorangles( ( direction[0], direction[1], 0 ) );
+    angles = vectortoangles( ( direction[0], direction[1], 0 ) );
     offset_world = rotatepoint( offset, angles );
     return point + offset_world;
 }
@@ -2116,7 +2116,7 @@ helidelivercrate( origin, weaponname, owner, team, killstreak_id, package_conten
     sphere( heli_drop_goal, 10, ( 0, 1, 0 ), 1, 1, 10, 1000 );
 #/
     goalpath = supplydrophelistartpath( heli_drop_goal, ( rear_hatch_offset_local, 0, 0 ) );
-    drop_direction = vectorangles( ( heli_drop_goal[0], heli_drop_goal[1], 0 ) - ( goalpath.start[0], goalpath.start[1], 0 ) );
+    drop_direction = vectortoangles( ( heli_drop_goal[0], heli_drop_goal[1], 0 ) - ( goalpath.start[0], goalpath.start[1], 0 ) );
     chopper = spawn_helicopter( owner, team, goalpath.start, drop_direction, level.suppydrophelicoptervehicleinfo, level.supplydrophelicopterfriendly, killstreak_id );
     chopper setenemymodel( level.supplydrophelicopterenemy );
     chopper setteam( team );

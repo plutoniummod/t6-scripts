@@ -1730,7 +1730,7 @@ zombieattackplayerclinging( player )
         dist_from_pos2 = distance2dsquared( best_attack_pos, self.origin );
         enemy_origin = player _playergetorigin();
         direction = enemy_origin - self.origin;
-        direction_angles = vectorangles( direction );
+        direction_angles = vectortoangles( direction );
         direction_angles = ( direction_angles[0], direction_angles[1], 0 );
 
         if ( dist_from_pos2 > 400 )
@@ -1758,7 +1758,7 @@ zombieattackplayeronturret( player )
         enemy_origin = self.favoriteenemy _playergetorigin();
         dist_from_turret2 = distance2dsquared( enemy_origin, self.origin );
         direction = enemy_origin - self.origin;
-        direction_angles = vectorangles( direction );
+        direction_angles = vectortoangles( direction );
         direction_angles = ( direction_angles[0], direction_angles[1], 0 );
 
         if ( dist_from_turret2 > 1024 )

@@ -1662,7 +1662,7 @@ heli_leave( hardpointtype )
     leavenode = getvalidrandomleavenode( self.origin );
     heli_reset();
     self clearlookatent();
-    exitangles = vectorangles( leavenode.origin - self.origin );
+    exitangles = vectortoangles( leavenode.origin - self.origin );
     self setgoalyaw( exitangles[1] );
     wait 1.5;
 
@@ -2383,7 +2383,7 @@ improved_sightconetrace( helicopter )
 
         half_height = self.origin + vectorscale( ( 0, 0, 1 ), 36.0 );
         tovec = start - half_height;
-        tovec_angles = vectorangles( tovec );
+        tovec_angles = vectortoangles( tovec );
         forward_norm = anglestoforward( tovec_angles );
         side_norm = anglestoright( tovec_angles );
         point[point.size] = self.origin + vectorscale( ( 0, 0, 1 ), 36.0 );

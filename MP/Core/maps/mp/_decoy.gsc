@@ -338,7 +338,7 @@ trackmaindirection()
 {
     self endon( "death" );
     self endon( "done" );
-    self.main_dir = int( vectorangles( ( self.initial_velocity[0], self.initial_velocity[1], 0 ) )[1] );
+    self.main_dir = int( vectortoangles( ( self.initial_velocity[0], self.initial_velocity[1], 0 ) )[1] );
     up = ( 0, 0, 1 );
 
     while ( true )
@@ -347,6 +347,6 @@ trackmaindirection()
         dot = vectordot( normal, up );
 
         if ( dot < 0.5 && dot > -0.5 )
-            self.main_dir = int( vectorangles( ( normal[0], normal[1], 0 ) )[1] );
+            self.main_dir = int( vectortoangles( ( normal[0], normal[1], 0 ) )[1] );
     }
 }

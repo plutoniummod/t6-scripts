@@ -88,7 +88,7 @@ fire_spread_shots( str_weapon )
     wait_network_frame();
     wait_network_frame();
     v_fwd = self getweaponforwarddir();
-    fire_angles = vectorangles( v_fwd );
+    fire_angles = vectortoangles( v_fwd );
     fire_origin = self getweaponmuzzlepoint();
     trace = bullettrace( fire_origin, fire_origin + v_fwd * 100.0, 0, undefined );
 
@@ -102,7 +102,7 @@ fire_spread_shots( str_weapon )
     wait_network_frame();
     wait_network_frame();
     v_fwd = self getweaponforwarddir();
-    fire_angles = vectorangles( v_fwd );
+    fire_angles = vectortoangles( v_fwd );
     fire_origin = self getweaponmuzzlepoint();
     v_right_angles = ( fire_angles[0], fire_angles[1] + 15, fire_angles[2] );
     v_right = anglestoforward( v_right_angles );
@@ -188,7 +188,7 @@ fire_additional_shots( str_weapon )
 
         if ( isdefined( self ) && self getcurrentweapon() == "staff_fire_upgraded_zm" )
         {
-            v_player_angles = vectorangles( self getweaponforwarddir() );
+            v_player_angles = vectortoangles( self getweaponforwarddir() );
             n_player_pitch = v_player_angles[0];
             n_player_pitch = n_player_pitch + 5 * i;
             n_player_yaw = v_player_angles[1] + randomfloatrange( -15.0, 15.0 );

@@ -241,7 +241,7 @@ menu_fx_creation()
 finish_creating_entity( ent )
 {
 /#
-    ent.v["angles"] = vectorangles( ent.v["origin"] + vectorscale( ( 0, 0, 1 ), 100.0 ) - ent.v["origin"] );
+    ent.v["angles"] = vectortoangles( ent.v["origin"] + vectorscale( ( 0, 0, 1 ), 100.0 ) - ent.v["origin"] );
     assert( isdefined( ent ) );
     ent post_entity_creation_function();
     clear_entity_selection();

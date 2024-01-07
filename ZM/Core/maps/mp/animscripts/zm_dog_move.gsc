@@ -146,7 +146,7 @@ startmovetracklookahead()
 
     for ( i = 0; i < 2; i++ )
     {
-        lookaheadangle = vectorangles( self.lookaheaddir );
+        lookaheadangle = vectortoangles( self.lookaheaddir );
         self set_orient_mode( "face angle", lookaheadangle );
     }
 }
@@ -240,7 +240,7 @@ need_to_run()
     if ( yaw > run_yaw )
         return false;
 
-    pitch = angleclamp180( vectorangles( self.origin - self.enemy.origin )[0] );
+    pitch = angleclamp180( vectortoangles( self.origin - self.enemy.origin )[0] );
 
     if ( abs( pitch ) > run_pitch )
         return false;

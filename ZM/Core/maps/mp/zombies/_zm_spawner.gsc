@@ -2471,7 +2471,7 @@ jitter_enemies_bad_breadcrumbs( start_crumb )
     {
         current_crumb = self.favoriteenemy.zombie_breadcrumbs[index];
         next_crumb = self.favoriteenemy.zombie_breadcrumbs[index + 1];
-        angles = vectorangles( current_crumb - next_crumb );
+        angles = vectortoangles( current_crumb - next_crumb );
         right = anglestoright( angles );
         left = anglestoright( angles + vectorscale( ( 0, 1, 0 ), 180.0 ) );
         dist_pos = current_crumb + vectorscale( right, trace_distance );
@@ -2754,7 +2754,7 @@ do_zombie_spawn()
 
             if ( isdefined( target_org ) )
             {
-                anim_ang = vectorangles( target_org - self.origin );
+                anim_ang = vectortoangles( target_org - self.origin );
                 self.anchor rotateto( ( 0, anim_ang[1], 0 ), 0.05 );
                 self.anchor waittill( "rotatedone" );
             }
@@ -2798,7 +2798,7 @@ do_zombie_rise( spot )
 
     if ( isdefined( target_org ) )
     {
-        anim_ang = vectorangles( target_org - self.origin );
+        anim_ang = vectortoangles( target_org - self.origin );
         self.anchor rotateto( ( 0, anim_ang[1], 0 ), 0.05 );
         self.anchor waittill( "rotatedone" );
     }

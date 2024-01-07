@@ -53,7 +53,7 @@ watch_staff_lightning_fired()
 
         if ( str_weapon == "staff_lightning_upgraded2_zm" || str_weapon == "staff_lightning_upgraded3_zm" )
         {
-            fire_angles = vectorangles( self getweaponforwarddir() );
+            fire_angles = vectortoangles( self getweaponforwarddir() );
             fire_origin = self getweaponmuzzlepoint();
             self thread staff_lightning_position_source( fire_origin, fire_angles, str_weapon );
         }

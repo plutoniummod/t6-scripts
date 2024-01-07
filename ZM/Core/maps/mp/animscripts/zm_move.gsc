@@ -245,7 +245,7 @@ facelookaheadforabit()
 {
     self endon( "death" );
     self endon( "killanimscript" );
-    lookaheadangles = vectorangles( self.lookaheaddir );
+    lookaheadangles = vectortoangles( self.lookaheaddir );
     self orientmode( "face angle", lookaheadangles[1] );
     wait 0.2;
     self animmode( "normal", 0 );

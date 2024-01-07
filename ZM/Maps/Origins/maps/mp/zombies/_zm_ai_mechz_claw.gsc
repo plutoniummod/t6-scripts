@@ -161,7 +161,7 @@ claw_grapple()
         return;
 
     v_claw_origin = self gettagorigin( "tag_claw" );
-    v_claw_angles = vectorangles( self.origin - self.favoriteenemy.origin );
+    v_claw_angles = vectortoangles( self.origin - self.favoriteenemy.origin );
     self.fx_field = self.fx_field | 256;
     self setclientfield( "mechz_fx", self.fx_field );
     self.m_claw setanim( %ai_zombie_mech_grapple_arm_open_idle, 1, 0, 1 );
@@ -205,7 +205,7 @@ claw_grapple()
                     self.e_grabbed = player;
                     self.e_grabbed setclientfieldtoplayer( "mechz_grab", 1 );
                     self.e_grabbed playerlinktodelta( self.m_claw, "tag_attach_player" );
-                    self.e_grabbed setplayerangles( vectorangles( self.origin - self.e_grabbed.origin ) );
+                    self.e_grabbed setplayerangles( vectortoangles( self.origin - self.e_grabbed.origin ) );
                     self.e_grabbed playsound( "zmb_ai_mechz_claw_grab" );
                     self.e_grabbed setstance( "stand" );
                     self.e_grabbed allowcrouch( 0 );

@@ -519,7 +519,7 @@ player_linkto_remote( remote )
 player_center_view( org )
 {
     wait 0.05;
-    lookvec = vectorangles( level.uavrig.origin - self geteye() );
+    lookvec = vectortoangles( level.uavrig.origin - self geteye() );
     self setplayerangles( lookvec );
 }
 
@@ -537,7 +537,7 @@ player_aim_think( remote )
         endpoint = origin + forward * 15000;
         trace = bullettrace( origin, endpoint, 0, remote );
         remote.fx.origin = trace["position"];
-        remote.fx.angles = vectorangles( trace["normal"] );
+        remote.fx.angles = vectortoangles( trace["normal"] );
 
         if ( isdefined( self.pegasus_influencer ) )
         {

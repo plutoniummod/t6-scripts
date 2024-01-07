@@ -289,7 +289,7 @@ lookatexplosion( bomb )
 {
     while ( isdefined( self ) && isdefined( bomb ) )
     {
-        angles = vectorangles( vectornormalize( bomb.origin - self.origin ) );
+        angles = vectortoangles( vectornormalize( bomb.origin - self.origin ) );
         self.angles = ( max( angles[0], 15 ), angles[1], angles[2] );
         wait 0.05;
     }

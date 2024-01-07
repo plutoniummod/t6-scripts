@@ -407,7 +407,7 @@ debug_reflection_buttons()
 
         level.debug_reflectionobject unlink();
         level.debug_reflectionobject.origin = players[0] geteye() + vectorscale( anglestoforward( players[0] getplayerangles() ), offset );
-        temp_angles = vectorangles( players[0].origin - level.debug_reflectionobject.origin );
+        temp_angles = vectortoangles( players[0].origin - level.debug_reflectionobject.origin );
         level.debug_reflectionobject.angles = ( 0, temp_angles[1], 0 );
         lastoffset = offset;
         line( level.debug_reflectionobject.origin, getreflectionorigin( level.debug_reflectionobject.origin ), ( 1, 0, 0 ), 1, 1 );

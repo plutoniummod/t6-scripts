@@ -2245,7 +2245,7 @@ show_all_weapon_buys( player, cost, ammo_cost, is_grenade )
 
 weapon_show( player )
 {
-    player_angles = vectorangles( player.origin - self.origin );
+    player_angles = vectortoangles( player.origin - self.origin );
     player_yaw = player_angles[1];
     weapon_yaw = self.angles[1];
 

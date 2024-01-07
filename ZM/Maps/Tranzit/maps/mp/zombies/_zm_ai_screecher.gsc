@@ -609,7 +609,7 @@ screecher_fly_to_player( player )
         }
 
         facing_vec = goal_pos - self.anchor.origin;
-        facing_angles = vectorangles( facing_vec );
+        facing_angles = vectortoangles( facing_vec );
         dist = length( facing_vec );
 
         if ( !isdefined( dist_update ) )

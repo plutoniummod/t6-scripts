@@ -151,13 +151,13 @@ getyawtoenemy()
 
 getyaw( org )
 {
-    angles = vectorangles( org - self.origin );
+    angles = vectortoangles( org - self.origin );
     return angles[1];
 }
 
 getyaw2d( org )
 {
-    angles = vectorangles( ( org[0], org[1], 0 ) - ( self.origin[0], self.origin[1], 0 ) );
+    angles = vectortoangles( ( org[0], org[1], 0 ) - ( self.origin[0], self.origin[1], 0 ) );
     return angles[1];
 }
 
@@ -209,7 +209,7 @@ absyawtoangles( angles )
 
 getyawfromorigin( org, start )
 {
-    angles = vectorangles( org - start );
+    angles = vectortoangles( org - start );
     return angles[1];
 }
 
@@ -554,7 +554,7 @@ calculatenodeoffset( right, forward, baseoffset )
 
 checkpitchvisibility( frompoint, topoint, atnode )
 {
-    pitch = angleclamp180( vectorangles( topoint - frompoint )[0] );
+    pitch = angleclamp180( vectortoangles( topoint - frompoint )[0] );
 
     if ( abs( pitch ) > 45 )
     {
@@ -1045,7 +1045,7 @@ debug_turn_print( text, line )
         currentyaw = angleclamp180( self.angles[1] );
         desiredyaw = angleclamp180( self.desiredangle );
         lookaheaddir = self.lookaheaddir;
-        lookaheadangles = vectorangles( lookaheaddir );
+        lookaheadangles = vectortoangles( lookaheaddir );
         lookaheadyaw = angleclamp180( lookaheadangles[1] );
         println( text + " " + gettime() + " cur: " + currentyaw + " look: " + lookaheadyaw + " desired: " + desiredyaw );
     }

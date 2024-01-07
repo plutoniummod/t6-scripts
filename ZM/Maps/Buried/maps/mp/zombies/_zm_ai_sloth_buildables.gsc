@@ -510,7 +510,7 @@ fetch_buildable_action( item )
         if ( isdefined( self.turbine ) )
         {
             self orientmode( "face point", self.turbine.origin );
-            self animscripted( self.origin, flat_angle( vectorangles( self.turbine.origin - self.origin ) ), "zm_kick_equipment" );
+            self animscripted( self.origin, flat_angle( vectortoangles( self.turbine.origin - self.origin ) ), "zm_kick_equipment" );
             maps\mp\animscripts\zm_shared::donotetracks( "kick_equipment_anim", ::destroy_item, self.turbine );
             self orientmode( "face default" );
             self animscripted( self.origin, self.angles, "zm_idle_equipment" );
@@ -747,7 +747,7 @@ wallbuy_action()
         if ( !skip_piece )
         {
             self setgoalpos( self.origin );
-            chalk_angle = vectorangles( vec_right );
+            chalk_angle = vectortoangles( vec_right );
             self sloth_face_object( stub, "angle", chalk_angle[1], 0.9 );
 
             if ( is_true( stub.built ) )

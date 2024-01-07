@@ -113,7 +113,7 @@ fake_kill_player( n_start_pos )
     corpse_trace = physicstrace( trace_start, trace_end, vectorscale( ( -1, -1, 0 ), 10.0 ), vectorscale( ( 1, 1, 0 ), 10.0 ), self.e_afterlife_corpse );
     self.e_afterlife_corpse.origin = corpse_trace["position"];
     vec_to_target = self.e_afterlife_corpse.origin - self.origin;
-    vec_to_target = vectorangles( vec_to_target );
+    vec_to_target = vectortoangles( vec_to_target );
     vec_to_target = ( 0, vec_to_target[1], 0 );
     self setplayerangles( vec_to_target );
     self notify( "al_all_setup" );

@@ -212,7 +212,7 @@ crane_move( claw, desired, z_dist )
     claw linkto( self.roller.wheel );
     goal = ( desired.origin[0], desired.origin[1], self.origin[2] );
     dir = vectornormalize( goal - self.origin );
-    angles = vectorangles( dir );
+    angles = vectortoangles( dir );
     angles = ( self.angles[0], angles[1] + 90, self.angles[2] );
     yawdiff = absangleclamp360( self.angles[1] - angles[1] );
     time = yawdiff / 25;

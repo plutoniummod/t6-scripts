@@ -1613,7 +1613,7 @@ bot_update_launcher()
             continue;
 
         origin = self getplayercamerapos();
-        angles = vectorangles( enemy.origin - origin );
+        angles = vectortoangles( enemy.origin - origin );
 
         if ( angles[0] < 290 )
             continue;
@@ -2391,7 +2391,7 @@ devgui_bot_spawn( team )
     direction_vec = ( direction_vec[0] * scale, direction_vec[1] * scale, direction_vec[2] * scale );
     trace = bullettrace( eye, eye + direction_vec, 0, undefined );
     direction_vec = player.origin - trace["position"];
-    direction = vectorangles( direction_vec );
+    direction = vectortoangles( direction_vec );
     bot = addtestclient();
 
     if ( !isdefined( bot ) )

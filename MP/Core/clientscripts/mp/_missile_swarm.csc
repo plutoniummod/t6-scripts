@@ -85,7 +85,7 @@ projectile_move_think( localclientnum, player, start, end )
     wait( randomfloatrange( 0.5, 1 ) );
     playfxontag( localclientnum, level._effect["swarm_tail"], self, "tag_origin" );
     direction = end - self.origin;
-    self rotateto( vectorangles( direction ), 0.05 );
+    self rotateto( vectortoangles( direction ), 0.05 );
     self waittill( "rotatedone" );
     self moveto( end, randomfloatrange( 12, 18 ) );
     self waittill( "movedone" );

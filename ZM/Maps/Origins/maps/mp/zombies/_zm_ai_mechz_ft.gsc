@@ -155,7 +155,7 @@ mechz_flamethrower_tank_sweep()
     while ( true )
     {
         self stopanimscripted();
-        self.angles = vectorangles( level.vh_tank.origin - self.origin );
+        self.angles = vectortoangles( level.vh_tank.origin - self.origin );
         self animscripted( self.origin, self.angles, "zm_flamethrower_sweep_up" );
         self maps\mp\animscripts\zm_shared::donotetracks( "flamethrower_anim" );
 

@@ -52,7 +52,7 @@ exploderfx( num, fxid, fxpos, waittime, fxpos2, firefx, firefxdelay, firefxsound
         ent.v["angles"] = ( 0, 0, 0 );
 
         if ( isdefined( fxpos2 ) )
-            ent.v["angles"] = vectorangles( fxpos2 - fxpos );
+            ent.v["angles"] = vectortoangles( fxpos2 - fxpos );
 
         ent.v["delay"] = waittime;
         ent.v["exploder"] = num;
@@ -61,7 +61,7 @@ exploderfx( num, fxid, fxpos, waittime, fxpos2, firefx, firefxdelay, firefxsound
 
     fx = spawn( "script_origin", ( 0, 0, 0 ) );
     fx.origin = fxpos;
-    fx.angles = vectorangles( fxpos2 - fxpos );
+    fx.angles = vectortoangles( fxpos2 - fxpos );
     fx.script_exploder = num;
     fx.script_fxid = fxid;
     fx.script_delay = waittime;
@@ -99,7 +99,7 @@ loopfx( fxid, fxpos, waittime, fxpos2, fxstart, fxstop, timeout )
     ent.v["angles"] = ( 0, 0, 0 );
 
     if ( isdefined( fxpos2 ) )
-        ent.v["angles"] = vectorangles( fxpos2 - fxpos );
+        ent.v["angles"] = vectortoangles( fxpos2 - fxpos );
 
     ent.v["delay"] = waittime;
 }

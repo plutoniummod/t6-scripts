@@ -697,7 +697,7 @@ setdropped()
         {
             forward = ( cos( tempangle ), sin( tempangle ), 0 );
             forward = vectornormalize( forward - vectorscale( angletrace["normal"], vectordot( forward, angletrace["normal"] ) ) );
-            dropangles = vectorangles( forward );
+            dropangles = vectortoangles( forward );
         }
         else
             dropangles = ( 0, tempangle, 0 );

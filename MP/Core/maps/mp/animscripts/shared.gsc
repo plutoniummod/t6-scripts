@@ -173,7 +173,7 @@ trackloop()
         else
         {
             vectortoshootpos = shootpos - selfshootatpos;
-            anglestoshootpos = vectorangles( vectortoshootpos );
+            anglestoshootpos = vectortoangles( vectortoshootpos );
             pitchdelta = 360 - anglestoshootpos[0];
             pitchdelta = angleclamp180( pitchdelta + pitchadd );
             yawdelta = self.angles[1] - anglestoshootpos[1];

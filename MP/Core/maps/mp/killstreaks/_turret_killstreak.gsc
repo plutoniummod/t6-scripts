@@ -1532,7 +1532,7 @@ doesmicrowaveturretaffectentity( entity )
     if ( dot < level.microwave_turret_cone_dot )
         return false;
 
-    pitchdifference = int( abs( vectorangles( entdirection )[0] - self.angles[0] ) ) % 360;
+    pitchdifference = int( abs( vectortoangles( entdirection )[0] - self.angles[0] ) ) % 360;
 
     if ( pitchdifference > 15 && pitchdifference < 345 )
         return false;
@@ -1694,7 +1694,7 @@ doesmicrowaveturretaffectdog( entity )
     if ( dot < level.microwave_turret_cone_dot )
         return false;
 
-    pitchdifference = int( abs( vectorangles( entdirection )[0] - self.angles[0] ) ) % 360;
+    pitchdifference = int( abs( vectortoangles( entdirection )[0] - self.angles[0] ) ) % 360;
 
     if ( pitchdifference > 15 && pitchdifference < 345 )
         return false;

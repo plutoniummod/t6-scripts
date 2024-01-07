@@ -3825,7 +3825,7 @@ spawn_failed( spawn )
 
 getyaw( org )
 {
-    angles = vectorangles( org - self.origin );
+    angles = vectortoangles( org - self.origin );
     return angles[1];
 }
 
@@ -4245,7 +4245,7 @@ is_player_looking_at( origin, dot, do_trace, ignore_ent )
         do_trace = 1;
 
     eye = self get_eye();
-    delta_vec = anglestoforward( vectorangles( origin - eye ) );
+    delta_vec = anglestoforward( vectortoangles( origin - eye ) );
     view_vec = anglestoforward( self getplayerangles() );
     new_dot = vectordot( delta_vec, view_vec );
 

@@ -554,8 +554,8 @@ whirlwind_attract_anim( v_attract_point, b_move_fast )
     if ( is_true( self._whirlwind_attract_anim ) )
         return;
 
-    v_angles_to_source = vectorangles( v_attract_point - self.origin );
-    v_source_to_target = vectorangles( self.origin - v_attract_point );
+    v_angles_to_source = vectortoangles( v_attract_point - self.origin );
+    v_source_to_target = vectortoangles( self.origin - v_attract_point );
     self.a.runblendtime = 0.9;
 
     if ( self.has_legs )

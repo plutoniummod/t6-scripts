@@ -475,7 +475,7 @@ melee_weapon_think( weapon_name, cost, flourish_fn, vo_dialog_id, flourish_weapo
 
 melee_weapon_show( player )
 {
-    player_angles = vectorangles( player.origin - self.origin );
+    player_angles = vectortoangles( player.origin - self.origin );
     player_yaw = player_angles[1];
     weapon_yaw = self.angles[1];
     yaw_diff = angleclamp180( player_yaw - weapon_yaw );

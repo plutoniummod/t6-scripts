@@ -155,7 +155,7 @@ common_move_to_box( box, range, ignore_open, asd_name )
     }
     else
     {
-        angles = vectorangles( vec_right );
+        angles = vectortoangles( vec_right );
         self.anchor.origin = self.origin;
         self.anchor.angles = angles;
         self orientmode( "face angle", angles[1] );

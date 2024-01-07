@@ -2713,7 +2713,7 @@ handle_camera()
             {
                 originoffset = vectorscale( level.cameravec, -1 );
                 temp_offset = originoffset + vectorscale( ( 0, 0, -1 ), 60.0 );
-                anglesoffset = vectorangles( temp_offset );
+                anglesoffset = vectortoangles( temp_offset );
 
                 if ( level.camera_prev_snapto == level.camera_snapto )
                 {
@@ -2784,7 +2784,7 @@ handle_camera()
                 {
                     originoffset = vectorscale( level.cameravec, -1 );
                     temp_offset = originoffset + vectorscale( ( 0, 0, -1 ), 60.0 );
-                    anglesoffset = vectorangles( temp_offset );
+                    anglesoffset = vectortoangles( temp_offset );
 
                     if ( !isdefined( model ) )
                     {
