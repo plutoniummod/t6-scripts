@@ -449,16 +449,12 @@ bot_get_converge_time()
     {
         case "easy":
             return 3500.0;
-            break;
         case "normal":
             return 2000;
-            break;
         case "hard":
             return 1500.0;
-            break;
         case "fu":
             return 100.0;
-            break;
     }
 
     return 2000;
@@ -472,16 +468,12 @@ bot_get_converge_rate()
     {
         case "easy":
             return 2;
-            break;
         case "normal":
             return 4;
-            break;
         case "hard":
             return 5;
-            break;
         case "fu":
             return 7;
-            break;
     }
 
     return 4;
@@ -495,16 +487,12 @@ bot_get_melee_range_sq()
     {
         case "easy":
             return 1600;
-            break;
         case "normal":
             return 4900;
-            break;
         case "hard":
             return 4900;
-            break;
         case "fu":
             return 4900;
-            break;
     }
 
     return 4900;
@@ -518,16 +506,12 @@ bot_get_aim_error()
     {
         case "easy":
             return 30;
-            break;
         case "normal":
             return 20;
-            break;
         case "hard":
             return 15;
-            break;
         case "fu":
             return 2;
-            break;
     }
 
     return 20;

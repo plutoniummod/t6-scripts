@@ -142,9 +142,7 @@ assertproperplacement()
                     println( "^1" + i + ". " + player.name + ": " + player.score );
                 }
 
-/#
                 assertmsg( "Placement array was not properly sorted" );
-#/
                 break;
             }
         }

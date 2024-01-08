@@ -874,7 +874,6 @@ geticonforcrate()
             break;
         default:
             return undefined;
-            break;
     }
 
     return icon + "_drop";

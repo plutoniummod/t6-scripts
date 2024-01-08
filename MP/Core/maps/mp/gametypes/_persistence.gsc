@@ -258,7 +258,6 @@ ispartygamemode()
         case "sas":
         case "shrp":
             return true;
-            break;
     }
 
     return false;

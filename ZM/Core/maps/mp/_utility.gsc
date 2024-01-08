@@ -57,9 +57,7 @@ error( msg )
 
     if ( getdvar( #"_id_0F49A52C" ) != "1" )
     {
-/#
         assertmsg( "This is a forced error - attach the log file" );
-#/
     }
 #/
 }
