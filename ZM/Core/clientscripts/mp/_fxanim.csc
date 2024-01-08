@@ -89,7 +89,6 @@ _fxanim_modifier( str_scene )
             break;
         default:
             return false;
-            break;
     }
 
     return true;

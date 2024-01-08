@@ -17,9 +17,7 @@ fx_validate( fxid, origin )
 
     if ( !isdefined( level._effect[fxid] ) )
     {
-/#
         assertmsg( "FX Not Precached: '" + fxid + "' at: " + origin );
-#/
     }
 #/
 }
