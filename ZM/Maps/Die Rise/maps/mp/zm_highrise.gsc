@@ -537,7 +537,7 @@ watch_lightpower_devgui()
 /#
     while ( true )
     {
-        powercmd = getdvar( #"_id_0A84512A" );
+        powercmd = getdvar( #"zombie_devgui_hrpowerlighting" );
 
         if ( isdefined( powercmd ) && powercmd != "" )
         {

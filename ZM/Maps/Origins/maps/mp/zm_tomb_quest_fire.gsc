@@ -195,7 +195,7 @@ is_church_occupied()
 
 sacrifice_puzzle_zombie_killed( einflictor, attacker, idamage, smeansofdeath, sweapon, vdir, shitloc, psoffsettime )
 {
-    if ( !( isdefined( level.craftables_crafted["elemental_staff_fire"] ) && level.craftables_crafted["elemental_staff_fire"] ) && getdvarint( #"_id_FA81816F" ) <= 0 )
+    if ( !( isdefined( level.craftables_crafted["elemental_staff_fire"] ) && level.craftables_crafted["elemental_staff_fire"] ) && getdvarint( #"zombie_cheat" ) <= 0 )
         return;
 
     if ( isdefined( self.is_mechz ) && self.is_mechz )

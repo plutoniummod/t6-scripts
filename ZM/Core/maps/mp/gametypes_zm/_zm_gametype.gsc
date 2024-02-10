@@ -1413,7 +1413,7 @@ onspawnplayer( predictedspawn )
     self.score = self maps\mp\gametypes_zm\_globallogic_score::getpersstat( "score" );
     self.pers["participation"] = 0;
 /#
-    if ( getdvarint( #"_id_FA81816F" ) >= 1 )
+    if ( getdvarint( #"zombie_cheat" ) >= 1 )
         self.score = 100000;
 #/
     self.score_total = self.score;

@@ -56,9 +56,9 @@ watch_chamber_wall()
 /#
     while ( true )
     {
-        if ( getdvarint( #"_id_763A3046" ) != 5 )
+        if ( getdvarint( #"chamber_wall" ) != 5 )
         {
-            chamber_change_walls( getdvarint( #"_id_763A3046" ) );
+            chamber_change_walls( getdvarint( #"chamber_wall" ) );
             setdvarint( "chamber_wall", 5 );
         }
 

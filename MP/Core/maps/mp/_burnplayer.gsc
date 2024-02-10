@@ -394,10 +394,10 @@ donapalmgrounddamage( attacker, inflictor, mod )
 
     if ( isdefined( level.groundburntime ) )
     {
-        if ( getdvar( #"_id_6EC13261" ) == "" )
+        if ( getdvar( #"scr_groundBurnTime" ) == "" )
             waittime = level.groundburntime;
         else
-            waittime = getdvarfloat( #"_id_6EC13261" );
+            waittime = getdvarfloat( #"scr_groundBurnTime" );
     }
     else
         waittime = 100;
@@ -407,10 +407,10 @@ donapalmgrounddamage( attacker, inflictor, mod )
 
     if ( isdefined( level.napalmgrounddamage ) )
     {
-        if ( getdvar( #"_id_3FFA6673" ) == "" )
+        if ( getdvar( #"scr_napalmGroundDamage" ) == "" )
             napalmgrounddamage = level.napalmgrounddamage;
         else
-            napalmgrounddamage = getdvarfloat( #"_id_3FFA6673" );
+            napalmgrounddamage = getdvarfloat( #"scr_napalmGroundDamage" );
 
         while ( isdefined( self ) && isdefined( inflictor ) && self depthofplayerinwater() < 1 && waittime > 0 )
         {

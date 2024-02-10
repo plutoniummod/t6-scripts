@@ -605,7 +605,7 @@ ambientelementthread()
             timer = randomfloatrange( self.spawnmin, self.spawnmax );
             wait( timer );
 /#
-            if ( getdvarint( #"_id_0AEB127D" ) > 0 )
+            if ( getdvarint( #"debug_audio" ) > 0 )
                 iprintlnbold( "AP : playing2d: " + self.alias );
 #/
             playsound( 0, self.alias );
@@ -635,7 +635,7 @@ ambientelementthread()
                 setfakeentorg( 0, level.ambientpackagescriptoriginpool[index].org, pos );
                 level.ambientpackagescriptoriginpool[index].soundid = playsound( 0, self.alias, pos );
 /#
-                if ( getdvarint( #"_id_0AEB127D" ) > 0 )
+                if ( getdvarint( #"debug_audio" ) > 0 )
                 {
                     if ( level.ambientpackagescriptoriginpool[index].soundid == -1 )
                         col = vectorscale( ( 1, 0, 0 ), 0.8 );
@@ -668,7 +668,7 @@ getscriptoriginpoolindex()
     level.ambientnummissedsounds++;
     level.ambientnumseqmissedsounds++;
 /#
-    if ( getdvarint( #"_id_0AEB127D" ) > 0 )
+    if ( getdvarint( #"debug_audio" ) > 0 )
         iprintlnbold( "No free origins " + level.ambientnumseqmissedsounds + " ( " + level.ambientnummissedsounds + " )" );
 #/
     return -1;

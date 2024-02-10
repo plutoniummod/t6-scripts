@@ -120,16 +120,16 @@ create_class_exclusion_list()
     currentdvar = 0;
     level.itemexclusions = [];
 
-    while ( getdvarint( #"_id_32DF55CC" + currentdvar ) )
+    while ( getdvarint( #"item_exclusion_" + currentdvar ) )
     {
-        level.itemexclusions[currentdvar] = getdvarint( #"_id_32DF55CC" + currentdvar );
+        level.itemexclusions[currentdvar] = getdvarint( #"item_exclusion_" + currentdvar );
         currentdvar++;
     }
 
     level.attachmentexclusions = [];
 
-    for ( currentdvar = 0; getdvar( #"_id_7F6F03E6" + currentdvar ) != ""; currentdvar++ )
-        level.attachmentexclusions[currentdvar] = getdvar( #"_id_7F6F03E6" + currentdvar );
+    for ( currentdvar = 0; getdvar( #"attachment_exclusion_" + currentdvar ) != ""; currentdvar++ )
+        level.attachmentexclusions[currentdvar] = getdvar( #"attachment_exclusion_" + currentdvar );
 }
 
 is_item_excluded( itemindex )
@@ -340,8 +340,8 @@ getkillstreakindex( class, killstreaknum )
     killstreaknum++;
     killstreakstring = "killstreak" + killstreaknum;
 
-    if ( getdvarint( #"_id_826EB3B9" ) == 2 )
-        return getdvarint( #"_id_E1D3321F" + killstreakstring );
+    if ( getdvarint( #"custom_killstreak_mode" ) == 2 )
+        return getdvarint( #"custom_" + killstreakstring );
     else
         return self getloadoutitem( class, killstreakstring );
 }
@@ -933,7 +933,7 @@ cac_modified_vehicle_damage( victim, attacker, damage, meansofdeath, weapon, inf
     {
         final_damage = damage * ( 100 + level.cac_bulletdamage_data ) / 100;
 /#
-        if ( getdvarint( #"_id_5ABA6445" ) )
+        if ( getdvarint( #"scr_perkdebug" ) )
             println( "Perk/> " + attacker.name + "'s bullet damage did extra damage to vehicle" );
 #/
     }
@@ -941,7 +941,7 @@ cac_modified_vehicle_damage( victim, attacker, damage, meansofdeath, weapon, inf
     {
         final_damage = damage * ( 100 + level.cac_explosivedamage_data ) / 100;
 /#
-        if ( getdvarint( #"_id_5ABA6445" ) )
+        if ( getdvarint( #"scr_perkdebug" ) )
             println( "Perk/> " + attacker.name + "'s explosive damage did extra damage to vehicle" );
 #/
     }
@@ -949,7 +949,7 @@ cac_modified_vehicle_damage( victim, attacker, damage, meansofdeath, weapon, inf
         final_damage = old_damage;
 
 /#
-    if ( getdvarint( #"_id_5ABA6445" ) )
+    if ( getdvarint( #"scr_perkdebug" ) )
         println( "Perk/> Damage Factor: " + final_damage / old_damage + " - Pre Damage: " + old_damage + " - Post Damage: " + final_damage );
 #/
     return int( final_damage );
@@ -973,7 +973,7 @@ cac_modified_damage( victim, attacker, damage, mod, weapon, inflictor, hitloc )
 /#
     debug = 0;
 
-    if ( getdvarint( #"_id_5ABA6445" ) )
+    if ( getdvarint( #"scr_perkdebug" ) )
         debug = 1;
 #/
     final_damage = damage;

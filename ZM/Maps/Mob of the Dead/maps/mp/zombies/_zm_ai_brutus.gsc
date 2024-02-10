@@ -902,7 +902,7 @@ watch_devgui_brutus()
 /#
     while ( true )
     {
-        if ( getdvar( #"_id_5E6F2932" ) == "on" )
+        if ( getdvar( #"spawn_Brutus" ) == "on" )
         {
             level notify( "spawn_brutus", 1 );
             setdvar( "spawn_Brutus", "off" );

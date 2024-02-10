@@ -434,7 +434,7 @@ watch_devgui_ee_main()
 /#
     while ( true )
     {
-        if ( getdvar( #"_id_A6E41BC7" ) == "on" )
+        if ( getdvar( #"ee_main_progress" ) == "on" )
         {
             setdvar( "ee_main_progress", "off" );
             level.ee_debug = 1;
@@ -490,14 +490,14 @@ watch_devgui_ee_main()
             }
         }
 
-        if ( getdvar( #"_id_6F30FD20" ) == "on" )
+        if ( getdvar( #"ee_main_end_level" ) == "on" )
         {
             setdvar( "ee_main_end_level", "off" );
             level setclientfield( "ee_sam_portal", 2 );
             complete_sidequest();
         }
 
-        if ( getdvar( #"_id_6E33C5DD" ) == "on" )
+        if ( getdvar( #"ee_upgrade_beacon" ) == "on" )
         {
             setdvar( "ee_upgrade_beacon", "off" );
             setdvar( "force_three_robot_round", "on" );

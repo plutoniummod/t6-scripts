@@ -93,7 +93,7 @@ waitforfaceeventcomplete( localclientnum )
     self endon( "stop_face_anims" );
     self endon( "new_face_event" );
 /#
-    if ( getdvarint( #"_id_B5C61264" ) != 0 )
+    if ( getdvarint( #"cg_debugFace" ) != 0 )
         println( "Trying to get animation for state " + self.face_curr_event + " # " + self.face_curr_event_idx );
 #/
     assert( isdefined( level.facestates[self.face_curr_event]["animation"][self.face_curr_event_idx] ) );
@@ -103,7 +103,7 @@ waitforfaceeventcomplete( localclientnum )
         self thread waitforfaceeventrepeat( self.face_timer );
 
 /#
-    if ( getdvarint( #"_id_B5C61264" ) != 0 )
+    if ( getdvarint( #"cg_debugFace" ) != 0 )
         println( "faceTime is " + self.face_timer + "\\n" );
 #/
 
@@ -113,13 +113,13 @@ waitforfaceeventcomplete( localclientnum )
     waitrealtime( self.face_timer );
     self notify( "face_timer_expired" );
 /#
-    if ( getdvarint( #"_id_B5C61264" ) != 0 )
+    if ( getdvarint( #"cg_debugFace" ) != 0 )
         println( "face_timer_expired" );
 #/
     self.face_curr_event = undefined;
     self.face_curr_event_idx = undefined;
 /#
-    if ( getdvarint( #"_id_B5C61264" ) != 0 )
+    if ( getdvarint( #"cg_debugFace" ) != 0 )
         println( "waiting on dobj" );
 #/
     self waittill_dobj( localclientnum );
@@ -128,7 +128,7 @@ waitforfaceeventcomplete( localclientnum )
         return;
 
 /#
-    if ( getdvarint( #"_id_B5C61264" ) != 0 )
+    if ( getdvarint( #"cg_debugFace" ) != 0 )
         println( "setAnimKnob Back To base state " + self.face_curr_base );
 #/
 
@@ -154,7 +154,7 @@ processfaceevents( localclientnum )
     numanims = level.facestates[state]["animation"].size;
     self.face_curr_base_idx = randomint( numanims );
 /#
-    if ( getdvarint( #"_id_B5C61264" ) != 0 )
+    if ( getdvarint( #"cg_debugFace" ) != 0 )
         println( "setAnimKnobProcessFaceEvents" );
 #/
     self waittill_dobj( localclientnum );
@@ -181,7 +181,7 @@ processfaceevents( localclientnum )
     while ( true )
     {
 /#
-        if ( getdvarint( #"_id_B5C61264" ) != 0 )
+        if ( getdvarint( #"cg_debugFace" ) != 0 )
         {
             if ( !isdefined( state ) )
                 println( "state undefined\\n" );
@@ -215,14 +215,14 @@ processfaceevents( localclientnum )
             numanims = level.facestates[state]["animation"].size;
 
 /#
-        if ( getdvarint( #"_id_B5C61264" ) != 0 )
+        if ( getdvarint( #"cg_debugFace" ) != 0 )
             println( "Found " + numanims + " anims for state " + state );
 #/
 
         if ( isdefined( self.face_disable ) && self.face_disable == 1 )
         {
 /#
-            if ( getdvarint( #"_id_B5C61264" ) != 0 )
+            if ( getdvarint( #"cg_debugFace" ) != 0 )
                 println( "Disabling face anims" );
 #/
             setfacestate( "face_disabled" );
@@ -234,7 +234,7 @@ processfaceevents( localclientnum )
         }
 
 /#
-        if ( getdvarint( #"_id_B5C61264" ) != 0 )
+        if ( getdvarint( #"cg_debugFace" ) != 0 )
         {
             if ( !isdefined( state ) )
                 println( "state undefined\\n" );
@@ -266,7 +266,7 @@ processfaceevents( localclientnum )
         if ( level.facestates[state]["statetype"] == "exitstate" )
         {
 /#
-            if ( getdvarint( #"_id_B5C61264" ) != 0 )
+            if ( getdvarint( #"cg_debugFace" ) != 0 )
                 println( "Exitstate found, returning, anim tree:" + level.face_anim_tree );
 #/
             self waittill_dobj( localclientnum );
@@ -275,7 +275,7 @@ processfaceevents( localclientnum )
                 return;
 
 /#
-            if ( getdvarint( #"_id_B5C61264" ) != 0 )
+            if ( getdvarint( #"cg_debugFace" ) != 0 )
                 println( "setAnimKnob286" );
 #/
             self setanimknob( level.facestates[state]["animation"][randomint( numanims )], 1.0, 0.1, 1.0 );
@@ -291,14 +291,14 @@ processfaceevents( localclientnum )
                 self.face_curr_base = state;
                 self.face_curr_base_idx = randomint( numanims );
 /#
-                if ( getdvarint( #"_id_B5C61264" ) != 0 )
+                if ( getdvarint( #"cg_debugFace" ) != 0 )
                     println( "New base face anim state " + self.face_curr_base + " anim # " + self.face_curr_base_idx );
 #/
 
                 if ( !isdefined( self.face_curr_event ) )
                 {
 /#
-                    if ( getdvarint( #"_id_B5C61264" ) != 0 )
+                    if ( getdvarint( #"cg_debugFace" ) != 0 )
                         println( "trying to play animation for state " + self.face_curr_base + " w/ index " + self.face_curr_base_idx );
 #/
                     self waittill_dobj( localclientnum );
@@ -317,7 +317,7 @@ processfaceevents( localclientnum )
                 self.face_curr_event = state;
                 self.face_curr_event_idx = randomint( numanims );
 /#
-                if ( getdvarint( #"_id_B5C61264" ) != 0 )
+                if ( getdvarint( #"cg_debugFace" ) != 0 )
                     println( "New face anim event " + self.face_curr_event + " anim # " + self.face_curr_event_idx );
 #/
                 self waittill_dobj( localclientnum );
@@ -352,7 +352,7 @@ showstate( state )
 
     while ( true )
     {
-        if ( getdvarint( #"_id_B5C61264" ) != 0 )
+        if ( getdvarint( #"cg_debugFace" ) != 0 )
         {
             if ( isdefined( self.face_state ) && isdefined( self.origin ) )
             {

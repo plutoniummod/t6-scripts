@@ -374,7 +374,7 @@ dropweaponfordeath( attacker, sweapon, smeansofdeath )
     if ( !isdefined( weapon ) )
     {
 /#
-        if ( getdvar( #"_id_08F7FC88" ) == "1" )
+        if ( getdvar( #"scr_dropdebug" ) == "1" )
             println( "didn't drop weapon: not defined" );
 #/
         return;
@@ -383,7 +383,7 @@ dropweaponfordeath( attacker, sweapon, smeansofdeath )
     if ( weapon == "none" )
     {
 /#
-        if ( getdvar( #"_id_08F7FC88" ) == "1" )
+        if ( getdvar( #"scr_dropdebug" ) == "1" )
             println( "didn't drop weapon: weapon == none" );
 #/
         return;
@@ -392,7 +392,7 @@ dropweaponfordeath( attacker, sweapon, smeansofdeath )
     if ( !self hasweapon( weapon ) )
     {
 /#
-        if ( getdvar( #"_id_08F7FC88" ) == "1" )
+        if ( getdvar( #"scr_dropdebug" ) == "1" )
             println( "didn't drop weapon: don't have it anymore (" + weapon + ")" );
 #/
         return;
@@ -401,7 +401,7 @@ dropweaponfordeath( attacker, sweapon, smeansofdeath )
     if ( !self anyammoforweaponmodes( weapon ) )
     {
 /#
-        if ( getdvar( #"_id_08F7FC88" ) == "1" )
+        if ( getdvar( #"scr_dropdebug" ) == "1" )
             println( "didn't drop weapon: no ammo for weapon modes" );
 #/
         return;
@@ -420,7 +420,7 @@ dropweaponfordeath( attacker, sweapon, smeansofdeath )
     if ( !clip_and_stock_ammo )
     {
 /#
-        if ( getdvar( #"_id_08F7FC88" ) == "1" )
+        if ( getdvar( #"scr_dropdebug" ) == "1" )
             println( "didn't drop weapon: no ammo" );
 #/
         return;
@@ -442,7 +442,7 @@ dropweaponfordeath( attacker, sweapon, smeansofdeath )
     }
 
 /#
-    if ( getdvar( #"_id_08F7FC88" ) == "1" )
+    if ( getdvar( #"scr_dropdebug" ) == "1" )
         println( "dropped weapon: " + weapon );
 #/
     droplimitedweapon( weapon, self, item );
@@ -461,7 +461,7 @@ dropweapontoground( weapon )
     if ( !isdefined( weapon ) )
     {
 /#
-        if ( getdvar( #"_id_08F7FC88" ) == "1" )
+        if ( getdvar( #"scr_dropdebug" ) == "1" )
             println( "didn't drop weapon: not defined" );
 #/
         return;
@@ -470,7 +470,7 @@ dropweapontoground( weapon )
     if ( weapon == "none" )
     {
 /#
-        if ( getdvar( #"_id_08F7FC88" ) == "1" )
+        if ( getdvar( #"scr_dropdebug" ) == "1" )
             println( "didn't drop weapon: weapon == none" );
 #/
         return;
@@ -479,7 +479,7 @@ dropweapontoground( weapon )
     if ( !self hasweapon( weapon ) )
     {
 /#
-        if ( getdvar( #"_id_08F7FC88" ) == "1" )
+        if ( getdvar( #"scr_dropdebug" ) == "1" )
             println( "didn't drop weapon: don't have it anymore (" + weapon + ")" );
 #/
         return;
@@ -488,7 +488,7 @@ dropweapontoground( weapon )
     if ( !self anyammoforweaponmodes( weapon ) )
     {
 /#
-        if ( getdvar( #"_id_08F7FC88" ) == "1" )
+        if ( getdvar( #"scr_dropdebug" ) == "1" )
             println( "didn't drop weapon: no ammo for weapon modes" );
 #/
 
@@ -518,7 +518,7 @@ dropweapontoground( weapon )
     if ( !clip_and_stock_ammo )
     {
 /#
-        if ( getdvar( #"_id_08F7FC88" ) == "1" )
+        if ( getdvar( #"scr_dropdebug" ) == "1" )
             println( "didn't drop weapon: no ammo" );
 #/
         return;
@@ -531,7 +531,7 @@ dropweapontoground( weapon )
 
     item = self dropitem( weapon );
 /#
-    if ( getdvar( #"_id_08F7FC88" ) == "1" )
+    if ( getdvar( #"scr_dropdebug" ) == "1" )
         println( "dropped weapon: " + weapon );
 #/
     droplimitedweapon( weapon, self, item );
@@ -566,7 +566,7 @@ watchpickup()
     weapname = self getitemweaponname();
     self waittill( "trigger", player, droppeditem );
 /#
-    if ( getdvar( #"_id_08F7FC88" ) == "1" )
+    if ( getdvar( #"scr_dropdebug" ) == "1" )
         println( "picked up weapon: " + weapname + ", " + isdefined( self.ownersattacker ) );
 #/
     assert( isdefined( player.tookweaponfrom ) );
@@ -1294,7 +1294,7 @@ weapondamagetrace( from, to, startradius, ignore )
     midpos = from + ( dir[0] * startradius, dir[1] * startradius, dir[2] * startradius );
     trace = bullettrace( midpos, to, 0, ignore );
 
-    if ( getdvarint( #"_id_0A1C40B1" ) != 0 )
+    if ( getdvarint( #"scr_damage_debug" ) != 0 )
     {
         if ( trace["fraction"] == 1 )
             thread debugline( midpos, to, ( 1, 1, 1 ) );

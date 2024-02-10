@@ -189,7 +189,7 @@ avogadro_spawning_logic()
         return;
 
 /#
-    if ( getdvarint( #"_id_FA81816F" ) == 2 || getdvarint( #"_id_FA81816F" ) >= 4 )
+    if ( getdvarint( #"zombie_cheat" ) == 2 || getdvarint( #"zombie_cheat" ) >= 4 )
         return;
 #/
     spawner = getent( "avogadro_zombie_spawner", "script_noteworthy" );
@@ -307,7 +307,7 @@ phase_from_bus()
 wait_idle()
 {
 /#
-    if ( getdvarint( #"_id_CFA4158E" ) )
+    if ( getdvarint( #"scr_avogadro_ignore_power" ) )
     {
         self.state = "wait_for_player";
         self unlink();
@@ -343,7 +343,7 @@ player_look()
     }
 
 /#
-    if ( getdvarint( #"_id_CFA4158E" ) )
+    if ( getdvarint( #"scr_avogadro_ignore_power" ) )
     {
         avogadro_print( "player_look ignored" );
         self avogadro_exit( "chamber" );
@@ -737,7 +737,7 @@ cloud_update_fx()
                 region_str = region[4];
 
 /#
-            idx = getdvarint( #"_id_FD251E42" );
+            idx = getdvarint( #"scr_avogadro_region" );
 
             if ( idx >= 0 )
                 region_str = region[idx];
@@ -1526,7 +1526,7 @@ avogadro_debug_axis()
 avogadro_print( str )
 {
 /#
-    if ( getdvarint( #"_id_92514885" ) )
+    if ( getdvarint( #"scr_avogadro_debug" ) )
     {
         iprintln( "avogadro: " + str );
 

@@ -73,7 +73,7 @@ meleecombat()
                 }
 
 /#
-                if ( getdvarint( #"_id_7F11F572" ) )
+                if ( getdvarint( #"scr_zombie_melee_dist_debug" ) )
                 {
                     if ( self.enemy.health < oldhealth )
                     {

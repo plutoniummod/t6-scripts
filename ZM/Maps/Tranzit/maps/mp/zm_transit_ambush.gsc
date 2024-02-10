@@ -36,7 +36,7 @@ shouldstartambushround()
     if ( level.ambushpercentageperstop == 100 )
         return true;
 
-    if ( getdvarint( #"_id_FA81816F" ) == 2 )
+    if ( getdvarint( #"zombie_cheat" ) == 2 )
         return false;
 #/
 

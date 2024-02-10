@@ -319,7 +319,7 @@ cheat_complete_stage()
 
     while ( true )
     {
-        if ( getdvar( #"_id_1186DB2D" ) != "" )
+        if ( getdvar( #"cheat_sq" ) != "" )
         {
             if ( isdefined( level._last_stage_started ) )
             {
@@ -1109,7 +1109,7 @@ sq_metagame()
     players = get_players();
     player_count = players.size;
 /#
-    if ( getdvarint( #"_id_FA81816F" ) >= 1 )
+    if ( getdvarint( #"zombie_cheat" ) >= 1 )
         player_count = 4;
 #/
 
@@ -1124,10 +1124,10 @@ sq_metagame()
             }
 
 /#
-            if ( getdvarint( #"_id_FA81816F" ) >= 1 )
+            if ( getdvarint( #"zombie_cheat" ) >= 1 )
             {
-                n_stat_value = getdvarint( #"_id_FA81816F" );
-                n_stat_nav_value = getdvarint( #"_id_FA81816F" );
+                n_stat_value = getdvarint( #"zombie_cheat" );
+                n_stat_nav_value = getdvarint( #"zombie_cheat" );
             }
 #/
 

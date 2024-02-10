@@ -325,7 +325,7 @@ cardetonatewaiter( vehicle )
         wait 0.05;
 
     watcher thread maps\mp\gametypes\_weaponobjects::waitanddetonate( vehicle, 0 );
-    self thread maps\mp\gametypes\_hud::fadetoblackforxsec( getdvarfloat( #"_id_CDE26736" ), getdvarfloat( #"_id_AFCAD5CD" ), getdvarfloat( #"_id_88490433" ), getdvarfloat( #"_id_A925AA4E" ) );
+    self thread maps\mp\gametypes\_hud::fadetoblackforxsec( getdvarfloat( #"scr_rcbomb_fadeOut_delay" ), getdvarfloat( #"scr_rcbomb_fadeOut_timeIn" ), getdvarfloat( #"scr_rcbomb_fadeOut_timeBlack" ), getdvarfloat( #"scr_rcbomb_fadeOut_timeOut" ) );
 }
 
 jumpwaiter( vehicle )
@@ -373,7 +373,7 @@ gameendwatcher( vehicle )
     level waittill( "game_ended" );
     watcher = maps\mp\gametypes\_weaponobjects::getweaponobjectwatcher( "rcbomb" );
     watcher thread maps\mp\gametypes\_weaponobjects::waitanddetonate( vehicle, 0 );
-    self thread maps\mp\gametypes\_hud::fadetoblackforxsec( getdvarfloat( #"_id_CDE26736" ), getdvarfloat( #"_id_AFCAD5CD" ), getdvarfloat( #"_id_88490433" ), getdvarfloat( #"_id_A925AA4E" ) );
+    self thread maps\mp\gametypes\_hud::fadetoblackforxsec( getdvarfloat( #"scr_rcbomb_fadeOut_delay" ), getdvarfloat( #"scr_rcbomb_fadeOut_timeIn" ), getdvarfloat( #"scr_rcbomb_fadeOut_timeBlack" ), getdvarfloat( #"scr_rcbomb_fadeOut_timeOut" ) );
 }
 
 exitcarwaiter( vehicle )
@@ -751,7 +751,7 @@ rcbomb_force_explode()
 rcbomb_debug_box( origin, mins, maxs, color )
 {
 /#
-    debug_rcbomb = getdvar( #"_id_8EAE5CA0" );
+    debug_rcbomb = getdvar( #"debug_rcbomb" );
 
     if ( debug_rcbomb == "1" )
         box( origin, mins, maxs, 0, color, 1, 1, 300 );
@@ -761,7 +761,7 @@ rcbomb_debug_box( origin, mins, maxs, color )
 rcbomb_debug_line( start, end, color )
 {
 /#
-    debug_rcbomb = getdvar( #"_id_8EAE5CA0" );
+    debug_rcbomb = getdvar( #"debug_rcbomb" );
 
     if ( debug_rcbomb == "1" )
         line( start, end, color, 1, 1, 300 );

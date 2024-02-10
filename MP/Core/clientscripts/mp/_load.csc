@@ -102,7 +102,7 @@ main()
     clientscripts\mp\_utility_code::struct_class_init();
     clientscripts\mp\_utility::registersystem( "levelNotify", ::levelnotifyhandler );
     level.createfx_enabled = getdvar( #"createfx" ) != "";
-    level.createfx_disable_fx = getdvarint( #"_id_C9B177D6" ) == 1;
+    level.createfx_disable_fx = getdvarint( #"disable_fx" ) == 1;
     setdvar( "tu6_player_shallowWaterHeight", "0.0" );
     setdvar( "tu7_cg_deathCamAboveWater", "0" );
     setdvar( "tu12_cg_vehicleCamAboveWater", "0" );

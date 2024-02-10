@@ -1118,7 +1118,7 @@ watch_escapepod_devgui()
 /#
     while ( true )
     {
-        resetcmd = getdvar( #"_id_C0F9913E" );
+        resetcmd = getdvar( #"zombie_devgui_hrescapepodreset" );
 
         if ( isdefined( resetcmd ) && resetcmd != "" )
         {

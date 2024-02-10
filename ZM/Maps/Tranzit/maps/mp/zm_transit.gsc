@@ -896,7 +896,7 @@ revive_trigger_should_ignore_sight_checks( player_down )
 
 revive_trigger_spawn_override_link( player_down )
 {
-    radius = getdvarint( #"_id_A17166B0" );
+    radius = getdvarint( #"revive_trigger_radius" );
     player_down.revivetrigger = spawn( "trigger_radius", ( 0, 0, 0 ), 0, radius, radius );
     player_down.revivetrigger sethintstring( "" );
     player_down.revivetrigger setcursorhint( "HINT_NOICON" );
@@ -1056,7 +1056,7 @@ initcharacterstartindex()
 {
     level.characterstartindex = 0;
 /#
-    forcecharacter = getdvarint( #"_id_FEE4CB69" );
+    forcecharacter = getdvarint( #"zombie_transit_character_force" );
 
     if ( forcecharacter != 0 )
         level.characterstartindex = forcecharacter - 1;
@@ -2427,7 +2427,7 @@ zombie_transit_devgui( cmd )
             guy forceteleport( trace["position"], player.angles + vectorscale( ( 0, 1, 0 ), 180.0 ) );
             break;
         case "test_attach":
-            attach_name = getdvar( #"_id_61FFB6CE" );
+            attach_name = getdvar( #"zombie_bus_debug_attach" );
             opening = level.the_bus maps\mp\zm_transit_openings::busgetopeningfortag( attach_name );
             jump = level.the_bus maps\mp\zm_transit_openings::_busgetjumptagfrombindtag( attach_name );
 
@@ -2479,9 +2479,9 @@ zombie_transit_devgui( cmd )
             break;
         case "gas":
             if ( cmd_strings[1] == "add" )
-                level.the_bus maps\mp\zm_transit_bus::busgasadd( getdvarint( #"_id_69C4D2C1" ) );
+                level.the_bus maps\mp\zm_transit_bus::busgasadd( getdvarint( #"zombie_bus_gas_amount" ) );
             else if ( cmd_strings[1] == "remove" )
-                level.the_bus maps\mp\zm_transit_bus::busgasremove( getdvarint( #"_id_69C4D2C1" ) );
+                level.the_bus maps\mp\zm_transit_bus::busgasremove( getdvarint( #"zombie_bus_gas_amount" ) );
 
             break;
         case "force_bus_to_leave":

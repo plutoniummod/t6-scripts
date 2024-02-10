@@ -162,7 +162,7 @@ global_fx( targetname, fxname, fxfile, delay, soundalias )
         return;
 
 /#
-    if ( getdvarint( #"_id_113D4769" ) > 0 )
+    if ( getdvarint( #"debug_fx" ) > 0 )
         println( "*** Client : _global_FX - creating " + ents.size + " globalFX " + fxname );
 #/
 

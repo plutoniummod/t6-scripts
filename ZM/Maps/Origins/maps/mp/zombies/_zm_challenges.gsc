@@ -728,7 +728,7 @@ watch_devgui_award_challenges()
 /#
     while ( true )
     {
-        n_award_challenge = getdvarint( #"_id_AF0D5C36" );
+        n_award_challenge = getdvarint( #"award_challenge" );
 
         if ( n_award_challenge != 0 )
         {

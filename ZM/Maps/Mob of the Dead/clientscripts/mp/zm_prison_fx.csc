@@ -103,7 +103,7 @@ main()
     precache_util_fx();
     precache_createfx_fx();
     precache_fxanim_props();
-    disablefx = getdvarint( #"_id_C9B177D6" );
+    disablefx = getdvarint( #"disable_fx" );
 
     if ( !isdefined( disablefx ) || disablefx <= 0 )
         precache_scripted_fx();

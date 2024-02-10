@@ -203,9 +203,9 @@ need_to_run()
 {
     run_dist_squared = 147456;
 
-    if ( getdvar( #"_id_C7E63BA4" ) != "" )
+    if ( getdvar( #"scr_dog_run_distance" ) != "" )
     {
-        dist = getdvarint( #"_id_C7E63BA4" );
+        dist = getdvarint( #"scr_dog_run_distance" );
         run_dist_squared = dist * dist;
     }
 

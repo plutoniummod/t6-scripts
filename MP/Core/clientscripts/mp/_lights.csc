@@ -204,7 +204,7 @@ mixer_get_ramp()
 debug_draw_mixer()
 {
 /#
-    if ( getdvar( #"_id_D77F221A" ) != "" )
+    if ( getdvar( #"debug_light_mixers" ) != "" )
     {
         left_pos = self.origin - ( 24 / 2, 0, 0 );
         right_pos = self.origin + ( 24 / 2, 0, 0 );

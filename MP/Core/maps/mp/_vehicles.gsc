@@ -448,9 +448,9 @@ player_update_vehicle_hud( show, vehicle )
     else if ( isdefined( self.vehiclehud ) )
         self.vehiclehud destroyelem();
 
-    if ( getdvar( #"_id_480B1A1D" ) != "" )
+    if ( getdvar( #"scr_vehicle_healthnumbers" ) != "" )
     {
-        if ( getdvarint( #"_id_480B1A1D" ) != 0 )
+        if ( getdvarint( #"scr_vehicle_healthnumbers" ) != 0 )
         {
             if ( show )
             {

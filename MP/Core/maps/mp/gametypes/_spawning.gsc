@@ -20,10 +20,10 @@ init()
 
     level thread onplayerconnect();
 
-    if ( getdvar( #"_id_AD6C19FE" ) == "" )
+    if ( getdvar( #"scr_spawn_visibility_check_max" ) == "" )
         level.spawn_visibility_check_max = 20;
     else
-        level.spawn_visibility_check_max = getdvarint( #"_id_AD6C19FE" );
+        level.spawn_visibility_check_max = getdvarint( #"scr_spawn_visibility_check_max" );
 
     level.spawnprotectiontime = getgametypesetting( "spawnprotectiontime" );
 /#

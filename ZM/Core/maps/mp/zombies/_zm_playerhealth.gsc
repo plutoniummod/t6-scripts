@@ -131,10 +131,10 @@ playerhealthregen()
 
     self.bolthit = 0;
 
-    if ( getdvar( #"_id_FCECE67E" ) == "" )
+    if ( getdvar( #"scr_playerInvulTimeScale" ) == "" )
         setdvar( "scr_playerInvulTimeScale", 1.0 );
 
-    playerinvultimescale = getdvarfloat( #"_id_FCECE67E" );
+    playerinvultimescale = getdvarfloat( #"scr_playerInvulTimeScale" );
 
     for (;;)
     {
@@ -227,7 +227,7 @@ playerhealthregen()
                 level.player_deathinvulnerabletimeout = 0;
 
             if ( level.player_deathinvulnerabletimeout < gettime() )
-                level.player_deathinvulnerabletimeout = gettime() + getdvarint( #"_id_4E44E32D" );
+                level.player_deathinvulnerabletimeout = gettime() + getdvarint( #"player_deathInvulnerableTime" );
 #/
         }
 

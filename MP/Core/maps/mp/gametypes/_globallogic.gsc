@@ -192,8 +192,8 @@ registerdvars()
         setdvar( "scr_vehicle_damage_scalar", "1" );
 
     level.vehicledamagescalar = getdvarfloat( #"scr_vehicle_damage_scalar" );
-    level.fire_audio_repeat_duration = getdvarint( #"_id_917E4521" );
-    level.fire_audio_random_max_duration = getdvarint( #"_id_C2DCBC26" );
+    level.fire_audio_repeat_duration = getdvarint( #"fire_audio_repeat_duration" );
+    level.fire_audio_random_max_duration = getdvarint( #"fire_audio_random_max_duration" );
     teamname = getcustomteamname( level.teamindex["allies"] );
 
     if ( isdefined( teamname ) )
@@ -2687,7 +2687,7 @@ callback_startgametype()
     if ( getdvar( #"createfx" ) == "" )
         [[ level.onstartgametype ]]();
 
-    if ( getdvarint( #"_id_826EB3B9" ) == 1 )
+    if ( getdvarint( #"custom_killstreak_mode" ) == 1 )
         level.killstreaksenabled = 0;
 
 /#

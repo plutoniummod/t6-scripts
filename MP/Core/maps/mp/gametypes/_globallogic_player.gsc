@@ -2051,7 +2051,7 @@ callback_playerkilled( einflictor, attacker, idamage, smeansofdeath, sweapon, vd
     maps\mp\gametypes\_globallogic_utils::waitfortimeornotifies( defaultplayerdeathwatchtime );
     self notify( "death_delay_finished" );
 /#
-    if ( getdvarint( #"_id_C1849218" ) != 0 )
+    if ( getdvarint( #"scr_forcekillcam" ) != 0 )
     {
         dokillcam = 1;
 

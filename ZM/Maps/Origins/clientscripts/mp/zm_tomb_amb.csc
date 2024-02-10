@@ -305,7 +305,7 @@ init()
     init_heli_sound_values( "qrdrone", "turbine_moving", 30, 0.0, 0.9, 20, 0.9, 1.1 );
     init_heli_sound_values( "qrdrone", "turn", 5, 0, 1, 1, 1, 1 );
 /#
-    if ( getdvar( #"_id_21D60E03" ) == "" )
+    if ( getdvar( #"helisounds" ) == "" )
         setdvar( "helisounds", "" );
 
     level thread command_parser();
@@ -327,7 +327,7 @@ init_heli_sound_values( heli_type, part_type, max_speed_vol, min_vol, max_vol, m
     level.helisoundvalues[heli_type][part_type].pitchmin = min_pitch;
     level.helisoundvalues[heli_type][part_type].pitchmax = max_pitch;
 /#
-    if ( getdvarint( #"_id_55AD9BED" ) > 0 )
+    if ( getdvarint( #"debug_heli" ) > 0 )
     {
         println( "Init Heli Sounds heli_type: " + heli_type );
         println( "Init Heli Sounds part_type: " + part_type );
@@ -346,7 +346,7 @@ command_parser()
 /#
     while ( true )
     {
-        command = getdvar( #"_id_21D60E03" );
+        command = getdvar( #"helisounds" );
 
         if ( command != "" )
         {
@@ -579,7 +579,7 @@ heli_idle_run_transition( heli_type, heli_part, wait_time, updown )
         {
             heli_bone.run setloopstate( heli_bone.run.alias, run_volume, run_pitch, 1, 0.15 );
 /#
-            if ( getdvarint( #"_id_55AD9BED" ) > 0 )
+            if ( getdvarint( #"debug_heli" ) > 0 )
             {
                 println( "^5a self.cur_speed = " + self.cur_speed );
                 println( "^5a run_pitch . " + run_pitch );

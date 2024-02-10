@@ -5,7 +5,7 @@
 
 main()
 {
-    if ( getdvar( #"_id_7C9A91DF" ) == "" )
+    if ( getdvar( #"mgTurret" ) == "" )
         setdvar( "mgTurret", "off" );
 
     level.magic_distance = 24;

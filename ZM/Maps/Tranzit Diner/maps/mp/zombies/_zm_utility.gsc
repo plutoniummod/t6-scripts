@@ -4221,7 +4221,7 @@ get_eye()
     {
         linked_ent = self getlinkedent();
 
-        if ( isdefined( linked_ent ) && getdvarint( #"_id_5AEFD7E9" ) > 0 )
+        if ( isdefined( linked_ent ) && getdvarint( #"cg_cameraUseTagCamera" ) > 0 )
         {
             camera = linked_ent gettagorigin( "tag_camera" );
 

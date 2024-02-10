@@ -263,9 +263,9 @@ createfxlogic()
         if ( !ismp() )
         {
             playerpos = [];
-            playerpos[0] = getdvarint( #"_id_274F266C" );
-            playerpos[1] = getdvarint( #"_id_274F266D" );
-            playerpos[2] = getdvarint( #"_id_274F266E" );
+            playerpos[0] = getdvarint( #"createfx_playerpos_x" );
+            playerpos[1] = getdvarint( #"createfx_playerpos_y" );
+            playerpos[2] = getdvarint( #"createfx_playerpos_z" );
             player = get_players()[0];
             player setorigin( ( playerpos[0], playerpos[1], playerpos[2] ) );
         }

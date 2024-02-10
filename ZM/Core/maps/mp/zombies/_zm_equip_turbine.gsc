@@ -712,7 +712,7 @@ debugturbine( radius )
 
     while ( isdefined( self.buildableturbine ) )
     {
-        if ( getdvarint( #"_id_EB512CB7" ) )
+        if ( getdvarint( #"zombie_equipment_health" ) )
         {
             color = ( 0, 1, 0 );
             text = "";

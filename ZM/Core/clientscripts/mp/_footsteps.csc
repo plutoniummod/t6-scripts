@@ -153,7 +153,7 @@ do_foot_effect( client_num, ground_type, foot_pos, on_fire )
         ground_type = "fire";
 
 /#
-    if ( getdvarint( #"_id_49A098B5" ) )
+    if ( getdvarint( #"debug_surface_type" ) )
         print3d( foot_pos, ground_type, ( 0.5, 0.5, 0.8 ), 1, 3, 30 );
 #/
 

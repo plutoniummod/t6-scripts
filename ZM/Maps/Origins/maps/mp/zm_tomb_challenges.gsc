@@ -28,7 +28,7 @@ tomb_challenges_add_stats()
     n_points_spent = 30000;
     n_boxes_filled = 4;
 /#
-    if ( getdvarint( #"_id_FA81816F" ) > 0 )
+    if ( getdvarint( #"zombie_cheat" ) > 0 )
     {
         n_kills = 1;
         n_zone_caps = 2;
@@ -67,7 +67,7 @@ box_footprint_think()
     self.n_souls_absorbed = 0;
     n_souls_required = 30;
 /#
-    if ( getdvarint( #"_id_FA81816F" ) > 0 )
+    if ( getdvarint( #"zombie_cheat" ) > 0 )
         n_souls_required = 10;
 #/
     self useanimtree( #animtree );

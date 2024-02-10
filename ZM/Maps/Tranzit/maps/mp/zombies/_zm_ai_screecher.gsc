@@ -62,7 +62,7 @@ screecher_spawning_logic()
         return;
 
 /#
-    if ( getdvarint( #"_id_FA81816F" ) == 2 || getdvarint( #"_id_FA81816F" ) >= 4 )
+    if ( getdvarint( #"zombie_cheat" ) == 2 || getdvarint( #"zombie_cheat" ) >= 4 )
         return;
 #/
 
@@ -1108,7 +1108,7 @@ screecher_melee_damage( player )
         player thread do_player_general_vox( "general", "screecher_cut" );
 
 /#
-    if ( getdvarint( #"_id_6A65F83E" ) )
+    if ( getdvarint( #"scr_screecher_ignore_score" ) )
         self.player_score = 30;
 #/
     self screecher_check_score();
@@ -1161,7 +1161,7 @@ screecher_check_score()
     else if ( self.screecher_score >= 15 )
     {
 /#
-        if ( getdvarint( #"_id_6A65F83E" ) )
+        if ( getdvarint( #"scr_screecher_ignore_score" ) )
             return false;
 #/
         player = self.linked_ent;
@@ -1218,7 +1218,7 @@ screecher_debug_axis()
 screecher_print( str )
 {
 /#
-    if ( getdvarint( #"_id_72C3A9C6" ) )
+    if ( getdvarint( #"scr_screecher_debug" ) )
     {
         iprintln( "screecher: " + str + "\\n" );
 

@@ -1240,7 +1240,7 @@ watch_elevator_devgui( name, global )
 /#
     while ( true )
     {
-        stopcmd = getdvar( #"_id_7844BB8F" );
+        stopcmd = getdvar( #"zombie_devgui_hrelevatorstop" );
 
         if ( isdefined( stopcmd ) && stopcmd == name )
         {
@@ -1252,8 +1252,8 @@ watch_elevator_devgui( name, global )
             setdvar( "zombie_devgui_hrelevatorstop", "" );
         }
 
-        gofloor = getdvarint( #"_id_7FEC8C2B" );
-        gocmd = getdvar( #"_id_8693373F" );
+        gofloor = getdvarint( #"zombie_devgui_hrelevatorfloor" );
+        gocmd = getdvar( #"zombie_devgui_hrelevatorgo" );
 
         if ( isdefined( gocmd ) && gocmd == name )
         {

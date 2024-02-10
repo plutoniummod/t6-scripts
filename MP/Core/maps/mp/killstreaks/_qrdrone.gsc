@@ -1229,7 +1229,7 @@ qrdrone_detonatewaiter()
 
     self setclientfield( "qrdrone_state", 3 );
     watcher thread maps\mp\gametypes\_weaponobjects::waitanddetonate( self, 0 );
-    self.owner thread maps\mp\gametypes\_hud::fadetoblackforxsec( getdvarfloat( #"_id_CDE26736" ), getdvarfloat( #"_id_AFCAD5CD" ), getdvarfloat( #"_id_88490433" ), getdvarfloat( #"_id_A925AA4E" ) );
+    self.owner thread maps\mp\gametypes\_hud::fadetoblackforxsec( getdvarfloat( #"scr_rcbomb_fadeOut_delay" ), getdvarfloat( #"scr_rcbomb_fadeOut_timeIn" ), getdvarfloat( #"scr_rcbomb_fadeOut_timeBlack" ), getdvarfloat( #"scr_rcbomb_fadeOut_timeOut" ) );
 }
 
 qrdrone_fireguns( qrdrone )

@@ -306,7 +306,7 @@ play_ambient_mechz_vocals()
 enable_mechz_rounds()
 {
 /#
-    if ( getdvarint( #"_id_FA81816F" ) >= 2 )
+    if ( getdvarint( #"zombie_cheat" ) >= 2 )
         return;
 #/
     level.mechz_rounds_enabled = 1;

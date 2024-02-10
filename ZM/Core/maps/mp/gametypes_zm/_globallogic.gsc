@@ -164,8 +164,8 @@ registerdvars()
         setdvar( "scr_vehicle_damage_scalar", "1" );
 
     level.vehicledamagescalar = getdvarfloat( #"scr_vehicle_damage_scalar" );
-    level.fire_audio_repeat_duration = getdvarint( #"_id_917E4521" );
-    level.fire_audio_random_max_duration = getdvarint( #"_id_C2DCBC26" );
+    level.fire_audio_repeat_duration = getdvarint( #"fire_audio_repeat_duration" );
+    level.fire_audio_random_max_duration = getdvarint( #"fire_audio_random_max_duration" );
 }
 
 blank( arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10 )
@@ -235,7 +235,7 @@ precache_mp_leaderboards()
     globalleaderboards = "LB_MP_GB_XPPRESTIGE LB_MP_GB_TOTALXP_AT LB_MP_GB_TOTALXP_LT LB_MP_GB_WINS_AT LB_MP_GB_WINS_LT LB_MP_GB_KILLS_AT LB_MP_GB_KILLS_LT LB_MP_GB_ACCURACY_AT LB_MP_GB_ACCURACY_LT";
     gamemodeleaderboard = " LB_MP_GM_" + level.gametype;
 
-    if ( getdvarint( #"_id_46E18E53" ) )
+    if ( getdvarint( #"g_hardcore" ) )
         gamemodeleaderboard = gamemodeleaderboard + "_HC";
 
     mapleaderboard = " LB_MP_MAP_" + getsubstr( mapname, 3, mapname.size );
@@ -2182,7 +2182,7 @@ callback_startgametype()
     if ( getdvar( #"createfx" ) == "" )
         [[ level.onstartgametype ]]();
 
-    if ( getdvarint( #"_id_826EB3B9" ) == 1 )
+    if ( getdvarint( #"custom_killstreak_mode" ) == 1 )
         level.killstreaksenabled = 0;
 
 /#

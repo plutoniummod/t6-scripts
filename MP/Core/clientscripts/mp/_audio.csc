@@ -103,7 +103,7 @@ soundrandom_thread( localclientnum, randsound )
         randsound.script_wait_max = 3;
 
 /#
-    if ( getdvarint( #"_id_0AEB127D" ) > 0 )
+    if ( getdvarint( #"debug_audio" ) > 0 )
     {
 
     }
@@ -127,7 +127,7 @@ soundrandom_thread( localclientnum, randsound )
             playsound( localclientnum, randsound.script_sound, randsound.origin );
 
 /#
-        if ( getdvarint( #"_id_0AEB127D" ) > 0 )
+        if ( getdvarint( #"debug_audio" ) > 0 )
             print3d( randsound.origin, randsound.script_sound, vectorscale( ( 0, 1, 0 ), 0.8 ), 1, 3, 45 );
 #/
     }
@@ -252,7 +252,7 @@ startsoundloops()
     {
         delay = 0;
 /#
-        if ( getdvarint( #"_id_0AEB127D" ) > 0 )
+        if ( getdvarint( #"debug_audio" ) > 0 )
             println( "*** Client : Initialising looper sounds - " + loopers.size + " emitters." );
 #/
 
@@ -268,7 +268,7 @@ startsoundloops()
     else
     {
 /#
-        if ( getdvarint( #"_id_0AEB127D" ) > 0 )
+        if ( getdvarint( #"debug_audio" ) > 0 )
             println( "*** Client : No looper sounds." );
 #/
     }
@@ -282,7 +282,7 @@ startlineemitters()
     {
         delay = 0;
 /#
-        if ( getdvarint( #"_id_0AEB127D" ) > 0 )
+        if ( getdvarint( #"debug_audio" ) > 0 )
             println( "*** Client : Initialising line emitter sounds - " + lineemitters.size + " emitters." );
 #/
 
@@ -298,7 +298,7 @@ startlineemitters()
     else
     {
 /#
-        if ( getdvarint( #"_id_0AEB127D" ) > 0 )
+        if ( getdvarint( #"debug_audio" ) > 0 )
             println( "*** Client : No line emitter sounds." );
 #/
     }
@@ -310,7 +310,7 @@ init_audio_triggers( localclientnum )
     steptrigs = getentarray( localclientnum, "audio_step_trigger", "targetname" );
     materialtrigs = getentarray( localclientnum, "audio_material_trigger", "targetname" );
 /#
-    if ( getdvarint( #"_id_0AEB127D" ) > 0 )
+    if ( getdvarint( #"debug_audio" ) > 0 )
     {
         println( "Client : " + steptrigs.size + " audio_step_triggers." );
         println( "Client : " + materialtrigs.size + " audio_material_triggers." );
@@ -567,7 +567,7 @@ snd_play_auto_fx( fxid, alias, offsetx, offsety, offsetz, onground, area, thresh
                     if ( distance_square < area * area )
                     {
 /#
-                        if ( getdvarint( #"_id_0AEB127D" ) > 0 )
+                        if ( getdvarint( #"debug_audio" ) > 0 )
                         {
                             n_dist = distance( a_fx_id[i].v["origin"], a_fx_id[j].v["origin"] );
                             line( a_fx_id[i].v["origin"], a_fx_id[j].v["origin"], ( 1, 1, 1 ), 1, 0, 100000000 );
@@ -593,7 +593,7 @@ snd_play_auto_fx( fxid, alias, offsetx, offsety, offsetz, onground, area, thresh
                 }
 
 /#
-                if ( getdvarint( #"_id_0AEB127D" ) > 0 )
+                if ( getdvarint( #"debug_audio" ) > 0 )
                 {
                     if ( isdefined( a_fx_id[i].adjacent ) )
                     {
@@ -728,7 +728,7 @@ snd_play_auto_fx( fxid, alias, offsetx, offsety, offsetz, onground, area, thresh
 snd_print_fx_id( fxid, type, ent )
 {
 /#
-    if ( getdvarint( #"_id_0AEB127D" ) > 0 )
+    if ( getdvarint( #"debug_audio" ) > 0 )
         println( "^5 ******* fxid; " + fxid + "^5 type; " + type );
 #/
 }
@@ -738,7 +738,7 @@ debug_line_emitter()
     while ( true )
     {
 /#
-        if ( getdvarint( #"_id_0AEB127D" ) > 0 )
+        if ( getdvarint( #"debug_audio" ) > 0 )
         {
             line( self.start, self.end, ( 0, 1, 0 ) );
             print3d( self.start, "START", vectorscale( ( 0, 1, 0 ), 0.8 ), 1, 3, 1 );

@@ -56,12 +56,12 @@ thundergun_devgui_dvar_think()
 
     for (;;)
     {
-        level.zombie_vars["thundergun_cylinder_radius"] = getdvarint( #"_id_DEA6F730" );
-        level.zombie_vars["thundergun_fling_range"] = getdvarint( #"_id_16044A2B" );
-        level.zombie_vars["thundergun_gib_range"] = getdvarint( #"_id_F5270E6D" );
-        level.zombie_vars["thundergun_gib_damage"] = getdvarint( #"_id_795FFDFF" );
-        level.zombie_vars["thundergun_knockdown_range"] = getdvarint( #"_id_2721E469" );
-        level.zombie_vars["thundergun_knockdown_damage"] = getdvarint( #"_id_EAB5937B" );
+        level.zombie_vars["thundergun_cylinder_radius"] = getdvarint( #"scr_thundergun_cylinder_radius" );
+        level.zombie_vars["thundergun_fling_range"] = getdvarint( #"scr_thundergun_fling_range" );
+        level.zombie_vars["thundergun_gib_range"] = getdvarint( #"scr_thundergun_gib_range" );
+        level.zombie_vars["thundergun_gib_damage"] = getdvarint( #"scr_thundergun_gib_damage" );
+        level.zombie_vars["thundergun_knockdown_range"] = getdvarint( #"scr_thundergun_knockdown_range" );
+        level.zombie_vars["thundergun_knockdown_damage"] = getdvarint( #"scr_thundergun_knockdown_damage" );
         wait 0.5;
     }
 #/
@@ -152,7 +152,7 @@ thundergun_get_enemies_in_range()
     forward_view_angles = self getweaponforwarddir();
     end_pos = view_pos + vectorscale( forward_view_angles, level.zombie_vars["thundergun_knockdown_range"] );
 /#
-    if ( 2 == getdvarint( #"_id_AAC84AD6" ) )
+    if ( 2 == getdvarint( #"scr_thundergun_debug" ) )
     {
         near_circle_pos = view_pos + vectorscale( forward_view_angles, 2 );
         circle( near_circle_pos, level.zombie_vars["thundergun_cylinder_radius"], ( 1, 0, 0 ), 0, 0, 100 );
@@ -231,7 +231,7 @@ thundergun_get_enemies_in_range()
 thundergun_debug_print( msg, color )
 {
 /#
-    if ( !getdvarint( #"_id_AAC84AD6" ) )
+    if ( !getdvarint( #"scr_thundergun_debug" ) )
         return;
 
     if ( !isdefined( color ) )

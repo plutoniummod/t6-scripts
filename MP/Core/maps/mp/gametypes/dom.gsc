@@ -372,7 +372,7 @@ domdebug()
 /#
     while ( true )
     {
-        if ( getdvar( #"_id_9F76D073" ) != "1" )
+        if ( getdvar( #"scr_domdebug" ) != "1" )
         {
             wait 2;
             continue;
@@ -380,7 +380,7 @@ domdebug()
 
         while ( true )
         {
-            if ( getdvar( #"_id_9F76D073" ) != "1" )
+            if ( getdvar( #"scr_domdebug" ) != "1" )
                 break;
 
             for ( i = 0; i < level.flags.size; i++ )
@@ -736,7 +736,7 @@ onscoreclosemusic()
         currentscore = axisscore;
 
 /#
-    if ( getdvarint( #"_id_0BC4784C" ) > 0 )
+    if ( getdvarint( #"debug_music" ) > 0 )
     {
         println( "Music System Domination - scoreDif " + scoredif );
         println( "Music System Domination - axisScore " + axisscore );

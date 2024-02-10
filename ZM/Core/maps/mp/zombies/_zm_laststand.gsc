@@ -47,7 +47,7 @@ init()
     level.primaryprogressbarwidth = 120;
     level.primaryprogressbary_ss = 280;
 
-    if ( getdvar( #"_id_A17166B0" ) == "" )
+    if ( getdvar( #"revive_trigger_radius" ) == "" )
         setdvar( "revive_trigger_radius", "40" );
 
     level.laststandgetupallowed = 0;
@@ -487,7 +487,7 @@ clean_up_suicide_hud_on_bled_out()
 
 suicide_trigger_spawn()
 {
-    radius = getdvarint( #"_id_A17166B0" );
+    radius = getdvarint( #"revive_trigger_radius" );
     self.suicideprompt = newclienthudelem( self );
     self.suicideprompt.alignx = "center";
     self.suicideprompt.aligny = "middle";
@@ -648,7 +648,7 @@ revive_trigger_spawn()
         [[ level.revive_trigger_spawn_override_link ]]( self );
     else
     {
-        radius = getdvarint( #"_id_A17166B0" );
+        radius = getdvarint( #"revive_trigger_radius" );
         self.revivetrigger = spawn( "trigger_radius", ( 0, 0, 0 ), 0, radius, radius );
         self.revivetrigger sethintstring( "" );
         self.revivetrigger setcursorhint( "HINT_NOICON" );

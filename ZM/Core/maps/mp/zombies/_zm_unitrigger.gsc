@@ -254,7 +254,7 @@ debug_unitriggers()
 /#
     while ( true )
     {
-        if ( getdvarint( #"_id_D256F24B" ) > 0 )
+        if ( getdvarint( #"debug_unitrigger" ) > 0 )
         {
             for ( i = 0; i < level._unitriggers.trigger_stubs.size; i++ )
             {

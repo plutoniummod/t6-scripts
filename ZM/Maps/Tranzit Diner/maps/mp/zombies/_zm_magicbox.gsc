@@ -916,7 +916,7 @@ treasure_chest_chooseweightedrandomweapon( player )
         keys = player [[ level.customrandomweaponweights ]]( keys );
 
 /#
-    forced_weapon = getdvar( #"_id_45ED7744" );
+    forced_weapon = getdvar( #"scr_force_weapon" );
 
     if ( forced_weapon != "" && isdefined( level.zombie_weapons[forced_weapon] ) )
         arrayinsert( keys, forced_weapon, 0 );

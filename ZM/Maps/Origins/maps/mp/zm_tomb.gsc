@@ -1246,13 +1246,13 @@ watch_devgui_oneinchpunch()
 /#
     while ( true )
     {
-        if ( getdvar( #"_id_A3C7E066" ) == "on" )
+        if ( getdvar( #"test_oneinchpunch" ) == "on" )
         {
             setdvar( "test_oneinchpunch", "off" );
             player = get_players()[0];
             player thread maps\mp\zombies\_zm_weap_one_inch_punch::one_inch_punch_melee_attack();
         }
-        else if ( getdvar( #"_id_8921AB91" ) == "on" )
+        else if ( getdvar( #"test_oneinchpunch_upgraded" ) == "on" )
         {
             setdvar( "test_oneinchpunch_upgraded", "off" );
             player = get_players()[0];
@@ -1260,7 +1260,7 @@ watch_devgui_oneinchpunch()
             player.str_punch_element = "upgraded";
             player thread maps\mp\zombies\_zm_weap_one_inch_punch::one_inch_punch_melee_attack();
         }
-        else if ( getdvar( #"_id_0C236601" ) == "on" )
+        else if ( getdvar( #"test_oneinchpunch_air" ) == "on" )
         {
             setdvar( "test_oneinchpunch_air", "off" );
             player = get_players()[0];
@@ -1268,7 +1268,7 @@ watch_devgui_oneinchpunch()
             player.str_punch_element = "air";
             player thread maps\mp\zombies\_zm_weap_one_inch_punch::one_inch_punch_melee_attack();
         }
-        else if ( getdvar( #"_id_9092E46B" ) == "on" )
+        else if ( getdvar( #"test_oneinchpunch_fire" ) == "on" )
         {
             setdvar( "test_oneinchpunch_fire", "off" );
             player = get_players()[0];
@@ -1276,7 +1276,7 @@ watch_devgui_oneinchpunch()
             player.str_punch_element = "fire";
             player thread maps\mp\zombies\_zm_weap_one_inch_punch::one_inch_punch_melee_attack();
         }
-        else if ( getdvar( #"_id_0C238736" ) == "on" )
+        else if ( getdvar( #"test_oneinchpunch_ice" ) == "on" )
         {
             setdvar( "test_oneinchpunch_ice", "off" );
             player = get_players()[0];
@@ -1284,7 +1284,7 @@ watch_devgui_oneinchpunch()
             player.str_punch_element = "ice";
             player thread maps\mp\zombies\_zm_weap_one_inch_punch::one_inch_punch_melee_attack();
         }
-        else if ( getdvar( #"_id_09341C49" ) == "on" )
+        else if ( getdvar( #"test_oneinchpunch_lightning" ) == "on" )
         {
             setdvar( "test_oneinchpunch_lightning", "off" );
             player = get_players()[0];
@@ -1314,10 +1314,10 @@ watch_devgui_tablet()
 /#
     while ( true )
     {
-        if ( getdvar( #"_id_4806208C" ) != "3" )
+        if ( getdvar( #"test_player_tablet" ) != "3" )
         {
             player = get_players()[0];
-            n_tablet_state = int( getdvar( #"_id_4806208C" ) );
+            n_tablet_state = int( getdvar( #"test_player_tablet" ) );
             player setclientfieldtoplayer( "player_tablet_state", n_tablet_state );
             setdvar( "test_player_tablet", "3" );
         }
@@ -1332,7 +1332,7 @@ watch_devgui_zombie_blood()
 /#
     while ( true )
     {
-        if ( getdvar( #"_id_FA71C6BA" ) == "on" )
+        if ( getdvar( #"zombie_blood" ) == "on" )
         {
             setdvar( "zombie_blood", "off" );
             level thread maps\mp\zombies\_zm_devgui::zombie_devgui_give_powerup( "zombie_blood", 1 );
@@ -1348,7 +1348,7 @@ watch_devgui_double_points()
 /#
     while ( true )
     {
-        if ( getdvar( #"_id_1FB6003C" ) == "on" )
+        if ( getdvar( #"double_points" ) == "on" )
         {
             setdvar( "double_points", "off" );
             level thread maps\mp\zombies\_zm_devgui::zombie_devgui_give_powerup( "double_points", 1 );

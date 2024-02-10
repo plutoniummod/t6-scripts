@@ -111,13 +111,13 @@ jetgun_devgui_dvar_think()
 
     for (;;)
     {
-        level.zombie_vars["jetgun_cylinder_radius"] = getdvarint( #"_id_6ECD5E99" );
-        level.zombie_vars["jetgun_grind_range"] = getdvarint( #"_id_8562CAD8" );
-        level.zombie_vars["jetgun_drag_range"] = getdvarint( #"_id_ECC8AEC2" );
-        level.zombie_vars["jetgun_gib_range"] = getdvarint( #"_id_D5D25B16" );
-        level.zombie_vars["jetgun_gib_damage"] = getdvarint( #"_id_6F74DFC8" );
-        level.zombie_vars["jetgun_knockdown_range"] = getdvarint( #"_id_B7484BD2" );
-        level.zombie_vars["jetgun_knockdown_damage"] = getdvarint( #"_id_7FA8E804" );
+        level.zombie_vars["jetgun_cylinder_radius"] = getdvarint( #"scr_jetgun_cylinder_radius" );
+        level.zombie_vars["jetgun_grind_range"] = getdvarint( #"scr_jetgun_grind_range" );
+        level.zombie_vars["jetgun_drag_range"] = getdvarint( #"scr_jetgun_drag_range" );
+        level.zombie_vars["jetgun_gib_range"] = getdvarint( #"scr_jetgun_gib_range" );
+        level.zombie_vars["jetgun_gib_damage"] = getdvarint( #"scr_jetgun_gib_damage" );
+        level.zombie_vars["jetgun_knockdown_range"] = getdvarint( #"scr_jetgun_knockdown_range" );
+        level.zombie_vars["jetgun_knockdown_damage"] = getdvarint( #"scr_jetgun_knockdown_damage" );
         wait 0.5;
     }
 #/
@@ -247,7 +247,7 @@ watch_weapon_changes()
         if ( weapon == "jetgun_zm" )
         {
 /#
-            if ( getdvarint( #"_id_BCDDAAFF" ) > 0 )
+            if ( getdvarint( #"scr_jetgun_debug" ) > 0 )
                 self thread zombie_drag_radius();
 #/
             self thread watch_overheat();
@@ -428,7 +428,7 @@ jetgun_get_enemies_in_range( invert )
     forward_view_angles = self getweaponforwarddir();
     end_pos = view_pos + vectorscale( forward_view_angles, level.zombie_vars["jetgun_knockdown_range"] );
 /#
-    if ( 2 == getdvarint( #"_id_BCDDAAFF" ) )
+    if ( 2 == getdvarint( #"scr_jetgun_debug" ) )
     {
         near_circle_pos = view_pos + vectorscale( forward_view_angles, 2 );
         circle( near_circle_pos, level.zombie_vars["jetgun_cylinder_radius"], ( 1, 0, 0 ), 0, 0, 100 );
@@ -519,7 +519,7 @@ jetgun_check_enemies_in_range( zombie, view_pos, drag_range_squared, gib_range_s
 jetgun_debug_print( msg, color )
 {
 /#
-    if ( !getdvarint( #"_id_BCDDAAFF" ) )
+    if ( !getdvarint( #"scr_jetgun_debug" ) )
         return;
 
     if ( !isdefined( color ) )
@@ -532,7 +532,7 @@ jetgun_debug_print( msg, color )
 jetgun_debug_print_on_ent( msg, color )
 {
 /#
-    if ( !getdvarint( #"_id_BCDDAAFF" ) )
+    if ( !getdvarint( #"scr_jetgun_debug" ) )
         return;
 
     if ( !isdefined( color ) )

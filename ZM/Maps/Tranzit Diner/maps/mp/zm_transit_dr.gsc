@@ -353,7 +353,7 @@ initcharacterstartindex()
 {
     level.characterstartindex = 0;
 /#
-    forcecharacter = getdvarint( #"_id_FEE4CB69" );
+    forcecharacter = getdvarint( #"zombie_transit_character_force" );
 
     if ( forcecharacter != 0 )
         level.characterstartindex = forcecharacter - 1;

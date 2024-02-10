@@ -800,7 +800,7 @@ updatedevsettings()
         setdvar( "scr_do_notify", "" );
     }
 
-    if ( getdvar( #"_id_4F1284FA" ) != "" )
+    if ( getdvar( #"scr_entdebug" ) != "" )
     {
         ents = getentarray();
         level.entarray = [];
@@ -834,34 +834,34 @@ updatedevsettings()
     else if ( getdvar( #"debug_dynamic_ai_spawning" ) == "0" )
         level notify( "kill_larry" );
 
-    if ( level.bot_overlay == 0 && getdvarint( #"_id_1CBC4852" ) == 1 )
+    if ( level.bot_overlay == 0 && getdvarint( #"scr_bot_overlay" ) == 1 )
     {
         level thread bot_overlay_think();
         level.bot_overlay = 1;
     }
-    else if ( level.bot_overlay == 1 && getdvarint( #"_id_1CBC4852" ) == 0 )
+    else if ( level.bot_overlay == 1 && getdvarint( #"scr_bot_overlay" ) == 0 )
     {
         level bot_overlay_stop();
         level.bot_overlay = 0;
     }
 
-    if ( level.bot_threat == 0 && getdvarint( #"_id_68A98D18" ) == 1 )
+    if ( level.bot_threat == 0 && getdvarint( #"scr_bot_threat" ) == 1 )
     {
         level thread bot_threat_think();
         level.bot_threat = 1;
     }
-    else if ( level.bot_threat == 1 && getdvarint( #"_id_68A98D18" ) == 0 )
+    else if ( level.bot_threat == 1 && getdvarint( #"scr_bot_threat" ) == 0 )
     {
         level bot_threat_stop();
         level.bot_threat = 0;
     }
 
-    if ( level.bot_path == 0 && getdvarint( #"_id_D6F2CC5D" ) == 1 )
+    if ( level.bot_path == 0 && getdvarint( #"scr_bot_path" ) == 1 )
     {
         level thread bot_path_think();
         level.bot_path = 1;
     }
-    else if ( level.bot_path == 1 && getdvarint( #"_id_D6F2CC5D" ) == 0 )
+    else if ( level.bot_path == 1 && getdvarint( #"scr_bot_path" ) == 0 )
     {
         level bot_path_stop();
         level.bot_path = 0;

@@ -89,8 +89,8 @@ createcopter( location, team, damagetrig )
     scriptorigin.dontascend = 0;
     scriptorigin.health = 2000;
 
-    if ( getdvar( #"_id_A8262D2E" ) != "" )
-        scriptorigin.health = getdvarfloat( #"_id_A8262D2E" );
+    if ( getdvar( #"scr_copter_health" ) != "" )
+        scriptorigin.health = getdvarfloat( #"scr_copter_health" );
 
     scriptorigin.team = team;
     scriptorigin thread copterai();
@@ -529,8 +529,8 @@ mymagicbullet( pos, dir )
 {
     damage = 20;
 
-    if ( getdvar( #"_id_9E8F8CB7" ) != "" )
-        damage = getdvarint( #"_id_9E8F8CB7" );
+    if ( getdvar( #"scr_copter_damage" ) != "" )
+        damage = getdvarint( #"scr_copter_damage" );
 
     trace = bullettrace( pos, pos + vectorscale( dir, 10000 ), 1, undefined );
 

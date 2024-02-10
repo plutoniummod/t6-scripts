@@ -1357,7 +1357,7 @@ xpratethread()
         wait 5.0;
 
         if ( isdefined( level.teams[level.players[0].pers["team"]] ) )
-            self maps\mp\gametypes\_rank::giverankxp( "kill", int( min( getdvarint( #"_id_F8D00F60" ), 50 ) ) );
+            self maps\mp\gametypes\_rank::giverankxp( "kill", int( min( getdvarint( #"scr_xprate" ), 50 ) ) );
     }
 #/
 }

@@ -147,13 +147,13 @@ jump_pad_start( ent_player, endon_condition )
             z_dist = z_dist * 2.5;
             forward_scaling = 1.1;
 /#
-            if ( getdvarint( #"_id_D5FD01C3" ) )
+            if ( getdvarint( #"jump_pad_tweaks" ) )
             {
-                if ( getdvar( #"_id_E2494021" ) != "" )
-                    z_dist = z_dist * getdvarfloat( #"_id_E2494021" );
+                if ( getdvar( #"jump_pad_z_dist" ) != "" )
+                    z_dist = z_dist * getdvarfloat( #"jump_pad_z_dist" );
 
-                if ( getdvar( #"_id_4E3BC729" ) != "" )
-                    forward_scaling = getdvarfloat( #"_id_4E3BC729" );
+                if ( getdvar( #"jump_pad_forward" ) != "" )
+                    forward_scaling = getdvarfloat( #"jump_pad_forward" );
             }
 #/
         }
@@ -162,13 +162,13 @@ jump_pad_start( ent_player, endon_condition )
             z_dist = z_dist * 2.7;
             forward_scaling = 1.3;
 /#
-            if ( getdvarint( #"_id_D5FD01C3" ) )
+            if ( getdvarint( #"jump_pad_tweaks" ) )
             {
-                if ( getdvar( #"_id_E2494021" ) != "" )
-                    z_dist = z_dist * getdvarfloat( #"_id_E2494021" );
+                if ( getdvar( #"jump_pad_z_dist" ) != "" )
+                    z_dist = z_dist * getdvarfloat( #"jump_pad_z_dist" );
 
-                if ( getdvar( #"_id_4E3BC729" ) != "" )
-                    forward_scaling = getdvarfloat( #"_id_4E3BC729" );
+                if ( getdvar( #"jump_pad_forward" ) != "" )
+                    forward_scaling = getdvarfloat( #"jump_pad_forward" );
             }
 #/
         }
@@ -177,13 +177,13 @@ jump_pad_start( ent_player, endon_condition )
             z_dist = z_dist * 2.4;
             forward_scaling = 1.0;
 /#
-            if ( getdvarint( #"_id_D5FD01C3" ) )
+            if ( getdvarint( #"jump_pad_tweaks" ) )
             {
-                if ( getdvar( #"_id_E2494021" ) != "" )
-                    z_dist = z_dist * getdvarfloat( #"_id_E2494021" );
+                if ( getdvar( #"jump_pad_z_dist" ) != "" )
+                    z_dist = z_dist * getdvarfloat( #"jump_pad_z_dist" );
 
-                if ( getdvar( #"_id_4E3BC729" ) != "" )
-                    forward_scaling = getdvarfloat( #"_id_4E3BC729" );
+                if ( getdvar( #"jump_pad_forward" ) != "" )
+                    forward_scaling = getdvarfloat( #"jump_pad_forward" );
             }
 #/
         }

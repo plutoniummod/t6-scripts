@@ -109,7 +109,7 @@ watch_devgui_complete_puzzles()
 /#
     while ( true )
     {
-        if ( getdvar( #"_id_BB20372B" ) == "on" || getdvar( #"_id_BB20372C" ) == "on" )
+        if ( getdvar( #"complete_puzzles1" ) == "on" || getdvar( #"complete_puzzles2" ) == "on" )
         {
             flag_set( "air_puzzle_1_complete" );
             flag_set( "ice_puzzle_1_complete" );
@@ -120,13 +120,13 @@ watch_devgui_complete_puzzles()
             level notify( "open_all_gramophone_doors" );
         }
 
-        if ( getdvar( #"_id_A3C6E365" ) == "on" )
+        if ( getdvar( #"show_morse_code" ) == "on" )
         {
             flag_set( "show_morse_code" );
             setdvar( "show_morse_code", "off" );
         }
 
-        if ( getdvar( #"_id_BB20372C" ) == "on" )
+        if ( getdvar( #"complete_puzzles2" ) == "on" )
         {
             flag_set( "air_puzzle_2_complete" );
             flag_set( "ice_puzzle_2_complete" );
@@ -140,13 +140,13 @@ watch_devgui_complete_puzzles()
             setdvar( "complete_puzzles2", "off" );
         }
 
-        if ( getdvar( #"_id_273EAFA7" ) == "on" )
+        if ( getdvar( #"sam_intro_skip" ) == "on" )
         {
             flag_set( "samantha_intro_done" );
             setdvar( "sam_intro_skip", "off" );
         }
 
-        if ( getdvar( #"_id_B7590487" ) == "on" )
+        if ( getdvar( #"open_all_teleporters" ) == "on" )
         {
             maps\mp\zm_tomb_teleporter::stargate_teleport_enable( 1 );
             maps\mp\zm_tomb_teleporter::stargate_teleport_enable( 2 );

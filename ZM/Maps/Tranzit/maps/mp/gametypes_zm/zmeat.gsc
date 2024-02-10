@@ -205,7 +205,7 @@ watch_debug_input()
     {
         if ( self actionslottwobuttonpressed() )
         {
-            if ( getdvar( #"_id_0B188A91" ) != "" )
+            if ( getdvar( #"debug_death" ) != "" )
             {
                 self disableinvulnerability();
                 self dodamage( self.health + 666, self.origin );
@@ -1263,10 +1263,10 @@ spawn_meat_zombies()
     num = 0;
     max_ai_num = 15;
 
-    if ( getdvarint( #"_id_CD22CF55" ) > 0 )
+    if ( getdvarint( #"zm_encounters_cheat" ) > 0 )
         max_ai_num = 0;
 
-    if ( getdvarint( #"_id_FA81816F" ) == 2 )
+    if ( getdvarint( #"zombie_cheat" ) == 2 )
         max_ai_num = -1;
 
     level waittill( "meat_grabbed" );

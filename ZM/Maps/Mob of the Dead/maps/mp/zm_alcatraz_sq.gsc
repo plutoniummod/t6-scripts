@@ -278,7 +278,7 @@ watch_devgui_alcatraz_final_battle()
 {
     while ( true )
     {
-        if ( getdvar( #"_id_9624FC9B" ) == "on" )
+        if ( getdvar( #"alcatraz_final_battle" ) == "on" )
         {
             players = getplayers();
 
@@ -302,7 +302,7 @@ watch_devgui_get_key()
 {
     while ( true )
     {
-        if ( getdvar( #"_id_B1E41F18" ) == "on" )
+        if ( getdvar( #"get_master_key" ) == "on" )
         {
             a_players = [];
             a_players = getplayers();
@@ -325,7 +325,7 @@ watch_devgui_afterlife()
 {
     while ( true )
     {
-        if ( getdvar( #"_id_51DB321F" ) == "on" )
+        if ( getdvar( #"add_afterlife" ) == "on" )
         {
             a_players = [];
             a_players = getplayers();
@@ -344,7 +344,7 @@ watch_devgui_give_shield()
 {
     while ( true )
     {
-        if ( getdvar( #"_id_DF65AA39" ) == "on" )
+        if ( getdvar( #"alcatraz_give_shield" ) == "on" )
         {
             foreach ( player in getplayers() )
             {
@@ -365,7 +365,7 @@ watch_devgui_plane()
 
     while ( !is_shortcut_plane_built )
     {
-        if ( getdvar( #"_id_3C0D12E4" ) == "on" )
+        if ( getdvar( #"build_plane" ) == "on" )
         {
 /#
             iprintlnbold( "plane built!" );

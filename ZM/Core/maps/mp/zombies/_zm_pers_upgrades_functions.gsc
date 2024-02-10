@@ -1026,7 +1026,7 @@ pers_treasure_chest_choosespecialweapon( player )
 
         keys = array_randomize( level.pers_box_weapons );
 /#
-        forced_weapon = getdvar( #"_id_45ED7744" );
+        forced_weapon = getdvar( #"scr_force_weapon" );
 
         if ( forced_weapon != "" && isdefined( level.zombie_weapons[forced_weapon] ) )
             arrayinsert( keys, forced_weapon, 0 );

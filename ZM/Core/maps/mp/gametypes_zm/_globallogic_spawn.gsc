@@ -126,7 +126,7 @@ spawnplayerprediction()
     {
         wait 0.5;
 
-        if ( isdefined( level.onspawnplayerunified ) && getdvarint( #"_id_CF6EEB8B" ) == 0 )
+        if ( isdefined( level.onspawnplayerunified ) && getdvarint( #"scr_disableunifiedspawning" ) == 0 )
             maps\mp\gametypes_zm\_spawning::onspawnplayer_unified( 1 );
         else
             self [[ level.onspawnplayer ]]( 1 );
@@ -224,7 +224,7 @@ spawnplayer()
     self resetfov();
     pixbeginevent( "onSpawnPlayer" );
 
-    if ( isdefined( level.onspawnplayerunified ) && getdvarint( #"_id_CF6EEB8B" ) == 0 )
+    if ( isdefined( level.onspawnplayerunified ) && getdvarint( #"scr_disableunifiedspawning" ) == 0 )
         self [[ level.onspawnplayerunified ]]();
     else
         self [[ level.onspawnplayer ]]( 0 );
@@ -370,7 +370,7 @@ spawnplayer()
     self logstring( "S " + self.origin[0] + " " + self.origin[1] + " " + self.origin[2] );
     setdvar( "scr_selecting_location", "" );
 /#
-    if ( getdvarint( #"_id_F8D00F60" ) > 0 )
+    if ( getdvarint( #"scr_xprate" ) > 0 )
         self thread maps\mp\gametypes_zm\_globallogic_score::xpratethread();
 #/
     self maps\mp\zombies\_zm_perks::perk_set_max_health_if_jugg( "health_reboot", 1, 0 );
@@ -480,13 +480,13 @@ kickifidontspawninternal()
     self endon( "spawned" );
     waittime = 90;
 
-    if ( getdvar( #"_id_4257CF5C" ) != "" )
-        waittime = getdvarfloat( #"_id_4257CF5C" );
+    if ( getdvar( #"scr_kick_time" ) != "" )
+        waittime = getdvarfloat( #"scr_kick_time" );
 
     mintime = 45;
 
-    if ( getdvar( #"_id_0DF057E0" ) != "" )
-        mintime = getdvarfloat( #"_id_0DF057E0" );
+    if ( getdvar( #"scr_kick_mintime" ) != "" )
+        mintime = getdvarfloat( #"scr_kick_mintime" );
 
     starttime = gettime();
     kickwait( waittime );

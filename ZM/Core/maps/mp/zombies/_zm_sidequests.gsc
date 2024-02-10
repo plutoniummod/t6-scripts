@@ -35,7 +35,7 @@ is_sidequest_allowed( a_gametypes )
 sidequest_debug()
 {
 /#
-    if ( getdvar( #"_id_A7AC338D" ) != "1" )
+    if ( getdvar( #"str_debug_sidequests" ) != "1" )
         return;
 
     while ( true )
@@ -755,7 +755,7 @@ time_limited_stage( sidequest )
 sidequest_println( str )
 {
 /#
-    if ( getdvar( #"_id_A7AC338D" ) != "1" )
+    if ( getdvar( #"str_debug_sidequests" ) != "1" )
         return;
 
     println( str );

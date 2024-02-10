@@ -254,8 +254,8 @@ sloth_update_double_wide()
 /#
             setdvarint( "scr_sloth_debug_width", 15 );
             setdvarint( "scr_sloth_debug_height", 73 );
-            self.debug_width = getdvarint( #"_id_2443DFBB" );
-            self.debug_height = getdvarint( #"_id_897C9AB4" );
+            self.debug_width = getdvarint( #"scr_sloth_debug_width" );
+            self.debug_height = getdvarint( #"scr_sloth_debug_height" );
 #/
         }
     }
@@ -267,8 +267,8 @@ sloth_update_double_wide()
 /#
         setdvarint( "scr_sloth_debug_width", 25 );
         setdvarint( "scr_sloth_debug_height", 73 );
-        self.debug_width = getdvarint( #"_id_2443DFBB" );
-        self.debug_height = getdvarint( #"_id_897C9AB4" );
+        self.debug_width = getdvarint( #"scr_sloth_debug_width" );
+        self.debug_height = getdvarint( #"scr_sloth_debug_height" );
 #/
     }
 }
@@ -1020,8 +1020,8 @@ sloth_prespawn()
 /#
     setdvarint( "scr_sloth_debug_width", 15 );
     setdvarint( "scr_sloth_debug_height", 73 );
-    self.debug_width = getdvarint( #"_id_2443DFBB" );
-    self.debug_height = getdvarint( #"_id_897C9AB4" );
+    self.debug_width = getdvarint( #"scr_sloth_debug_width" );
+    self.debug_height = getdvarint( #"scr_sloth_debug_height" );
     self thread sloth_devgui_update_phys_params();
 #/
     self.ignore_nuke = 1;
@@ -1156,7 +1156,7 @@ sloth_spawning_logic()
         return;
 
 /#
-    if ( getdvarint( #"_id_FA81816F" ) == 2 || getdvarint( #"_id_FA81816F" ) >= 4 )
+    if ( getdvarint( #"zombie_cheat" ) == 2 || getdvarint( #"zombie_cheat" ) >= 4 )
         return;
 #/
 /#
@@ -4323,8 +4323,8 @@ sloth_devgui_update_phys_params()
 /#
     while ( true )
     {
-        devgui_width = getdvarint( #"_id_2443DFBB" );
-        devgui_height = getdvarint( #"_id_897C9AB4" );
+        devgui_width = getdvarint( #"scr_sloth_debug_width" );
+        devgui_height = getdvarint( #"scr_sloth_debug_height" );
 
         if ( self.debug_width != devgui_width || self.debug_height != devgui_height )
         {

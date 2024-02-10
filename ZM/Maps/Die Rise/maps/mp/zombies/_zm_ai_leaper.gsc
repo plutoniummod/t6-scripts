@@ -579,7 +579,7 @@ leaper_round_spawning()
 /#
     level endon( "kill_round" );
 
-    if ( getdvarint( #"_id_FA81816F" ) == 2 || getdvarint( #"_id_FA81816F" ) >= 4 )
+    if ( getdvarint( #"zombie_cheat" ) == 2 || getdvarint( #"zombie_cheat" ) >= 4 )
         return;
 #/
 
@@ -699,7 +699,7 @@ leaper_round_wait()
 {
     level endon( "restart_round" );
 /#
-    if ( getdvarint( #"_id_FA81816F" ) == 2 || getdvarint( #"_id_FA81816F" ) >= 4 )
+    if ( getdvarint( #"zombie_cheat" ) == 2 || getdvarint( #"zombie_cheat" ) >= 4 )
         level waittill( "forever" );
 #/
     wait 1;
@@ -839,7 +839,7 @@ leaper_spawn_logic( leaper_array, favorite_enemy )
     }
 
 /#
-    if ( getdvarint( #"_id_A8C231AA" ) )
+    if ( getdvarint( #"scr_zombie_spawn_in_view" ) )
     {
         player = get_players()[0];
         a_spawn_points_in_view = [];

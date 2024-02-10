@@ -15,7 +15,7 @@ dev_cac_init()
         wait 0.5;
         reset = 1;
 
-        if ( getdvar( #"_id_E6D8B517" ) != "" )
+        if ( getdvar( #"scr_disable_cac_2" ) != "" )
             continue;
 
         host = gethostplayer();

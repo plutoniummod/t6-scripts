@@ -195,7 +195,7 @@ tank_debug_tags()
 
     while ( true )
     {
-        if ( getdvar( #"_id_55B41FB9" ) == "on" )
+        if ( getdvar( #"debug_tank" ) == "on" )
         {
             if ( !( isdefined( self.tags_drawing ) && self.tags_drawing ) )
             {
@@ -1282,7 +1282,7 @@ update_zombie_goal_pos( str_position, stop_notify )
         {
             v_origin = level.vh_tank tank_get_jump_down_offset( s_script_origin );
 /#
-            if ( getdvar( #"_id_55B41FB9" ) == "on" )
+            if ( getdvar( #"debug_tank" ) == "on" )
                 line( self.origin + vectorscale( ( 0, 0, 1 ), 30.0 ), v_origin );
 #/
         }

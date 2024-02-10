@@ -914,7 +914,7 @@ afterlife_revive_hud_create()
 
 afterlife_revive_trigger_spawn()
 {
-    radius = getdvarint( #"_id_A17166B0" );
+    radius = getdvarint( #"revive_trigger_radius" );
     self.revivetrigger = spawn( "trigger_radius", ( 0, 0, 0 ), 0, radius, radius );
     self.revivetrigger sethintstring( "" );
     self.revivetrigger setcursorhint( "HINT_NOICON" );
@@ -1576,7 +1576,7 @@ afterlife_reduce_mana( n_mana )
     }
 
 /#
-    if ( getdvarint( #"_id_FA81816F" ) >= 1 )
+    if ( getdvarint( #"zombie_cheat" ) >= 1 )
     {
         self.manacur = 200;
         return;

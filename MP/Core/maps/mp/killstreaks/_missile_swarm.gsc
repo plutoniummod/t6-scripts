@@ -476,7 +476,7 @@ projectile_spawn_utility( owner, target, origin, weapon, targetname, movegoal )
     p.goal = goal;
     p.targetname = "swarm_missile";
 /#
-    if ( !is_true( owner.swarm_cam ) && getdvarint( #"_id_492656A6" ) == 1 )
+    if ( !is_true( owner.swarm_cam ) && getdvarint( #"scr_swarm_cam" ) == 1 )
         p thread projectile_cam( owner );
 #/
     return p;

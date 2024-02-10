@@ -262,14 +262,14 @@ getkillstreaklevel( index, killstreak )
 {
     killstreaklevel = level.killstreaks[getkillstreakbymenuname( killstreak )].killstreaklevel;
 
-    if ( getdvarint( #"_id_826EB3B9" ) == 2 )
+    if ( getdvarint( #"custom_killstreak_mode" ) == 2 )
     {
         if ( isdefined( self.killstreak[index] ) && killstreak == self.killstreak[index] )
         {
-            killsrequired = getdvarint( #"_id_8F4AAEF4" + index + 1 + "_kills" );
+            killsrequired = getdvarint( #"custom_killstreak_" + index + 1 + "_kills" );
 
             if ( killsrequired )
-                killstreaklevel = getdvarint( #"_id_8F4AAEF4" + index + 1 + "_kills" );
+                killstreaklevel = getdvarint( #"custom_killstreak_" + index + 1 + "_kills" );
         }
     }
 

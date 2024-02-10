@@ -7,7 +7,7 @@
 print_org( fxcommand, fxid, fxpos, waittime )
 {
 /#
-    if ( getdvar( #"_id_0F49A52C" ) == "1" )
+    if ( getdvar( #"debug" ) == "1" )
     {
         println( "{" );
         println( "\"origin\" \"" + fxpos[0] + " " + fxpos[1] + " " + fxpos[2] + "\"" );

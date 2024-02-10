@@ -65,7 +65,7 @@ main()
     clientscripts\mp\createfx\mp_meltdown_fx::main();
     clientscripts\mp\_fx::reportnumeffects();
     precache_createfx_fx();
-    disablefx = getdvarint( #"_id_C9B177D6" );
+    disablefx = getdvarint( #"disable_fx" );
 
     if ( !isdefined( disablefx ) || disablefx <= 0 )
         precache_scripted_fx();

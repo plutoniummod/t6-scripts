@@ -70,7 +70,7 @@ main()
     clientscripts\mp\_utility_code::struct_class_init();
     clientscripts\mp\_utility::registersystem( "levelNotify", ::levelnotifyhandler );
     level.createfx_enabled = getdvar( #"createfx" ) != "";
-    level.createfx_disable_fx = getdvarint( #"_id_C9B177D6" ) == 1;
+    level.createfx_disable_fx = getdvarint( #"disable_fx" ) == 1;
     clientscripts\mp\_global_fx::main();
     level thread clientscripts\mp\_ambientpackage::init();
     level thread clientscripts\mp\_music::music_init();

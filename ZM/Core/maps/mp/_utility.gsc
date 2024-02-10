@@ -55,7 +55,7 @@ error( msg )
     println( "^c*ERROR* ", msg );
     wait 0.05;
 
-    if ( getdvar( #"_id_0F49A52C" ) != "1" )
+    if ( getdvar( #"debug" ) != "1" )
     {
         assertmsg( "This is a forced error - attach the log file" );
     }
@@ -2645,7 +2645,7 @@ getweaponclass( weapon )
 
 ispressbuild()
 {
-    buildtype = getdvar( #"_id_19B966D7" );
+    buildtype = getdvar( #"buildType" );
 
     if ( isdefined( buildtype ) && buildtype == "press" )
         return true;

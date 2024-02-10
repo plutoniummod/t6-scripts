@@ -195,7 +195,7 @@ gasmask_active()
 gasmask_debug_print( msg, color )
 {
 /#
-    if ( !getdvarint( #"_id_4D1BCA99" ) )
+    if ( !getdvarint( #"scr_gasmask_debug" ) )
         return;
 
     if ( !isdefined( color ) )

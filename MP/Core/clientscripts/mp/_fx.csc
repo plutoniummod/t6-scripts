@@ -89,7 +89,7 @@ create_triggerfx( clientnum )
 {
     fx_validate( self.v["fxid"], self.v["origin"] );
 /#
-    if ( getdvarint( #"_id_113D4769" ) > 0 )
+    if ( getdvarint( #"debug_fx" ) > 0 )
         println( "self.v['fxid'] " + self.v["fxid"] );
 #/
 

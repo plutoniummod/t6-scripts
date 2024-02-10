@@ -152,7 +152,7 @@ snd_play_auto_fturbine_area_emmiters()
 snd_print_fturbine_id( fxid, type, ent )
 {
 /#
-    if ( getdvarint( #"_id_0AEB127D" ) > 0 )
+    if ( getdvarint( #"debug_audio" ) > 0 )
         println( "^5 ******* fxid; " + fxid + "^5 type; " + type );
 #/
 }

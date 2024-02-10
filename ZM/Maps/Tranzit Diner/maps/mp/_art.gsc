@@ -196,7 +196,7 @@ tweakart()
         fovslidercheck();
         dumpsettings();
 
-        if ( !getdvarint( #"_id_DBBD8F3B" ) )
+        if ( !getdvarint( #"scr_fog_disable" ) )
         {
             if ( !isdefined( level.fogsundir ) )
             {

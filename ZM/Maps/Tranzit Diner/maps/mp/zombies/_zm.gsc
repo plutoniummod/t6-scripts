@@ -90,7 +90,7 @@ init()
 
     level.zombie_visionset = "zombie_neutral";
 
-    if ( getdvar( #"_id_5DF80895" ) == "1" )
+    if ( getdvar( #"anim_intro" ) == "1" )
         level.zombie_anim_intro = 1;
     else
         level.zombie_anim_intro = 0;
@@ -566,7 +566,7 @@ post_all_players_connected()
 
     level thread players_playing();
     disablegrenadesuicide();
-    level.startinvulnerabletime = getdvarint( #"_id_4E44E32D" );
+    level.startinvulnerabletime = getdvarint( #"player_deathInvulnerableTime" );
 
     if ( !isdefined( level.music_override ) )
         level.music_override = 0;
@@ -953,7 +953,7 @@ init_dvars()
     if ( getdvar( #"scr_zm_enable_bots" ) == "" )
         setdvar( "scr_zm_enable_bots", "0" );
 
-    if ( getdvar( #"_id_FA81816F" ) == "" )
+    if ( getdvar( #"zombie_cheat" ) == "" )
         setdvar( "zombie_cheat", "0" );
 
     if ( level.script != "zombie_cod5_prototype" )
@@ -1314,7 +1314,7 @@ onplayerspawned()
 
         self recordplayerrevivezombies( self );
 /#
-        if ( getdvarint( #"_id_FA81816F" ) >= 1 && getdvarint( #"_id_FA81816F" ) <= 3 )
+        if ( getdvarint( #"zombie_cheat" ) >= 1 && getdvarint( #"zombie_cheat" ) <= 3 )
             self enableinvulnerability();
 #/
         self setactionslot( 3, "altMode" );
@@ -1502,7 +1502,7 @@ player_out_of_playable_area_monitor()
                     continue;
                 }
 
-                if ( self isinmovemode( "ufo", "noclip" ) || isdefined( level.disable_kill_thread ) && level.disable_kill_thread || getdvarint( #"_id_FA81816F" ) > 0 )
+                if ( self isinmovemode( "ufo", "noclip" ) || isdefined( level.disable_kill_thread ) && level.disable_kill_thread || getdvarint( #"zombie_cheat" ) > 0 )
                 {
                     wait( get_player_out_of_playable_area_monitor_wait_time() );
                     continue;
@@ -1601,7 +1601,7 @@ player_too_many_weapons_monitor()
         }
 
 /#
-        if ( getdvarint( #"_id_FA81816F" ) > 0 )
+        if ( getdvarint( #"zombie_cheat" ) > 0 )
         {
             wait( get_player_too_many_weapons_monitor_wait_time() );
             continue;
@@ -2872,7 +2872,7 @@ get_safe_breadcrumb_pos( player )
 default_max_zombie_func( max_num )
 {
 /#
-    count = getdvarint( #"_id_CF687B54" );
+    count = getdvarint( #"zombie_default_max" );
 
     if ( count > -1 )
         return count;
@@ -2906,7 +2906,7 @@ round_spawning()
         return;
 
 /#
-    if ( getdvarint( #"_id_FA81816F" ) == 2 || getdvarint( #"_id_FA81816F" ) >= 4 )
+    if ( getdvarint( #"zombie_cheat" ) == 2 || getdvarint( #"zombie_cheat" ) >= 4 )
         return;
 #/
 
@@ -3258,7 +3258,7 @@ round_start()
         level.round_spawn_func = ::round_spawning;
 
 /#
-    if ( getdvarint( #"_id_7688603C" ) )
+    if ( getdvarint( #"zombie_rise_test" ) )
         level.round_spawn_func = ::round_spawning_test;
 #/
 
@@ -3701,11 +3701,11 @@ round_wait()
 {
     level endon( "restart_round" );
 /#
-    if ( getdvarint( #"_id_7688603C" ) )
+    if ( getdvarint( #"zombie_rise_test" ) )
         level waittill( "forever" );
 #/
 /#
-    if ( getdvarint( #"_id_FA81816F" ) == 2 || getdvarint( #"_id_FA81816F" ) >= 4 )
+    if ( getdvarint( #"zombie_cheat" ) == 2 || getdvarint( #"zombie_cheat" ) >= 4 )
         level waittill( "forever" );
 #/
     wait 1;
@@ -4436,7 +4436,7 @@ actor_damage_override( inflictor, attacker, damage, flags, meansofdeath, weapon,
         final_damage = [[ self.actor_damage_func ]]( inflictor, attacker, damage, flags, meansofdeath, weapon, vpoint, vdir, shitloc, psoffsettime, boneindex );
 
 /#
-    if ( getdvarint( #"_id_5ABA6445" ) )
+    if ( getdvarint( #"scr_perkdebug" ) )
         println( "Perk/> Damage Factor: " + final_damage / old_damage + " - Pre Damage: " + old_damage + " - Post Damage: " + final_damage );
 #/
 

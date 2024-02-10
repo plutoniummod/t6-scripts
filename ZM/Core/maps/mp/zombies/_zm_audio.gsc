@@ -326,7 +326,7 @@ attack_vox_network_choke()
 do_zombies_playvocals( alias_type, zombie_type )
 {
 /#
-    if ( getdvarint( #"_id_6C610250" ) > 0 )
+    if ( getdvarint( #"zm_novocals" ) > 0 )
         return;
 #/
     self endon( "death" );
@@ -470,7 +470,7 @@ create_and_play_dialog( category, type, response, force_variant, override )
     if ( !isdefined( self.zmbvoxid ) )
     {
 /#
-        if ( getdvarint( #"_id_0AEB127D" ) > 0 )
+        if ( getdvarint( #"debug_audio" ) > 0 )
             iprintln( "DIALOG DEBUGGER: No zmbVoxID setup on this character. Run zmbVoxInitSpeaker on this character in order to play vox" );
 #/
         return;
@@ -480,7 +480,7 @@ create_and_play_dialog( category, type, response, force_variant, override )
         return;
 
 /#
-    if ( getdvarint( #"_id_0AEB127D" ) > 0 )
+    if ( getdvarint( #"debug_audio" ) > 0 )
         self thread dialog_debugger( category, type );
 #/
     isresponse = 0;
@@ -526,7 +526,7 @@ create_and_play_dialog( category, type, response, force_variant, override )
     else
     {
 /#
-        if ( getdvarint( #"_id_0AEB127D" ) > 0 )
+        if ( getdvarint( #"debug_audio" ) > 0 )
             iprintln( "DIALOG DEBUGGER: SOUND_TO_PLAY is undefined" );
 #/
     }
@@ -730,14 +730,14 @@ player_killstreak_timer()
     self endon( "disconnect" );
     self endon( "death" );
 
-    if ( getdvar( #"_id_FB12F109" ) == "" )
+    if ( getdvar( #"zombie_kills" ) == "" )
         setdvar( "zombie_kills", "7" );
 
-    if ( getdvar( #"_id_D0575D76" ) == "" )
+    if ( getdvar( #"zombie_kill_timer" ) == "" )
         setdvar( "zombie_kill_timer", "5" );
 
-    kills = getdvarint( #"_id_FB12F109" );
-    time = getdvarint( #"_id_D0575D76" );
+    kills = getdvarint( #"zombie_kills" );
+    time = getdvarint( #"zombie_kill_timer" );
 
     if ( !isdefined( self.timerisrunning ) )
     {
@@ -1299,7 +1299,7 @@ zmbvoxgetlinevariant( prefix, alias_suffix, force_variant, override )
         if ( num_variants <= 0 )
         {
 /#
-            if ( getdvarint( #"_id_0AEB127D" ) > 0 )
+            if ( getdvarint( #"debug_audio" ) > 0 )
                 println( "DIALOG DEBUGGER: No variants found for - " + prefix + alias_suffix );
 #/
             return undefined;

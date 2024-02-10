@@ -851,7 +851,7 @@ debugsubwoofer()
 
     while ( isdefined( self.buildablesubwoofer ) )
     {
-        if ( getdvarint( #"_id_EB512CB7" ) )
+        if ( getdvarint( #"zombie_equipment_health" ) )
         {
             row = 1;
             health_color = green;
@@ -895,7 +895,7 @@ debugsubwooferprint3d( row, text, color )
 subwoofer_debug_print( msg, color, offset )
 {
 /#
-    if ( !getdvarint( #"_id_EB512CB7" ) )
+    if ( !getdvarint( #"zombie_equipment_health" ) )
         return;
 
     if ( !isdefined( color ) )
@@ -911,7 +911,7 @@ subwoofer_debug_print( msg, color, offset )
 subwoofer_debug_animation_print( msg1, msg2 )
 {
 /#
-    if ( getdvarint( #"_id_EB512CB7" ) != 1 )
+    if ( getdvarint( #"zombie_equipment_health" ) != 1 )
         return;
 
     self endon( "death" );

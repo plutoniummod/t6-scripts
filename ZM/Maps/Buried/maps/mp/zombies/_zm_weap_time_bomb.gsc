@@ -1339,7 +1339,7 @@ _disable_invulnerability()
     if ( !self maps\mp\zombies\_zm_laststand::player_is_in_laststand() )
     {
 /#
-        if ( getdvarint( #"_id_FA81816F" ) >= 1 )
+        if ( getdvarint( #"zombie_cheat" ) >= 1 )
             return;
 #/
         debug_time_bomb_print( "disabling invulnerability on " + self.name );

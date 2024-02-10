@@ -81,12 +81,12 @@ watch_devgui_mechz()
 /#
     while ( true )
     {
-        if ( getdvar( #"_id_877D2B64" ) == "on" )
+        if ( getdvar( #"spawn_Mechz" ) == "on" )
         {
             mechz_health_increases();
             level.mechz_left_to_spawn = 1;
 
-            if ( getdvarint( #"_id_FA81816F" ) >= 2 )
+            if ( getdvarint( #"zombie_cheat" ) >= 2 )
                 level.round_number++;
 
             level notify( "spawn_mechz" );
@@ -94,9 +94,9 @@ watch_devgui_mechz()
             level.mechz_last_spawn_round = 0;
         }
 
-        if ( getdvar( #"_id_7D9211F9" ) != "none" )
+        if ( getdvar( #"mechz_force_behavior" ) != "none" )
         {
-            behavior = getdvar( #"_id_7D9211F9" );
+            behavior = getdvar( #"mechz_force_behavior" );
             zombies = getaiarray( "axis" );
 
             for ( i = 0; i < zombies.size; i++ )
@@ -108,7 +108,7 @@ watch_devgui_mechz()
             setdvar( "mechz_force_behavior", "none" );
         }
 
-        if ( getdvar( #"_id_BD7CA008" ) == "on" )
+        if ( getdvar( #"test_mechz_tank" ) == "on" )
         {
             setdvar( "test_mechz_tank", "off" );
             mechz = undefined;
@@ -130,7 +130,7 @@ watch_devgui_mechz()
             mechz setgoalpos( mechz.goal_pos );
         }
 
-        if ( getdvar( #"_id_6CF3EB40" ) == "on" )
+        if ( getdvar( #"test_mechz_robot" ) == "on" )
         {
             setdvar( "test_mechz_robot", "off" );
             mechz = undefined;
@@ -152,7 +152,7 @@ watch_devgui_mechz()
             mechz setgoalpos( mechz.goal_pos );
         }
 
-        if ( getdvar( #"_id_0DE1409A" ) == "on" )
+        if ( getdvar( #"test_mechz_sprint" ) == "on" )
         {
             setdvar( "test_mechz_sprint", "off" );
             zombies = getaiarray( "axis" );
@@ -164,7 +164,7 @@ watch_devgui_mechz()
             }
         }
 
-        if ( getdvar( #"_id_772BCD39" ) == "on" )
+        if ( getdvar( #"reset_mechz_thinking" ) == "on" )
         {
             setdvar( "reset_mechz_thinking", "off" );
             zombies = getaiarray( "axis" );
@@ -225,7 +225,7 @@ mechz_force_behavior( behavior )
 get_behavior_orient()
 {
 /#
-    behavior_orient = getdvarint( #"_id_2F660A7B" );
+    behavior_orient = getdvarint( #"mechz_behavior_orient" );
     return level.players[0].angles + vectorscale( ( 0, 1, 0 ), 180.0 ) + ( 0, behavior_orient, 0 );
 #/
 }
@@ -261,7 +261,7 @@ align_test_struct()
         pos = level.players[0].origin;
         offset = anglestoforward( level.players[0].angles );
         offset = vectornormalize( offset );
-        dist = getdvarint( #"_id_6DCD047E" );
+        dist = getdvarint( #"mechz_behavior_dist" );
         level.test_align_struct.origin = pos + dist * offset;
         level.test_align_struct.angles = get_behavior_orient();
         wait 0.05;

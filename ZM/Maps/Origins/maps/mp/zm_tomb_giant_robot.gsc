@@ -1253,7 +1253,7 @@ giant_robot_head_player_eject_thread( m_linkpoint, str_tube, b_timeout )
         self delay_thread( 3.0, maps\mp\zombies\_zm_audio::create_and_play_dialog, "general", "air_chute_landing" );
 
 /#
-    debug_level = getdvarint( #"_id_FA81816F" );
+    debug_level = getdvarint( #"zombie_cheat" );
 
     if ( isdefined( debug_level ) && debug_level )
         self enableinvulnerability();
@@ -2025,7 +2025,7 @@ watch_for_force_giant_robot()
 /#
     while ( true )
     {
-        if ( getdvar( #"_id_79D9A3FA" ) == "on" )
+        if ( getdvar( #"force_giant_robot_0" ) == "on" )
         {
             setdvar( "force_giant_robot_0", "off" );
 
@@ -2041,7 +2041,7 @@ watch_for_force_giant_robot()
             }
         }
 
-        if ( getdvar( #"_id_79D9A3FB" ) == "on" )
+        if ( getdvar( #"force_giant_robot_1" ) == "on" )
         {
             setdvar( "force_giant_robot_1", "off" );
 
@@ -2057,7 +2057,7 @@ watch_for_force_giant_robot()
             }
         }
 
-        if ( getdvar( #"_id_79D9A3FC" ) == "on" )
+        if ( getdvar( #"force_giant_robot_2" ) == "on" )
         {
             setdvar( "force_giant_robot_2", "off" );
 
@@ -2073,7 +2073,7 @@ watch_for_force_giant_robot()
             }
         }
 
-        if ( getdvar( #"_id_DF4E4957" ) == "on" )
+        if ( getdvar( #"force_three_robot_round" ) == "on" )
         {
             setdvar( "force_three_robot_round", "off" );
 
@@ -2089,7 +2089,7 @@ watch_for_force_giant_robot()
             }
         }
 
-        if ( getdvar( #"_id_D816D475" ) == "on" )
+        if ( getdvar( #"force_left_foot" ) == "on" )
         {
             setdvar( "force_left_foot", "off" );
 
@@ -2105,7 +2105,7 @@ watch_for_force_giant_robot()
             }
         }
 
-        if ( getdvar( #"_id_462243C8" ) == "on" )
+        if ( getdvar( #"force_right_foot" ) == "on" )
         {
             setdvar( "force_right_foot", "off" );
 

@@ -153,9 +153,9 @@ stopmove()
 shouldrun()
 {
 /#
-    if ( getdvarint( #"_id_DFB12081" ) != 0 )
+    if ( getdvarint( #"dog_force_run" ) != 0 )
         return true;
-    else if ( getdvarint( #"_id_D5D7999B" ) != 0 )
+    else if ( getdvarint( #"dog_force_walk" ) != 0 )
         return false;
 #/
 

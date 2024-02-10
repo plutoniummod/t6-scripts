@@ -1236,7 +1236,7 @@ spawngraphcheck()
 /#
     while ( true )
     {
-        if ( getdvarint( #"_id_C25B6B47" ) < 1 )
+        if ( getdvarint( #"scr_spawngraph" ) < 1 )
         {
             wait 3;
             continue;
@@ -1631,7 +1631,7 @@ profiledebug()
 {
     while ( true )
     {
-        if ( getdvar( #"_id_6A99E750" ) != "1" )
+        if ( getdvar( #"scr_spawnpointprofile" ) != "1" )
         {
             wait 3;
             continue;
@@ -1741,13 +1741,13 @@ ispointvulnerable( playerorigin )
 
 avoidweapondamage( spawnpoints )
 {
-    if ( getdvar( #"_id_0FB71FB7" ) == "0" )
+    if ( getdvar( #"scr_spawnpointnewlogic" ) == "0" )
         return;
 
     weapondamagepenalty = 100000;
 
-    if ( getdvar( #"_id_76B8F046" ) != "" && getdvar( #"_id_76B8F046" ) != "0" )
-        weapondamagepenalty = getdvarfloat( #"_id_76B8F046" );
+    if ( getdvar( #"scr_spawnpointweaponpenalty" ) != "" && getdvar( #"scr_spawnpointweaponpenalty" ) != "0" )
+        weapondamagepenalty = getdvarfloat( #"scr_spawnpointweaponpenalty" );
 
     mingrenadedistsquared = 62500;
 
@@ -1923,8 +1923,8 @@ spawnpointupdate( spawnpoint )
 
 getlospenalty()
 {
-    if ( getdvar( #"_id_CACDB8AA" ) != "" && getdvar( #"_id_CACDB8AA" ) != "0" )
-        return getdvarfloat( #"_id_CACDB8AA" );
+    if ( getdvar( #"scr_spawnpointlospenalty" ) != "" && getdvar( #"scr_spawnpointlospenalty" ) != "0" )
+        return getdvarfloat( #"scr_spawnpointlospenalty" );
 
     return 100000;
 }
@@ -1993,7 +1993,7 @@ lastminutesighttraces( spawnpoint )
 
 avoidvisibleenemies( spawnpoints, teambased )
 {
-    if ( getdvar( #"_id_0FB71FB7" ) == "0" )
+    if ( getdvar( #"scr_spawnpointnewlogic" ) == "0" )
         return;
 
     lospenalty = getlospenalty();
@@ -2083,7 +2083,7 @@ avoidvisibleenemies( spawnpoints, teambased )
 
 avoidspawnreuse( spawnpoints, teambased )
 {
-    if ( getdvar( #"_id_0FB71FB7" ) == "0" )
+    if ( getdvar( #"scr_spawnpointnewlogic" ) == "0" )
         return;
 
     time = gettime();
@@ -2130,7 +2130,7 @@ avoidspawnreuse( spawnpoints, teambased )
 
 avoidsamespawn( spawnpoints )
 {
-    if ( getdvar( #"_id_0FB71FB7" ) == "0" )
+    if ( getdvar( #"scr_spawnpointnewlogic" ) == "0" )
         return;
 
     if ( !isdefined( self.lastspawnpoint ) )

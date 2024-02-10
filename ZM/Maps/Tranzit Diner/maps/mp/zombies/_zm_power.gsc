@@ -26,7 +26,7 @@ debug_powered_items()
 /#
     while ( true )
     {
-        if ( getdvarint( #"_id_EB512CB7" ) )
+        if ( getdvarint( #"zombie_equipment_health" ) )
         {
             if ( isdefined( level.local_power ) )
             {

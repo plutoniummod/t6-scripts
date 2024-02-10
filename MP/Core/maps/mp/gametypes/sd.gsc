@@ -752,7 +752,7 @@ bombplantedmusicdelay()
     level endon( "bomb_defused" );
     time = level.bombtimer - 30;
 /#
-    if ( getdvarint( #"_id_0BC4784C" ) > 0 )
+    if ( getdvarint( #"debug_music" ) > 0 )
         println( "Music System - waiting to set TIME_OUT: " + time );
 #/
 

@@ -1228,7 +1228,7 @@ debugtags()
     while ( true )
     {
         wait 0.05;
-        tagname = getdvar( #"_id_CEED6282" );
+        tagname = getdvar( #"tagname" );
 
         if ( !isdefined( tagname ) || tagname == "" )
             continue;

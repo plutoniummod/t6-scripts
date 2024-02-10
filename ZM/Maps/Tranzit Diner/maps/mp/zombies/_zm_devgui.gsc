@@ -104,13 +104,13 @@ devgui_add_weapon( weapon_name, upgrade_name, hint, cost, weaponvo, weaponvoresp
 zombie_weapon_devgui_think()
 {
 /#
-    level.zombie_devgui_gun = getdvar( #"_id_CE4F9F97" );
-    level.zombie_devgui_att = getdvar( #"_id_A965F402" );
+    level.zombie_devgui_gun = getdvar( #"zombie_devgui_gun" );
+    level.zombie_devgui_att = getdvar( #"zombie_devgui_attach" );
 
     for (;;)
     {
         wait 0.25;
-        cmd = getdvar( #"_id_CE4F9F97" );
+        cmd = getdvar( #"zombie_devgui_gun" );
 
         if ( !isdefined( level.zombie_devgui_gun ) || level.zombie_devgui_gun != cmd )
         {
@@ -119,7 +119,7 @@ zombie_weapon_devgui_think()
         }
 
         wait 0.25;
-        att = getdvar( #"_id_A965F402" );
+        att = getdvar( #"zombie_devgui_attach" );
 
         if ( !isdefined( level.zombie_devgui_att ) || level.zombie_devgui_att != att )
         {
@@ -209,13 +209,13 @@ zombie_devgui_ability_take( name )
 zombie_ability_devgui_think()
 {
 /#
-    level.zombie_devgui_give_ability = getdvar( #"_id_E2245F05" );
-    level.zombie_devgui_take_ability = getdvar( #"_id_0726367F" );
+    level.zombie_devgui_give_ability = getdvar( #"zombie_devgui_give_ability" );
+    level.zombie_devgui_take_ability = getdvar( #"zombie_devgui_take_ability" );
 
     for (;;)
     {
         wait 0.25;
-        cmd = getdvar( #"_id_E2245F05" );
+        cmd = getdvar( #"zombie_devgui_give_ability" );
 
         if ( !isdefined( level.zombie_devgui_give_ability ) || level.zombie_devgui_give_ability != cmd )
         {
@@ -231,7 +231,7 @@ zombie_ability_devgui_think()
         }
 
         wait 0.25;
-        cmd = getdvar( #"_id_0726367F" );
+        cmd = getdvar( #"zombie_devgui_take_ability" );
 
         if ( !isdefined( level.zombie_devgui_take_ability ) || level.zombie_devgui_take_ability != cmd )
         {
@@ -713,7 +713,7 @@ zombie_devgui_think()
                 zombie_devgui_give_powerup( getsubstr( cmd, 5 ), 0 );
                 break;
             case "round":
-                zombie_devgui_goto_round( getdvarint( #"_id_D81B6E19" ) );
+                zombie_devgui_goto_round( getdvarint( #"scr_zombie_round" ) );
                 break;
             case "round_next":
                 zombie_devgui_goto_round( level.round_number + 1 );
@@ -735,7 +735,7 @@ zombie_devgui_think()
 
                 break;
             case "chest":
-                if ( isdefined( level.zombie_weapons[getdvar( #"_id_45ED7744" )] ) )
+                if ( isdefined( level.zombie_weapons[getdvar( #"scr_force_weapon" )] ) )
                 {
 
                 }
@@ -871,7 +871,7 @@ zombie_devgui_think()
                 zombie_devgui_thief_round();
                 break;
             case "dog_round":
-                zombie_devgui_dog_round( getdvarint( #"_id_3CD25BFE" ) );
+                zombie_devgui_dog_round( getdvarint( #"scr_zombie_dogs" ) );
                 break;
             case "dog_round_skip":
                 zombie_devgui_dog_round_skip();

@@ -23,7 +23,7 @@ init()
     level thread hacker_trigger_pool_think();
     level thread hacker_round_reward();
 
-    if ( getdvarint( #"_id_53BD7080" ) == 1 )
+    if ( getdvarint( #"scr_debug_hacker" ) == 1 )
         level thread hacker_debug();
 }
 
@@ -796,7 +796,7 @@ hide_hint_when_hackers_active( custom_logic_func, custom_logic_func_param )
 hacker_debug_print( msg, color )
 {
 /#
-    if ( !getdvarint( #"_id_428DE100" ) )
+    if ( !getdvarint( #"scr_hacker_debug" ) )
         return;
 
     if ( !isdefined( color ) )

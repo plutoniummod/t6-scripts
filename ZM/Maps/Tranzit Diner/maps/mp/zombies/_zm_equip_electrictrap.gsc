@@ -407,7 +407,7 @@ debugelectrictrap( radius )
 /#
     while ( isdefined( self ) )
     {
-        if ( getdvarint( #"_id_EB512CB7" ) )
+        if ( getdvarint( #"zombie_equipment_health" ) )
             circle( self.origin, radius, ( 1, 1, 1 ), 0, 1, 1 );
 
         wait 0.05;

@@ -218,7 +218,7 @@ cheat_complete_stage()
 
     while ( true )
     {
-        if ( getdvar( #"_id_1186DB2D" ) != "" )
+        if ( getdvar( #"cheat_sq" ) != "" )
         {
             if ( isdefined( level._last_stage_started ) )
             {

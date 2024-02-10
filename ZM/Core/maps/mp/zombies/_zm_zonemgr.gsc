@@ -812,10 +812,10 @@ debug_show_spawn_locations()
             distance = distance( location.origin, host_player.origin );
             color = ( 0, 0, 1 );
 
-            if ( distance > getdvarint( #"_id_85E6B1CE" ) * 12 )
+            if ( distance > getdvarint( #"scr_spawner_location_distance" ) * 12 )
                 color = ( 1, 0, 0 );
 
-            debugstar( location.origin, getdvarint( #"_id_BB9101B2" ), color );
+            debugstar( location.origin, getdvarint( #"scr_spawner_location_time" ), color );
         }
     }
 #/
@@ -1103,13 +1103,13 @@ _debug_zones()
 {
     enabled = 0;
 
-    if ( getdvar( #"_id_10E35BC4" ) == "" )
+    if ( getdvar( #"zombiemode_debug_zones" ) == "" )
         setdvar( "zombiemode_debug_zones", "0" );
 
     while ( true )
     {
         wasenabled = enabled;
-        enabled = getdvarint( #"_id_10E35BC4" );
+        enabled = getdvarint( #"zombiemode_debug_zones" );
 
         if ( enabled && !wasenabled )
             _init_debug_zones();

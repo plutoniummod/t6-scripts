@@ -336,7 +336,7 @@ playleaderdialogonplayer( dialog, team, waittime )
         if ( !isdefined( game["zmbdialog"][dialog] ) )
         {
 /#
-            if ( getdvarint( #"_id_0AEB127D" ) > 0 )
+            if ( getdvarint( #"debug_audio" ) > 0 )
                 println( "DIALOG DEBUGGER: No VOX created for - " + dialog );
 #/
             return;
@@ -402,7 +402,7 @@ getleaderdialogvariant( alias )
     if ( num_variants <= 0 )
     {
 /#
-        if ( getdvarint( #"_id_0AEB127D" ) > 0 )
+        if ( getdvarint( #"debug_audio" ) > 0 )
             println( "DIALOG DEBUGGER: No variants found for - " + alias );
 #/
         return undefined;

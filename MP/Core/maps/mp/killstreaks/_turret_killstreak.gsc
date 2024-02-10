@@ -2412,7 +2412,7 @@ addnoturrettrigger( position, radius, height )
 turret_debug_box( origin, mins, maxs, color )
 {
 /#
-    debug_turret = getdvar( #"_id_94A738D1" );
+    debug_turret = getdvar( #"debug_turret" );
 
     if ( debug_turret == "1" )
         box( origin, mins, maxs, 0, color, 1, 1, 300 );
@@ -2422,7 +2422,7 @@ turret_debug_box( origin, mins, maxs, color )
 turret_debug_line( start, end, color )
 {
 /#
-    debug_turret = getdvar( #"_id_94A738D1" );
+    debug_turret = getdvar( #"debug_turret" );
 
     if ( debug_turret == "1" )
         line( start, end, color, 1, 1, 300 );

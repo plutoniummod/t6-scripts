@@ -286,9 +286,9 @@ dostraferuns()
             self.straferungunradius = level.straferungunradius;
             self.straferungunoffset = level.straferungunoffset;
 /#
-            self.straferungunlookahead = getdvarintdefault( #"_id_DFF9F5CE", level.straferungunlookahead );
-            self.straferungunradius = getdvarintdefault( #"_id_74D7F06E", level.straferungunradius );
-            self.straferungunoffset = getdvarintdefault( #"_id_6E34324D", level.straferungunoffset );
+            self.straferungunlookahead = getdvarintdefault( #"scr_straferunlookahead", level.straferungunlookahead );
+            self.straferungunradius = getdvarintdefault( #"scr_straferunradius", level.straferungunradius );
+            self.straferungunoffset = getdvarintdefault( #"scr_straferunoffset", level.straferungunoffset );
 #/
 
             if ( isdefined( noteworthynode ) )
@@ -386,7 +386,7 @@ startstrafe()
         self.gunsoundentity playloopsound( level.straferungunsound );
         self shellshockplayers( trace["position"] );
 /#
-        if ( getdvarintdefault( #"_id_B575F615", 0 ) )
+        if ( getdvarintdefault( #"scr_devStrafeRunBulletsDebugDraw", 0 ) )
         {
             time = 300;
             debug_line( attackstartvector, trace["position"] - vectorscale( ( 0, 0, 1 ), 20.0 ), ( 1, 0, 0 ), time, 0 );
@@ -465,7 +465,7 @@ firerockets()
         rocket.soundmod = "straferun";
         rocket attachkillcamtorocket( level.straferunkillcams.rockets[rocketindex], selectedtarget, targetorigin );
 /#
-        if ( getdvarintdefault( #"_id_9191CAAA", 0 ) )
+        if ( getdvarintdefault( #"scr_devStrafeRunKillcamsDebugDraw", 0 ) )
             rocket thread debug_draw_bomb_path( undefined, vectorscale( ( 0, 1, 0 ), 0.5 ), 400 );
 #/
         wait( level.straferunrocketdelay );
@@ -718,7 +718,7 @@ createkillcams( numkillcams, numrockets )
         {
             level.straferunkillcams.strafes[level.straferunkillcams.strafes.size] = createkillcament();
 /#
-            if ( getdvarintdefault( #"_id_9191CAAA", 0 ) )
+            if ( getdvarintdefault( #"scr_devStrafeRunKillcamsDebugDraw", 0 ) )
                 level.straferunkillcams.strafes[i] thread debug_draw_bomb_path( undefined, vectorscale( ( 0, 0, 1 ), 0.5 ), 200 );
 #/
         }
@@ -759,9 +759,9 @@ resetkillcament( parent )
 {
     self notify( "reset" );
     parent endon( "death" );
-    offset_x = getdvarintdefault( #"_id_33660DD8", -3000 );
-    offset_y = getdvarintdefault( #"_id_33660DD9", 0 );
-    offset_z = getdvarintdefault( #"_id_33660DDA", 740 );
+    offset_x = getdvarintdefault( #"scr_killcamplaneoffsetx", -3000 );
+    offset_y = getdvarintdefault( #"scr_killcamplaneoffsety", 0 );
+    offset_z = getdvarintdefault( #"scr_killcamplaneoffsetz", 740 );
     self linkto( parent, "tag_origin", ( offset_x, offset_y, offset_z ), vectorscale( ( 1, 0, 0 ), 10.0 ) );
     self thread unlinkwhenparentdies( parent );
 }
@@ -770,9 +770,9 @@ resetrocketkillcament( parent, rocketindex )
 {
     self notify( "reset" );
     parent endon( "death" );
-    offset_x = getdvarintdefault( #"_id_33660DD8", -3000 );
-    offset_y = getdvarintdefault( #"_id_33660DD9", 0 );
-    offset_z = getdvarintdefault( #"_id_33660DDA", 740 );
+    offset_x = getdvarintdefault( #"scr_killcamplaneoffsetx", -3000 );
+    offset_y = getdvarintdefault( #"scr_killcamplaneoffsety", 0 );
+    offset_z = getdvarintdefault( #"scr_killcamplaneoffsetz", 740 );
     rockettag = level.straferunrockettags[rocketindex % level.straferunrockettags.size];
     self linkto( parent, rockettag, ( offset_x, offset_y, offset_z ), vectorscale( ( 1, 0, 0 ), 10.0 ) );
     self thread unlinkwhenparentdies( parent );
@@ -794,9 +794,9 @@ unlinkwhenparentdies( parent )
 
 attachkillcamtorocket( killcament, selectedtarget, targetorigin )
 {
-    offset_x = getdvarintdefault( #"_id_218B2530", -400 );
-    offset_y = getdvarintdefault( #"_id_218B2531", 0 );
-    offset_z = getdvarintdefault( #"_id_218B2532", 110 );
+    offset_x = getdvarintdefault( #"scr_killcamrocketoffsetx", -400 );
+    offset_y = getdvarintdefault( #"scr_killcamrocketoffsety", 0 );
+    offset_z = getdvarintdefault( #"scr_killcamrocketoffsetz", 110 );
     self.killcament = killcament;
     forward = vectorscale( anglestoforward( self.angles ), offset_x );
     right = vectorscale( anglestoright( self.angles ), offset_y );

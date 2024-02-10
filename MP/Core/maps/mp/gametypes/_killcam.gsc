@@ -581,7 +581,7 @@ calckillcamtime( sweapon, entitystarttime, predelay, respawn, maxtime )
 {
     camtime = 0.0;
 
-    if ( getdvar( #"_id_C45D9077" ) == "" )
+    if ( getdvar( #"scr_killcam_time" ) == "" )
     {
         if ( iskillcamentityweapon( sweapon ) )
             camtime = ( gettime() - entitystarttime ) / 1000 - predelay - 0.1;
@@ -593,7 +593,7 @@ calckillcamtime( sweapon, entitystarttime, predelay, respawn, maxtime )
             camtime = 2.5;
     }
     else
-        camtime = getdvarfloat( #"_id_C45D9077" );
+        camtime = getdvarfloat( #"scr_killcam_time" );
 
     if ( isdefined( maxtime ) )
     {
@@ -611,11 +611,11 @@ calcpostdelay()
 {
     postdelay = 0;
 
-    if ( getdvar( #"_id_0D34D95D" ) == "" )
+    if ( getdvar( #"scr_killcam_posttime" ) == "" )
         postdelay = 2;
     else
     {
-        postdelay = getdvarfloat( #"_id_0D34D95D" );
+        postdelay = getdvarfloat( #"scr_killcam_posttime" );
 
         if ( postdelay < 0.05 )
             postdelay = 0.05;

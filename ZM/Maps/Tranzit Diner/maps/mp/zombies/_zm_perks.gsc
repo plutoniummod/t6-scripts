@@ -1839,7 +1839,7 @@ vending_trigger_think()
         {
             cheat = 0;
 /#
-            if ( getdvarint( #"_id_FA81816F" ) >= 5 )
+            if ( getdvarint( #"zombie_cheat" ) >= 5 )
                 cheat = 1;
 #/
 
@@ -2112,7 +2112,7 @@ check_player_has_perk( perk )
 {
     self endon( "death" );
 /#
-    if ( getdvarint( #"_id_FA81816F" ) >= 5 )
+    if ( getdvarint( #"zombie_cheat" ) >= 5 )
         return;
 #/
     dist = 16384;
@@ -2152,7 +2152,7 @@ vending_set_hintstring( perk )
 perk_think( perk )
 {
 /#
-    if ( getdvarint( #"_id_FA81816F" ) >= 5 )
+    if ( getdvarint( #"zombie_cheat" ) >= 5 )
     {
         if ( isdefined( self.perk_hud[perk] ) )
             return;

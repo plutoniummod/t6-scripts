@@ -477,18 +477,18 @@ busschedulethink()
 
         waittimeatdestination = self.waittimeatdestination;
 /#
-        if ( getdvarint( #"_id_1CF9CD76" ) != 0 )
+        if ( getdvarint( #"zombie_bus_wait_time" ) != 0 )
         {
-            println( "^2Bus Debug: Using custom wait time of: " + getdvarint( #"_id_1CF9CD76" ) + " seconds." );
-            waittimeatdestination = getdvarint( #"_id_1CF9CD76" );
+            println( "^2Bus Debug: Using custom wait time of: " + getdvarint( #"zombie_bus_wait_time" ) + " seconds." );
+            waittimeatdestination = getdvarint( #"zombie_bus_wait_time" );
         }
 
-        if ( getdvarint( #"_id_FA81816F" ) > 0 )
+        if ( getdvarint( #"zombie_cheat" ) > 0 )
             thread busshowleavinghud( waittimeatdestination );
 #/
         self waittill_any_timeout( waittimeatdestination, "depart_early" );
 /#
-        while ( getdvarint( #"_id_F7C16264" ) )
+        while ( getdvarint( #"zombie_bus_force_to_stay" ) )
             wait 0.1;
 #/
         self notify( "ready_to_depart" );
@@ -669,7 +669,7 @@ zombie_in_bus_death_animscript_callback( inflictor, attacker, damage, flags, mea
 debug_busnear()
 {
 /#
-    if ( getdvarint( #"_id_29B9C39F" ) > 0 )
+    if ( getdvarint( #"zombie_bus_debug_near" ) > 0 )
     {
         zombie_front_dist = 1200.0;
         zombie_side_dist = self.radius + 50.0;
@@ -697,7 +697,7 @@ debug_busnear()
 debug_zombieonbus( zombie )
 {
 /#
-    if ( getdvarint( #"_id_29B9C39F" ) > 0 )
+    if ( getdvarint( #"zombie_bus_debug_near" ) > 0 )
     {
         zombie_front_dist = 1200.0;
         zombie_side_dist = self.radius + 50.0;
@@ -1168,7 +1168,7 @@ busupdatespeed()
     }
 
 /#
-    if ( getdvarint( #"_id_6152C9EA" ) > 0 )
+    if ( getdvarint( #"zombie_bus_debug_speed" ) > 0 )
     {
         msgorigin = self localtoworldcoords( vectorscale( ( 0, 0, 1 ), 100.0 ) );
         msgtext = "speed " + self getspeedmph();
@@ -1298,7 +1298,7 @@ busupdateplayers()
         self.backworld = self localtoworldcoords( self.backlocal );
         self.bus_riders_alive = [];
 /#
-        if ( getdvarint( #"_id_10AC3C99" ) > 0 )
+        if ( getdvarint( #"zombie_bus_debug_players" ) > 0 )
         {
             line( self.frontworld + ( 0, 0, self.floor ), self.backworld + ( 0, 0, self.floor ), ( 1, 1, 1 ), 1, 0, 4 );
             line( self.frontworld + ( 0, 0, self.floor ), self.frontworld + ( 0, 0, self.height ), ( 1, 1, 1 ), 1, 0, 4 );
@@ -1528,7 +1528,7 @@ playercanbepoisoned()
 {
     god_mode = isgodmode( self );
     free_move = self isinmovemode( "ufo", "noclip" );
-    zombie_cheat_num = getdvarint( #"_id_FA81816F" );
+    zombie_cheat_num = getdvarint( #"zombie_cheat" );
     is_invunerable = zombie_cheat_num == 1 || zombie_cheat_num == 2 || zombie_cheat_num == 3;
     return !god_mode && !isdefined( free_move ) && !is_invunerable;
 }
@@ -2909,7 +2909,7 @@ bus_bridge_speedcontrol()
     {
         self waittill( "reached_node", nextpoint );
 /#
-        if ( getdvarint( #"_id_583AF524" ) != 0 )
+        if ( getdvarint( #"zombie_stop_every_emp_point" ) != 0 )
         {
             if ( isdefined( nextpoint.target ) )
             {

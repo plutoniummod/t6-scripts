@@ -731,7 +731,7 @@ powerup_setup( powerup_override, powerup_team, powerup_location )
         players = get_players();
         self.weapon = maps\mp\zombies\_zm_magicbox::treasure_chest_chooseweightedrandomweapon( players[0] );
 /#
-        weapon = getdvar( #"_id_45ED7744" );
+        weapon = getdvar( #"scr_force_weapon" );
 
         if ( weapon != "" && isdefined( level.zombie_weapons[weapon] ) )
         {

@@ -895,7 +895,7 @@ debugheadchopper( radius )
 
     while ( isdefined( self ) )
     {
-        if ( getdvarint( #"_id_EB512CB7" ) )
+        if ( getdvarint( #"zombie_equipment_health" ) )
         {
             if ( isdefined( self.trigger ) )
             {

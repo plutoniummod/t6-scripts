@@ -214,7 +214,7 @@ trap_use_think( trap )
             trap._trap_cooling_down = 1;
             trap trap_set_string( &"ZOMBIE_TRAP_COOLDOWN" );
 /#
-            if ( getdvarint( #"_id_FA81816F" ) >= 1 )
+            if ( getdvarint( #"zombie_cheat" ) >= 1 )
                 trap._trap_cooldown_time = 5;
 #/
             wait( trap._trap_cooldown_time );

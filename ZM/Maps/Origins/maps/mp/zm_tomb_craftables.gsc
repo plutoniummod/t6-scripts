@@ -127,7 +127,7 @@ autocraft_staffs()
     adddebugcommand( "devgui_cmd \"Zombies/Tomb:1/Craftables:1/Give All Staff Pieces:0\" \"autocraft_staffs on\"\n" );
 #/
 
-    while ( getdvar( #"_id_373B6254" ) != "on" )
+    while ( getdvar( #"autocraft_staffs" ) != "on" )
         wait_network_frame();
 
     flag_wait( "start_zombie_round_logic" );
@@ -172,7 +172,7 @@ run_craftables_devgui()
 
     while ( true )
     {
-        craftable_id = getdvar( #"_id_817E2753" );
+        craftable_id = getdvar( #"give_craftable" );
 
         if ( craftable_id != "" )
         {

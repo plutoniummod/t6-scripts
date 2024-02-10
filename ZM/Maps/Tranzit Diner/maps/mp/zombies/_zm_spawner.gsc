@@ -775,10 +775,10 @@ do_a_taunt()
 
     self.old_origin = self.origin;
 
-    if ( getdvar( #"_id_6896A7C3" ) == "" )
+    if ( getdvar( #"zombie_taunt_freq" ) == "" )
         setdvar( "zombie_taunt_freq", "5" );
 
-    freq = getdvarint( #"_id_6896A7C3" );
+    freq = getdvarint( #"zombie_taunt_freq" );
 
     if ( freq >= randomint( 100 ) )
     {
@@ -820,10 +820,10 @@ should_attack_player_thru_boards()
             return false;
     }
 
-    if ( getdvar( #"_id_4A4203B1" ) == "" )
+    if ( getdvar( #"zombie_reachin_freq" ) == "" )
         setdvar( "zombie_reachin_freq", "50" );
 
-    freq = getdvarint( #"_id_4A4203B1" );
+    freq = getdvarint( #"zombie_reachin_freq" );
     players = get_players();
     attack = 0;
     self.player_targets = [];
@@ -2641,7 +2641,7 @@ do_zombie_spawn()
     }
 
 /#
-    if ( getdvarint( #"_id_A8C231AA" ) )
+    if ( getdvarint( #"scr_zombie_spawn_in_view" ) )
     {
         if ( isdefined( level.zombie_spawn_locations ) )
         {
@@ -2675,7 +2675,7 @@ do_zombie_spawn()
 /#
     if ( isdefined( level.toggle_show_spawn_locations ) && level.toggle_show_spawn_locations )
     {
-        debugstar( spot.origin, getdvarint( #"_id_BB9101B2" ), ( 0, 1, 0 ) );
+        debugstar( spot.origin, getdvarint( #"scr_spawner_location_time" ), ( 0, 1, 0 ) );
         host_player = gethostplayer();
         distance = distance( spot.origin, host_player.origin );
         iprintln( "Distance to player: " + distance / 12 + "feet" );

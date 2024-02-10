@@ -2303,8 +2303,8 @@ get_pack_a_punch_weapon_options( weapon )
         reticle_index = plain_reticle_index;
 
 /#
-    if ( getdvarint( #"_id_471F9AB9" ) >= 0 )
-        reticle_index = getdvarint( #"_id_471F9AB9" );
+    if ( getdvarint( #"scr_force_reticle_index" ) >= 0 )
+        reticle_index = getdvarint( #"scr_force_reticle_index" );
 #/
     scary_eyes_reticle_index = 8;
     purple_reticle_color_index = 3;
@@ -2515,9 +2515,9 @@ get_player_index( player )
     assert( isplayer( player ) );
     assert( isdefined( player.characterindex ) );
 /#
-    if ( player.entity_num == 0 && getdvar( #"_id_2222BA21" ) != "" )
+    if ( player.entity_num == 0 && getdvar( #"zombie_player_vo_overwrite" ) != "" )
     {
-        new_vo_index = getdvarint( #"_id_2222BA21" );
+        new_vo_index = getdvarint( #"zombie_player_vo_overwrite" );
         return new_vo_index;
     }
 #/

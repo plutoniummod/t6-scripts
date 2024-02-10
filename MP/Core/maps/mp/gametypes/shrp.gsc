@@ -176,7 +176,7 @@ getrandomgunfromprogression()
         size = level.gunprogression.size;
 
 /#
-    debug_weapon = getdvar( #"_id_1C6DE858" );
+    debug_weapon = getdvar( #"scr_shrp_debug_weapon" );
 #/
     allowproneblock = 1;
     players = get_players();

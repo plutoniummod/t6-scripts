@@ -1119,7 +1119,7 @@ staff_charger_check()
 
     while ( true )
     {
-        if ( self.charger.charges_received >= 20 || getdvarint( #"_id_FA81816F" ) >= 2 && self.charger.is_inserted )
+        if ( self.charger.charges_received >= 20 || getdvarint( #"zombie_cheat" ) >= 2 && self.charger.is_inserted )
         {
             wait 0.5;
             self.charger.is_charged = 1;

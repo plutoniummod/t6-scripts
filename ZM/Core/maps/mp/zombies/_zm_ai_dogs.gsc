@@ -23,13 +23,13 @@ init()
     precacherumble( "explosion_generic" );
     precacheshellshock( "dog_bite" );
 
-    if ( getdvar( #"_id_942939D4" ) == "" )
+    if ( getdvar( #"zombie_dog_animset" ) == "" )
         setdvar( "zombie_dog_animset", "zombie" );
 
-    if ( getdvar( #"_id_CAA5B74F" ) == "" )
+    if ( getdvar( #"scr_dog_health_walk_multiplier" ) == "" )
         setdvar( "scr_dog_health_walk_multiplier", "4.0" );
 
-    if ( getdvar( #"_id_C7E63BA4" ) == "" )
+    if ( getdvar( #"scr_dog_run_distance" ) == "" )
         setdvar( "scr_dog_run_distance", "500" );
 
     level.melee_range_sav = getdvar( #"ai_meleeRange" );
@@ -94,7 +94,7 @@ dog_round_spawning()
 /#
     level endon( "kill_round" );
 
-    if ( getdvarint( #"_id_FA81816F" ) == 2 || getdvarint( #"_id_FA81816F" ) >= 4 )
+    if ( getdvarint( #"zombie_cheat" ) == 2 || getdvarint( #"zombie_cheat" ) >= 4 )
         return;
 #/
 
@@ -115,8 +115,8 @@ dog_round_spawning()
         max = players.size * 8;
 
 /#
-    if ( getdvar( #"_id_4077D7E0" ) != "" )
-        max = getdvarint( #"_id_4077D7E0" );
+    if ( getdvar( #"force_dogs" ) != "" )
+        max = getdvarint( #"force_dogs" );
 #/
     level.zombie_total = max;
     dog_health_increase();
@@ -319,7 +319,7 @@ dog_round_tracker()
     {
         level waittill( "between_round_over" );
 /#
-        if ( getdvarint( #"_id_4077D7E0" ) > 0 )
+        if ( getdvarint( #"force_dogs" ) > 0 )
             level.next_dog_round = level.round_number;
 #/
 
@@ -419,8 +419,8 @@ dog_init()
     self.team = level.zombie_team;
     health_multiplier = 1.0;
 
-    if ( getdvar( #"_id_CAA5B74F" ) != "" )
-        health_multiplier = getdvarfloat( #"_id_CAA5B74F" );
+    if ( getdvar( #"scr_dog_health_walk_multiplier" ) != "" )
+        health_multiplier = getdvarfloat( #"scr_dog_health_walk_multiplier" );
 
     self.maxhealth = int( level.dog_health * health_multiplier );
     self.health = int( level.dog_health * health_multiplier );
