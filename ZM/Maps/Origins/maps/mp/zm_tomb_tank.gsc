@@ -260,13 +260,24 @@ tank_setup()
     self.e_roof = getent( "vol_on_tank_watch", "targetname" );
     self.e_roof enablelinkto();
     self.e_roof linkto( self );
+    self.e_roof_extra = spawn( "trigger_box", ( -8192, -4010, 52 ), 0, 160, 70, 16 );
+    self.e_roof_extra enablelinkto();
+    self.e_roof_extra linkto( self );
     self.t_use = getent( "trig_use_tank", "targetname" );
     self.t_use enablelinkto();
     self.t_use linkto( self );
     self.t_use sethintstring( &"ZM_TOMB_X2AT", 500 );
-    self.t_kill = spawn( "trigger_box", ( -8192, -4300, 0 ), 0, 200, 150, 128 );
+    self.t_kill = spawn( "trigger_box", ( -8192, -4300, 36 ), 0, 200, 150, 80 );
     self.t_kill enablelinkto();
     self.t_kill linkto( self );
+    self.t_rear_tread[0] = spawn( "trigger_box", ( -8280, -3960, 112 ), 0, 64, 32, 96 );
+    self.t_rear_tread[0].angles = vectorscale( ( 0, 1, 0 ), 90.0 );
+    self.t_rear_tread[0] enablelinkto();
+    self.t_rear_tread[0] linkto( self );
+    self.t_rear_tread[1] = spawn( "trigger_box", ( -8104, -3960, 112 ), 0, 64, 32, 96 );
+    self.t_rear_tread[1].angles = vectorscale( ( 0, 1, 0 ), 90.0 );
+    self.t_rear_tread[1] enablelinkto();
+    self.t_rear_tread[1] linkto( self );
     m_tank_path_blocker = getent( "tank_path_blocker", "targetname" );
     m_tank_path_blocker delete();
     a_tank_jump_down_spots = getstructarray( "tank_jump_down_spots", "script_noteworthy" );
@@ -372,6 +383,10 @@ players_on_tank_update()
                     e_player thread tank_rumble_update();
                     e_player thread tank_rides_around_map_achievement_watcher();
                     e_player thread tank_force_crouch_from_prone_after_on_tank();
+
+                    foreach ( trig in self.t_rear_tread )
+                        e_player thread tank_push_player_off_edge( trig );
+
                     e_player allowcrouch( 1 );
                     e_player allowprone( 0 );
                     continue;
@@ -403,6 +418,24 @@ tank_force_crouch_from_prone_after_on_tank()
         self setstance( "crouch" );
 }
 
+tank_push_player_off_edge( trig )
+{
+    self endon( "player_jumped_off_tank" );
+
+    while ( self.b_already_on_tank )
+    {
+        trig waittill( "trigger", player );
+
+        if ( player == self && self isonground() )
+        {
+            v_push = anglestoforward( trig.angles ) * 150;
+            self setvelocity( v_push );
+        }
+
+        wait 0.05;
+    }
+}
+
 tank_rides_around_map_achievement_watcher()
 {
     self endon( "death_or_disconnect" );
@@ -425,7 +458,7 @@ tank_rides_around_map_achievement_watcher()
 
 entity_on_tank()
 {
-    if ( self istouching( level.vh_tank.e_roof ) )
+    if ( self istouching( level.vh_tank.e_roof ) || self istouching( level.vh_tank.e_roof_extra ) )
         return true;
 
     return false;
@@ -519,6 +552,8 @@ activate_tank_wait_with_no_cost()
 {
     self endon( "call_box_used" );
     self.b_no_cost = 1;
+    wait 0.05;
+    self ent_flag_waitopen( "tank_cooldown" );
     self.t_use waittill( "trigger", e_player );
     self ent_flag_set( "tank_activated" );
     self ent_flag_set( "tank_moving" );
@@ -659,13 +694,18 @@ tank_kill_players()
     while ( true )
     {
         self.t_kill waittill( "trigger", player );
-        player thread tank_ran_me_over();
-        wait 0.05;
+
+        if ( !( isdefined( player.b_tank_ran_me_over ) && player.b_tank_ran_me_over ) )
+        {
+            player thread tank_ran_me_over();
+            wait 0.05;
+        }
     }
 }
 
 tank_ran_me_over()
 {
+    self.b_tank_ran_me_over = 1;
     self disableinvulnerability();
     self dodamage( self.health + 1000, self.origin );
     a_nodes = getnodesinradiussorted( self.origin, 256, 0, 72, "path", 15 );
@@ -691,9 +731,12 @@ tank_ran_me_over()
             e_linker wait_to_unlink( self );
             node.b_player_downed_here = undefined;
             e_linker delete();
+            self.b_tank_ran_me_over = undefined;
             return;
         }
     }
+
+    self.b_tank_ran_me_over = undefined;
 }
 
 wait_to_unlink( player )

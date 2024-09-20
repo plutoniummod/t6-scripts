@@ -46,6 +46,7 @@ spawned_collision_ffotd()
     precachemodel( "collision_player_wall_512x512x10" );
     precachemodel( "collision_player_wall_32x32x10" );
     precachemodel( "collision_geo_64x64x10_standard" );
+    precachemodel( "collision_player_wall_128x128x10" );
     precachemodel( "p6_zm_tm_barbedwire_tube" );
     precachemodel( "p6_zm_tm_rubble_rebar_group" );
     flag_wait( "start_zombie_round_logic" );
@@ -151,6 +152,26 @@ spawned_collision_ffotd()
         collision15a setmodel( "collision_geo_64x64x10_standard" );
         collision15a.angles = vectorscale( ( 0, 0, 1 ), 47.4 );
         collision15a ghost();
+        collision16a = spawn( "script_model", ( 482, -2770, 186 ) );
+        collision16a setmodel( "collision_player_wall_128x128x10" );
+        collision16a.angles = vectorscale( ( 0, 1, 0 ), 15.0 );
+        collision16a ghost();
+        collision16b = spawn( "script_model", ( 480, -2760, 186 ) );
+        collision16b setmodel( "collision_player_wall_128x128x10" );
+        collision16b.angles = vectorscale( ( 0, 1, 0 ), 15.0 );
+        collision16b ghost();
+        collision16c = spawn( "script_model", ( 482, -2770, 58 ) );
+        collision16c setmodel( "collision_player_wall_128x128x10" );
+        collision16c.angles = vectorscale( ( 0, 1, 0 ), 15.0 );
+        collision16c ghost();
+        collision16d = spawn( "script_model", ( 480, -2760, 58 ) );
+        collision16d setmodel( "collision_player_wall_128x128x10" );
+        collision16d.angles = vectorscale( ( 0, 1, 0 ), 15.0 );
+        collision16d ghost();
+        collision17a = spawn( "script_model", ( 274.828, 2521.87, -16 ) );
+        collision17a setmodel( "collision_geo_64x64x256_standard" );
+        collision17a.angles = vectorscale( ( 0, 1, 0 ), 337.3 );
+        collision17a ghost();
     }
 }
 
@@ -160,6 +181,8 @@ spawn_kill_brushes()
     t_killbrush_1.script_noteworthy = "kill_brush";
     t_killbrush_2 = spawn( "trigger_box", ( -1277, 892, 184 ), 0, 148, 88, 128 );
     t_killbrush_2.script_noteworthy = "kill_brush";
+    t_killbrush_3 = spawn( "trigger_box", ( 2053, 537, 248 ), 0, 758, 78, 256 );
+    t_killbrush_3.script_noteworthy = "kill_brush";
 }
 
 one_inch_punch_take_think()

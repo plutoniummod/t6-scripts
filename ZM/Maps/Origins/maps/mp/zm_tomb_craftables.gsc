@@ -1189,7 +1189,7 @@ is_unclaimed_staff_weapon( str_weapon )
 
         foreach ( player in players )
         {
-            if ( isdefined( player ) && player has_weapon_or_upgrade( str_weapon_check ) )
+            if ( isdefined( player ) && player.sessionstate == "playing" && player has_weapon_or_upgrade( str_weapon_check ) )
                 return false;
         }
     }
@@ -1311,12 +1311,15 @@ track_staff_weapon_respawn( player )
 
     foreach ( check_player in a_players )
     {
-        weapons = check_player getweaponslistprimaries();
-
-        foreach ( weapon in weapons )
+        if ( check_player.sessionstate == "playing" )
         {
-            if ( weapon == self.base_weaponname || weapon == s_upgraded_staff.weapname )
-                b_staff_in_use = 1;
+            weapons = check_player getweaponslistprimaries();
+
+            foreach ( weapon in weapons )
+            {
+                if ( weapon == self.base_weaponname || weapon == s_upgraded_staff.weapname )
+                    b_staff_in_use = 1;
+            }
         }
     }
 
