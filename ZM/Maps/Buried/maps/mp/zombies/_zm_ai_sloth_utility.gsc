@@ -166,7 +166,7 @@ sloth_face_object( facee, type, data, dot_limit )
 sloth_print( str )
 {
 /#
-    if ( getdvarint( #"_id_B6252E7C" ) )
+    if ( getdvarint( #"scr_sloth_debug" ) )
     {
         iprintln( "sloth: " + str );
 

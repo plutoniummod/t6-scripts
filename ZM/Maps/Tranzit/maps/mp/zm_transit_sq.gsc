@@ -226,7 +226,7 @@ sidequest_init_tracker()
     level.sq_progress["rich"]["C_complete"] = 0;
     level.sq_progress["rich"]["FINISHED"] = 0;
 /#
-    if ( getdvarint( #"_id_113D490F" ) > 0 )
+    if ( getdvarint( #"debug_sq" ) > 0 )
         level thread sidequest_debug_tracker();
 #/
 }

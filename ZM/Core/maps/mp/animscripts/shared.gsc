@@ -25,7 +25,7 @@ growling()
 handlenotetrack( note, flagname, customfunction, var1 )
 {
 /#
-    if ( getdvarint( #"_id_6EBEB982" ) )
+    if ( getdvarint( #"debug_dog_notetracks" ) )
         println( "dog notetrack: " + flagname + " " + note + " " + gettime() );
 #/
 

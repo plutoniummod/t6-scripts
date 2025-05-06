@@ -264,7 +264,7 @@ devgui_zombie_healthbar()
 /#
     while ( true )
     {
-        if ( getdvarint( #"_id_5B45DCAF" ) == 1 )
+        if ( getdvarint( #"scr_zombie_healthbars" ) == 1 )
         {
             lp = get_players()[0];
             zombies = getaispeciesarray( "all", "all" );

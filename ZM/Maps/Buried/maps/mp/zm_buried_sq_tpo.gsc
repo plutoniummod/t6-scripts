@@ -178,7 +178,7 @@ _are_all_players_in_time_bomb_volume( e_volume )
     n_required_players = 4;
     a_players = get_players();
 /#
-    if ( getdvarint( #"_id_5256118F" ) > 0 )
+    if ( getdvarint( #"zm_buried_sq_debug" ) > 0 )
         n_required_players = a_players.size;
 #/
     n_players_in_position = 0;
@@ -368,7 +368,7 @@ _debug_show_location()
 
     while ( true )
     {
-        if ( getdvarint( #"_id_5256118F" ) > 0 )
+        if ( getdvarint( #"zm_buried_sq_debug" ) > 0 )
             debugstar( self.origin, 20, ( 0, 1, 0 ) );
 
         wait 1;

@@ -269,7 +269,7 @@ leaper_can_use_anim( local_mid, local_end, dir )
         if ( trace["fraction"] < 0.2 )
         {
 /#
-            if ( getdvarint( #"_id_5B4FE0B3" ) == 1 )
+            if ( getdvarint( #"scr_leaper_trace" ) == 1 )
                 line( start, mid, ( 1, 0, 0 ), 1, 0, 100 );
 #/
             return false;
@@ -283,7 +283,7 @@ leaper_can_use_anim( local_mid, local_end, dir )
 
         mid = trace["position"];
 /#
-        if ( getdvarint( #"_id_5B4FE0B3" ) >= 1 )
+        if ( getdvarint( #"scr_leaper_trace" ) >= 1 )
             line( start, mid, ( 0, 1, 0 ), 1, 0, 100 );
 #/
 
@@ -297,14 +297,14 @@ leaper_can_use_anim( local_mid, local_end, dir )
             if ( isdefined( trace["fraction"] ) && trace["fraction"] < 1 )
             {
 /#
-                if ( getdvarint( #"_id_5B4FE0B3" ) == 1 )
+                if ( getdvarint( #"scr_leaper_trace" ) == 1 )
                     line( forward_org, real_mid, ( 1, 0, 0 ), 1, 0, 100 );
 #/
             }
             else
             {
 /#
-                if ( getdvarint( #"_id_5B4FE0B3" ) == 1 )
+                if ( getdvarint( #"scr_leaper_trace" ) == 1 )
                     line( forward_org, real_mid, ( 0, 1, 0 ), 1, 0, 100 );
 #/
                 return false;
@@ -314,7 +314,7 @@ leaper_can_use_anim( local_mid, local_end, dir )
     else
     {
 /#
-        if ( getdvarint( #"_id_5B4FE0B3" ) == 1 )
+        if ( getdvarint( #"scr_leaper_trace" ) == 1 )
             line( start, mid, ( 1, 0, 0 ), 1, 0, 100 );
 #/
         return false;
@@ -325,7 +325,7 @@ leaper_can_use_anim( local_mid, local_end, dir )
     if ( isdefined( trace["fraction"] ) && trace["fraction"] < 1 )
     {
 /#
-        if ( getdvarint( #"_id_5B4FE0B3" ) == 1 )
+        if ( getdvarint( #"scr_leaper_trace" ) == 1 )
             line( mid, end, ( 1, 0, 0 ), 1, 0, 100 );
 #/
         return false;
@@ -333,7 +333,7 @@ leaper_can_use_anim( local_mid, local_end, dir )
     else
     {
 /#
-        if ( getdvarint( #"_id_5B4FE0B3" ) >= 1 )
+        if ( getdvarint( #"scr_leaper_trace" ) >= 1 )
             line( mid, end, ( 0, 1, 0 ), 1, 0, 100 );
 #/
     }
@@ -343,7 +343,7 @@ leaper_can_use_anim( local_mid, local_end, dir )
     if ( isdefined( trace["fraction"] ) && trace["fraction"] >= 1 )
     {
 /#
-        if ( getdvarint( #"_id_5B4FE0B3" ) == 1 )
+        if ( getdvarint( #"scr_leaper_trace" ) == 1 )
             line( end_top, end_bottom, ( 1, 0, 0 ), 1, 0, 100 );
 #/
         return false;
@@ -351,7 +351,7 @@ leaper_can_use_anim( local_mid, local_end, dir )
     else
     {
 /#
-        if ( getdvarint( #"_id_5B4FE0B3" ) >= 1 )
+        if ( getdvarint( #"scr_leaper_trace" ) >= 1 )
             line( end_top, end_bottom, ( 0, 1, 0 ), 1, 0, 100 );
 #/
     }
@@ -607,7 +607,7 @@ leaper_round_spawning()
     {
         b_hold_spawning_when_leapers_are_all_dead = 1;
 /#
-        n_test_mode_active = getdvarint( #"_id_298DD9A4" );
+        n_test_mode_active = getdvarint( #"scr_leaper_test" );
 
         if ( isdefined( n_test_mode_active ) && n_test_mode_active == 1 )
         {
@@ -630,7 +630,7 @@ leaper_round_spawning()
         num_player_valid = get_number_of_valid_players();
         per_player = 2;
 /#
-        if ( getdvarint( #"_id_5A273E4B" ) == 2 )
+        if ( getdvarint( #"scr_leaper_debug" ) == 2 )
             per_player = 1;
 #/
 
@@ -1126,7 +1126,7 @@ leaper_spawn_failsafe()
             else
             {
 /#
-                if ( getdvarint( #"_id_5A273E4B" ) == 1 )
+                if ( getdvarint( #"scr_leaper_debug" ) == 1 )
                     iprintln( "leaper tried melee" );
 #/
                 self.melee_attack = 0;

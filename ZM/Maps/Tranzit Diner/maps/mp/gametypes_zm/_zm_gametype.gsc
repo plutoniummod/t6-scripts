@@ -1897,7 +1897,7 @@ wait_for_players()
 onplayerconnect_check_for_hotjoin()
 {
 /#
-    if ( getdvarint( #"_id_EA6D219A" ) > 0 )
+    if ( getdvarint( #"zm_instajoin" ) > 0 )
         return;
 #/
     map_logic_exists = level flag_exists( "start_zombie_round_logic" );

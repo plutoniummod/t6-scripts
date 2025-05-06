@@ -1283,7 +1283,7 @@ show_elevator_floor( name )
 /#
     while ( true )
     {
-        if ( getdvarint( #"_id_B67910B4" ) )
+        if ( getdvarint( #"scr_elevator_debug" ) )
         {
             floor = 0;
             forced = isdefined( self.body.force_starting_floor );

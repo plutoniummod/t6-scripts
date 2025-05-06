@@ -1819,7 +1819,7 @@ reward_players_in_capture_zone()
 show_zone_capture_debug_info()
 {
 /#
-    if ( getdvarint( #"_id_1AD074DA" ) > 0 )
+    if ( getdvarint( #"debug_zone_capture" ) > 0 )
     {
         print3d( self.origin, "progress = " + self.n_current_progress, ( 0, 1, 0 ) );
         circle( groundtrace( self.origin, self.origin - vectorscale( ( 0, 0, 1 ), 1000.0 ), 0, undefined )["position"], 220, ( 0, 1, 0 ), 0, 4 );

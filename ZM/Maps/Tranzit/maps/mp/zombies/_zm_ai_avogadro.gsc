@@ -473,7 +473,7 @@ bus_attack()
 
         attack_struct = random_attack_struct[i];
 /#
-        window = getdvarint( #"_id_5628DC9F" );
+        window = getdvarint( #"scr_avogadro_bus_window" );
 
         if ( window >= 0 )
             attack_struct = bus_attack_struct[window];
@@ -967,7 +967,7 @@ avogadro_teleport( dest_pos, dest_angles, lerp_time, tag_override )
 check_range_attack()
 {
 /#
-    if ( getdvarint( #"_id_A40002E9" ) )
+    if ( getdvarint( #"scr_avogadro_disable_attack" ) )
         return false;
 #/
     enemy = self.favoriteenemy;
@@ -1129,7 +1129,7 @@ get_random_phase_state()
 check_phase()
 {
 /#
-    if ( getdvarint( #"_id_CFB33742" ) )
+    if ( getdvarint( #"scr_avogadro_disable_phase" ) )
         return false;
 #/
 

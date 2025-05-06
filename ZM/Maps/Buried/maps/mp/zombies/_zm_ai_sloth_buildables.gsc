@@ -161,7 +161,7 @@ build_buildable_action()
             if ( isdefined( pieces[i].unitrigger ) && !is_true( pieces[i].built ) )
             {
 /#
-                if ( getdvarint( #"_id_B6252E7C" ) == 2 )
+                if ( getdvarint( #"scr_sloth_debug" ) == 2 )
                     line( self.origin, pieces[i].start_origin, ( 1, 1, 1 ), 1, 0, 1000 );
 #/
                 self maps\mp\zombies\_zm_buildables::player_take_piece( pieces[i] );

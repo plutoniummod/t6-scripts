@@ -556,7 +556,7 @@ watch_lightpower_devgui()
 
 setup_leapers()
 {
-    b_disable_leapers = isdefined( getdvarint( #"_id_60AEA36D" ) ) && getdvarint( #"_id_60AEA36D" );
+    b_disable_leapers = isdefined( getdvarint( #"zombie_leapers_disabled" ) ) && getdvarint( #"zombie_leapers_disabled" );
 
     if ( b_disable_leapers )
         flag_init( "leaper_round" );
@@ -569,12 +569,12 @@ setup_leapers()
 setup_zone_monitor()
 {
     level.player_out_of_playable_area_monitor = 1;
-    str_dvar_zone_monitor = getdvarint( #"_id_E9322600" );
+    str_dvar_zone_monitor = getdvarint( #"zombie_zone_monitor_disable" );
 
     if ( isdefined( str_dvar_zone_monitor ) && str_dvar_zone_monitor )
         level.player_out_of_playable_area_monitor = 0;
 
-    str_dvar_zone_test = getdvarint( #"_id_2313B5C5" );
+    str_dvar_zone_test = getdvarint( #"zombie_zone_test" );
 
     if ( isdefined( str_dvar_zone_test ) && str_dvar_zone_test )
     {
@@ -1169,8 +1169,8 @@ give_personality_characters()
     self.favorite_wall_weapons_list = [];
     self.talks_in_danger = 0;
 /#
-    if ( getdvar( #"_id_40772CF1" ) != "" )
-        self.characterindex = getdvarint( #"_id_40772CF1" );
+    if ( getdvar( #"force_char" ) != "" )
+        self.characterindex = getdvarint( #"force_char" );
 #/
 
     switch ( self.characterindex )

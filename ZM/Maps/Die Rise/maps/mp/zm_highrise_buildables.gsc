@@ -250,7 +250,7 @@ elevator_key_prompt( player )
         floor = self.stub.elevator.floors["" + stop].script_location;
         text = "call " + self.stub.script_noteworthy + " to stop " + stop + " floor " + floor + "";
 
-        if ( getdvarint( #"_id_B67910B4" ) )
+        if ( getdvarint( #"scr_elevator_debug" ) )
             print3d( self.stub.origin, text, color, 1, 0.5, 300 );
     }
 #/

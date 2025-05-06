@@ -850,7 +850,7 @@ setup_sq_debug()
     while ( !isdefined( level.custom_devgui ) )
         wait 1;
 
-    if ( getdvarint( #"_id_5256118F" ) > 0 )
+    if ( getdvarint( #"zm_buried_sq_debug" ) > 0 )
     {
         execdevgui( "devgui_zombie_buried_sq" );
 
@@ -949,13 +949,13 @@ devgui_sq( cmd )
         case "nc_napp":
         case "nc_off":
         case "nc_on":
-            pindex = getdvarint( #"_id_DAD9AAFF" );
+            pindex = getdvarint( #"dg_sq_player" );
 
             if ( !isdefined( pindex ) || pindex < 1 )
                 pindex = 1;
 
             sq_player = level.sq_players[pindex - 1];
-            sq_level = getdvar( #"_id_2685E710" );
+            sq_level = getdvar( #"dg_sq_map" );
             sq_set_stat( sq_player, sq_level, cmd_strings[0] );
             break;
         case "sq_start_stage_bt":
@@ -1547,7 +1547,7 @@ richtofen_zombie_watch_death()
     while ( isdefined( self ) && isalive( self ) )
     {
 /#
-        if ( getdvarint( #"_id_5256118F" ) > 0 )
+        if ( getdvarint( #"zm_buried_sq_debug" ) > 0 )
             debugstar( self.origin, 5, ( 1, 1, 0 ) );
 #/
         wait 0.25;

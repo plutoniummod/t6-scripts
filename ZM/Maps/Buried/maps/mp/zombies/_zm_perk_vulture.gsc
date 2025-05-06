@@ -306,7 +306,7 @@ zombie_drops_stink( ai_zombie, str_identifier )
     {
         e_temp thread delay_showing_vulture_ent( self, ai_zombie.origin );
         level.perk_vulture.zombie_stink_array[level.perk_vulture.zombie_stink_array.size] = e_temp;
-        self delay_notify( str_identifier, getdvarint( #"_id_DDE8D546" ) );
+        self delay_notify( str_identifier, getdvarint( #"zombies_perk_vulture_pickup_time_stink" ) );
     }
 
     return e_temp;
@@ -414,7 +414,7 @@ _vulture_model_blink_timeout( player )
     player endon( "death" );
     player endon( "disconnect" );
     self endon( "stop_vulture_behavior" );
-    n_time_total = getdvarint( #"_id_34FA67DE" );
+    n_time_total = getdvarint( #"zombies_perk_vulture_pickup_time" );
     n_frames = n_time_total * 20;
     n_section = int( n_frames / 6 );
     n_flash_slow = n_section * 3;
@@ -488,9 +488,9 @@ should_do_vulture_drop( v_death_origin )
 {
     b_is_inside_playable_area = check_point_in_enabled_zone( v_death_origin, 1 );
     b_ents_are_available = get_unused_bonus_ent_count() > 0;
-    b_network_slots_available = level.perk_vulture.drop_slots_for_network < getdvarint( #"_id_1786213A" );
+    b_network_slots_available = level.perk_vulture.drop_slots_for_network < getdvarint( #"zombies_perk_vulture_network_drops_max" );
     n_roll = randomint( 100 );
-    b_passed_roll = n_roll > 100 - getdvarint( #"_id_70E3B3FA" );
+    b_passed_roll = n_roll > 100 - getdvarint( #"zombies_perk_vulture_drop_chance" );
     b_is_stink_zombie = isdefined( self.is_stink_zombie ) && self.is_stink_zombie;
     b_should_drop = b_is_stink_zombie || b_is_inside_playable_area && b_ents_are_available && b_network_slots_available && b_passed_roll;
     return b_should_drop;
@@ -498,9 +498,9 @@ should_do_vulture_drop( v_death_origin )
 
 get_vulture_drop_type()
 {
-    n_chance_ammo = getdvarint( #"_id_F75E07AF" );
-    n_chance_points = getdvarint( #"_id_D7BCDBE2" );
-    n_chance_stink = getdvarint( #"_id_4918C38E" );
+    n_chance_ammo = getdvarint( #"zombies_perk_vulture_ammo_chance" );
+    n_chance_points = getdvarint( #"zombies_perk_vulture_points_chance" );
+    n_chance_stink = getdvarint( #"zombies_perk_vulture_stink_chance" );
     n_total_weight = n_chance_ammo + n_chance_points;
     n_cutoff_ammo = n_chance_ammo;
     n_cutoff_points = n_chance_ammo + n_chance_points;
@@ -525,7 +525,7 @@ show_debug_info( v_drop_point, str_identifier, str_bonus )
     if ( str_bonus == "stink" )
         n_radius = 70;
 
-    if ( getdvarint( #"_id_38E68F2B" ) )
+    if ( getdvarint( #"zombies_debug_vulture_perk" ) )
     {
         self endon( str_identifier );
         vulture_debug_text( "zombie dropped " + str_bonus );
@@ -871,7 +871,7 @@ give_bonus_ammo()
             self thread maps\mp\zombies\_zm_audio::create_and_play_dialog( "general", "vulture_ammo_drop" );
 
 /#
-        if ( getdvarint( #"_id_38E68F2B" ) )
+        if ( getdvarint( #"zombies_debug_vulture_perk" ) )
         {
             if ( !isdefined( n_ammo_refunded ) )
                 n_ammo_refunded = 0;
@@ -955,7 +955,7 @@ vulture_drop_count_increment()
 
 _decrement_network_slots_after_time()
 {
-    wait( getdvarint( #"_id_DB295746" ) * 0.001 );
+    wait( getdvarint( #"zombies_perk_vulture_network_time_frame" ) * 0.001 );
     level.perk_vulture.drop_slots_for_network--;
 }
 
@@ -973,7 +973,7 @@ vulture_zombie_spawn_func()
         {
             while ( true )
             {
-                if ( getdvarint( #"_id_38E68F2B" ) )
+                if ( getdvarint( #"zombies_debug_vulture_perk" ) )
                     debugstar( self.origin, 2, ( 0, 1, 0 ) );
 
                 wait 0.1;
@@ -1032,7 +1032,7 @@ stink_zombie_array_add()
 should_zombie_have_stink()
 {
     b_is_zombie = isdefined( self.animname ) && self.animname == "zombie";
-    b_cooldown_up = gettime() - level.perk_vulture.last_stink_zombie_spawned > getdvarint( #"_id_47A03A7E" ) * 1000;
+    b_cooldown_up = gettime() - level.perk_vulture.last_stink_zombie_spawned > getdvarint( #"zombies_perk_vulture_spawn_stink_zombie_cooldown" ) * 1000;
     b_roll_passed = 100 - randomint( 100 ) > 50;
     b_stink_ent_available = get_unused_stink_ent_count() > 0;
     b_should_have_stink = b_is_zombie && b_roll_passed && b_cooldown_up && b_stink_ent_available;
@@ -1042,7 +1042,7 @@ should_zombie_have_stink()
 vulture_debug_text( str_text )
 {
 /#
-    if ( getdvarint( #"_id_38E68F2B" ) )
+    if ( getdvarint( #"zombies_debug_vulture_perk" ) )
         iprintln( str_text );
 #/
 }
@@ -1175,7 +1175,7 @@ _powerup_drop_think()
 vulture_zombies_find_exit_point()
 {
 /#
-    if ( getdvarint( #"_id_38E68F2B" ) > 0 )
+    if ( getdvarint( #"zombies_debug_vulture_perk" ) > 0 )
     {
         foreach ( struct in level.enemy_dog_locations )
             debugstar( struct.origin, 200, ( 1, 1, 1 ) );
@@ -1240,7 +1240,7 @@ _get_zombie_exit_point()
         }
 
 /#
-        if ( getdvarint( #"_id_38E68F2B" ) )
+        if ( getdvarint( #"zombies_debug_vulture_perk" ) )
             debugstar( a_exit_points[i].origin, 200, ( 1, 0, 0 ) );
 #/
     }
@@ -1319,15 +1319,15 @@ setup_splitscreen_optimizations()
 {
     if ( level.splitscreen && getdvarint( #"splitscreen_playerCount" ) > 2 )
     {
-        setdvarint( "zombies_perk_vulture_drops_max", int( getdvarint( #"_id_612F9831" ) * 0.5 ) );
-        setdvarint( "zombies_perk_vulture_spawn_stink_zombie_cooldown", int( getdvarint( #"_id_47A03A7E" ) * 2 ) );
-        setdvarint( "zombies_perk_vulture_max_stink_zombies", int( getdvarint( #"_id_16BCAE6A" ) * 0.5 ) );
+        setdvarint( "zombies_perk_vulture_drops_max", int( getdvarint( #"zombies_perk_vulture_drops_max" ) * 0.5 ) );
+        setdvarint( "zombies_perk_vulture_spawn_stink_zombie_cooldown", int( getdvarint( #"zombies_perk_vulture_spawn_stink_zombie_cooldown" ) * 2 ) );
+        setdvarint( "zombies_perk_vulture_max_stink_zombies", int( getdvarint( #"zombies_perk_vulture_max_stink_zombies" ) * 0.5 ) );
     }
 }
 
 initialize_bonus_entity_pool()
 {
-    n_ent_pool_size = getdvarint( #"_id_612F9831" );
+    n_ent_pool_size = getdvarint( #"zombies_perk_vulture_drops_max" );
     level.perk_vulture.bonus_drop_ent_pool = [];
 
     for ( i = 0; i < n_ent_pool_size; i++ )
@@ -1380,7 +1380,7 @@ clear_bonus_ent()
 
 initialize_stink_entity_pool()
 {
-    n_ent_pool_size = getdvarint( #"_id_16BCAE6A" );
+    n_ent_pool_size = getdvarint( #"zombies_perk_vulture_max_stink_zombies" );
     level.perk_vulture.stink_ent_pool = [];
 
     for ( i = 0; i < n_ent_pool_size; i++ )
@@ -1449,7 +1449,7 @@ _show_debug_location()
 /#
     while ( self.in_use )
     {
-        if ( getdvarint( #"_id_38E68F2B" ) > 0 )
+        if ( getdvarint( #"zombies_debug_vulture_perk" ) > 0 )
         {
             debugstar( self.origin, 1, ( 0, 0, 1 ) );
             print3d( self.origin, self getentitynumber(), ( 0, 0, 1 ), 1, 1, 1 );

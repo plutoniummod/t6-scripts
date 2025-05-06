@@ -489,8 +489,8 @@ give_personality_characters()
 
     self.favorite_wall_weapons_list = [];
 /#
-    if ( getdvar( #"_id_40772CF1" ) != "" )
-        self.characterindex = getdvarint( #"_id_40772CF1" );
+    if ( getdvar( #"force_char" ) != "" )
+        self.characterindex = getdvarint( #"force_char" );
 #/
 
     switch ( self.characterindex )

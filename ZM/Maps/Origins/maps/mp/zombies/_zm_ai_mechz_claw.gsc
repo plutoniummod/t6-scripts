@@ -402,14 +402,14 @@ should_do_claw_attack()
 {
     assert( isdefined( self.favoriteenemy ) );
 /#
-    if ( getdvarint( #"_id_E7121222" ) > 1 )
+    if ( getdvarint( #"mechz_debug" ) > 1 )
         println( "\\n\\tMZ: Checking should claw\\n" );
 #/
 
     if ( !( isdefined( self.has_powerplant ) && self.has_powerplant ) )
     {
 /#
-        if ( getdvarint( #"_id_E7121222" ) > 1 )
+        if ( getdvarint( #"mechz_debug" ) > 1 )
             println( "\\n\\t\\tMZ: Not doing claw because powerplant has been destroyed\\n" );
 #/
         return false;
@@ -418,7 +418,7 @@ should_do_claw_attack()
     if ( isdefined( self.disable_complex_behaviors ) && self.disable_complex_behaviors )
     {
 /#
-        if ( getdvarint( #"_id_E7121222" ) > 1 )
+        if ( getdvarint( #"mechz_debug" ) > 1 )
             println( "\\n\\t\\tMZ: Not doing claw because doing force aggro\\n" );
 #/
         return false;
@@ -427,7 +427,7 @@ should_do_claw_attack()
     if ( isdefined( self.not_interruptable ) && self.not_interruptable )
     {
 /#
-        if ( getdvarint( #"_id_E7121222" ) > 1 )
+        if ( getdvarint( #"mechz_debug" ) > 1 )
             println( "\\n\\t\\tMZ: Not doing claw because another behavior has set not_interruptable\\n" );
 #/
         return false;
@@ -436,7 +436,7 @@ should_do_claw_attack()
     if ( isdefined( self.last_claw_time ) && gettime() - self.last_claw_time < level.mechz_claw_cooldown_time )
     {
 /#
-        if ( getdvarint( #"_id_E7121222" ) > 1 )
+        if ( getdvarint( #"mechz_debug" ) > 1 )
             println( "\\n\\t\\tMZ: Not doing claw because claw is on cooldown\\n" );
 #/
         return false;
@@ -445,7 +445,7 @@ should_do_claw_attack()
     if ( !self mechz_check_in_arc() )
     {
 /#
-        if ( getdvarint( #"_id_E7121222" ) > 1 )
+        if ( getdvarint( #"mechz_debug" ) > 1 )
             println( "\\n\\t\\tMZ: Not doing claw because target is not in front arc\\n" );
 #/
         return false;
@@ -456,7 +456,7 @@ should_do_claw_attack()
     if ( n_dist_sq < 90000 || n_dist_sq > 1000000 )
     {
 /#
-        if ( getdvarint( #"_id_E7121222" ) > 1 )
+        if ( getdvarint( #"mechz_debug" ) > 1 )
             println( "\\n\\t\\tMZ: Not doing claw because target is not in range\\n" );
 #/
         return false;
@@ -465,7 +465,7 @@ should_do_claw_attack()
     if ( !self.favoriteenemy player_can_be_grabbed() )
     {
 /#
-        if ( getdvarint( #"_id_E7121222" ) > 1 )
+        if ( getdvarint( #"mechz_debug" ) > 1 )
             println( "\\n\\t\\tMZ: Not doing claw because player is prone or dtp\\n" );
 #/
         return false;
@@ -476,7 +476,7 @@ should_do_claw_attack()
     if ( isdefined( curr_zone ) && "ug_bottom_zone" == curr_zone )
     {
 /#
-        if ( getdvarint( #"_id_E7121222" ) > 1 )
+        if ( getdvarint( #"mechz_debug" ) > 1 )
             println( "\\n\\t\\tMZ: Not doing claw because mech is in main chamber\\n" );
 #/
         return false;
@@ -490,7 +490,7 @@ should_do_claw_attack()
     if ( !b_cansee )
     {
 /#
-        if ( getdvarint( #"_id_E7121222" ) > 1 )
+        if ( getdvarint( #"mechz_debug" ) > 1 )
             println( "\\n\\t\\tMZ: Not doing claw because capsule trace failed\\n" );
 #/
         return false;
@@ -504,7 +504,7 @@ mechz_do_claw_grab()
     self endon( "death" );
     self endon( "kill_claw" );
 /#
-    if ( getdvarint( #"_id_E7121222" ) > 0 )
+    if ( getdvarint( #"mechz_debug" ) > 0 )
         println( "\\n\\tMZ: Doing Claw Attack\\n" );
 #/
     assert( isdefined( self.favoriteenemy ) );
