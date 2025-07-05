@@ -151,7 +151,7 @@ slowgun_get_enemies_in_range( upgraded, position, forward, possible_targets )
     forward_view_angles = forward;
     end_pos = view_pos + vectorscale( forward_view_angles, outer_range );
 /#
-    if ( 2 == getdvarint( #"scr_debugslowgun" ) )
+    if ( 2 == getdvarint( #"scr_debugSlowgun" ) )
     {
         near_circle_pos = view_pos + vectorscale( forward_view_angles, 2 );
         circle( near_circle_pos, cylinder_radius, ( 1, 0, 0 ), 0, 0, 100 );
@@ -712,7 +712,7 @@ player_paralyzed( byplayer, upgraded )
 slowgun_debug_print( msg, color )
 {
 /#
-    if ( getdvarint( #"scr_debugslowgun" ) != 2 )
+    if ( getdvarint( #"scr_debugSlowgun" ) != 2 )
         return;
 
     if ( !isdefined( color ) )
@@ -761,7 +761,7 @@ show_anim_rates()
 /#
     while ( true )
     {
-        if ( getdvarint( #"scr_debugslowgun" ) == 1 )
+        if ( getdvarint( #"scr_debugSlowgun" ) == 1 )
         {
             lp = get_players()[0];
             insta = lp maps\mp\zombies\_zm_powerups::is_insta_kill_active();
@@ -777,7 +777,7 @@ show_anim_rates()
                 level.sloth show_slow_time( lp.origin, 360000, 0 );
         }
 
-        if ( getdvarint( #"scr_debugslowgun" ) == 3 )
+        if ( getdvarint( #"scr_debugSlowgun" ) == 3 )
         {
             lp = get_players()[0];
 
@@ -801,7 +801,7 @@ show_anim_rates()
 show_muzzle( origin, forward )
 {
 /#
-    if ( getdvarint( #"scr_debugslowgun" ) == 4 )
+    if ( getdvarint( #"scr_debugSlowgun" ) == 4 )
     {
         seconds = 0.25;
         grey = vectorscale( ( 1, 1, 1 ), 0.3 );

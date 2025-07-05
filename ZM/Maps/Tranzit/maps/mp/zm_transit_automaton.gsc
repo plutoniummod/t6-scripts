@@ -290,7 +290,7 @@ automatonanimationsspeaking()
         self setanim( speakinganim );
         self thread sndspeakinganimaudio( speakingnum );
 /#
-        if ( getdvar( #"_id_96F6EBD9" ) != "" )
+        if ( getdvar( #"show_driver_speaking_anims" ) != "" )
             iprintlnbold( "" + speakinganim );
 #/
         wait( getanimlength( speakinganim ) );
@@ -339,7 +339,7 @@ bus_driver_idle()
             driveranim = %ai_zombie_bus_driver_idle;
 
 /#
-        if ( getdvar( #"_id_6DF184E8" ) != "" )
+        if ( getdvar( #"show_driver_anims" ) != "" )
             iprintlnbold( "Idle:" + driveranim );
 #/
         self.isplayingidleanim = 1;

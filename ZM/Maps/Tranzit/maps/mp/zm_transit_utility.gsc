@@ -105,7 +105,7 @@ automatonspeak( category, type, response, force_variant, override )
     if ( isdefined( level.automaton ) && !is_true( level.automaton.disabled_by_emp ) )
     {
 /#
-        if ( getdvar( #"_id_6DF184E8" ) == "" )
+        if ( getdvar( #"show_driver_anims" ) == "" )
             iprintlnbold( "Automaton VO: " + type );
 #/
 

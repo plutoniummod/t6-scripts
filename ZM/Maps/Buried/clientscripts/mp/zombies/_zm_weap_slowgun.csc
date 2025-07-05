@@ -220,7 +220,7 @@ show_anim_rates()
 /#
     while ( true )
     {
-        if ( getdvarint( #"scr_debugslowgun" ) == 3 )
+        if ( getdvarint( #"scr_debugSlowgun" ) == 3 )
         {
             lp = getlocalplayers()[0];
             ents = getentarray( 0 );
