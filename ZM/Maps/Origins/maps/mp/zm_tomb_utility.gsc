@@ -180,7 +180,7 @@ get_teleport_fx_from_enum( n_enum )
 watch_devgui_quadrotor()
 {
 /#
-    while ( getdvar( #"_id_7D075455" ) != "on" )
+    while ( getdvar( #"build_quadrotor" ) != "on" )
         wait 0.1;
 
     players = getplayers();
@@ -739,7 +739,7 @@ puzzle_debug_position( string_to_show, color, origin, str_dvar, n_show_time )
 
     if ( isdefined( str_dvar ) )
     {
-        while ( getdvar( #"_id_93087F74" ) != "on" )
+        while ( getdvar( #"show_craftable_locations" ) != "on" )
             wait 1.0;
     }
 

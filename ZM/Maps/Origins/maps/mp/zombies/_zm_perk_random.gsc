@@ -499,7 +499,7 @@ get_weighted_random_perk( player )
         keys = player [[ level.custom_random_perk_weights ]]();
 
 /#
-    forced_perk = getdvar( #"_id_B097C64C" );
+    forced_perk = getdvar( #"scr_force_perk" );
 
     if ( forced_perk != "" && isdefined( level._random_perk_machine_perk_list[forced_perk] ) )
         arrayinsert( keys, forced_perk, 0 );

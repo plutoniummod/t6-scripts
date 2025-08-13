@@ -400,14 +400,14 @@ should_do_flamethrower_attack()
 {
     assert( isdefined( self.favoriteenemy ) );
 /#
-    if ( getdvarint( #"_id_E7121222" ) > 1 )
+    if ( getdvarint( #"mechz_debug" ) > 1 )
         println( "\\n\\tMZ: Checking should flame\\n" );
 #/
 
     if ( isdefined( self.disable_complex_behaviors ) && self.disable_complex_behaviors )
     {
 /#
-        if ( getdvarint( #"_id_E7121222" ) > 1 )
+        if ( getdvarint( #"mechz_debug" ) > 1 )
             println( "\\n\\t\\tMZ: Not doing flamethrower because doing force aggro\\n" );
 #/
         return false;
@@ -416,7 +416,7 @@ should_do_flamethrower_attack()
     if ( isdefined( self.not_interruptable ) && self.not_interruptable )
     {
 /#
-        if ( getdvarint( #"_id_E7121222" ) > 1 )
+        if ( getdvarint( #"mechz_debug" ) > 1 )
             println( "\\n\\t\\tMZ: Not doing flamethrower because another behavior has set not_interruptable\\n" );
 #/
         return false;
@@ -425,7 +425,7 @@ should_do_flamethrower_attack()
     if ( !self mechz_check_in_arc( 26 ) )
     {
 /#
-        if ( getdvarint( #"_id_E7121222" ) > 1 )
+        if ( getdvarint( #"mechz_debug" ) > 1 )
             println( "\\n\\t\\tMZ: Not doing flamethrower because target is not in front arc\\n" );
 #/
         return false;
@@ -434,7 +434,7 @@ should_do_flamethrower_attack()
     if ( isdefined( self.last_flamethrower_time ) && gettime() - self.last_flamethrower_time < level.mechz_flamethrower_cooldown_time )
     {
 /#
-        if ( getdvarint( #"_id_E7121222" ) > 1 )
+        if ( getdvarint( #"mechz_debug" ) > 1 )
             println( "\\n\\t\\tMZ: Not doing flamethrower because it is still on cooldown\\n" );
 #/
         return false;
@@ -445,7 +445,7 @@ should_do_flamethrower_attack()
     if ( n_dist_sq < 10000 || n_dist_sq > 50000 )
     {
 /#
-        if ( getdvarint( #"_id_E7121222" ) > 1 )
+        if ( getdvarint( #"mechz_debug" ) > 1 )
             println( "\\n\\t\\tMZ: Not doing flamethrower because target is not in range\\n" );
 #/
         return false;
@@ -456,7 +456,7 @@ should_do_flamethrower_attack()
     if ( !b_cansee )
     {
 /#
-        if ( getdvarint( #"_id_E7121222" ) > 1 )
+        if ( getdvarint( #"mechz_debug" ) > 1 )
             println( "\\n\\t\\tMZ: Not doing flamethrower because cannot see target\\n" );
 #/
         return false;
@@ -472,7 +472,7 @@ mechz_do_flamethrower_attack( tank_sweep )
     self endon( "death" );
     self endon( "kill_ft" );
 /#
-    if ( getdvarint( #"_id_E7121222" ) > 0 )
+    if ( getdvarint( #"mechz_debug" ) > 0 )
         println( "\\n\\tMZ: Doing Flamethrower Attack\\n" );
 #/
     self thread mechz_stop_basic_find_flesh();

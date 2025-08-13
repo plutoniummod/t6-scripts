@@ -468,7 +468,7 @@ bot_local_think()
 is_bot_ranked_match()
 {
     bot_enemies = getdvarint( #"bot_enemies" );
-    isdedicatedbotsoak = getdvarint( #"_id_E76315E0" );
+    isdedicatedbotsoak = getdvarint( #"sv_botsoak" );
     return level.rankedmatch && bot_enemies && 0 == isdedicatedbotsoak;
 }
 

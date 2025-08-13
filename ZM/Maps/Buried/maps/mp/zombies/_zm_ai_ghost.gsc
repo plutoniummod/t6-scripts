@@ -1599,7 +1599,7 @@ ghost_springpad_fling( weapon, attacker )
 ghost_print( str )
 {
 /#
-    if ( getdvarint( #"_id_151B6F17" ) )
+    if ( getdvarint( #"scr_ghost_debug" ) )
     {
         iprintln( "ghost: " + str + "\\n" );
 

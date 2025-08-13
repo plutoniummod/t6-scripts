@@ -1097,7 +1097,7 @@ makefindfleshstructs()
 setup_players()
 {
 /#
-    if ( getdvarint( #"_id_99BF96D1" ) != 0 )
+    if ( getdvarint( #"scr_zombie_cleansed_spawns_debug" ) != 0 )
     {
         foreach ( spawnpoint in level._turned_zombie_respawnpoints )
         {

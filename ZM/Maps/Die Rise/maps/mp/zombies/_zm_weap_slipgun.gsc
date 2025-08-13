@@ -156,7 +156,7 @@ slipgun_activation_watcher_thread()
 slipgun_debug_circle( origin, radius, seconds, onslope, parent, start )
 {
 /#
-    if ( getdvarint( #"_id_6136A815" ) )
+    if ( getdvarint( #"scr_debugSlipgun" ) )
     {
         frames = int( 20 * seconds );
 
@@ -189,7 +189,7 @@ slipgun_debug_circle( origin, radius, seconds, onslope, parent, start )
 slipgun_debug_line( start, end, color, seconds )
 {
 /#
-    if ( getdvarint( #"_id_6136A815" ) )
+    if ( getdvarint( #"scr_debugSlipgun" ) )
     {
         frames = int( 20 * seconds );
         line( start, end, color, 1, 0, frames );

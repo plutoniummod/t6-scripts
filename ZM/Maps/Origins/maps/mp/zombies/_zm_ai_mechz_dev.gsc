@@ -13,7 +13,7 @@ mechz_debug()
 /#
     while ( true )
     {
-        debug_level = getdvarint( #"_id_E7121222" );
+        debug_level = getdvarint( #"mechz_debug" );
 
         if ( isdefined( debug_level ) && debug_level )
         {

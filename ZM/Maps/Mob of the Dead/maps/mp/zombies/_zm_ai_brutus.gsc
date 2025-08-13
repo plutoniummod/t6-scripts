@@ -2236,7 +2236,7 @@ brutus_debug()
 /#
     while ( true )
     {
-        debug_level = getdvarint( #"_id_8DB11170" );
+        debug_level = getdvarint( #"brutus_debug" );
 
         if ( isdefined( debug_level ) && debug_level )
         {

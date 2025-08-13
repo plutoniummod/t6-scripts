@@ -96,7 +96,7 @@ watch_for_riot_shield_melee()
     {
         self waittill( "item_attack" );
 /#
-        if ( getdvarint( #"_id_E7121222" ) > 1 )
+        if ( getdvarint( #"mechz_debug" ) > 1 )
             println( "\\n\\tMZ: Resetting fail count because of item attack\\n" );
 #/
         self.fail_count = 0;
@@ -115,7 +115,7 @@ watch_for_valid_melee()
         if ( isdefined( self.favoriteenemy ) && distancesquared( self.origin, self.favoriteenemy.origin ) < 16384 )
         {
 /#
-            if ( getdvarint( #"_id_E7121222" ) > 1 )
+            if ( getdvarint( #"mechz_debug" ) > 1 )
                 println( "\\n\\tMZ: Resetting fail count because of melee\\n" );
 #/
             self.fail_count = 0;
@@ -163,7 +163,7 @@ mechz_jump_stuck_watcher()
         if ( !findpath( self.origin, self.goal_pos, self, 0, 0 ) )
         {
 /#
-            if ( getdvarint( #"_id_E7121222" ) > 1 )
+            if ( getdvarint( #"mechz_debug" ) > 1 )
                 println( "\\n\\tMZ: Incrementing fail count\\n" );
 #/
 /#
@@ -174,7 +174,7 @@ mechz_jump_stuck_watcher()
         else
         {
 /#
-            if ( getdvarint( #"_id_E7121222" ) > 1 )
+            if ( getdvarint( #"mechz_debug" ) > 1 )
                 println( "\\n\\tMZ: Resetting fail count because of good path\\n" );
 #/
             self.fail_count = 0;
@@ -187,14 +187,14 @@ mechz_jump_stuck_watcher()
 mechz_should_jump()
 {
 /#
-    if ( getdvarint( #"_id_E7121222" ) > 1 )
+    if ( getdvarint( #"mechz_debug" ) > 1 )
         println( "\\n\\tMZ: Checking should jump\\n" );
 #/
 
     if ( !isdefined( self.favoriteenemy ) )
     {
 /#
-        if ( getdvarint( #"_id_E7121222" ) > 1 )
+        if ( getdvarint( #"mechz_debug" ) > 1 )
             println( "\\n\\t\\tMZ: Not doing jump because has no enemy\\n" );
 #/
         return false;
@@ -205,7 +205,7 @@ mechz_should_jump()
     if ( dist >= level.mechz_jump_dist_threshold )
     {
 /#
-        if ( getdvarint( #"_id_E7121222" ) > 1 )
+        if ( getdvarint( #"mechz_debug" ) > 1 )
             println( "\\n\\t\\tMZ: Doing jump because target is too far\\n" );
 #/
         return true;
@@ -214,7 +214,7 @@ mechz_should_jump()
     if ( self.fail_count >= level.mechz_failed_paths_to_jump )
     {
 /#
-        if ( getdvarint( #"_id_E7121222" ) > 1 )
+        if ( getdvarint( #"mechz_debug" ) > 1 )
             println( "\\n\\t\\tMZ: Doing jump because has failed too many pathfind checks\\n" );
 #/
         return true;
@@ -228,11 +228,11 @@ mechz_do_jump( wait_for_stationary_tank )
     self endon( "death" );
     self endon( "kill_jump" );
 /#
-    if ( getdvarint( #"_id_E7121222" ) > 0 )
+    if ( getdvarint( #"mechz_debug" ) > 0 )
         println( "\\nMZ: Doing Jump-Teleport\\n" );
 #/
 /#
-    if ( getdvarint( #"_id_E7121222" ) > 1 )
+    if ( getdvarint( #"mechz_debug" ) > 1 )
         println( "\\nMZ: Jump setting not interruptable\\n" );
 #/
     self.not_interruptable = 1;
@@ -282,7 +282,7 @@ mechz_do_jump( wait_for_stationary_tank )
     self.not_interruptable = 0;
     self setfreecameralockonallowed( 1 );
 /#
-    if ( getdvarint( #"_id_E7121222" ) > 1 )
+    if ( getdvarint( #"mechz_debug" ) > 1 )
         println( "\\nMZ: Jump clearing not interruptable\\n" );
 #/
     mechz_jump_cleanup();

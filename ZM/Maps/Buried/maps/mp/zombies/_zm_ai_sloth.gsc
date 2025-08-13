@@ -1769,7 +1769,7 @@ update_berserk()
     crash = 0;
     trace = physicstrace( start, end, vectorscale( ( -1, -1, 0 ), 15.0 ), vectorscale( ( 1, 1, 0 ), 15.0 ), self );
 /#
-    if ( getdvarint( #"_id_B6252E7C" ) == 2 )
+    if ( getdvarint( #"scr_sloth_debug" ) == 2 )
         line( start, end, ( 1, 0, 0 ), 1, 0, 100 );
 #/
 
@@ -2203,7 +2203,7 @@ sloth_debug_barricade()
             continue;
         }
 
-        if ( getdvarint( #"_id_B6252E7C" ) != 3 )
+        if ( getdvarint( #"scr_sloth_debug" ) != 3 )
         {
             wait 1;
             continue;
@@ -2293,14 +2293,14 @@ get_facing_barricade( ignore_segment_dist )
     {
         ground_pos = groundpos( closest.origin );
 /#
-        if ( getdvarint( #"_id_B6252E7C" ) == 3 )
+        if ( getdvarint( #"scr_sloth_debug" ) == 3 )
             line( closest_segment_point, ground_pos, ( 0, 1, 0 ), 1, 0, 60 );
 #/
         dist = distancesquared( closest_segment_point, ground_pos );
         self.aim_barricade = closest;
         barricade_dist = distance( self.origin, ground_pos );
 /#
-        if ( getdvarint( #"_id_B6252E7C" ) == 3 )
+        if ( getdvarint( #"scr_sloth_debug" ) == 3 )
             line( self.origin, ground_pos, ( 1, 1, 1 ), 1, 0, 60 );
 #/
     }
@@ -2345,7 +2345,7 @@ barricade_assist()
     {
         ground_pos = groundpos( closest.origin );
 /#
-        if ( getdvarint( #"_id_B6252E7C" ) == 2 )
+        if ( getdvarint( #"scr_sloth_debug" ) == 2 )
             line( closest_segment_point, ground_pos, ( 0, 1, 0 ), 1, 0, 500 );
 #/
         dist = distancesquared( closest_segment_point, ground_pos );
@@ -2357,7 +2357,7 @@ barricade_assist()
         sloth_print( "dist: " + sqrt( dist ) + " max_dist: " + sqrt( max_dist ) );
 #/
 /#
-        if ( getdvarint( #"_id_B6252E7C" ) == 2 )
+        if ( getdvarint( #"scr_sloth_debug" ) == 2 )
             line( self.origin, ground_pos, ( 1, 1, 1 ), 1, 0, 500 );
 #/
     }
@@ -3307,7 +3307,7 @@ protect_action()
                 self common_context_run( "run_frantic" );
                 self sloth_check_ragdolls( self.target_zombie );
 /#
-                if ( getdvarint( #"_id_B6252E7C" ) == 2 )
+                if ( getdvarint( #"scr_sloth_debug" ) == 2 )
                     line( self.origin, self.target_zombie.origin, ( 0, 1, 0 ), 1, 0, 6 );
 #/
             }
@@ -4110,7 +4110,7 @@ sloth_debug_input()
 
     while ( true )
     {
-        if ( !getdvarint( #"_id_B6252E7C" ) )
+        if ( !getdvarint( #"scr_sloth_debug" ) )
         {
             wait 0.2;
             continue;

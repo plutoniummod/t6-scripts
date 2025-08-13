@@ -108,7 +108,7 @@ meleebiteattackplayer2( player )
         self animmode( "gravity" );
         self.safetochangescript = 0;
 /#
-        if ( getdvarint( #"_id_7B06BF0D" ) )
+        if ( getdvarint( #"debug_dog_sound" ) )
             iprintln( "dog " + self getentnum() + " attack player " + gettime() );
 #/
         player setnextdogattackallowtime( 200 );

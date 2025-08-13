@@ -283,7 +283,7 @@ _warp_player_to_maze_fountain( player, str_teleport_point )
 fountain_debug_print( str_text )
 {
 /#
-    if ( getdvarint( #"_id_AE3F04F6" ) > 0 )
+    if ( getdvarint( #"scr_fountain_debug" ) > 0 )
         iprintlnbold( str_text );
 #/
 }

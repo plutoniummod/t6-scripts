@@ -1350,7 +1350,7 @@ _disable_invulnerability()
 debug_time_bomb_print( str_text )
 {
 /#
-    if ( getdvarint( #"_id_6F8A0CF1" ) )
+    if ( getdvarint( #"zombies_debug_time_bomb" ) )
         iprintln( str_text );
 #/
 }

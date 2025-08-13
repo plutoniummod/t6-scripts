@@ -1819,7 +1819,7 @@ reward_players_in_capture_zone()
 show_zone_capture_debug_info()
 {
 /#
-    if ( getdvarint( #"_id_1AD074DA" ) > 0 )
+    if ( getdvarint( #"debug_zone_capture" ) > 0 )
     {
         print3d( self.origin, "progress = " + self.n_current_progress, ( 0, 1, 0 ) );
         circle( groundtrace( self.origin, self.origin - vectorscale( ( 0, 0, 1 ), 1000.0 ), 0, undefined )["position"], 220, ( 0, 1, 0 ), 0, 4 );
@@ -2147,7 +2147,7 @@ recapture_round_tracker()
 #/
         level waittill_any( "between_round_over", "force_recapture_start" );
 /#
-        if ( getdvarint( #"_id_EF89C4FC" ) > 0 )
+        if ( getdvarint( #"scr_ZoneCaptureTest" ) > 0 )
             n_next_recapture_round = level.round_number;
 #/
 
@@ -2163,7 +2163,7 @@ get_player_controlled_zone_count_for_recapture()
 {
     n_zones_required = 4;
 /#
-    if ( getdvarint( #"_id_EF89C4FC" ) > 0 )
+    if ( getdvarint( #"scr_ZoneCaptureTest" ) > 0 )
         n_zones_required = 1;
 #/
     return n_zones_required;
@@ -2202,9 +2202,9 @@ get_recapture_zone( s_last_recapture_zone )
         {
             s_recapture_zone = random( a_s_player_zones );
 /#
-            if ( getdvarint( #"_id_8178CABA" ) > 0 )
+            if ( getdvarint( #"scr_RecaptureTargetZone" ) > 0 )
             {
-                n_zone = getdvarint( #"_id_8178CABA" );
+                n_zone = getdvarint( #"scr_RecaptureTargetZone" );
 
                 foreach ( zone in level.zone_capture.zones )
                 {
